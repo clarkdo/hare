@@ -1,0 +1,10 @@
+{
+  "presets": ["es2015"],
+  "plugins": ["transform-runtime",
+    "transform-async-to-generator", ["component", [{
+      "libraryName": "element-ui",
+      "styleLibraryName": "theme-default"
+    }]]
+  ],
+  "comments": false
+}
