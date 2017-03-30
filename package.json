@@ -41,5 +41,8 @@
     "jsdom": "^9.12.0",
     "nodemon": "^1.11.0",
     "webpack-dashboard": "^0.3.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
