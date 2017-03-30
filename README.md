@@ -1,3 +1,12 @@
+<p align="center"><img src="http://clarkdo.github.io/public/img/hare.jpg"></p>
+<p align="center">
+  <a href="https://travis-ci.org/clarkdo/hare" target="_blank"><img src="https://travis-ci.org/clarkdo/hare.svg?branch=master" alt="Build Status"></a>
+  <a href="https://github.com/clarkdo/hare/issues"><img src="https://img.shields.io/github/issues/clarkdo/hare.svg" alt="Issues"></a>
+  <a href="https://github.com/clarkdo/hare/stargazers"><img src="https://img.shields.io/github/stars/clarkdo/hare.svg" alt="Stars"></a>
+  <a href="https://raw.githubusercontent.com/clarkdo/hare/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+</p>
+
+
 ## Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js
 
 ## Installation
