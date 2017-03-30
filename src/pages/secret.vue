@@ -28,7 +28,7 @@ import { mapGetters } from 'vuex'
 export default {
   middleware: 'authenticated',
   computed: mapGetters(['loggedUser']),
-  data() {
+  data () {
     return {
       radioval: '3',
       options: [{

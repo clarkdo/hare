@@ -48,8 +48,8 @@ export default {
   ]),
   data () {
     return {
-      "num1": "1",
-      "radioval": "1"
+      num1: '1',
+      radioval: '1'
     }
   },
   components: {
