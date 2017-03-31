@@ -6,5 +6,12 @@
       "styleLibraryName": "theme-default"
     }]]
   ],
-  "comments": false
+  "comments": false,
+  "env": {
+    "development": {
+      "retainLines": true,
+      "sourceMaps": true,
+      "comments": true
+    }
+  }
 }

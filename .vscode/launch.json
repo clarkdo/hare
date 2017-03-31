@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Hare Dev",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceRoot}/app.js",
+        "stopOnEntry": false,
+        "args": [],
+        "cwd": "${workspaceRoot}",
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
+        "runtimeArgs": [
+          "--nolazy"
+        ],
+        "sourceMaps": true,
+        "console": "internalConsole",
+        "internalConsoleOptions": "openOnSessionStart",
+        "env": {
+            "NODE_ENV": "development",
+            "DEBUG": "nuxt:*"
+        }
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug Hare Prod",
+        "program": "${workspaceRoot}/app.prod.js",
+        "env": {
+            "NODE_ENV": "production",
+            "DEBUG": "nuxt:*"
+        }
+      }
+    ]
+}
