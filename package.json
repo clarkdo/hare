@@ -5,7 +5,7 @@
   "author": "Clark Du",
   "private": true,
   "scripts": {
-    "dev": "nodemon -w app.js -w nuxt.config.js --exec babel-node app.js",
+    "dev": "DEBUG=nuxt:* nodemon -w app.js -w nuxt.config.js --exec babel-node app.js",
     "build": "nuxt build && babel app.js --out-file app.prod.js",
     "start": "cross-env NODE_ENV=production node app.prod.js",
     "analyze": "nuxt build --analyze",
