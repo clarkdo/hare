@@ -35,8 +35,8 @@
           <li class="nav-item">
             <nuxt-link
               active-class="active"
-              to="/secret"
-              exact>Secret
+              to="/demo"
+              exact>Demo
             </nuxt-link>
           </li>
           <li class="nav-item">
@@ -210,19 +210,19 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         active: '',
         isHome: false,
         headerStyle: {}
-      };
+      }
     },
     watch: {
       '$route.path': {
         immediate: true,
-        handler() {
-          this.isHome = /^(home|index)/.test(this.$route.name);
-          this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${ this.isHome ? '0' : '1' })`;
+        handler () {
+          this.isHome = /^(home|index)/.test(this.$route.name)
+          this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${this.isHome ? '0' : '1'})`
         }
       }
     },
@@ -230,25 +230,25 @@
 
     },
     methods: {
-      switchLang(targetLang) {
-        if (this.lang === targetLang) return;
-        localStorage.setItem('ELEMENT_LANGUAGE', targetLang);
-        this.$router.push(this.$route.path.replace(this.lang, targetLang));
+      switchLang (targetLang) {
+        if (this.lang === targetLang) return
+        localStorage.setItem('ELEMENT_LANGUAGE', targetLang)
+        this.$router.push(this.$route.path.replace(this.lang, targetLang))
       }
     },
-    mounted() {
-      function scroll(fn) {
+    mounted () {
+      function scroll (fn) {
         window.addEventListener('scroll', () => {
-          fn();
-        }, false);
+          fn()
+        }, false)
       }
       scroll(() => {
         if (this.isHome) {
-          const threshold = 200;
-          let alpha = Math.min((document.documentElement.scrollTop || document.body.scrollTop), threshold) / threshold;
-          this.$refs.header.style.backgroundColor = `rgba(32, 160, 255, ${ alpha })`;
+          const threshold = 200
+          let alpha = Math.min((document.documentElement.scrollTop || document.body.scrollTop), threshold) / threshold
+          this.$refs.header.style.backgroundColor = `rgba(32, 160, 255, ${alpha})`
         }
-      });
+      })
     }
-  };
+  }
 </script>

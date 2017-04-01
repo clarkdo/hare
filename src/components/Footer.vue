@@ -120,10 +120,10 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         version: '0.1.0'
-      };
+      }
     }
-  };
+  }
 </script>
