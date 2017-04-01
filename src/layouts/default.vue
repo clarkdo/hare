@@ -9,7 +9,6 @@
   </div>
 </template>
 
-<style src="~assets/css/main.scss" lang="scss"></style>
 <style src="element-ui/lib/theme-default/index.css"></style>
 
 <style scoped lang="scss">
