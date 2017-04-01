@@ -40,7 +40,7 @@ module.exports = {
   */
   css: [
     'normalize.css',
-    '~assets/css/main.css'
+    '~assets/css/main.scss'
   ],
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
