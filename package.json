@@ -25,7 +25,8 @@
     "element-ui": "^1.2.7",
     "koa": "^2.0.0",
     "normalize.css": "^5.0.0",
-    "nuxt": "latest"
+    "nuxt": "latest",
+    "theaterjs": "^3.1.0"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -39,7 +40,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.1.1",
     "jsdom": "^9.12.0",
+    "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.3",
     "webpack-dashboard": "^0.3.0"
   },
   "engines": {
