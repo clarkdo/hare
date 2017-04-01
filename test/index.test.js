@@ -25,15 +25,15 @@ test.before('Init Nuxt.js', async t => {
 test('Route / exits and render index HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/', context)
-  t.true(html.includes('This is a super simple example'))
+  t.true(html.includes('前端项目模板'))
 })
 
 // Example of testing via dom checking
 test('Route / exits and render HTML with CSS applied', async t => {
   const window = await nuxt.renderAndGetWindow('http://localhost:4000/')
-  const element = window.document.querySelector('.content')
+  const element = window.document.querySelector('.el-card')
   t.not(element, null)
-  t.is(element.className, 'content')
+  t.is(element.className, 'el-card')
   // t.is(element.textContent, 'Hello world!')
   // t.is(window.getComputedStyle(element).color, 'red')
 })
