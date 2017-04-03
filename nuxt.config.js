@@ -25,6 +25,7 @@ module.exports = {
   ** Build config
   */
   build: {
+    publicPath: '/hare/',
     vendor: [
       'axios',
       'element-ui'
