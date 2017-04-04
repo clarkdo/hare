@@ -15,9 +15,9 @@
         <div style="margin: 15px 0;"></div>
         <el-row>
           <el-col :span="6">
-            <el-select v-model="selectval" placeholder="请选择">
+            <el-select v-model="food" placeholder="请选择">
               <el-option
-                v-for="item in food"
+                v-for="item in foods"
                 :key="item.label"
                 :label="item.label"
                 :value="item.value"
@@ -47,7 +47,7 @@
         <el-row>
           <el-col :offset="4" :span="16">
             <el-card>
-              Element 单选框, 多选框演示
+              Element 单选框, 多选框, 输入框演示
             </el-card>
           </el-col>
         </el-row>
@@ -74,6 +74,25 @@
           <el-col :span="6">
           </el-col>
         </el-row>
+        <div style="margin: 15px 0;"></div>
+        <el-row>
+          <el-col :span="6">
+            <el-input placeholder="请输入内容" v-model="website">
+              <template slot="prepend">Http://</template>
+              <template slot="append">.com</template>
+            </el-input>
+          </el-col>
+          <el-col :offset="2" :span="6">
+            <el-input placeholder="请输入内容" v-model="restaurant">
+              <el-select class="input-sel" v-model="restoptions" slot="prepend" placeholder="请选择">
+                <el-option label="餐厅名" value="1"></el-option>
+                <el-option label="订单号" value="2"></el-option>
+                <el-option label="用户电话" value="3"></el-option>
+              </el-select>
+              <el-button slot="append" icon="search"></el-button>
+            </el-input>
+          </el-col>
+        </el-row>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -91,7 +110,7 @@ export default {
       city: '3',
       province: 6,
       district: ['2', '8'],
-      food: [{
+      foods: [{
         value: '选项1',
         label: '黄金糕'
       }, {
@@ -108,7 +127,11 @@ export default {
         value: '选项5',
         label: '北京烤鸭'
       }],
-      selectval: '选项4'
+      food: '选项4',
+      website: 'clarkdo.github.com',
+      restaurant: null,
+      restoptions: '1',
+      multiFood: []
     }
   }
 }
@@ -124,5 +147,14 @@ img {
   height: 100px;
   border-radius: 100px;
   margin: 15px 0;
+}
+.el-select {
+  width: 240px
+}
+</style>
+
+<style>
+.el-select.input-sel .el-input {
+  width: 110px;
 }
 </style>
