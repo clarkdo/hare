@@ -47,7 +47,7 @@
         <el-row>
           <el-col :offset="4" :span="16">
             <el-card>
-              Element 单选框, 多选框, 输入框演示
+              Element 单选框, 多选框, 输入框, 多选下拉框演示
             </el-card>
           </el-col>
         </el-row>
@@ -91,6 +91,17 @@
               </el-select>
               <el-button slot="append" icon="search"></el-button>
             </el-input>
+          </el-col>
+          <el-col :offset="2" :span="6">
+            <el-select v-model="multiFood" multiple placeholder="请选择">
+              <el-option
+                v-for="item in foods"
+                :key="item.key"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled">
+              </el-option>
+            </el-select>
           </el-col>
         </el-row>
       </el-carousel-item>
