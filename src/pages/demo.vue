@@ -55,9 +55,9 @@
         <el-row>
           <el-col :span="6">
             <el-radio-group v-model="province">
-              <el-radio :label="3">辽宁</el-radio>
-              <el-radio disabled :label="6">浙江</el-radio>
-              <el-radio :label="9">台湾</el-radio>
+              <el-radio label="3">辽宁</el-radio>
+              <el-radio disabled label="6">浙江</el-radio>
+              <el-radio label="9">台湾</el-radio>
             </el-radio-group>
           </el-col>
           <el-col :span="12">
