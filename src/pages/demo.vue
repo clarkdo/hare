@@ -10,12 +10,21 @@
           </el-col>
         </el-row>
         <img :src="loggedUser.picture"/>
-        <p>Hi {{ loggedUser.email }}!</p>
-        <p>This is a super secure page! Try loading this page again using the incognito/private mode of your browser.</p>
+        <el-row>
+          <el-col :span="6">
+            <p>食物: {{food}}</p>
+          </el-col>
+          <el-col :span="6">
+             <p>计数器: {{num}}</p>
+          </el-col>
+          <el-col :span="6">
+             <p>城市: {{city}}</p>
+          </el-col>
+        </el-row>
         <div style="margin: 15px 0;"></div>
         <el-row>
           <el-col :span="6">
-            <el-select v-model="food" placeholder="请选择">
+            <el-select v-model="$store.state.demo.food" placeholder="请选择">
               <el-option
                 v-for="item in foods"
                 :key="item.label"
@@ -26,20 +35,23 @@
             </el-select>
           </el-col>
           <el-col :span="6">
-            <el-button>Default Button</el-button>
-            <el-button type="primary">Primary Button</el-button>
-            <el-button type="text">Text Button</el-button>
+            <el-input-number v-model="$store.state.demo.num" :min="1" :max="10"></el-input-number>
           </el-col>
           <el-col :span="6">
-            <el-input-number v-model="num" :min="1" :max="10"></el-input-number>
-          </el-col>
-          <el-col :span="6">
-            <el-radio-group v-model="city">
-              <el-radio-button label="1">上海</el-radio-button>
-              <el-radio-button label="2" :disabled="true">北京</el-radio-button>
-              <el-radio-button label="3">广州</el-radio-button>
-              <el-radio-button label="4">深圳</el-radio-button>
+            <el-radio-group v-model="$store.state.demo.city" @change="checkCity">
+              <el-radio-button
+                v-for="item in cities"
+                :key="item.value"
+                :label="item.value"
+                :disabled="item.disabled">
+                {{item.label}}
+              </el-radio-button>
             </el-radio-group>
+          </el-col>
+          <el-col :span="6">
+            <el-button @click="checkCity('GuangZhou')" type="primary">广州</el-button>
+            <el-button @click="checkCity('ShenZhen')" type="text">深圳</el-button>
+            <el-button @click="checkCity('ShangHai')">上海</el-button>
           </el-col>
         </el-row>
       </el-carousel-item>
@@ -54,14 +66,14 @@
         <div style="margin: 15px 0;"></div>
         <el-row>
           <el-col :span="6">
-            <el-radio-group v-model="province">
+            <el-radio-group v-model="$store.state.demo.province">
               <el-radio label="3">辽宁</el-radio>
               <el-radio disabled label="6">浙江</el-radio>
               <el-radio label="9">台湾</el-radio>
             </el-radio-group>
           </el-col>
           <el-col :span="12">
-            <el-checkbox-group v-model="district">
+            <el-checkbox-group v-model="$store.state.demo.district">
               <el-checkbox label="2">中山区</el-checkbox>
               <el-checkbox label="4">东城区</el-checkbox>
               <el-checkbox label="6">松山区</el-checkbox>
@@ -77,14 +89,14 @@
         <div style="margin: 15px 0;"></div>
         <el-row>
           <el-col :span="6">
-            <el-input placeholder="请输入内容" v-model="website">
+            <el-input placeholder="请输入内容" v-model="$store.state.demo.website">
               <template slot="prepend">Http://</template>
               <template slot="append">.com</template>
             </el-input>
           </el-col>
           <el-col :offset="2" :span="6">
-            <el-input placeholder="请输入内容" v-model="restaurant">
-              <el-select class="input-sel" v-model="restoptions" slot="prepend" placeholder="请选择">
+            <el-input placeholder="请输入内容" v-model="$store.state.demo.restaurant">
+              <el-select class="input-sel" v-model="$store.state.demo.restoptions" slot="prepend" placeholder="请选择">
                 <el-option label="餐厅名" value="1"></el-option>
                 <el-option label="订单号" value="2"></el-option>
                 <el-option label="用户电话" value="3"></el-option>
@@ -93,7 +105,7 @@
             </el-input>
           </el-col>
           <el-col :offset="2" :span="6">
-            <el-select v-model="multiFood" multiple placeholder="请选择">
+            <el-select v-model="$store.state.demo.multiFood" multiple placeholder="请选择">
               <el-option
                 v-for="item in foods"
                 :key="item.key"
@@ -110,40 +122,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   middleware: 'authenticated',
-  computed: mapGetters(['loggedUser']),
-  data () {
-    return {
-      num: '1',
-      city: '3',
-      province: 6,
-      district: ['2', '8'],
-      foods: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶',
-        disabled: true
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      food: '选项4',
-      website: 'clarkdo.github.com',
-      restaurant: null,
-      restoptions: '1',
-      multiFood: []
-    }
+  computed: {
+    ...mapGetters(['loggedUser']),
+    ...mapGetters('demo', [
+      'num', 'city', 'province',
+      'district', 'food', 'website', 'restaurant',
+      'restoptions', 'multiFood', 'foods', 'cities'
+    ])
+  },
+  methods: {
+    ...mapActions('demo', [
+      'checkCity'
+    ])
   }
 }
 </script>
@@ -158,9 +152,6 @@ img {
   height: 100px;
   border-radius: 100px;
   margin: 15px 0;
-}
-.el-select {
-  width: 240px
 }
 </style>
 

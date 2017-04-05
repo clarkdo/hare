@@ -1,5 +1,6 @@
 export const state = {
-  user: null
+  user: null,
+  food: '选项4'
 }
 
 export const mutations = {
@@ -14,5 +15,8 @@ export const getters = {
   },
   loggedUser (state) {
     return state.user
+  },
+  food (state) {
+    return state.food
   }
 }
