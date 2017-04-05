@@ -38,7 +38,7 @@
             <el-input-number v-model="$store.state.demo.num" :min="1" :max="10"></el-input-number>
           </el-col>
           <el-col :span="6">
-            <el-radio-group v-model="$store.state.demo.city" @change="checkCity">
+            <el-radio-group v-model="$store.state.demo.city">
               <el-radio-button
                 v-for="item in cities"
                 :key="item.value"
