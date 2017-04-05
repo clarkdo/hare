@@ -9,11 +9,11 @@
       <div class="container">
         <h1><nuxt-link to="/">
           <img
-            src="../assets/img/element-logo.svg"
+            src="~assets/img/element-logo.svg"
             alt="element-logo"
             class="nav-logo">
           <img
-            src="../assets/img/element-logo-small.svg"
+            src="~assets/img/element-logo-small.svg"
             alt="element-logo"
             class="nav-logo-small">
         </nuxt-link></h1>
@@ -28,18 +28,18 @@
           <li class="nav-item">
             <nuxt-link
               active-class="active"
-              to="/About"
-              exact>About
-            </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link
-              active-class="active"
               to="/demo"
               exact>Demo
             </nuxt-link>
           </li>
           <li class="nav-item">
+            <nuxt-link
+              active-class="active"
+              to="/About"
+              exact>About
+            </nuxt-link>
+          </li>
+          <!--<li class="nav-item">
             <nuxt-link
               active-class="active"
               to="/auth/sign-in"
@@ -51,7 +51,7 @@
               active-class="active"
               to="/auth/sign-off"
               exact>Sign Off
-            </nuxt-link>
+            </nuxt-link>-->
           </li>
         </ul>
       </div>
