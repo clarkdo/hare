@@ -142,7 +142,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .content {
   text-align: center;
   padding-top: 20px;
@@ -152,6 +152,12 @@ img {
   height: 100px;
   border-radius: 100px;
   margin: 15px 0;
+}
+.el-select {
+  width: 240px;
+  &.input-sel {
+    width: 110px
+  }
 }
 </style>
 
