@@ -1,4 +1,4 @@
-<p align="center"><img style="height:200px" src="http://clarkdo.github.io/public/img/hare-logo-blue.svg"></p>
+<p align="center"><img  height="300" src="http://clarkdo.github.io/public/img/hare-logo-blue.svg"></p>
 <p align="center">
   <a href="https://travis-ci.org/clarkdo/hare" target="_blank"><img src="https://travis-ci.org/clarkdo/hare.svg?branch=master" alt="Build Status"></a>
   <a href="https://github.com/clarkdo/hare/issues"><img src="https://img.shields.io/github/issues/clarkdo/hare.svg" alt="Issues"></a>
