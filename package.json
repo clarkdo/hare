@@ -5,9 +5,9 @@
   "author": "Clark Du",
   "private": true,
   "scripts": {
-    "dev": "DEBUG=nuxt:* nodemon -w app.js -w nuxt.config.js --exec babel-node app.js",
-    "build": "nuxt build && babel app.js --out-file app.prod.js",
-    "start": "cross-env NODE_ENV=production node app.prod.js",
+    "dev": "DEBUG=nuxt:* nodemon -w server/app.js -w nuxt.config.js --exec babel-node server/app.js",
+    "build": "nuxt build && babel server/app.js --out-file server/app.prod.js",
+    "start": "cross-env NODE_ENV=production node server/app.prod.js",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -21,12 +21,21 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "bunyan": "^1.8.10",
     "cross-env": "^3.2.4",
     "element-ui": "^1.2.7",
+    "js-yaml": "^3.8.3",
+    "jsonwebtoken": "^7.3.0",
     "koa": "^2.0.0",
+    "koa-body": "^1.6.0",
+    "koa-bunyan": "^1.0.0",
+    "koa-compose": "^3.2.1",
+    "koa-compress": "^2.0.0",
+    "koa-session": "^4.0.0",
     "normalize.css": "^5.0.0",
     "nuxt": "latest",
-    "theaterjs": "^3.1.0"
+    "theaterjs": "^3.1.0",
+    "xmlify": "^1.1.0"
   },
   "devDependencies": {
     "ava": "^0.18.2",
