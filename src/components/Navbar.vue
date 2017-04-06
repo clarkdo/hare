@@ -9,12 +9,12 @@
       <div class="container">
         <h1><nuxt-link to="/">
           <img
-            src="~assets/img/element-logo.svg"
-            alt="element-logo"
+            src="~assets/img/hare-logo.svg"
+            alt="hare-logo"
             class="nav-logo">
           <img
-            src="~assets/img/element-logo-small.svg"
-            alt="element-logo"
+            src="~assets/img/hare-logo-small.svg"
+            alt="hare-logo"
             class="nav-logo-small">
         </nuxt-link></h1>
         <ul class="nav">
