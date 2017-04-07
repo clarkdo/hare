@@ -5,9 +5,9 @@
   "author": "Clark Du",
   "private": true,
   "scripts": {
-    "dev": "DEBUG=nuxt:* nodemon -w server/app.js -w nuxt.config.js --exec babel-node server/app.js",
-    "build": "nuxt build && babel server/app.js --out-file server/app.prod.js",
-    "start": "cross-env NODE_ENV=production node server/app.prod.js",
+    "dev": "DEBUG=nuxt:*,app nodemon -w server/app.js -w nuxt.config.js --exec babel-node server/app.js",
+    "build": "nuxt build && babel server --out-dir dist",
+    "start": "cross-env NODE_ENV=production node dist/app.js",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
