@@ -8,7 +8,7 @@
         "name": "Debug Hare Dev",
         "type": "node",
         "request": "launch",
-        "program": "${workspaceRoot}/app.js",
+        "program": "${workspaceRoot}/server/app.js",
         "stopOnEntry": false,
         "args": [],
         "cwd": "${workspaceRoot}",
@@ -28,7 +28,7 @@
         "type": "node",
         "request": "launch",
         "name": "Debug Hare Prod",
-        "program": "${workspaceRoot}/app.prod.js",
+        "program": "${workspaceRoot}/server/app.prod.js",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*"

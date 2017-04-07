@@ -1,5 +1,5 @@
 module.exports = {
-  srcDir: 'src/',
+  srcDir: 'client/',
   dev: (process.env.NODE_ENV !== 'production'),
   /*
   ** Router config

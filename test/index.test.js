@@ -14,7 +14,7 @@ test.before('Init Nuxt.js', async t => {
   try { config = require(resolve(rootDir, 'nuxt.config.js')) } catch (e) {}
   config.rootDir = rootDir // project folder
   config.dev = false // production build
-  config.srcDir = resolve(__dirname, '../src')
+  config.srcDir = resolve(__dirname, '../client')
   nuxt = new Nuxt(config)
   await nuxt.build()
   server = new nuxt.Server(nuxt)
