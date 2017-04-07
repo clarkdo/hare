@@ -37,6 +37,12 @@ module.exports = {
     }
   },
   /*
+  ** Generate config
+  */
+  generate: {
+    dir: '.generated'
+  },
+  /*
   ** Global CSS
   */
   css: [

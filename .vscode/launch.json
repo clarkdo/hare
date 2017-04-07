@@ -28,7 +28,7 @@
         "type": "node",
         "request": "launch",
         "name": "Debug Hare Prod",
-        "program": "${workspaceRoot}/server/app.prod.js",
+        "program": "${workspaceRoot}/dist/app.js",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*"
