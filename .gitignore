@@ -1,9 +1,9 @@
 # Nuxt build
 .nuxt
-app.prod.js
+dist
 
 # Nuxt generate
-dist
+.generated
 
 # Auth0 config
 config.json
