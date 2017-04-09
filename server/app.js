@@ -1,16 +1,18 @@
-const Koa = require('koa')
-const Nuxt = require('nuxt')
+import Koa from 'koa'
+import Nuxt from 'nuxt'
+import body from 'koa-body'// body parser
+import compose from 'koa-compose'// middleware composer
+import compress from 'koa-compress'// HTTP compression
+import session from 'koa-session'// session for flash messages
+import api from './api'
+import config from '../nuxt.config.js'
+import debug from 'debug'// small debugging utility
+
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || '3000'
-const body = require('koa-body')// body parser
-const compose = require('koa-compose')// middleware composer
-const compress = require('koa-compress')// HTTP compression
-const session = require('koa-session')// session for flash messages
-const debug = require('debug')('app')// small debugging utility
-
+const debuuger = debug('app')
 const app = new Koa()
 
-const config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
 
 const nuxt = new Nuxt(config)
@@ -55,7 +57,7 @@ app.use(session(app))// note koa-session@3.4.0 is v1 middleware which generates 
 
 // sometimes useful to be able to track each request...
 app.use(async function (ctx, next) {
-  debug(ctx.method + ' ' + ctx.url)
+  debuuger(ctx.method + ' ' + ctx.url)
   await next()
 })
 
@@ -66,18 +68,19 @@ app.use(async function (ctx, next) {
 
 app.use(async function subApp (ctx, next) {
   // use subdomain to determine which app to serve: www. as default, or admin. or api
-  ctx.state.subapp = ctx.hostname.split('.')[0]// subdomain = part before first '.' of hostname
+  ctx.state.subapp = ctx.hostname.split('/')[1]// subdomain = part after first '/' of hostname
   // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
   await next()
 })
 
-app.use(async function composeSubapp (ctx) { // note no 'next' after composed subapp
+// note no 'next' after composed subapp, this must be the last middleware
+app.use(async function composeSubapp (ctx, next) {
   switch (ctx.state.subapp) {
-    case 'api': await compose(require('./server/api/app-api.js').middleware)(ctx); break
+    case 'api': await compose(api.middleware)(ctx); break
   }
 })
 
 app.listen(port, host)
 console.info(`${process.version} listening on port ${host}:${port} (${app.env})`)
 
-module.exports = app
+export default app

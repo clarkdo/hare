@@ -1,9 +1,9 @@
-const Koa = require('koa') // Koa framework
-const jwt = require('jsonwebtoken') // JSON Web Token implementation
-const xmlify = require('xmlify') // JS object to XML
-const yaml = require('js-yaml') // JS object to YAML
-const bunyan = require('bunyan') // logging
-const koaLogger = require('koa-bunyan') // logging
+import Koa from 'koa'// Koa framework
+import jwt from 'jsonwebtoken'// JSON Web Token implementation
+import xmlify from 'xmlify'// JS object to XML
+import yaml from 'js-yaml'// JS object to YAML
+import bunyan from 'bunyan'
+import koaLogger from 'koa-bunyan'
 
 const app = new Koa() // API app
 
@@ -97,11 +97,6 @@ app.use(koaLogger(logger, {}))
 
 // ------------ routing
 
-// public (unsecured) modules first
-
-app.use(require('./routes-root.js'))
-app.use(require('./routes-auth.js'))
-
 // remaining routes require JWT auth (obtained from /auth and supplied in bearer authorization header)
 
 app.use(async function verifyJwt (ctx, next) {
@@ -129,10 +124,4 @@ app.use(async function verifyJwt (ctx, next) {
   await next()
 })
 
-app.use(require('./routes-members.js'))
-app.use(require('./routes-teams.js'))
-app.use(require('./routes-team-members.js'))
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-module.exports = app
+export default app
