@@ -1,5 +1,7 @@
 import Koa from 'koa'
 import Nuxt from 'nuxt'
+import bunyan from 'bunyan'
+import koaLogger from 'koa-bunyan'
 import body from 'koa-body'// body parser
 import compose from 'koa-compose'// middleware composer
 import compress from 'koa-compress'// HTTP compression
@@ -14,6 +16,27 @@ const debuuger = debug('app')
 const app = new Koa()
 
 config.dev = !(app.env === 'production')
+
+// logging
+const access = {
+  type: 'rotating-file',
+  path: '/var/tmp/log/hare-access.log',
+  level: 'trace',
+  period: '1d',
+  count: 4
+}
+const error = {
+  type: 'rotating-file',
+  path: '/var/tmp/log/hare-error.log',
+  level: 'error',
+  period: '1d',
+  count: 4
+}
+const logger = bunyan.createLogger({
+  name: 'hare',
+  streams: [access, error]
+})
+app.use(koaLogger(logger, {}))
 
 const nuxt = new Nuxt(config)
 
