@@ -2,8 +2,6 @@ import Koa from 'koa'// Koa framework
 import jwt from 'jsonwebtoken'// JSON Web Token implementation
 import xmlify from 'xmlify'// JS object to XML
 import yaml from 'js-yaml'// JS object to YAML
-import bunyan from 'bunyan'
-import koaLogger from 'koa-bunyan'
 
 const app = new Koa() // API app
 
@@ -73,29 +71,6 @@ app.use(async function handleErrors (ctx, next) {
     }
   }
 })
-
-// logging
-const access = {
-  type: 'rotating-file',
-  path: './logs/api-access.log',
-  level: 'trace',
-  period: '1d',
-  count: 4
-}
-const error = {
-  type: 'rotating-file',
-  path: './logs/api-error.log',
-  level: 'error',
-  period: '1d',
-  count: 4
-}
-const logger = bunyan.createLogger({
-  name: 'api',
-  streams: [access, error]
-})
-app.use(koaLogger(logger, {}))
-
-// ------------ routing
 
 // remaining routes require JWT auth (obtained from /auth and supplied in bearer authorization header)
 
