@@ -98,7 +98,6 @@ app.use(async function (ctx, next) {
   await next()
 })
 
-
 // note no 'next' after composed subapp, this must be the last middleware
 app.use(async function composeSubapp (ctx, next) {
   switch (ctx.state.subapp) {
