@@ -23,7 +23,16 @@ test.before('Init Nuxt.js', async t => {
 
 // Example of testing only generated html
 test('Route / exits and render index HTML', async t => {
-  let context = {}
+  let context = {
+    req: {
+      session: {
+        authUser: {
+          username: 'Clark',
+          email: 'clark.duxin@gmail.com'
+        }
+      }
+    }
+  }
   const { html } = await nuxt.renderRoute('/', context)
   t.true(html.includes('前端项目模板'))
 })
@@ -39,7 +48,16 @@ test('Route / exits and render HTML with CSS applied', async t => {
 })
 
 test('Route / exits and render HTML', async t => {
-  let context = {}
+  let context = {
+    req: {
+      session: {
+        authUser: {
+          username: 'Clark',
+          email: 'clark.duxin@gmail.com'
+        }
+      }
+    }
+  }
   const { html } = await nuxt.renderRoute('/about', context)
   t.true(html.includes('<h1>About Page</h1>'))
 })
