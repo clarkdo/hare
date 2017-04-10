@@ -5,7 +5,7 @@
   "author": "Clark Du",
   "private": true,
   "scripts": {
-    "dev": "DEBUG=nuxt:*,app nodemon -w server/app.js -w nuxt.config.js --exec babel-node server/app.js",
+    "dev": "DEBUG=nuxt:*,app nodemon -w server -w nuxt.config.js --exec babel-node server/app.js",
     "build": "nuxt build && babel server --out-dir dist",
     "start": "cross-env NODE_ENV=production node dist/app.js",
     "analyze": "nuxt build --analyze",
@@ -31,6 +31,7 @@
     "koa-bunyan": "^1.0.0",
     "koa-compose": "^3.2.1",
     "koa-compress": "^2.0.0",
+    "koa-router": "^7.1.1",
     "koa-session": "^4.0.0",
     "normalize.css": "^5.0.0",
     "nuxt": "latest",
