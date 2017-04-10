@@ -27,6 +27,7 @@
           </li>
           <li class="nav-item">
             <nuxt-link
+              v-if="authUser"
               active-class="active"
               to="/demo"
               exact>Demo
@@ -34,8 +35,9 @@
           </li>
           <li class="nav-item">
             <nuxt-link
+              v-if="authUser"
               active-class="active"
-              to="/About"
+              to="/about"
               exact>About
             </nuxt-link>
           </li>
@@ -209,6 +211,7 @@
 </style>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     data () {
       return {
@@ -227,14 +230,7 @@
       }
     },
     computed: {
-
-    },
-    methods: {
-      switchLang (targetLang) {
-        if (this.lang === targetLang) return
-        localStorage.setItem('ELEMENT_LANGUAGE', targetLang)
-        this.$router.push(this.$route.path.replace(this.lang, targetLang))
-      }
+      ...mapGetters(['authUser'])
     },
     mounted () {
       function scroll (fn) {
