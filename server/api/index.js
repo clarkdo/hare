@@ -1,7 +1,7 @@
 import Koa from 'koa'// Koa framework
-import jwt from 'jsonwebtoken'// JSON Web Token implementation
 import xmlify from 'xmlify'// JS object to XML
 import yaml from 'js-yaml'// JS object to YAML
+import auth from '../routes/routes-auth'
 
 const app = new Koa() // API app
 
@@ -72,31 +72,14 @@ app.use(async function handleErrors (ctx, next) {
   }
 })
 
-// remaining routes require JWT auth (obtained from /auth and supplied in bearer authorization header)
+// ------------ routing
 
-app.use(async function verifyJwt (ctx, next) {
-  if (!ctx.header.authorization) ctx.throw(401, 'Authorisation required')
-  const [scheme, token] = ctx.header.authorization.split(' ')
-  if (scheme !== 'Bearer') ctx.throw(401, 'Invalid authorisation')
+// public (unsecured) modules first
 
-  const roles = {
-    g: 'guest',
-    a: 'admin',
-    s: 'su'
-  }
+app.use(auth)
 
-  try {
-    const payload = jwt.verify(token, 'koa-sample-app-signature-key') // throws on invalid token
+// verify token here
 
-    // valid token: accept it...
-    ctx.state.user = payload // for user id  to look up user details
-    ctx.state.user.Role = roles[payload.role] // for authorisation checks
-  } catch (e) {
-    if (e.message === 'invalid token') ctx.throw(401, 'Invalid JWT') // Unauthorized
-    ctx.throw(e.status || 500, e.message) // Internal Server Error
-  }
-
-  await next()
-})
+// custom modules here
 
 export default app

@@ -38,6 +38,18 @@ const logger = bunyan.createLogger({
 })
 app.use(koaLogger(logger, {}))
 
+// select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
+// separate sub-apps can be used for modularisation of a large system, for different login/access
+// rights for public/protected elements, and also for different functionality between api & web
+// pages (content negotiation, error handling, handlebars templating, etc).
+
+app.use(async function subApp (ctx, next) {
+  // use subdomain to determine which app to serve: www. as default, or admin. or api
+  ctx.state.subapp = ctx.url.split('/')[1]// subdomain = part after first '/' of hostname
+  // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
+  await next()
+})
+
 const nuxt = new Nuxt(config)
 
 // Build only in dev mode
@@ -52,7 +64,9 @@ if (config.dev) {
 app.use(async (ctx, next) => {
   ctx.status = 200 // koa defaults to 404 when it sees that status is unset
   await next()
-  await nuxt.render(ctx.req, ctx.res)
+  if (ctx.state.subapp !== 'api') {
+    await nuxt.render(ctx.req, ctx.res)
+  }
 })
 
 // return response time in X-Response-Time header
@@ -84,17 +98,6 @@ app.use(async function (ctx, next) {
   await next()
 })
 
-// select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
-// separate sub-apps can be used for modularisation of a large system, for different login/access
-// rights for public/protected elements, and also for different functionality between api & web
-// pages (content negotiation, error handling, handlebars templating, etc).
-
-app.use(async function subApp (ctx, next) {
-  // use subdomain to determine which app to serve: www. as default, or admin. or api
-  ctx.state.subapp = ctx.hostname.split('/')[1]// subdomain = part after first '/' of hostname
-  // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
-  await next()
-})
 
 // note no 'next' after composed subapp, this must be the last middleware
 app.use(async function composeSubapp (ctx, next) {
