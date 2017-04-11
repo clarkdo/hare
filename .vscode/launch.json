@@ -25,6 +25,25 @@
         }
       },
       {
+        "name": "Run Test Cases",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceRoot}/node_modules/ava/profile.js",
+        "stopOnEntry": false,
+        "args": [
+          "test/index.test.js"
+        ],
+        "cwd": "${workspaceRoot}",
+        "sourceMaps": true,
+        "console": "internalConsole",
+        "internalConsoleOptions": "openOnSessionStart",
+        "protocol": "inspector",
+        "env": {
+            "NODE_ENV": "production",
+            "DEBUG": "nuxt:*"
+        }
+      },
+      {
         "type": "node",
         "request": "launch",
         "name": "Debug Hare Prod",
