@@ -15,7 +15,7 @@
   animation: octocat-wave 560ms ease-in-out;
 }
 svg {
-  fill: #20a0ff;
+  fill: #0090fb;
   color: #fff;
   position: absolute;
   top: 0;
