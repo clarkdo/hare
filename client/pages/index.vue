@@ -10,7 +10,24 @@
           <p>Hare，一套基于Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js项目模板。</p>
         </div>
         <img src="~assets/img/banner-bg.svg" alt="Element">
-        <el-card>
+        <el-card v-if="authUser">
+          <el-row>
+            <el-col :span="24">
+              欢迎登录本系统!
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              用户: {{authUser.userName}}
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <el-button type="primary" class="logout" @click="logout">注销</el-button>
+            </el-col>
+          </el-row>
+        </el-card>
+        <el-card v-else>
           <el-row>
             <el-col :span="24">
               <el-input v-model="userName" placeholder="用户名"></el-input>
@@ -23,7 +40,7 @@
           </el-row>
           <el-row>
             <el-col :span="24">
-              <el-button type="primary" class="login">登录</el-button>
+              <el-button type="primary" class="login" :disabled="logining" @click="login">登录</el-button>
             </el-col>
           </el-row>
         </el-card>
@@ -175,11 +192,13 @@
     }
   }
   .el-card {
-    margin-left: 30px;
+    color: #000;
     width: 300px;
+    margin-left: 30px;
+    text-align: center;
     .login {
       width: 100%;
-    }
+    };
   }
   @keyframes blink {
     from { opacity: 0; }
@@ -237,7 +256,11 @@
 </style>
 <script>
   import theaterJS from 'theaterjs'
+  import { mapGetters } from 'vuex'
   export default {
+    computed: {
+      ...mapGetters(['authUser'])
+    },
     mounted () {
       function typing (theater) {
         theater
@@ -273,7 +296,30 @@
     data () {
       return {
         userName: '',
-        password: ''
+        password: '',
+        logining: false
+      }
+    },
+    methods: {
+      login () {
+        this.logining = true
+        this.$store.dispatch('login', {
+          userName: this.userName,
+          password: this.password
+        })
+        .then(() => {
+          this.userName = ''
+          this.password = ''
+          this.loginError = null
+          this.logining = false
+        })
+        .catch((e) => {
+          this.loginError = e.message
+          this.logining = false
+        })
+      },
+      logout () {
+        this.$store.dispatch('logout')
       }
     }
   }
