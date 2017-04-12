@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <fork-this/>
-    <navbar/>
+    <navbar :authUser="authUser"/>
     <div class="main">
       <nuxt/>
     </div>
@@ -18,6 +18,7 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
 import Navbar from '~components/Navbar'
 import Footer from '~components/Footer'
 import ForkThis from '~components/ForkThis'
@@ -27,6 +28,9 @@ export default {
     Navbar,
     ForkThis,
     foot: Footer
+  },
+  computed: {
+    ...mapGetters(['authUser'])
   }
 }
 </script>

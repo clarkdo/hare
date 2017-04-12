@@ -211,8 +211,8 @@
 </style>
 
 <script>
-  import { mapGetters } from 'vuex'
   export default {
+    props: ['authUser'],
     data () {
       return {
         active: '',
@@ -228,9 +228,6 @@
           this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${this.isHome ? '0' : '1'})`
         }
       }
-    },
-    computed: {
-      ...mapGetters(['authUser'])
     },
     mounted () {
       function scroll (fn) {
