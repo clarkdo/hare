@@ -15,12 +15,13 @@
   animation: octocat-wave 560ms ease-in-out;
 }
 svg {
-  fill: #333;
+  fill: #20a0ff;
   color: #fff;
   position: absolute;
   top: 0;
   right: 0;
   border: 0;
+  z-index: 101;
 }
 .octo-arm {
   transform-origin: 130px 106px;
