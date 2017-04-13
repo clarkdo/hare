@@ -28,21 +28,23 @@
           </el-row>
         </el-card>
         <el-card v-else>
-          <el-row>
-            <el-col :span="24">
-              <el-input v-model="userName" placeholder="用户名"></el-input>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <el-input v-model="password" type="password" placeholder="密码"></el-input>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <el-button type="primary" class="login" :loading="logining" @click="login">登录</el-button>
-            </el-col>
-          </el-row>
+          <el-form :model="user" :rules="rules" ref="user">
+            <el-form-item prop="userName" :rules="[{ required: true, message: '用户名不能为空'}]">
+              <el-col :span="24">
+                <el-input v-model="user.userName" placeholder="用户名"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item prop="password" :rules="[{ required: true, message: '密码不能为空'}]">
+              <el-col :span="24">
+                <el-input v-model="user.password" type="password" placeholder="密码"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-row>
+              <el-col :span="24">
+                <el-button type="primary" class="login" :loading="logining" @click="login">登录</el-button>
+              </el-col>
+            </el-row>
+          </el-form>
         </el-card>
       </div>
     </div>
@@ -295,8 +297,11 @@
     },
     data () {
       return {
-        userName: '',
-        password: '',
+        user: {
+          userName: '',
+          password: ''
+        },
+        rules: {},
         logining: false
       }
     },
@@ -306,17 +311,20 @@
         setTimeout(function () {
           this.logining = false
         }.bind(this), 1000)
-        this.$store.dispatch('login', {
-          userName: this.userName,
-          password: this.password
-        })
-        .then(() => {
-          this.userName = ''
-          this.password = ''
-          this.loginError = null
-        })
-        .catch((e) => {
-          this.$message.warning(e.message)
+        this.$refs['user'].validate((valid) => {
+          if (valid) {
+            this.$store.dispatch('login', {
+              userName: this.user.userName,
+              password: this.user.password
+            })
+            .then(() => {
+              this.user.userName = ''
+              this.user.password = ''
+            })
+            .catch((e) => {
+              this.$message.warning(e.message)
+            })
+          }
         })
       },
       logout () {
