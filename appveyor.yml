@@ -29,7 +29,7 @@ install:
   - yarn install
 
 cache:
- - "%LOCALAPPDATA%/Yarn"
+ - "%LOCALAPPDATA%\\Yarn"
 
 # Post-install test scripts.
 test_script:
