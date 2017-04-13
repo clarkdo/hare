@@ -31,9 +31,11 @@ export const actions = {
       commit('SET_USER', res.data)
     })
     .catch((error) => {
-      if (error.response.status === 401) {
-        throw new Error('Bad credentials')
+      let message = error.message
+      if (error.response.data) {
+        message = (error.response.data.message || message)
       }
+      throw new Error(message)
     })
   },
 

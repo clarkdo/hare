@@ -40,7 +40,7 @@
           </el-row>
           <el-row>
             <el-col :span="24">
-              <el-button type="primary" class="login" :disabled="logining" @click="login">登录</el-button>
+              <el-button type="primary" class="login" :loading="logining" @click="login">登录</el-button>
             </el-col>
           </el-row>
         </el-card>
@@ -303,6 +303,9 @@
     methods: {
       login () {
         this.logining = true
+        setTimeout(function () {
+          this.logining = false
+        }.bind(this), 1000)
         this.$store.dispatch('login', {
           userName: this.userName,
           password: this.password
@@ -311,11 +314,9 @@
           this.userName = ''
           this.password = ''
           this.loginError = null
-          this.logining = false
         })
         .catch((e) => {
-          this.loginError = e.message
-          this.logining = false
+          this.$message.warning(e.message)
         })
       },
       logout () {

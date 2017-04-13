@@ -47,8 +47,6 @@ app.use(async function handleErrors (ctx, next) {
       case 204: // No Content
         break
       case 401: // Unauthorized
-        ctx.set('WWW-Authenticate', 'Basic')
-        break
       case 403: // Forbidden
       case 404: // Not Found
       case 406: // Not Acceptable
