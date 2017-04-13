@@ -8,6 +8,8 @@ branches:
   except:
     - gh-pages
 
+max_jobs: 4
+
 # Test against the latest version of this Node.js version
 environment:
   matrix:
@@ -29,7 +31,7 @@ install:
   - yarn install
 
 cache:
- - "%LOCALAPPDATA%\\Yarn"
+ - '%LOCALAPPDATA%\Yarn'
 
 # Post-install test scripts.
 test_script:
