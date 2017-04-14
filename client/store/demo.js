@@ -84,5 +84,17 @@ export const getters = {
       value: 'ShenZhen',
       label: '深圳'
     }]
+  },
+  labels () {
+    return [{
+      value: '赠票',
+      label: 'st'
+    }, {
+      value: '满减',
+      label: 'reduction'
+    }, {
+      value: '增积分',
+      label: 'points'
+    }]
   }
 }
