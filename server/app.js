@@ -8,11 +8,11 @@ import compress from 'koa-compress'// HTTP compression
 import session from 'koa-session'// session for flash messages
 import api from './api'
 import config from '../nuxt.config.js'
-import debug from 'debug'// small debugging utility
+import debugModule from 'debug'// small debugging utility
 
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || '3000'
-const debuuger = debug('app')
+const debug = debugModule('app')
 const app = new Koa()
 
 config.dev = !(app.env === 'production')
@@ -94,7 +94,7 @@ app.use(session(app))// note koa-session@3.4.0 is v1 middleware which generates 
 
 // sometimes useful to be able to track each request...
 app.use(async function (ctx, next) {
-  debuuger(ctx.method + ' ' + ctx.url)
+  debug(ctx.method + ' ' + ctx.url)
   await next()
 })
 
