@@ -311,7 +311,7 @@
         setTimeout(function () {
           this.logining = false
         }.bind(this), 1000)
-        this.$refs['user'].validate((valid) => {
+        this.$refs.user.validate((valid) => {
           if (valid) {
             this.$store.dispatch('login', {
               userName: this.user.userName,
