@@ -96,5 +96,47 @@ export const getters = {
       value: '增积分',
       label: 'points'
     }]
+  },
+  organizers () {
+    return [{
+      value: 'market',
+      label: '市场部',
+      children: [{
+        value: 'market',
+        label: '交易部'
+      }, {
+        value: 'execution',
+        label: '执行部'
+      }, {
+        value: 'promotion',
+        label: '推广部'
+      }]
+    }, {
+      value: 'operation',
+      label: '运营部'
+    }, {
+      value: 'sales',
+      label: '销售部',
+      children: [{
+        value: 'regionSales',
+        label: '大区销售',
+        children: [{
+          value: 'eastSales',
+          label: '华东销售'
+        }, {
+          value: 'northSales',
+          label: '华北销售'
+        }, {
+          value: 'southSales',
+          label: '华南销售'
+        }]
+      }, {
+        value: 'product',
+        label: '商品部'
+      }, {
+        value: 'development',
+        label: '客户发展'
+      }]
+    }]
   }
 }

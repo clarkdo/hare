@@ -173,6 +173,18 @@
               </el-col>
             </el-row>
             <el-row>
+              <el-col :offset="4" :span="6">
+                <el-form-item label="活动评分" prop="rate" required>
+                  <el-rate v-model="demoForm.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
+                </el-form-item>
+              </el-col>
+              <el-col :offset="2" :span="6">
+                <el-form-item label="活动承办" prop="organizer">
+                  <el-cascader :options="organizers" v-model="demoForm.organizer" change-on-select></el-cascader>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row>
               <el-col :offset="4" :span="14">
                 <el-form-item label="活动时间" required>
                     <el-col :span="11">
@@ -218,9 +230,9 @@ export default {
   computed: {
     ...mapGetters(['authUser']),
     ...mapGetters('demo', [
-      'num', 'city', 'province',
-      'district', 'food', 'website', 'restaurant',
-      'restoptions', 'multiFood', 'foods', 'cities', 'labels'
+      'num', 'city', 'province', 'district',
+      'food', 'website', 'restaurant', 'restoptions',
+      'multiFood', 'foods', 'cities', 'labels', 'organizers'
     ])
   },
   methods: {
@@ -252,6 +264,8 @@ export default {
         delivery: false,
         type: [],
         priority: '',
+        rate: 5,
+        organizer: [],
         desc: '',
         label: []
       },
@@ -275,6 +289,9 @@ export default {
         priority: [
           { required: true, message: '请选择活动优先级', trigger: 'change' }
         ],
+        rate: [
+          { required: true, message: '请选择活动评分', trigger: 'change' }
+        ],
         desc: [
           { required: true, message: '请填写活动描述', trigger: 'blur' }
         ]
@@ -295,7 +312,7 @@ img {
   border-radius: 100px;
   margin: 15px 0;
 }
-.el-select {
+.el-select, .el-cascader {
   display: block
 }
 </style>
