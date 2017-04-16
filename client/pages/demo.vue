@@ -264,7 +264,7 @@ export default {
         delivery: false,
         type: [],
         priority: '',
-        rate: 5,
+        rate: null,
         organizer: [],
         desc: '',
         label: []
@@ -290,7 +290,7 @@ export default {
           { required: true, message: '请选择活动优先级', trigger: 'change' }
         ],
         rate: [
-          { required: true, message: '请选择活动评分', trigger: 'change' }
+          { type: 'integer', min: 1, required: true, message: '请选择活动评分', trigger: 'change' }
         ],
         desc: [
           { required: true, message: '请填写活动描述', trigger: 'blur' }
