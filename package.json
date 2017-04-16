@@ -23,7 +23,7 @@
     "axios": "^0.15.3",
     "bunyan": "^1.8.10",
     "cross-env": "^3.2.4",
-    "element-ui": "^1.2.7",
+    "element-ui": "^1.2.8",
     "js-yaml": "^3.8.3",
     "jsonwebtoken": "^7.3.0",
     "koa": "^2.0.0",
