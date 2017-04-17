@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="new-activity">
     <el-form :model="formData" :rules="formRules" ref="newActivity" label-width="100px" class="activity-form">
       <el-row >
-        <el-col :offset="4" :span="6">
+        <el-col :span="10">
           <el-form-item label="账号" prop="account">
             <el-input v-model="formData.account"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="6">
+        <el-col :offset="2" :span="10">
           <el-form-item label="活动区域" prop="region">
             <el-select v-model="formData.region" placeholder="请选择活动区域">
               <el-option label="上海" value="shanghai"></el-option>
@@ -17,7 +17,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :offset="4" :span="6">
+        <el-col :span="10">
           <el-form-item label="活动标签" prop="label">
             <el-select v-model="formData.label" multiple filterable allow-create placeholder="请选择活动标签">
               <el-option
@@ -36,7 +36,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :offset="4" :span="6">
+        <el-col :span="10">
           <el-form-item label="活动类型" prop="type">
             <el-checkbox-group v-model="formData.type">
               <el-checkbox label="价格优惠"></el-checkbox>
@@ -44,7 +44,7 @@
             </el-checkbox-group>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="6">
+        <el-col :offset="2" :span="10">
           <el-form-item label="优先级" prop="priority">
             <el-radio-group v-model="formData.priority">
               <el-radio label="中"></el-radio>
@@ -54,19 +54,19 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :offset="4" :span="6">
+        <el-col :span="10">
           <el-form-item label="活动评分" prop="rate" required>
             <el-rate v-model="formData.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="6">
+        <el-col :offset="2" :span="10">
           <el-form-item label="活动承办" prop="organizer">
             <el-cascader :options="organizers" v-model="formData.organizer" change-on-select></el-cascader>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
-        <el-col :offset="4" :span="14">
+        <el-col :span="22">
           <el-form-item label="活动时间" required>
               <el-col :span="11">
                 <el-form-item prop="date1">
@@ -83,7 +83,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :offset="4" :span="14">
+        <el-col :span="22">
           <el-form-item label="活动描述" prop="desc">
             <el-input type="textarea" v-model="formData.desc"></el-input>
           </el-form-item>
