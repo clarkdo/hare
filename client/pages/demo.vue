@@ -119,6 +119,14 @@
           </el-row>
         </el-carousel-item>
         <el-carousel-item>
+          <el-row>
+            <el-col :offset="4" :span="16">
+              <el-card>
+                Element 表单, <el-button size="small" @click="popVisible = true">弹框</el-button> 演示
+              </el-card>
+            </el-col>
+          </el-row>
+          <div style="margin: 30px 0;"></div>
           <el-form :model="demoForm" :rules="demoRules" ref="demoForm" label-width="100px" class="demo-form">
             <el-row >
               <el-col :offset="4" :span="6">
@@ -219,6 +227,106 @@
           </el-form>
         </el-carousel-item>
       </el-carousel>
+      <el-dialog title="新增活动" v-model="popVisible">
+        <el-form :model="popForm" :rules="demoRules" ref="popForm" label-width="100px" class="demo-form">
+          <el-row >
+            <el-col :span="10">
+              <el-form-item label="账号" prop="account">
+                <el-input v-model="popForm.account"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :offset="2" :span="10">
+              <el-form-item label="活动区域" prop="region">
+                <el-select v-model="popForm.region" placeholder="请选择活动区域">
+                  <el-option label="上海" value="shanghai"></el-option>
+                  <el-option label="北京" value="beijing"></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="10">
+              <el-form-item label="活动标签" prop="label">
+                <el-select v-model="popForm.label" multiple filterable allow-create placeholder="请选择活动标签">
+                  <el-option
+                    v-for="item in labels"
+                    :key="item.label"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :offset="2" :span="3">
+              <el-form-item label="即时配送" prop="delivery">
+                <el-switch on-text="" off-text="" v-model="popForm.delivery"></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="10">
+              <el-form-item label="活动类型" prop="type">
+                <el-checkbox-group v-model="popForm.type">
+                  <el-checkbox label="价格优惠"></el-checkbox>
+                  <el-checkbox label="价格权益"></el-checkbox>
+                </el-checkbox-group>
+              </el-form-item>
+            </el-col>
+            <el-col :offset="2" :span="8">
+              <el-form-item label="优先级" prop="priority">
+                <el-radio-group v-model="popForm.priority">
+                  <el-radio label="中"></el-radio>
+                  <el-radio label="高"></el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="10">
+              <el-form-item label="活动评分" prop="rate" required>
+                <el-rate v-model="popForm.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
+              </el-form-item>
+            </el-col>
+            <el-col :offset="2" :span="10">
+              <el-form-item label="活动承办" prop="organizer">
+                <el-cascader :options="organizers" v-model="popForm.organizer" change-on-select></el-cascader>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="22">
+              <el-form-item label="活动时间" required>
+                  <el-col :span="11">
+                    <el-form-item prop="date1">
+                      <el-date-picker placeholder="选择日期" v-model="popForm.date1" style="width: 100%;"></el-date-picker>
+                    </el-form-item>
+                  </el-col>
+                <el-col class="line" :span="2">-</el-col>
+                  <el-col :span="11">
+                    <el-form-item prop="date2">
+                      <el-time-picker placeholder="选择时间" v-model="popForm.date2" style="width: 100%;"></el-time-picker>
+                    </el-form-item>
+                  </el-col>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="22">
+              <el-form-item label="活动描述" prop="desc">
+                <el-input type="textarea" v-model="popForm.desc"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-row>
+            <el-col :offset="7" :span="8">
+              <el-button type="primary" @click="submit('popForm')">确 定</el-button>
+              <el-button @click="popVisible = false">取 消</el-button>
+            </el-col>
+          </el-row>
+        </div>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -243,6 +351,9 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$message.success('提交成功!')
+          if (formName === 'popForm') {
+            this.popVisible = false
+          }
           return false
         } else {
           this.$message.warning('提交失败!!!')
@@ -256,6 +367,20 @@ export default {
   },
   data () {
     return {
+      popVisible: false,
+      popForm: {
+        account: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        priority: '',
+        rate: null,
+        organizer: [],
+        desc: '',
+        label: []
+      },
       demoForm: {
         account: '',
         region: '',
