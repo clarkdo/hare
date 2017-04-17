@@ -150,7 +150,7 @@ export default {
     ...mapGetters('demo', [
       'num', 'city', 'province', 'district',
       'food', 'website', 'restaurant', 'restoptions',
-      'multiFood', 'foods', 'cities', 'labels', 'organizers'
+      'multiFood', 'foods', 'cities'
     ])
   },
   methods: {
