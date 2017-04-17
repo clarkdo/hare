@@ -127,104 +127,7 @@
             </el-col>
           </el-row>
           <div style="margin: 30px 0;"></div>
-          <el-form :model="demoForm" :rules="demoRules" ref="demoForm" label-width="100px" class="demo-form">
-            <el-row >
-              <el-col :offset="4" :span="6">
-                <el-form-item label="账号" prop="account">
-                  <el-input v-model="demoForm.account"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :offset="2" :span="6">
-                <el-form-item label="活动区域" prop="region">
-                  <el-select v-model="demoForm.region" placeholder="请选择活动区域">
-                    <el-option label="上海" value="shanghai"></el-option>
-                    <el-option label="北京" value="beijing"></el-option>
-                  </el-select>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :offset="4" :span="6">
-                <el-form-item label="活动标签" prop="label">
-                  <el-select v-model="demoForm.label" multiple filterable allow-create placeholder="请选择活动标签">
-                    <el-option
-                      v-for="item in labels"
-                      :key="item.label"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
-                </el-form-item>
-              </el-col>
-              <el-col :offset="2" :span="3">
-                <el-form-item label="即时配送" prop="delivery">
-                  <el-switch on-text="" off-text="" v-model="demoForm.delivery"></el-switch>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :offset="4" :span="6">
-                <el-form-item label="活动类型" prop="type">
-                  <el-checkbox-group v-model="demoForm.type">
-                    <el-checkbox label="价格优惠"></el-checkbox>
-                    <el-checkbox label="价格权益"></el-checkbox>
-                  </el-checkbox-group>
-                </el-form-item>
-              </el-col>
-              <el-col :offset="2" :span="6">
-                <el-form-item label="优先级" prop="priority">
-                  <el-radio-group v-model="demoForm.priority">
-                    <el-radio label="中"></el-radio>
-                    <el-radio label="高"></el-radio>
-                  </el-radio-group>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :offset="4" :span="6">
-                <el-form-item label="活动评分" prop="rate" required>
-                  <el-rate v-model="demoForm.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
-                </el-form-item>
-              </el-col>
-              <el-col :offset="2" :span="6">
-                <el-form-item label="活动承办" prop="organizer">
-                  <el-cascader :options="organizers" v-model="demoForm.organizer" change-on-select></el-cascader>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :offset="4" :span="14">
-                <el-form-item label="活动时间" required>
-                    <el-col :span="11">
-                      <el-form-item prop="date1">
-                        <el-date-picker placeholder="选择日期" v-model="demoForm.date1" style="width: 100%;"></el-date-picker>
-                      </el-form-item>
-                    </el-col>
-                  <el-col class="line" :span="2">-</el-col>
-                    <el-col :span="11">
-                      <el-form-item prop="date2">
-                        <el-time-picker placeholder="选择时间" v-model="demoForm.date2" style="width: 100%;"></el-time-picker>
-                      </el-form-item>
-                    </el-col>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :offset="4" :span="14">
-                <el-form-item label="活动描述" prop="desc">
-                  <el-input type="textarea" v-model="demoForm.desc"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :offset="4" :span="14">
-                <el-form-item>
-                  <el-button type="primary" @click="submit('demoForm')">立即创建</el-button>
-                  <el-button @click="reset('demoForm')">重置</el-button>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
+          <new-activity :form-data="popForm"></new-activity>
         </el-carousel-item>
       </el-carousel>
       <el-dialog title="新增活动" v-model="popVisible">
@@ -333,8 +236,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import NewActivity from '~components/activity/NewActivity'
 
 export default {
+  components: {
+    NewActivity
+  },
   computed: {
     ...mapGetters(['authUser']),
     ...mapGetters('demo', [
@@ -376,7 +283,7 @@ export default {
         delivery: false,
         type: [],
         priority: '',
-        rate: null,
+        rate: 0,
         organizer: [],
         desc: '',
         label: []
