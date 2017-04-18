@@ -26,12 +26,12 @@
 
 <style lang="scss" scoped>
   .footer {
-    height: 120px;
+    height: 80px;
     background-color: #324057;
     color: #a4aebd;
     width: 100%;
     z-index: 1000;
-    margin-top: -120px;
+    margin-top: -80px;
     * {
       word-spacing: 0;
     }
@@ -41,7 +41,7 @@
     }
     .footer-main {
       font-size: 0;
-      padding-top: 40px;
+      padding-top: 20px;
       display: inline-block;
       .footer-main-title {
         line-height: 1;
@@ -62,7 +62,7 @@
     }
     .footer-social {
       float: right;
-      line-height: 120px;
+      line-height: 80px;
       .element-icons {
         transition: .3s;
         display: inline-block;
