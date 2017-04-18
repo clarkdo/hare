@@ -1,80 +1,50 @@
 <template>
   <div class="headerWrapper">
-    <header class="header"
-    ref="header"
-    :style="headerStyle"
-    :class="{
-      'header-home': isHome
-    }">
+    <header class="header" ref="header" :style="headerStyle">
       <div class="container">
-        <h1><nuxt-link to="/">
-          <img
-            src="~assets/img/hare-logo.svg"
-            alt="hare-logo"
-            class="nav-logo">
-          <img
-            src="~assets/img/hare-logo-small.svg"
-            alt="hare-logo"
-            class="nav-logo-small">
-        </nuxt-link></h1>
-        <ul class="nav">
-          <li class="nav-item">
-            <nuxt-link
-              active-class="active"
-              to="/"
-              exact>Home
+        <h1>
+          <nuxt-link to="/">
+            <img src="~assets/img/hare-logo.svg" class="nav-logo">
+            <img src="~assets/img/hare-logo-small.svg" class="nav-logo-small">
+          </nuxt-link>
+        </h1>
+        <el-menu class="el-menu-demo" mode="horizontal" theme="dark">
+          <nuxt-link to="/" exact><el-menu-item index="1">Home</el-menu-item></nuxt-link>
+          <el-submenu index="2" v-if="authUser" >
+            <template slot="title">业务菜单</template>
+            <nuxt-link to="/demo" exact>
+              <el-menu-item index="2-1">Demo</el-menu-item>
             </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link
-              v-if="authUser"
-              active-class="active"
-              to="/demo"
-              exact>Demo
+            <nuxt-link to="/demo" exact>
+              <el-menu-item index="2-2">菜单2</el-menu-item>
             </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link
-              v-if="authUser"
-              active-class="active"
-              to="/about"
-              exact>About
+            <nuxt-link to="/demo" exact>
+              <el-menu-item index="2-3">菜单3</el-menu-item>
             </nuxt-link>
-          </li>
-          <!--<li class="nav-item">
-            <nuxt-link
-              active-class="active"
-              to="/auth/sign-in"
-              exact>Sign In
-            </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link
-              active-class="active"
-              to="/auth/sign-off"
-              exact>Sign Off
-            </nuxt-link>-->
-          </li>
-        </ul>
+          </el-submenu>
+          <nuxt-link v-if="authUser" to="/about" exact>
+            <el-menu-item index="3" v-if="authUser">About</el-menu-item>
+          </nuxt-link>
+        </el-menu>
       </div>
     </header>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .headerWrapper {
     height: 80px;
   }
   .header {
-    height: 80px;
-    background-color: rgba(32, 160, 255, 1);
+    height: 60px;
+    background-color: #20a0ff;
     color: #fff;
     top: 0;
     left: 0;
     width: 100%;
     line-height: 80px;
     z-index: 100;
-    position: relative;
+    position: fixed;
     .container {
       height: 100%;
       box-sizing: border-box;
@@ -84,97 +54,49 @@
       float: left;
       font-size: 32px;
       font-weight: normal;
-      a {
-        color: #fff;
-        text-decoration: none;
-        display: block;
-      }
-      span {
-        font-size: 12px;
-        display: inline-block;
-        width: 34px;
-        height: 18px;
-        border: 1px solid rgba(255, 255, 255, .5);
-        text-align: center;
-        line-height: 18px;
-        vertical-align: middle;
-        margin-left: 10px;
-        border-radius: 3px;
-      }
     }
-    .nav {
+    .el-menu {
       float: right;
-      height: 100%;
       line-height: 80px;
       background: transparent;
       padding: 0;
       margin: 0;
     }
+    .el-menu--dark {
+      background-color: transparent;
+      .el-menu-item, .el-submenu .el-submenu__title {
+        color: #fff;
+        font-size: 16px;
+        .el-submenu__icon-arrow {
+          color: #fff;
+        }
+        &:hover {
+          border-bottom-color: #77c4ff;
+          background-color: rgba(32, 160, 255, 0.1);
+        }
+      }
+      .is-active {
+        border-bottom-color: #77c4ff;
+      }
+      .el-submenu .el-menu {
+        .el-menu-item{
+          color: #20a0ff;
+          &:hover {
+            background-color: rgba(32, 160, 255, 0.1);
+          }
+        }
+        background-color: #fff;
+      }
+    }
     .nav-logo,
     .nav-logo-small {
+      position: fixed;
+      top: 10px;
       vertical-align: sub;
     }
     .nav-logo-small {
       display: none;
     }
-    .nav-item {
-      margin: 0;
-      float: left;
-      list-style: none;
-      position: relative;
-      cursor: pointer;
-      margin-left: 20px;
-
-      &:last-child {
-        cursor: default;
-        margin-left: 34px;
-        span {
-          opacity: .8;
-        }
-        .nav-lang {
-          cursor: pointer;
-          display: inline-block;
-          height: 100%;
-          &:hover {
-            opacity: 1;
-          }
-          &.active {
-            font-weight: 700;
-            opacity: 1;
-          }
-        }
-      }
-      a {
-        text-decoration: none;
-        color: #fff;
-        display: block;
-        padding: 0 20px;
-        opacity: .8;
-        &.active,
-        &:hover {
-          opacity: 1;
-        }
-
-        &.active {
-          font-weight: 700;
-        }
-        &.active::before {
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 4px;
-          background:#99d2fc;
-        }
-      }
-    }
-  }
-  .header-home {
-    position: fixed;
-    top: 0;
-    background-color: rgba(32, 160, 255, 0);
   }
   @media (max-width: 850px) {
     .header {
@@ -189,7 +111,6 @@
         &:last-child {
           margin-left: 10px;
         }
-
         a {
           padding: 0 5px;
         }
@@ -215,9 +136,10 @@
     props: ['authUser'],
     data () {
       return {
-        active: '',
         isHome: false,
-        headerStyle: {}
+        headerStyle: {
+          backgroundColor: 'rgba(32, 160, 255, 0)'
+        }
       }
     },
     watch: {
@@ -239,7 +161,7 @@
         if (this.isHome) {
           const threshold = 200
           let alpha = Math.min((document.documentElement.scrollTop || document.body.scrollTop), threshold) / threshold
-          this.$refs.header.style.backgroundColor = `rgba(32, 160, 255, ${alpha})`
+          this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${alpha})`
         }
       })
     }
