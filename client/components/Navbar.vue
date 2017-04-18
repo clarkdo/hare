@@ -1,6 +1,6 @@
 <template>
   <div class="headerWrapper">
-    <header class="header" ref="header" :style="headerStyle">
+    <header class="header" ref="header" :style="headerStyle" :class="{'scrolled': scrolled}">
       <div class="container">
         <h1>
           <nuxt-link to="/">
@@ -36,15 +36,16 @@
     height: 80px;
   }
   .header {
-    height: 60px;
-    background-color: #20a0ff;
-    color: #fff;
     top: 0;
     left: 0;
+    color: #fff;
     width: 100%;
-    line-height: 80px;
+    height: 60px;
     z-index: 100;
     position: fixed;
+    line-height: 80px;
+    transition: all 0.5s ease;
+    background-color: #20a0ff;
     .container {
       height: 100%;
       box-sizing: border-box;
@@ -55,18 +56,19 @@
       font-size: 32px;
       font-weight: normal;
     }
-    .el-menu {
-      float: right;
+    .el-menu--dark {
+      margin: 0;
+      padding: 0;
+      left: 120px;
+      float: left;
       line-height: 80px;
       background: transparent;
-      padding: 0;
-      margin: 0;
-    }
-    .el-menu--dark {
+      transition: all 0.5s ease;
       background-color: transparent;
       .el-menu-item, .el-submenu .el-submenu__title {
         color: #fff;
         font-size: 16px;
+        transition: all 0.5s ease;
         .el-submenu__icon-arrow {
           color: #fff;
         }
@@ -79,20 +81,41 @@
         border-bottom-color: #77c4ff;
       }
       .el-submenu .el-menu {
+        background-color: #fff;
         .el-menu-item{
           color: #20a0ff;
           &:hover {
             background-color: rgba(32, 160, 255, 0.1);
           }
         }
-        background-color: #fff;
+      }
+    }
+    &.scrolled {
+      height: 40px;
+      .nav-logo {
+        top: 5px;
+        height: 30px;
+      }
+      .el-menu--dark.el-menu {
+        left: 100px;
+        .el-menu-item, .el-submenu .el-submenu__title {
+          height: 40px;
+          padding: 0 10px;
+          font-size: 14px;
+          line-height: 40px;
+        }
+        .el-submenu .el-menu {
+          top: 45px;
+        }
       }
     }
     .nav-logo,
     .nav-logo-small {
-      position: fixed;
       top: 10px;
+      height: 40px;
+      position: fixed;
       vertical-align: sub;
+      transition: all 0.5s ease;
     }
     .nav-logo-small {
       display: none;
@@ -116,6 +139,13 @@
         }
       }
     }
+    &.scrolled {
+      height: 40px;
+      .nav-logo-small {
+        top: 5px;
+        height: 30px;
+      }
+    }
   }
   @media (max-width: 700px) {
     .header {
@@ -137,6 +167,7 @@
     data () {
       return {
         isHome: false,
+        scrolled: false,
         headerStyle: {
           backgroundColor: 'rgba(32, 160, 255, 0)'
         }
@@ -158,10 +189,17 @@
         }, false)
       }
       scroll(() => {
+        let top = (document.documentElement.scrollTop || document.body.scrollTop)
         if (this.isHome) {
           const threshold = 200
-          let alpha = Math.min((document.documentElement.scrollTop || document.body.scrollTop), threshold) / threshold
+          let alpha = Math.min(top, threshold) / threshold
           this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${alpha})`
+          this.scrolled = false
+        } else {
+          this.scrolled = top > 0
+          if (this.scrolled) {
+            this.headerStyle.backgroundColor = '#14afff'
+          }
         }
       })
     }
