@@ -3,8 +3,8 @@
     <div class="container">
       <div class="footer-main">
         <p class="footer-main-title">Hare 2.0</p>
-        <a href="https://github.com/clarkdo/hare/issues" class="footer-main-link" target="_blank">Feedback</a>
-        <a href="https://github.com/clarkdo/hare/graphs/contributors" class="footer-main-link" target="_blank">Contributors</a>
+        <a href="//github.com/clarkdo/hare/issues" class="footer-main-link" target="_blank">Feedback</a>
+        <a href="//github.com/clarkdo/hare/graphs/contributors" class="footer-main-link" target="_blank">Contributors</a>
       </div>
       <div class="footer-social">
         <el-popover
@@ -16,7 +16,7 @@
           <div class="footer-popover-title">CFC</div>
         </el-popover>
         <i class="icon-weixin element-icons" v-popover:weixin></i>
-        <a href="//github.com/elemefe" target="_blank">
+        <a href="//github.com/clarkdo/hare" target="_blank">
           <i class="icon-github element-icons"></i>
         </a>
       </div>
