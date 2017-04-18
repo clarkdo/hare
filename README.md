@@ -15,7 +15,7 @@
 $ git clone git@github.com:clarkdo/hare.git
 $ cd hare
 # install dependencies
-$ hare install
+$ yarn install
 ```
 
 ## Usage
