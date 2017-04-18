@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <fork-this/>
+    <fork-this v-if="$route.name == 'index'"/>
     <navbar :authUser="authUser"/>
     <div class="main">
       <nuxt/>
