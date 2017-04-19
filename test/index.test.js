@@ -1,5 +1,6 @@
 import test from 'ava'
 import Nuxt from 'nuxt'
+import moxios from 'moxios'
 import { resolve } from 'path'
 
 // We keep the nuxt and server instance
@@ -19,6 +20,12 @@ test.before('Init Nuxt.js', async t => {
   await nuxt.build()
   server = new nuxt.Server(nuxt)
   server.listen(4000, 'localhost')
+  // mock axios
+  moxios.install()
+  moxios.stubRequest('/api/captcha', {
+    status: 200,
+    data: '验证码Mock'
+  })
 })
 
 // Example of testing only generated html
@@ -64,6 +71,7 @@ test('Route / exits and render HTML', async t => {
 
 // Close server and ask nuxt to stop listening to file changes
 test.after('Closing server and nuxt.js', t => {
+  moxios.uninstall()
   server.close()
   nuxt.close()
 })
