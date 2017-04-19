@@ -40,10 +40,10 @@
               </el-col>
             </el-form-item>
             <el-form-item prop="captcha" :rules="[{ required: true, message: '验证码不能为空'}]">
-              <el-col :span="12">
+              <el-col :span="9">
                 <el-input v-model="user.captcha" placeholder="验证码"></el-input>
               </el-col>
-              <el-col :span="12" v-html="captchaSvg" class="captcha">
+              <el-col :offset="2" :span="12" v-html="captchaSvg" class="captcha">
               </el-col>
             </el-form-item>
             <el-row>
