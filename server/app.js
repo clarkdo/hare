@@ -16,6 +16,7 @@ const debug = debugModule('app')
 const app = new Koa()
 
 config.dev = !(app.env === 'production')
+app.keys = ['hare-server']
 
 // logging
 const access = {

@@ -4653,6 +4653,12 @@ opener@^1.4.2:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
 
+opentype.js@^0.6.9:
+  version "0.6.9"
+  resolved "https://registry.yarnpkg.com/opentype.js/-/opentype.js-0.6.9.tgz#eb4db21ff58a12b2db78a652d7a4bf9605253089"
+  dependencies:
+    tiny-inflate "^1.0.2"
+
 option-chain@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/option-chain/-/option-chain-0.1.1.tgz#e9b811e006f1c0f54802f28295bfc8970f8dcfbd"
@@ -6075,6 +6081,12 @@ supports-color@^3.1.0, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
+svg-captcha@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/svg-captcha/-/svg-captcha-1.3.4.tgz#7db9e868efd87e5dce1522476b6d10bf23e3f8d3"
+  dependencies:
+    opentype.js "^0.6.9"
+
 svgo@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-0.7.2.tgz#9f5772413952135c6fefbf40afe6a4faa88b4bb5"
@@ -6176,6 +6188,10 @@ timers-browserify@^2.0.2:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"
   dependencies:
     setimmediate "^1.0.4"
+
+tiny-inflate@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-inflate/-/tiny-inflate-1.0.2.tgz#93d9decffc8805bd57eae4310f0b745e9b6fb3a7"
 
 to-array@0.1.4:
   version "0.1.4"

@@ -35,6 +35,7 @@
     "koa-session": "^4.0.0",
     "normalize.css": "^5.0.0",
     "nuxt": "latest",
+    "svg-captcha": "^1.3.4",
     "theaterjs": "^3.1.0",
     "xmlify": "^1.1.0"
   },
