@@ -39,6 +39,13 @@
                 <el-input v-model="user.password" type="password" placeholder="密码"></el-input>
               </el-col>
             </el-form-item>
+            <el-form-item prop="captcha" :rules="[{ required: true, message: '验证码不能为空'}]">
+              <el-col :span="12">
+                <el-input v-model="user.captcha" placeholder="验证码"></el-input>
+              </el-col>
+              <el-col :span="12" v-html="captchaSvg" class="captcha">
+              </el-col>
+            </el-form-item>
             <el-row>
               <el-col :span="24">
                 <el-button type="primary" class="login" :loading="logining" @click="login">登录</el-button>
@@ -202,6 +209,9 @@
       width: 100%;
     };
   }
+  .captcha {
+    height: 36px;
+  }
   @keyframes blink {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -257,6 +267,7 @@
   }
 </style>
 <script>
+  import axios from 'axios'
   import theaterJS from 'theaterjs'
   import { mapGetters } from 'vuex'
   export default {
@@ -299,11 +310,19 @@
       return {
         user: {
           userName: '',
-          password: ''
+          password: '',
+          captcha: ''
         },
         rules: {},
+        captchaSvg: '',
         logining: false
       }
+    },
+    created () {
+      axios.get('/api/captcha')
+      .then((res) => {
+        this.captchaSvg = res.data
+      })
     },
     methods: {
       login () {
@@ -315,7 +334,8 @@
           if (valid) {
             this.$store.dispatch('login', {
               userName: this.user.userName,
-              password: this.user.password
+              password: this.user.password,
+              captcha: this.user.captcha
             })
             .then(() => {
               this.user.userName = ''

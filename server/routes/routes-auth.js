@@ -3,25 +3,32 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 const router = require('koa-router')() // router middleware for koa
+const svgCaptcha = require('svg-captcha')
 
 router.post('/api/login', async function getAuth (ctx) {
   const user = ctx.request.body
-  if (!user) ctx.throw(401, 'Username/password not found')
-  try {
-    if (!user.password) ctx.throw(404, 'Username/password not found')
-    if (user.userName === 'admin' && user.password === 'admin') {
-      let payload = {
-        id: 1, // to get user details
-        role: 'admin' // make role available without db query
-      }
-      let token = 'token-example'
-      ctx.body = Object.assign({token: token}, user, payload)
-    } else {
-      ctx.throw(401, 'Username/password not found')
+  if (!user || !user.userName || !user.password) ctx.throw(401, 'Username/password not found')
+  if (user.userName === 'admin' && user.password === 'admin') {
+    if (ctx.session.captcha.toLowerCase() !== user.captcha.toLowerCase()) {
+      ctx.throw(401, '验证码输入错误')
     }
-  } catch (e) { // e.g. "data is not a valid scrypt-encrypted block"
+    let payload = {
+      id: 1, // to get user details
+      role: 'admin' // make role available without db query
+    }
+    let token = 'token-example'
+    ctx.body = Object.assign({token: token}, user, payload)
+  } else {
     ctx.throw(401, 'Username/password not found')
   }
+})
+
+router.get('/api/captcha', async function getAuth (ctx, next) {
+  await next()
+  let captcha = svgCaptcha.create({height: 36, fontSize: 40})
+  ctx.session.captcha = captcha.text
+  ctx.type = 'image/svg+xml'
+  ctx.body = captcha.data
 })
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
