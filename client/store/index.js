@@ -17,9 +17,9 @@ export const getters = {
 }
 
 export const actions = {
-  nuxtServerInit ({ commit }, { req }) {
-    if (req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
+  nuxtServerInit ({ commit }, { req: { session } }) {
+    if (session && session.authUser) {
+      commit('SET_USER', session.authUser)
     }
   },
   login ({ commit }, { userName, password, captcha }) {
