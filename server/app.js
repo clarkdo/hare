@@ -51,6 +51,9 @@ app.use(async function subApp (ctx, next) {
   await next()
 })
 
+// session for flash messages (uses signed session cookies, with no server storage)
+app.use(session(app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
+
 const nuxt = new Nuxt(config)
 
 // Build only in dev mode
@@ -66,6 +69,7 @@ app.use(async (ctx, next) => {
   ctx.status = 200 // koa defaults to 404 when it sees that status is unset
   await next()
   if (ctx.state.subapp !== 'api') {
+    ctx.req.session = ctx.session
     await nuxt.render(ctx.req, ctx.res)
   }
 })
@@ -89,9 +93,6 @@ app.use(async function robots (ctx, next) {
 
 // parse request body into ctx.request.body
 app.use(body())
-
-// session for flash messages (uses signed session cookies, with no server storage)
-app.use(session(app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
 
 // sometimes useful to be able to track each request...
 app.use(async function (ctx, next) {

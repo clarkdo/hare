@@ -18,9 +18,14 @@ router.post('/api/login', async function getAuth (ctx) {
     }
     let token = 'token-example'
     ctx.body = Object.assign({token: token}, user, payload)
+    ctx.session.authUser = user
   } else {
     ctx.throw(401, 'Username/password not found')
   }
+})
+
+router.post('/api/logout', async function logout (ctx) {
+  ctx.session.authUser = null
 })
 
 router.get('/api/captcha', async function getAuth (ctx, next) {

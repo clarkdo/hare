@@ -275,6 +275,10 @@
       ...mapGetters(['authUser'])
     },
     mounted () {
+      axios.get('/api/captcha')
+      .then((res) => {
+        this.captchaSvg = res.data
+      })
       function typing (theater) {
         theater
           .addScene('产品设计师', 1800, -5, 800)
@@ -318,12 +322,6 @@
         logining: false
       }
     },
-    created () {
-      axios.get('/api/captcha')
-      .then((res) => {
-        this.captchaSvg = res.data
-      })
-    },
     methods: {
       login () {
         this.logining = true
@@ -332,11 +330,7 @@
         }.bind(this), 1000)
         this.$refs.user.validate((valid) => {
           if (valid) {
-            this.$store.dispatch('login', {
-              userName: this.user.userName,
-              password: this.user.password,
-              captcha: this.user.captcha
-            })
+            this.$store.dispatch('login', this.user)
             .then(() => {
               this.user.userName = ''
               this.user.password = ''
