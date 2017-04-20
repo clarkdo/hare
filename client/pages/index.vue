@@ -274,11 +274,13 @@
     computed: {
       ...mapGetters(['authUser'])
     },
-    mounted () {
+    beforeMount () {
       axios.get('/api/captcha')
       .then((res) => {
         this.captchaSvg = res.data
       })
+    },
+    mounted () {
       function typing (theater) {
         theater
           .addScene('产品设计师', 1800, -5, 800)
