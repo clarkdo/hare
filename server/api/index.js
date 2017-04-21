@@ -1,7 +1,7 @@
 import Koa from 'koa'// Koa framework
 import xmlify from 'xmlify'// JS object to XML
 import yaml from 'js-yaml'// JS object to YAML
-import auth from '../routes/routes-auth'
+import auth from './routes-auth'
 
 const app = new Koa() // API app
 
