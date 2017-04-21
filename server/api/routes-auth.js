@@ -1,9 +1,10 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 /*  Route to handle authentication /auth element                                                  */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+import koaRouter from 'koa-router'
+import svgCaptcha from 'svg-captcha'
 
-const router = require('koa-router')() // router middleware for koa
-const svgCaptcha = require('svg-captcha')
+const router = koaRouter() // router middleware for koa
 
 router.post('/api/login', async function getAuth (ctx) {
   const user = ctx.request.body
