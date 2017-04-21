@@ -39,4 +39,4 @@ router.get('/api/captcha', async function getAuth (ctx, next) {
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
-module.exports = router.middleware()
+module.exports = router.routes()
