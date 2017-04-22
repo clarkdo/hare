@@ -34,7 +34,8 @@ module.exports = {
     },
     vendor: [
       'axios',
-      'element-ui'
+      'element-ui',
+      'vue-class-component'
     ],
     filenames: {
       vendor: 'vendor.[hash].js',
