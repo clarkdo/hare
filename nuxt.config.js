@@ -26,6 +26,12 @@ module.exports = {
   */
   build: {
     publicPath: '/hare/',
+    babel: {
+      plugins: ['transform-decorators-legacy', 'transform-class-properties']
+    },
+    extend (config) {
+      config.resolve.alias['class-component'] = '~plugins/class-component'
+    },
     vendor: [
       'axios',
       'element-ui'
