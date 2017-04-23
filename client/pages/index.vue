@@ -267,85 +267,84 @@
   }
 </style>
 <script>
-  import axios from 'axios'
-  import theaterJS from 'theaterjs'
-  import { mapGetters } from 'vuex'
-  export default {
-    computed: {
-      ...mapGetters(['authUser'])
-    },
-    beforeMount () {
-      axios.get('/api/captcha')
-      .then((res) => {
-        this.captchaSvg = res.data
-      })
-    },
-    mounted () {
-      function typing (theater) {
-        theater
-          .addScene('产品设计师', 1800, -5, 800)
-          .addScene('交互设计师', 1800, -5, 500)
-          .addScene('视觉设计师', 1800, -5, 700)
-          .addScene('产品经理', 1800, -4, 600)
-          .addScene('前端工程师', 1800, -5, 800)
-          .addScene((done) => {
-            typing(theater)
-            done()
-          })
-      }
-      var theater = theaterJS()
+import Vue from 'vue'
+import axios from 'axios'
+import theaterJS from 'theaterjs'
+import { mapGetters } from 'vuex'
+import Component from 'class-component'
+
+@Component({
+  computed: {
+    ...mapGetters(['authUser'])
+  }
+})
+export default class Home extends Vue {
+  user = {
+    userName: '',
+    password: '',
+    captcha: ''
+  }
+  rules = {}
+  captchaSvg = ''
+  logining = false
+  beforeMount () {
+    axios.get('/api/captcha')
+    .then((res) => {
+      this.captchaSvg = res.data
+    })
+  }
+  mounted () {
+    function typing (theater) {
       theater
-        .on('type:start, erase:start', function () {
-          theater.getCurrentActor().$element.classList.add('typing')
-        })
-        .on('type:end, erase:end', function () {
-          theater.getCurrentActor().$element.classList.remove('typing')
-        })
-      theater
-        .addActor('line2', { speed: 0.5, accuracy: 1 })
-        .addScene(2600)
-        .addScene('line2:只为守护世界和平', 300, -6, 1000)
-        .addScene('让你少加班', 300, -5)
-        .addScene('line2:只为这样的你: ', 400)
+        .addScene('产品设计师', 1800, -5, 800)
+        .addScene('交互设计师', 1800, -5, 500)
+        .addScene('视觉设计师', 1800, -5, 700)
+        .addScene('产品经理', 1800, -4, 600)
+        .addScene('前端工程师', 1800, -5, 800)
         .addScene((done) => {
           typing(theater)
           done()
         })
-    },
-    data () {
-      return {
-        user: {
-          userName: '',
-          password: '',
-          captcha: ''
-        },
-        rules: {},
-        captchaSvg: '',
-        logining: false
-      }
-    },
-    methods: {
-      login () {
-        this.logining = true
-        setTimeout(function () {
-          this.logining = false
-        }.bind(this), 1000)
-        this.$refs.user.validate((valid) => {
-          if (valid) {
-            this.$store.dispatch('login', this.user)
-            .then(() => {
-              this.user.userName = ''
-              this.user.password = ''
-            })
-            .catch((e) => {
-              this.$message.warning(e.message)
-            })
-          }
-        })
-      },
-      logout () {
-        this.$store.dispatch('logout')
-      }
     }
+    var theater = theaterJS()
+    theater
+      .on('type:start, erase:start', function () {
+        theater.getCurrentActor().$element.classList.add('typing')
+      })
+      .on('type:end, erase:end', function () {
+        theater.getCurrentActor().$element.classList.remove('typing')
+      })
+    theater
+      .addActor('line2', { speed: 0.5, accuracy: 1 })
+      .addScene(2600)
+      .addScene('line2:只为守护世界和平', 300, -6, 1000)
+      .addScene('让你少加班', 300, -5)
+      .addScene('line2:只为这样的你: ', 400)
+      .addScene((done) => {
+        typing(theater)
+        done()
+      })
   }
+  login () {
+    this.logining = true
+    setTimeout(function () {
+      this.logining = false
+    }.bind(this), 1000)
+    this.$refs.user.validate((valid) => {
+      if (valid) {
+        this.$store.dispatch('login', this.user)
+        .then(() => {
+          this.user.userName = ''
+          this.user.password = ''
+        })
+        .catch((e) => {
+          this.$message.warning(e.message)
+        })
+      }
+    })
+  }
+  logout () {
+    this.$store.dispatch('logout')
+  }
+}
 </script>
