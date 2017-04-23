@@ -102,31 +102,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { mapGetters } from 'vuex'
+import Component from 'class-component'
 
-export default {
-  computed: {
-    ...mapGetters('demo', ['labels', 'organizers'])
-  },
-  methods: {
-    submit (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$message.success('提交成功!')
-          if (formName === 'popForm') {
-            this.popVisible = false
-          }
-          return false
-        } else {
-          this.$message.warning('提交失败!!!')
-          return false
-        }
-      })
-    },
-    reset (formName) {
-      this.$refs[formName].resetFields()
-    }
-  },
+@Component({
   props: {
     formData: {
       type: Object,
@@ -147,36 +127,54 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      formRules: {
-        account: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 6, message: '长度不少于 6 个字符', trigger: 'blur' }
-        ],
-        region: [
-          { required: true, message: '请选择活动区域', trigger: 'change' }
-        ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-        ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-        ],
-        type: [
-          { type: 'array', required: true, message: '请至少选择一个活动类型', trigger: 'change' }
-        ],
-        priority: [
-          { required: true, message: '请选择活动优先级', trigger: 'change' }
-        ],
-        rate: [
-          { type: 'integer', min: 1, required: true, message: '请选择活动评分', trigger: 'change' }
-        ],
-        desc: [
-          { required: true, message: '请填写活动描述', trigger: 'blur' }
-        ]
+  computed: {
+    ...mapGetters('demo', ['labels', 'organizers'])
+  }
+})
+export default class NewActivity extends Vue {
+  submit (formName) {
+    this.$refs[formName].validate((valid) => {
+      if (valid) {
+        this.$message.success('提交成功!')
+        if (formName === 'popForm') {
+          this.popVisible = false
+        }
+        return false
+      } else {
+        this.$message.warning('提交失败!!!')
+        return false
       }
-    }
+    })
+  }
+  reset (formName) {
+    this.$refs[formName].resetFields()
+  }
+  formRules = {
+    account: [
+      { required: true, message: '请输入活动名称', trigger: 'blur' },
+      { min: 6, message: '长度不少于 6 个字符', trigger: 'blur' }
+    ],
+    region: [
+      { required: true, message: '请选择活动区域', trigger: 'change' }
+    ],
+    date1: [
+      { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+    ],
+    date2: [
+      { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+    ],
+    type: [
+      { type: 'array', required: true, message: '请至少选择一个活动类型', trigger: 'change' }
+    ],
+    priority: [
+      { required: true, message: '请选择活动优先级', trigger: 'change' }
+    ],
+    rate: [
+      { type: 'integer', min: 1, required: true, message: '请选择活动评分', trigger: 'change' }
+    ],
+    desc: [
+      { required: true, message: '请填写活动描述', trigger: 'blur' }
+    ]
   }
 }
 </script>
