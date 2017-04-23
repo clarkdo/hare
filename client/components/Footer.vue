@@ -119,11 +119,11 @@
 </style>
 
 <script>
-  export default {
-    data () {
-      return {
-        version: '0.1.0'
-      }
-    }
-  }
+import Vue from 'vue'
+import Component from 'class-component'
+
+@Component
+export default class Footer extends Vue {
+  version = '0.1.0'
+}
 </script>
