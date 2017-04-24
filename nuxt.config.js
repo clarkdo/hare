@@ -29,8 +29,16 @@ module.exports = {
     babel: {
       plugins: ['transform-decorators-legacy', 'transform-class-properties']
     },
-    extend (config) {
+    extend (config, { dev, isClient }) {
+      const PostCompile = require('post-compile-webpack-plugin')
       config.resolve.alias['class-component'] = '~plugins/class-component'
+      dev && isClient && config.plugins.push(new PostCompile(() => {
+        if (process.env.NODE_ENV !== 'production') {
+          let host = process.env.HOST || '127.0.0.1'
+          let port = process.env.PORT || '3000'
+          require('opn')(`http://${host}:${port}`)
+        }
+      }))
     },
     vendor: [
       'axios',
@@ -41,7 +49,8 @@ module.exports = {
       vendor: 'vendor.[hash].js',
       app: 'hare.[chunkhash].js',
       css: 'hare.[chunkhash].css'
-    }
+    },
+    plugins: []
   },
   /*
   ** Generate config
