@@ -288,7 +288,7 @@ export default class Home extends Vue {
   captchaSvg = ''
   logining = false
   beforeMount () {
-    axios.get('/api/captcha')
+    axios.get('/hpi/captcha')
     .then((res) => {
       this.captchaSvg = res.data
     })

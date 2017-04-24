@@ -23,7 +23,7 @@ export const actions = {
     }
   },
   login ({ commit }, { userName, password, captcha }) {
-    return axios.post('/api/login', {
+    return axios.post('/hpi/login', {
       userName,
       password,
       captcha
@@ -41,7 +41,7 @@ export const actions = {
   },
 
   logout ({ commit }) {
-    return axios.post('/api/logout')
+    return axios.post('/hpi/logout')
     .then(() => {
       commit('SET_USER', null)
     })

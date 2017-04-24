@@ -22,7 +22,7 @@ test.before('Init Nuxt.js', async t => {
   server.listen(4000, 'localhost')
   // mock axios
   moxios.install()
-  moxios.stubRequest('/api/captcha', {
+  moxios.stubRequest('/hpi/captcha', {
     status: 200,
     data: '验证码Mock'
   })

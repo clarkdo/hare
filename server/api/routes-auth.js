@@ -3,10 +3,13 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 import koaRouter from 'koa-router'
 import svgCaptcha from 'svg-captcha'
+import constants from '../utils/constants'
 
-const router = koaRouter() // router middleware for koa
+const router = koaRouter({
+  prefix: constants.BASE_API
+}) // router middleware for koa
 
-router.post('/api/login', async function getAuth (ctx) {
+router.post('/login', async function getAuth (ctx) {
   const user = ctx.request.body
   if (!user || !user.userName || !user.password) ctx.throw(401, 'Username/password not found')
   if (user.userName === 'admin' && user.password === 'admin') {
@@ -25,11 +28,11 @@ router.post('/api/login', async function getAuth (ctx) {
   }
 })
 
-router.post('/api/logout', async function logout (ctx) {
+router.post('/logout', async function logout (ctx) {
   ctx.session.authUser = null
 })
 
-router.get('/api/captcha', async function getAuth (ctx, next) {
+router.get('/captcha', async function getAuth (ctx, next) {
   await next()
   let captcha = svgCaptcha.create({height: 36, fontSize: 40})
   ctx.session.captcha = captcha.text
