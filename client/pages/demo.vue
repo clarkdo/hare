@@ -138,12 +138,19 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Component from 'class-component'
 import { mapGetters, mapActions } from 'vuex'
 import NewActivity from '~components/activity/NewActivity'
 
-export default {
+@Component({
   components: {
     NewActivity
+  },
+  methods: {
+    ...mapActions('demo', [
+      'checkCity'
+    ])
   },
   computed: {
     ...mapGetters(['authUser']),
@@ -152,29 +159,22 @@ export default {
       'food', 'website', 'restaurant', 'restoptions',
       'multiFood', 'foods', 'cities'
     ])
-  },
-  methods: {
-    ...mapActions('demo', [
-      'checkCity'
-    ])
-  },
-  data () {
-    return {
-      popVisible: false,
-      activity: {
-        account: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        priority: '',
-        rate: 0,
-        organizer: [],
-        desc: '',
-        label: []
-      }
-    }
+  }
+})
+export default class Demo extends Vue {
+  popVisible = false
+  activity = {
+    account: '',
+    region: '',
+    date1: '',
+    date2: '',
+    delivery: false,
+    type: [],
+    priority: '',
+    rate: 0,
+    organizer: [],
+    desc: '',
+    label: []
   }
 }
 </script>
