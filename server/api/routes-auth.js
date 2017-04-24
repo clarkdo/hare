@@ -31,6 +31,7 @@ router.post('/login', async function getAuth (ctx) {
 
 router.post('/logout', async function logout (ctx) {
   ctx.session.authUser = null
+  ctx.status = 200
 })
 
 router.get('/captcha', async function getAuth (ctx, next) {
