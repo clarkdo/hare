@@ -7,6 +7,7 @@ import compose from 'koa-compose'// middleware composer
 import compress from 'koa-compress'// HTTP compression
 import session from 'koa-session'// session for flash messages
 import api from './api'
+import constants from './utils/constants'
 import config from '../nuxt.config.js'
 import debugModule from 'debug'// small debugging utility
 
@@ -66,9 +67,9 @@ if (config.dev) {
 }
 
 app.use(async (ctx, next) => {
-  ctx.status = 200 // koa defaults to 404 when it sees that status is unset
   await next()
-  if (ctx.state.subapp !== 'api') {
+  if (ctx.state.subapp !== constants.API) {
+    ctx.status = 200 // koa defaults to 404 when it sees that status is unset
     ctx.req.session = ctx.session
     await nuxt.render(ctx.req, ctx.res)
   }
@@ -103,7 +104,7 @@ app.use(async function (ctx, next) {
 // note no 'next' after composed subapp, this must be the last middleware
 app.use(async function composeSubapp (ctx, next) {
   switch (ctx.state.subapp) {
-    case 'api': await compose(api.middleware)(ctx); break
+    case constants.API: await compose(api.middleware)(ctx); break
   }
 })
 
