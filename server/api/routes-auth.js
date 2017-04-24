@@ -21,6 +21,7 @@ router.post('/login', async function getAuth (ctx) {
       role: 'admin' // make role available without db query
     }
     let token = 'token-example'
+    delete user.password
     ctx.body = Object.assign({token: token}, user, payload)
     ctx.session.authUser = user
   } else {
