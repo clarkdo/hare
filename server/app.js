@@ -109,6 +109,7 @@ app.use(async function composeSubapp (ctx, next) {
 })
 
 app.listen(port, host)
-console.info(`${process.version} listening on port ${host}:${port} (${app.env})`)
+console.log(`\nNode: ${process.version} ENV: ${app.env}`)
+console.log(`Listening on http://${host}:${port}`)
 
 export default app
