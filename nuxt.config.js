@@ -30,15 +30,15 @@ module.exports = {
       plugins: ['transform-decorators-legacy', 'transform-class-properties']
     },
     extend (config, { dev, isClient }) {
-      const PostCompile = require('post-compile-webpack-plugin')
       config.resolve.alias['class-component'] = '~plugins/class-component'
-      dev && isClient && config.plugins.push(new PostCompile(() => {
-        if (process.env.NODE_ENV !== 'production') {
-          let host = process.env.HOST || '127.0.0.1'
-          let port = process.env.PORT || '3000'
-          require('opn')(`http://${host}:${port}`)
-        }
-      }))
+      // const PostCompile = require('post-compile-webpack-plugin')
+      // dev && isClient && config.plugins.push(new PostCompile(() => {
+      //   if (process.env.NODE_ENV !== 'production') {
+      //     let host = process.env.HOST || '127.0.0.1'
+      //     let port = process.env.PORT || '3000'
+      //     require('opn')(`http://${host}:${port}`)
+      //   }
+      // }))
     },
     vendor: [
       'axios',
