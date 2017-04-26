@@ -1,6 +1,8 @@
 {
   "presets": ["es2015"],
   "plugins": ["transform-runtime",
+    "transform-decorators-legacy",
+    "transform-class-properties",
     "transform-async-to-generator", ["component", [{
       "libraryName": "element-ui",
       "styleLibraryName": "theme-default"
