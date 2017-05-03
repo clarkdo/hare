@@ -139,10 +139,13 @@
 
 <script>
 import Vue from 'vue'
-import Component from 'class-component'
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import NewActivity from '~components/activity/NewActivity'
+import Component, {Getter, namespace } from 'class-component'
 
+const DemoGetter = namespace('demo', Getter)
+
+// TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
   components: {
     NewActivity
@@ -151,17 +154,22 @@ import NewActivity from '~components/activity/NewActivity'
     ...mapActions('demo', [
       'checkCity'
     ])
-  },
-  computed: {
-    ...mapGetters(['authUser']),
-    ...mapGetters('demo', [
-      'num', 'city', 'province', 'district',
-      'food', 'website', 'restaurant', 'restoptions',
-      'multiFood', 'foods', 'cities'
-    ])
   }
 })
 export default class Demo extends Vue {
+  @Getter authUser
+  @DemoGetter num
+  @DemoGetter city
+  @DemoGetter province
+  @DemoGetter district
+  @DemoGetter food
+  @DemoGetter website
+  @DemoGetter restaurant
+  @DemoGetter restoptions
+  @DemoGetter multiFood
+  @DemoGetter foods
+  @DemoGetter cities
+
   popVisible = false
   activity = {
     account: '',

@@ -103,8 +103,9 @@
 
 <script>
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
-import Component from 'class-component'
+import Component, { Getter, namespace } from 'class-component'
+
+const DemoGetter = namespace('demo', Getter)
 
 @Component({
   props: {
@@ -126,12 +127,12 @@ import Component from 'class-component'
         }
       }
     }
-  },
-  computed: {
-    ...mapGetters('demo', ['labels', 'organizers'])
   }
 })
 export default class NewActivity extends Vue {
+  @DemoGetter labels
+  @DemoGetter organizers
+
   submit (formName) {
     this.$refs[formName].validate((valid) => {
       if (valid) {

@@ -1,4 +1,5 @@
 import Component from 'vue-class-component'
+import { State, Getter, Action, Mutation, namespace } from 'vuex-class'
 
 Component.registerHooks([
   'beforeRouteEnter',
@@ -11,4 +12,4 @@ Component.registerHooks([
   'scrollToTop'
 ])
 
-export default Component
+export { Component as default, State, Getter, Action, Mutation, namespace }
