@@ -270,15 +270,12 @@
 import Vue from 'vue'
 import axios from 'axios'
 import theaterJS from 'theaterjs'
-import { mapGetters } from 'vuex'
-import Component from 'class-component'
+import Component, { Getter } from 'class-component'
 
-@Component({
-  computed: {
-    ...mapGetters(['authUser'])
-  }
-})
+@Component
 export default class Home extends Vue {
+  @Getter authUser
+
   user = {
     userName: '',
     password: '',
