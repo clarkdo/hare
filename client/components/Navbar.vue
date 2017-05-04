@@ -11,15 +11,15 @@
         <el-menu class="el-menu-demo" mode="horizontal" theme="dark">
           <nuxt-link to="/" exact><el-menu-item index="1">Home</el-menu-item></nuxt-link>
           <el-submenu index="2" v-if="authUser" >
-            <template slot="title">业务菜单</template>
+            <template slot="title">活动</template>
             <nuxt-link to="/demo" exact>
-              <el-menu-item index="2-1">Demo</el-menu-item>
+              <el-menu-item index="2-1">展示页面</el-menu-item>
             </nuxt-link>
-            <nuxt-link to="/demo" exact>
-              <el-menu-item index="2-2">菜单2</el-menu-item>
+            <nuxt-link to="/marketing/activity/" exact>
+              <el-menu-item index="2-2">活动信息</el-menu-item>
             </nuxt-link>
-            <nuxt-link to="/demo" exact>
-              <el-menu-item index="2-3">菜单3</el-menu-item>
+            <nuxt-link to="/marketing/activity/create" exact>
+              <el-menu-item index="2-3">活动创建</el-menu-item>
             </nuxt-link>
           </el-submenu>
           <nuxt-link v-if="authUser" to="/about" exact>
