@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="content" v-if="authUser">
-        <new-activity :form-data="activity" ref="popActivity"></new-activity>
+      <h2>{{title}}</h2>
+      <new-activity :form-data="activity" ref="popActivity"></new-activity>
     </div>
   </div>
 </template>
@@ -9,7 +10,9 @@
 <script>
 import Vue from 'vue'
 import NewActivity from '~components/activity/NewActivity'
-import Component, { Getter } from 'class-component'
+import Component, { Getter, namespace } from 'class-component'
+
+const ActivityGetter = namespace('marketing/activity/index', Getter)
 
 // TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
@@ -19,6 +22,7 @@ import Component, { Getter } from 'class-component'
 })
 export default class Demo extends Vue {
   @Getter authUser
+  @ActivityGetter title
 
   activity = {
     account: '',
