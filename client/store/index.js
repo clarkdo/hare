@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+export const strict = true
+
 export const state = {
   authUser: null
 }
