@@ -1,6 +1,7 @@
 import Koa from 'koa'
 import Nuxt from 'nuxt'
 import bunyan from 'bunyan'
+import mkdirp from 'mkdirp'
 import koaLogger from 'koa-bunyan'
 import body from 'koa-body'// body parser
 import compose from 'koa-compose'// middleware composer
@@ -11,6 +12,7 @@ import constants from './utils/constants'
 import config from '../nuxt.config.js'
 import debugModule from 'debug'// small debugging utility
 
+const isWin = /^win/.test(process.platform)
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || '3000'
 const debug = debugModule('app')
@@ -20,16 +22,20 @@ config.dev = !(app.env === 'production')
 app.keys = ['hare-server']
 
 // logging
+let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
+mkdirp.sync(logDir)
+logDir = logDir.replace(/(\\|\/)+$/, '') + (isWin ? '\\\\' : '/')
+
 const access = {
   type: 'rotating-file',
-  path: '/var/tmp/log/hare-access.log',
+  path: `${logDir}hare-access.log`,
   level: 'trace',
   period: '1d',
   count: 4
 }
 const error = {
   type: 'rotating-file',
-  path: '/var/tmp/log/hare-error.log',
+  path: `${logDir}hare-error.log`,
   level: 'error',
   period: '1d',
   count: 4
