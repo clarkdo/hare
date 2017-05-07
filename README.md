@@ -2,6 +2,7 @@
 <p align="center">
   <a href="https://travis-ci.org/clarkdo/hare" target="_blank"><img src="https://travis-ci.org/clarkdo/hare.svg?branch=master" alt="Build Status"></a>
   <a href="https://ci.appveyor.com/project/clarkdo/hare" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/16eua6xnlnwxqomp?svg=true" alt="Build Status"></a>
+  <a href="https://snyk.io/test/github/clarkdo/hare/fb062ca638eb7aba61d857b21580fd8ad1a0346d"><img src="https://snyk.io/test/github/clarkdo/hare/fb062ca638eb7aba61d857b21580fd8ad1a0346d/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/clarkdo/hare/fb062ca638eb7aba61d857b21580fd8ad1a0346d" style="max-width:100%;"></a>
   <a href="https://github.com/clarkdo/hare/issues"><img src="https://img.shields.io/github/issues/clarkdo/hare.svg" alt="Issues"></a>
   <a href="https://github.com/clarkdo/hare/stargazers"><img src="https://img.shields.io/github/stars/clarkdo/hare.svg" alt="Stars"></a>
   <a href="https://raw.githubusercontent.com/clarkdo/hare/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
