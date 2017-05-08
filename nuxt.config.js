@@ -69,5 +69,17 @@ module.exports = {
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
   */
-  plugins: ['~plugins/element-ui']
+  plugins: ['~plugins/element-ui'],
+
+  // koa-proxies for dev
+  proxies: [
+    /* {
+      path: '/hpi/',
+      target: 'http://localhost:3000/',
+      logs: true,
+      prependPath: false,
+      changeOrigin: true,
+      rewrite: path => path.replace(/^\/octocat(\/|\/\w+)?$/, '/vagusx')
+    } */
+  ]
 }

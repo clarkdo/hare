@@ -12,6 +12,8 @@ import constants from './utils/constants'
 import config from '../nuxt.config.js'
 import debugModule from 'debug'// small debugging utility
 
+import proxy from 'koa-proxies'
+
 const isWin = /^win/.test(process.platform)
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || '3000'
@@ -65,6 +67,12 @@ const nuxt = new Nuxt(config)
 
 // Build only in dev mode
 if (config.dev) {
+  if (config.proxies) {
+    for (let proxyItem of config.proxies) {
+      console.log(proxyItem)
+      app.use(proxy(proxyItem.path, proxyItem))
+    }
+  }
   nuxt.build()
   .catch((error) => {
     console.error(error) // eslint-disable-line no-console
