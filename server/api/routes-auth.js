@@ -20,7 +20,13 @@ router.post('/login', async function getAuth (ctx) {
       id: 1, // to get user details
       role: 'admin' // make role available without db query
     }
-    let token = 'token-example'
+    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+    'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +
+    'nNjb3BlIjpbInJlYWQiXSwiZXhwIjoxNDk0MjY4ODY0LCJ1c2' +
+    'VySWQiOiIxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianR' +
+    'pIjoiN2FkN2VjYzUtNTdmNy00MmZlLThmZmQtYjUxMTJkNTZm' +
+    'M2NhIiwiY2xpZW50X2lkIjoidGF0LWNsaWVudCJ9.' +
+    'ovWxqcBptquNR5QUBz1it2Z3Fr0OxMvWsnXHIHTcliI'
     delete user.password
     ctx.body = Object.assign({token: token}, user, payload)
     ctx.session.authUser = user
