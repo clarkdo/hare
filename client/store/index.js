@@ -33,7 +33,7 @@ export const actions = {
     })
     .then((res) => {
       commit('SET_USER', res.data)
-      setToken(res.data.token)
+      setToken(res.data['access_token'])
     })
     .catch((error) => {
       let message = error.message
