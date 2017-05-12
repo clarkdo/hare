@@ -67,7 +67,9 @@
     "opn": "^4.0.2",
     "post-compile-webpack-plugin": "^0.1.1",
     "progress-bar-webpack-plugin": "^1.9.3",
+    "proxyquire": "^1.7.11",
     "sass-loader": "^6.0.3",
+    "sinon": "^2.2.0",
     "webpack": "^2.5.1",
     "webpack-dashboard": "^0.3.0",
     "webpack-node-externals": "^1.6.0"
