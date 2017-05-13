@@ -67,9 +67,10 @@ const nuxt = new Nuxt(config)
 
 // Build only in dev mode
 if (config.dev) {
-  if (config.proxies) {
-    for (let proxyItem of config.proxies) {
-      console.log(proxyItem)
+  const devConfigs = config.development
+  if (devConfigs && devConfigs.proxies) {
+    for (let proxyItem of devConfigs.proxies) {
+      console.log(`Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`)
       app.use(proxy(proxyItem.path, proxyItem))
     }
   }
