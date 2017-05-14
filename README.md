@@ -30,6 +30,15 @@ $ yarn run dev
 
 Go to [http://localhost:3000](http://localhost:3000)
 
+### Testing
+
+``` bash
+# configure ESLint as a tool to keep codes clean
+$ yarn run lint
+# use ava as testing framework, mixed with jsdom
+$ yarn run test
+```
+
 ### Production
 
 ``` bash
