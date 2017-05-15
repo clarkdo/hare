@@ -10,7 +10,7 @@
               </el-card>
             </el-col>
           </el-row>
-          <img :src="authUser.picture"/>
+          <div style="margin-top: 100px;"></div>
           <el-row>
             <el-col :span="6">
               <p>食物: {{food}}</p>
@@ -22,7 +22,7 @@
               <p>城市: {{city}}</p>
             </el-col>
           </el-row>
-          <div style="margin: 15px 0;"></div>
+          <div style="margin-top: 15px;"></div>
           <el-row>
             <el-col :span="6">
               <el-select v-model="$store.state.demo.food" placeholder="请选择">
@@ -64,7 +64,7 @@
               </el-card>
             </el-col>
           </el-row>
-          <div style="margin: 15px 0;"></div>
+          <div style="margin-top: 100px;"></div>
           <el-row>
             <el-col :span="6">
               <el-radio-group v-model="$store.state.demo.province">
@@ -87,7 +87,7 @@
             <el-col :span="6">
             </el-col>
           </el-row>
-          <div style="margin: 15px 0;"></div>
+          <div style="margin-top: 20px;"></div>
           <el-row>
             <el-col :span="6">
               <el-input placeholder="请输入内容" v-model="$store.state.demo.website">
@@ -189,14 +189,9 @@ export default class Demo extends Vue {
 
 <style lang="scss" scoped>
 .content {
-  text-align: center;
+  width: 70%;
+  margin-left: 15%;
   padding-top: 20px;
-}
-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  margin: 15px 0;
 }
 .el-carousel .new-activity {
   margin-left: 16.66667%;
