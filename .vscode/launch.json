@@ -8,6 +8,7 @@
         "name": "Debug Hare Dev",
         "type": "node",
         "request": "launch",
+        "protocol": "inspector",
         "program": "${workspaceRoot}/server/app.js",
         "stopOnEntry": false,
         "args": [],
@@ -17,17 +18,18 @@
           "--nolazy"
         ],
         "sourceMaps": true,
-        "console": "internalConsole",
-        "internalConsoleOptions": "openOnSessionStart",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
         "env": {
             "NODE_ENV": "development",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,app"
         }
       },
       {
         "name": "Run Test Cases",
         "type": "node",
         "request": "launch",
+        "protocol": "inspector",
         "program": "${workspaceRoot}/node_modules/ava/profile.js",
         "stopOnEntry": false,
         "args": [
@@ -35,19 +37,19 @@
         ],
         "cwd": "${workspaceRoot}",
         "sourceMaps": true,
-        "console": "internalConsole",
-        "internalConsoleOptions": "openOnSessionStart",
-        "protocol": "inspector",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
         "env": {
             "NODE_ENV": "production",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,app"
         }
       },
       {
         "type": "node",
         "request": "launch",
+        "protocol": "inspector",
         "name": "Debug Hare Prod",
-        "program": "${workspaceRoot}/dist/app.js",
+        "program": "${workspaceRoot}/.nuxt/dist/server-app",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*"
