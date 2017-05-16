@@ -41,8 +41,9 @@ import Component from 'class-component'
 export default class Demo extends Vue {
   selections = []
 
-  async asyncData ({ params }) {
-    let {data: activities} = await axios.get('http://localohost:3000/hpi/activities')
+  async asyncData ({ isServer }) {
+    let root = isServer ? 'http://localohost:3000' : ''
+    let {data: activities} = await axios.get(`${root}/hpi/activities`)
     return {activities}
   }
 }
