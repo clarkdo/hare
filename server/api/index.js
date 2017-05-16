@@ -2,6 +2,7 @@ import Koa from 'koa'// Koa framework
 import xmlify from 'xmlify'// JS object to XML
 import yaml from 'js-yaml'// JS object to YAML
 import auth from './routes-auth'
+import demo from './routes-demo'
 
 const app = new Koa() // API app
 
@@ -75,6 +76,7 @@ app.use(async function handleErrors (ctx, next) {
 // public (unsecured) modules first
 
 app.use(auth)
+app.use(demo)
 
 // verify token here
 
