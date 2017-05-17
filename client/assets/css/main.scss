@@ -1,13 +1,9 @@
 @import '~assets/fonts/style.css';
-html, body {
-  margin: 0;
-  padding: 0;
+html, body, header, #__nuxt {
   height: 100%;
-}
-html, body, #__nuxt {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  max-width: 1440px;
+  max-height: 900px;
+  margin: 0 auto;
 }
 body {
   font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',SimSun,sans-serif;
@@ -19,28 +15,11 @@ a {
   color: #4078c0;
   text-decoration: none;
 }
-code {
-  background-color: #f9fafc;
-  padding: 0 4px;
-  border: 1px solid #eaeefb;
-  border-radius: 4px;
-}
 button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
-}
-.hljs {
-  line-height: 1.8;
-  font-family: Menlo, Monaco, Consolas, Courier, monospace;
-  font-size: 12px;
-  padding: 18px 24px;
-  background-color: #f9fafc;
-  border: solid 1px #eaeefb;
-  margin-bottom: 25px;
-  border-radius: 4px;
-  -webkit-font-smoothing: auto;
 }
 .main {
   margin-top: -80px;
@@ -48,66 +27,16 @@ button, input, select, textarea {
   box-sizing: border-box;
   min-height: 100%;
 }
-.container,
-.page-container {
-  width: 1140px;
-  padding: 0 30px;
-  margin: 0 auto;
-}
-.page-container {
-  padding-top: 55px;
-  h2 {
-    font-size: 28px;
-    color: #1f2d3d;
-    margin: 0;
-  }
-  h3 {
-    font-size: 22px;
-  }
-  h2, h3, h4, h5 {
-    font-weight: normal;
-    color: #1f2f3d;
-    &:hover a {
-      opacity: .4;
-    }
-    a {
-      float: left;
-      margin-left: -20px;
-      opacity: 0;
-      cursor: pointer;
-      &:hover {
-        opacity: .4;
-      }
-    }
-  }
-  p {
-    font-size: 14px;
-    color: #5e6d82;
-    line-height: 1.5em;
-  }
-  .tip {
-    padding: 8px 16px;
-    background-color: #ECF8FF;
-    border-radius: 4px;
-    border-left: #50bfff 5px solid;
-    code {
-      background-color: rgba(#fff, .7);
-      color: #445368;
-    }
-  }
-}
 .demo {
   margin: 20px 0;
 }
-@media (max-width: 1140px) {
-  .container,
-  .page-container {
+@media (max-width: 1440px) {
+  .container {
     width: 100%;
   }
 }
 @media (max-width: 768px) {
-  .container,
-  .page-container {
+  .container {
     padding: 0 20px;
   }
 }
