@@ -48,9 +48,9 @@ test('Route / exits and render index HTML', async t => {
 // Example of testing via dom checking
 test('Route / exits and render HTML with CSS applied', async t => {
   const window = await nuxt.renderAndGetWindow('http://localhost:4000/')
-  const element = window.document.querySelector('.el-card')
+  const element = window.document.querySelector('.banner-desc')
   t.not(element, null)
-  t.is(element.className, 'el-card')
+  t.is(element.className, 'banner-desc')
   // t.is(element.textContent, 'Hello world!')
   // t.is(window.getComputedStyle(element).color, 'red')
 })
