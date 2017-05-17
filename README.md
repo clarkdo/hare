@@ -8,7 +8,6 @@
   <a href="https://raw.githubusercontent.com/clarkdo/hare/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
 </p>
 
-# Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js
 
 ## Installation
 
