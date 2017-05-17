@@ -36,8 +36,6 @@
     height: 80px;
   }
   .header {
-    top: 0;
-    left: 0;
     color: #fff;
     width: 100%;
     height: 60px;
@@ -47,6 +45,7 @@
     transition: all 0.5s ease;
     background-color: #20a0ff;
     .container {
+      padding-left: 40px;
       height: 100%;
       box-sizing: border-box;
     }

@@ -36,6 +36,7 @@
       word-spacing: 0;
     }
     .container {
+      padding: 0 40px;
       height: 100%;
       box-sizing: border-box;
     }
