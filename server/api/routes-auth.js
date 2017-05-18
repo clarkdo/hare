@@ -48,7 +48,14 @@ router.post('/logout', async function logout (ctx) {
 
 router.get('/captcha', async function getAuth (ctx, next) {
   await next()
-  let captcha = svgCaptcha.create({height: 36, fontSize: 40})
+  let captcha = svgCaptcha.create({
+    size: 4,
+    noise: 1,
+    height: 36,
+    fontSize: 40,
+    ignoreChars: '0o1i',
+    background: '#e8f5ff'
+  })
   ctx.session.captcha = captcha.text
   ctx.type = 'image/svg+xml'
   ctx.body = captcha.data
