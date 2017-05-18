@@ -137,6 +137,24 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+.content {
+  width: 70%;
+  margin-left: 15%;
+  padding-top: 20px;
+}
+.el-carousel .new-activity {
+  margin-left: 16.66667%;
+  width: 66.66667%;
+}
+</style>
+
+<style>
+.el-select.input-sel .el-input {
+  width: 110px;
+}
+</style>
+
 <script>
 import Vue from 'vue'
 import { mapActions } from 'vuex'
@@ -186,21 +204,3 @@ export default class Demo extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.content {
-  width: 70%;
-  margin-left: 15%;
-  padding-top: 20px;
-}
-.el-carousel .new-activity {
-  margin-left: 16.66667%;
-  width: 66.66667%;
-}
-</style>
-
-<style>
-.el-select.input-sel .el-input {
-  width: 110px;
-}
-</style>
