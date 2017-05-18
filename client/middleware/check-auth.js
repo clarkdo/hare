@@ -7,7 +7,7 @@ export default function ({ isServer, store, req, route, redirect }) {
   if (authUser && !store.state.authUser) {
     store.commit('SET_USER', authUser)
     setAuthHeader({ isServer, req })
-  } else if (!authUser && route.name !== 'index') {
-    redirect('/')
+  } else if (!authUser && route.name !== 'login') {
+    redirect('/login')
   }
 }

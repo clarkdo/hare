@@ -44,11 +44,12 @@ export const actions = {
     })
   },
 
-  logout ({ commit }) {
+  logout ({ commit }, callback) {
     return axios.post('/hpi/logout')
     .then(() => {
       commit('SET_USER', null)
       unsetToken()
+      callback()
     })
   }
 
