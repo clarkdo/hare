@@ -40,6 +40,7 @@
     </el-card>
   </div>
 </template>
+
 <style scoped lang="scss">
 img.bg {
   width: 100%;
@@ -94,6 +95,7 @@ img.bg {
   }
 }
 </style>
+
 <script>
 import Vue from 'vue'
 import axios from 'axios'
