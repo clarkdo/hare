@@ -26,7 +26,7 @@
   .header {
     /* Nav Icon */
     #nav-icon {
-      width: 30px;
+      width: 27px;
       height: 30px;
       position: relative;
       margin: 20px 5px;
@@ -36,7 +36,7 @@
       span {
         display: block;
         position: absolute;
-        height: 4px;
+        height: 2px;
         width: 100%;
         background: #324157;
         border-radius: 9px;
@@ -81,8 +81,8 @@
     position: fixed;
     line-height: 80px;
     transition: all 0.5s ease;
+    // background-color: #20a0ff;
     background-color: #fff;
-    background-color: #20a0ff;
     .container {
       padding-left: 40px;
       height: 100%;
