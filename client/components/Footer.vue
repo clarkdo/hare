@@ -32,6 +32,7 @@
     width: 100%;
     z-index: 1000;
     margin-top: -80px;
+    position: fixed;
     * {
       word-spacing: 0;
     }

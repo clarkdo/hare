@@ -51,8 +51,8 @@ export default class Demo extends Vue {
 
 <style lang="scss" scoped>
 .content {
-  width: 70%;
-  margin-left: 15%;
+  // width: 70%;
+  // margin-left: 15%;
   // text-align: center;
   padding-top: 20px;
 }
