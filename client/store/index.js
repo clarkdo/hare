@@ -4,18 +4,25 @@ import { setToken, unsetToken } from '~/utils/auth'
 export const strict = true
 
 export const state = {
-  authUser: null
+  authUser: null,
+  isMenuHidden: false
 }
 
 export const mutations = {
   SET_USER: function (state, authUser) {
     state.authUser = authUser
+  },
+  SET_MENU_HIDDEN: function (state) {
+    state.isMenuHidden = !state.isMenuHidden
   }
 }
 
 export const getters = {
   authUser (state) {
     return state.authUser
+  },
+  isMenuHidden (state) {
+    return state.isMenuHidden
   }
 }
 
@@ -43,7 +50,6 @@ export const actions = {
       throw new Error(message)
     })
   },
-
   logout ({ commit }, callback) {
     return axios.post('/hpi/logout')
     .then(() => {
@@ -51,6 +57,9 @@ export const actions = {
       unsetToken()
       callback()
     })
+  },
+  toggleMenu ({ commit }) {
+    commit('SET_MENU_HIDDEN')
   }
 
 }

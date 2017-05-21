@@ -31,6 +31,7 @@
     </div>
   </div>
 </template>
+
 <style scoped lang="scss">
   .actor {
     min-height: 65px;
@@ -62,17 +63,17 @@
   }
   .banner-sky {
     position: absolute;
-    top: -150px;
+    top: 0px;
     bottom: -15px;
     width: 100%;
-    margin-top: -140px;
-    transform: skewY(-5deg);
+    margin-top: 0px;
+    //transform: skewY(-5deg);
     transform-origin: center;
     background-image: linear-gradient(180deg, #0d1a44 13%, #3c4f91 56%, #5fc1e4 100%);
   }
   img.banner-stars {
-    top: -10px;
-    left: 50%;
+    top: 100px;
+    left: 60%;
     transform: translateX(-50%);
   }
   .banner-desc {
@@ -149,6 +150,7 @@
     }
   }
 </style>
+
 <script>
 import Vue from 'vue'
 import theaterJS from 'theaterjs'
