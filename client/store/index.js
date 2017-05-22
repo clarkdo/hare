@@ -28,9 +28,6 @@ export const getters = {
 
 export const actions = {
   nuxtServerInit ({ commit }, { req: { session } }) {
-    if (session && session.authUser) {
-      commit('SET_USER', session.authUser)
-    }
   },
   login ({ commit }, { userName, password, captcha }) {
     return axios.post('hpi/login', {
