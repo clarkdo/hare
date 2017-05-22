@@ -2,20 +2,32 @@
   <div class="headbar">
     <!--<header class="header" ref="header" :style="headerStyle" :class="{'scrolled': scrolled}">-->
     <header class="header" ref="header">
-      <div id="nav-icon" :class="{open: !isMenuHidden}" @click="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <!--<div class="container">
-        <h1>
-          <nuxt-link to="/">
-            <img src="~assets/img/hare-logo.svg" class="nav-logo">
-            <img src="~assets/img/hare-logo-small.svg" class="nav-logo-small">
-          </nuxt-link>
-        </h1>
-      </div>-->
+      <el-row>
+        <el-col :span="5">
+          <div id="nav-icon" :class="{open: !isMenuHidden}" @click="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </el-col>
+        <el-col :offset="13" :span="2">
+          <p>
+            <img src="~assets/img/avatar.svg" />
+              {{authUser.userName}}
+          </p>
+        </el-col>
+        <el-col :span="2">
+          <p>
+            <img src="~assets/img/pwd.svg" />  修改密码
+          </p>
+        </el-col>
+        <el-col :span="2">
+          <p @click="logout">
+            <img src="~assets/img/exit.svg" />  退出
+          </p>
+        </el-col>
+      </el-row>
     </header>
   </div>
 </template>
@@ -23,13 +35,16 @@
 <style lang="scss" scoped>
 .headbar {
   height: 60px;
+  position: relative;
   .header {
     /* Nav Icon */
     #nav-icon {
+      $first-top: 5px;
+      $space: 8px;
       width: 27px;
       height: 30px;
       position: relative;
-      margin: 20px 5px;
+      margin: 15px 5px;
       transform: rotate(0deg);
       transition: .5s ease-in-out;
       cursor: pointer;
@@ -45,19 +60,19 @@
         transform: rotate(0deg);
         transition: .25s ease-in-out;
         &:nth-child(1) {
-          top: 0px;
+          top: $first-top;
         }
         &:nth-child(2),
         &:nth-child(3) {
-          top: 8px;
+          top: $first-top + $space;
         }
         &:nth-child(4) {
-          top: 16px;
+          top: $first-top + $space * 2;
         }
       }
       &.open span {
         &:nth-child(1) {
-          top: 8px;
+          top: $first-top + $space;
           width: 0%;
           left: 50%;
         }
@@ -68,134 +83,32 @@
           transform: rotate(-45deg);
         }
         &:nth-child(4) {
-          top: 8px;
+          top: $first-top + $space;
           width: 0%;
           left: 50%;
         }
       }
     }
-    color: #fff;
+    .el-col:nth-child(2),
+    .el-col:nth-child(3),
+    .el-col:nth-child(4) {
+      cursor: pointer;
+      color: #5e6d82;
+      border-left: 1px solid #c0ccda;
+      p {
+        margin: 0 auto;
+        text-align: center;
+        img {
+          vertical-align:middle
+        }
+      }
+    }
     width: 100%;
     height: 60px;
     z-index: 100;
-    position: fixed;
-    line-height: 80px;
+    line-height: 60px;
+    border-bottom: 1px solid #c0ccda;
     transition: all 0.5s ease;
-    // background-color: #20a0ff;
-    background-color: #fff;
-    .container {
-      padding-left: 40px;
-      height: 100%;
-      box-sizing: border-box;
-    }
-    h1 {
-      margin: 0;
-      float: left;
-      font-size: 32px;
-      font-weight: normal;
-    }
-    .el-menu--dark {
-      margin: 0;
-      padding: 0;
-      left: 120px;
-      float: left;
-      line-height: 80px;
-      background: transparent;
-      transition: all 0.5s ease;
-      background-color: transparent;
-      .el-menu-item, .el-submenu .el-submenu__title {
-        color: #fff;
-        font-size: 16px;
-        transition: all 0.5s ease;
-        .el-submenu__icon-arrow {
-          color: #fff;
-        }
-        &:hover {
-          border-bottom-color: #77c4ff;
-          background-color: rgba(32, 160, 255, 0.1);
-        }
-      }
-      .is-active {
-        border-bottom-color: #77c4ff;
-      }
-      .el-submenu .el-menu {
-        background-color: #fff;
-        .el-menu-item{
-          color: #20a0ff;
-          &:hover {
-            background-color: rgba(32, 160, 255, 0.1);
-          }
-        }
-      }
-    }
-    &.scrolled {
-      height: 40px;
-      .nav-logo {
-        top: 5px;
-        height: 30px;
-      }
-      .el-menu--dark.el-menu {
-        left: 100px;
-        .el-menu-item, .el-submenu .el-submenu__title {
-          height: 40px;
-          padding: 0 10px;
-          font-size: 14px;
-          line-height: 40px;
-        }
-        .el-submenu .el-menu {
-          top: 45px;
-        }
-      }
-    }
-    .nav-logo,
-    .nav-logo-small {
-      top: 10px;
-      height: 40px;
-      position: fixed;
-      vertical-align: sub;
-      transition: all 0.5s ease;
-    }
-    .nav-logo-small {
-      display: none;
-    }
-  }
-  @media (max-width: 850px) {
-    .header {
-      .nav-logo {
-        display: none;
-      }
-      .nav-logo-small {
-        display: inline-block;
-      }
-      .nav-item {
-        margin-left: 6px;
-        &:last-child {
-          margin-left: 10px;
-        }
-        a {
-          padding: 0 5px;
-        }
-      }
-    }
-    &.scrolled {
-      height: 40px;
-      .nav-logo-small {
-        top: 5px;
-        height: 30px;
-      }
-    }
-  }
-  @media (max-width: 700px) {
-    .header {
-      .container {
-        padding: 0 12px;
-      }
-      .nav-item a,
-      .nav-lang {
-        font-size: 12px;
-        vertical-align: top;
-      }
-    }
   }
 }
 </style>
@@ -212,5 +125,12 @@ import Component, { Getter } from 'class-component'
 })
 export default class Headbar extends Vue {
   @Getter isMenuHidden
+  @Getter authUser
+
+  logout () {
+    this.$store.dispatch('logout', () => {
+      this.$router.push('/login')
+    })
+  }
 }
 </script>
