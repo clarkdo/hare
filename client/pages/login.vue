@@ -131,8 +131,6 @@ export default class Login extends Vue {
         this.$store.dispatch('login', this.user)
         .then(() => {
           this.$router.push('/')
-          this.user.userName = ''
-          this.user.password = ''
         })
         .catch((e) => {
           this.$message.warning(e.message)
