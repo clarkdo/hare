@@ -53,8 +53,8 @@ router.get('/captcha', async function getAuth (ctx, next) {
     noise: 1,
     height: 36,
     fontSize: 40,
-    ignoreChars: '0o1i',
-    background: '#e8f5ff'
+    // background: '#e8f5ff',
+    ignoreChars: '0o1il'
   })
   ctx.session.captcha = captcha.text
   ctx.type = 'image/svg+xml'
