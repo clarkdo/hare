@@ -12,20 +12,15 @@
           </div>
         </el-col>
         <el-col :offset="13" :span="2">
-          <p>
-            <img src="~assets/img/avatar.svg" />
-              {{authUser.userName}}
+          <p v-if="authUser">
+            <img src="~assets/img/avatar.svg" /> {{authUser.userName}}
           </p>
         </el-col>
         <el-col :span="2">
-          <p>
-            <img src="~assets/img/pwd.svg" />  修改密码
-          </p>
+          <p><img src="~assets/img/pwd.svg" /> 修改密码</p>
         </el-col>
         <el-col :span="2">
-          <p @click="logout">
-            <img src="~assets/img/exit.svg" />  退出
-          </p>
+          <p @click="logout"><img src="~assets/img/exit.svg" /> 退出</p>
         </el-col>
       </el-row>
     </header>
