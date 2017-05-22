@@ -18,7 +18,7 @@
           </el-row>
           <el-row>
             <el-col :span="24">
-              用户: {{authUser.userName}}
+              用户: {{authUser.user_name}}
             </el-col>
           </el-row>
           <el-row>

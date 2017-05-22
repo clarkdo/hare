@@ -13,7 +13,7 @@
         </el-col>
         <el-col :offset="13" :span="2">
           <p v-if="authUser">
-            <img src="~assets/img/avatar.svg" /> {{authUser.userName}}
+            <img src="~assets/img/avatar.svg" /> {{authUser.user_name}}
           </p>
         </el-col>
         <el-col :span="2">

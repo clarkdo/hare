@@ -37,6 +37,11 @@ export const unsetToken = () => {
   setAuthHeader({})
 }
 
+export const getTokenFromSession = (req) => {
+  if (!req.session || !req.session.authUser) return
+  return req.session.authUser.access_token
+}
+
 export const getTokenFromCookie = (req) => {
   if (!req.headers.cookie) return
   const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='))
@@ -47,6 +52,15 @@ export const getTokenFromCookie = (req) => {
 
 export const getTokenFromLocalStorage = () => {
   return window.localStorage.token
+}
+
+export const getUserInSSR = (req) => {
+  return getUserFromCookie(req) || getTokenFromSession(req)
+}
+
+export const getUserFromSession = (req) => {
+  let jwt = getTokenFromSession(req)
+  return jwt ? jwtDecode(jwt) : null
 }
 
 export const getUserFromCookie = (req) => {
