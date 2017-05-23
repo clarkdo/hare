@@ -37,6 +37,7 @@
     "koa-proxies": "^0.3.0",
     "koa-router": "^7.1.1",
     "koa-session": "^4.0.0",
+    "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "normalize.css": "^5.0.0",
     "nuxt": "^0.10.6",

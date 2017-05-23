@@ -101,6 +101,7 @@ img.bg {
 <script>
 import Vue from 'vue'
 import axios from 'axios'
+import debounce from 'lodash/debounce'
 import Component from 'class-component'
 
 @Component
@@ -118,7 +119,7 @@ export default class Login extends Vue {
     return 'empty'
   }
   beforeMount () {
-    this.refreshCaptcha()
+    this.getCaptcha()
   }
   login () {
     this.logining = true
@@ -137,12 +138,15 @@ export default class Login extends Vue {
       }
     })
   }
-  refreshCaptcha () {
+  getCaptcha () {
     axios.get('/hpi/captcha')
     .then((res) => {
       this.captchaSvg = res.data
     })
   }
+
+  refreshCaptcha = debounce(this.getCaptcha, 500)
+
   logout () {
     this.$store.dispatch('logout')
   }
