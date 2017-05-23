@@ -37,12 +37,21 @@ export const unsetToken = () => {
   setAuthHeader({})
 }
 
+export const getUserFromToken = (token) => {
+  return token ? jwtDecode(token) : null
+}
+
+export const getUserInSSR = (req) => {
+  let jwt = getTokenFromSSR(req)
+  return getUserFromToken(jwt)
+}
+
 export const getTokenFromSSR = (req) => {
   return getTokenFromCookie(req) || getTokenFromSession(req)
 }
 
 export const getTokenFromSession = (req) => {
-  if (!req.session || !req.session.authUser) return
+  if (!req || !req.session || !req.session.authUser) return
   return req.session.authUser.access_token
 }
 
@@ -54,27 +63,22 @@ export const getTokenFromCookie = (req) => {
   return jwt
 }
 
-export const getTokenFromLocalStorage = () => {
-  return window.localStorage.token
-}
-
-export const getUserFromToken = (token) => {
-  return token ? jwtDecode(token) : null
-}
-
-export const getUserInSSR = (req) => {
-  let jwt = getTokenFromSSR(req)
-  return getUserFromToken(jwt)
-}
-
 export const getUserFromLocalStorage = () => {
-  const json = window.localStorage.user
+  const json = getTokenFromLocalStorage()
   return json ? JSON.parse(json) : undefined
+}
+
+export const getTokenFromLocalStorage = () => {
+  return window.localStorage ? window.localStorage.user : null
 }
 
 export const setAuthHeader = ({isServer = false, req}) => {
   let jwt = isServer ? getUserInSSR(req) : getTokenFromLocalStorage()
-  axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt
+  if (jwt) {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt
+  } else {
+    delete axios.defaults.headers.common['Authorization']
+  }
 }
 
 export const setSecret = (secret) => window.localStorage.setItem('secret', secret)
