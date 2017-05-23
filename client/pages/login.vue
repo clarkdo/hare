@@ -20,7 +20,8 @@
             <el-col :span="12">
               <el-input v-model="user.captcha" placeholder="请输入验证码"></el-input>
             </el-col>
-            <el-col :offset="1" :span="9" v-html="captchaSvg" class="captcha">
+            <el-col :offset="1" :span="9">
+              <div v-html="captchaSvg" @click='refreshCaptcha()' class="captcha"></div>
             </el-col>
         </el-form-item>
         <el-row>
@@ -88,6 +89,7 @@ img.bg {
     margin-bottom: 8%;
     .captcha {
       max-height: 36px;
+      cursor: pointer;
     }
     .login-btn {
       width: 100%;
@@ -116,10 +118,7 @@ export default class Login extends Vue {
     return 'empty'
   }
   beforeMount () {
-    axios.get('/hpi/captcha')
-    .then((res) => {
-      this.captchaSvg = res.data
-    })
+    this.refreshCaptcha()
   }
   login () {
     this.logining = true
@@ -136,6 +135,12 @@ export default class Login extends Vue {
           this.$message.warning(e.message)
         })
       }
+    })
+  }
+  refreshCaptcha () {
+    axios.get('/hpi/captcha')
+    .then((res) => {
+      this.captchaSvg = res.data
     })
   }
   logout () {
