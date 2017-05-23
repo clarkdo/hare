@@ -70,7 +70,10 @@ module.exports = {
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
   */
-  plugins: ['~plugins/element-ui'],
+  plugins: [
+    '~plugins/element-ui',
+    {src: '~plugins/auth-header', ssr: false}
+  ],
 
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
   development: {
