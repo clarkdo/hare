@@ -1,4 +1,4 @@
-import { getUserInSSR, getUserFromLocalStorage, setAuthHeader } from '~/utils/auth'
+import { getUserInSSR, getUserFromLocalStorage } from '~/utils/auth'
 
 export default function ({ isServer, store, req, route, redirect }) {
    // If nuxt generate, pass this middleware
@@ -6,7 +6,6 @@ export default function ({ isServer, store, req, route, redirect }) {
   const authUser = isServer ? getUserInSSR(req) : getUserFromLocalStorage()
   if (authUser && !store.state.authUser) {
     store.commit('SET_USER', authUser)
-    setAuthHeader({ isServer, req })
   } else if (!authUser && route.name !== 'login') {
     redirect('/login')
   }

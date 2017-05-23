@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setToken, unsetToken } from '~/utils/auth'
+import { getUserFromToken, setToken, unsetToken } from '~/utils/auth'
 
 export const strict = true
 
@@ -36,8 +36,9 @@ export const actions = {
       captcha
     })
     .then((res) => {
-      commit('SET_USER', res.data)
-      setToken(res.data['access_token'])
+      let token = res.data['access_token']
+      setToken(token)
+      commit('SET_USER', getUserFromToken(token))
     })
     .catch((error) => {
       let message = error.message
