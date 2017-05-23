@@ -44,7 +44,8 @@ module.exports = {
       'axios',
       'element-ui',
       'vue-class-component',
-      'vuex-class'
+      'vuex-class',
+      'lodash/debounce'
     ],
     filenames: {
       vendor: 'vendor.[hash].js',

@@ -34,7 +34,7 @@ router.post('/login', async function getAuth (ctx) {
       password: new Buffer(user.password).toString('base64'),
       grant_type: 'password'
     }))
-    ctx.body = Object.assign({userName: user.userName}, response.data)
+    ctx.body = Object.assign({}, response.data)
     ctx.session.authUser = user
   } catch (error) {
     ctx.throw(401, error.response ? error.response.data.errors : '登录失败, 具体信息请联系维护人员')
@@ -54,7 +54,7 @@ router.get('/captcha', async function getAuth (ctx, next) {
     height: 36,
     fontSize: 40,
     // background: '#e8f5ff',
-    ignoreChars: '0o1il'
+    ignoreChars: '0oO1iIl'
   })
   ctx.session.captcha = captcha.text
   ctx.type = 'image/svg+xml'
