@@ -65,7 +65,7 @@ export const getTokenFromCookie = (req) => {
 
 export const getUserFromLocalStorage = () => {
   const json = getTokenFromLocalStorage()
-  return json ? JSON.parse(json) : undefined
+  return json ? jwtDecode(json) : undefined
 }
 
 export const getTokenFromLocalStorage = () => {
