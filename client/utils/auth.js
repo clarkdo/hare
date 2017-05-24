@@ -42,11 +42,11 @@ export const getUserFromToken = (token) => {
 }
 
 export const getUserInSSR = (req) => {
-  let jwt = getTokenFromSSR(req)
+  let jwt = getTokenInSSR(req)
   return getUserFromToken(jwt)
 }
 
-export const getTokenFromSSR = (req) => {
+export const getTokenInSSR = (req) => {
   return getTokenFromCookie(req) || getTokenFromSession(req)
 }
 
@@ -69,11 +69,11 @@ export const getUserFromLocalStorage = () => {
 }
 
 export const getTokenFromLocalStorage = () => {
-  return window.localStorage ? window.localStorage.user : null
+  return window.localStorage ? window.localStorage.token : null
 }
 
 export const setAuthHeader = ({isServer = false, req}) => {
-  let jwt = isServer ? getUserInSSR(req) : getTokenFromLocalStorage()
+  let jwt = isServer ? getTokenInSSR(req) : getTokenFromLocalStorage()
   if (jwt) {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt
   } else {
