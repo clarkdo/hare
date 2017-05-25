@@ -17,7 +17,7 @@
 svg {
   fill: #0090fb;
   color: #fff;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   border: 0;

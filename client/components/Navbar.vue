@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <el-menu class="el-menu-demo" default-active="2-1" theme="dark">
+    <el-menu class="el-menu-demo" default-active="1" theme="dark">
       <header>
           <img src="~assets/img/logo.svg" alt="Element">
       </header>

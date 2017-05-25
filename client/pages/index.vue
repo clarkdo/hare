@@ -1,5 +1,6 @@
 <template>
   <div class="banner">
+    <fork-this/>
     <div class="banner-sky"></div>
     <div class="container">
       <div class="banner-desc">
@@ -82,8 +83,13 @@
 <script>
 import Vue from 'vue'
 import Component from 'class-component'
+import ForkThis from '~components/ForkThis'
 
-@Component
+@Component({
+  components: {
+    ForkThis
+  }
+})
 export default class Home extends Vue {
 }
 </script>
