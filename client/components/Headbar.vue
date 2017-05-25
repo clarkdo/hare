@@ -11,12 +11,15 @@
             <span></span>
           </div>
         </el-col>
-        <el-col :offset="13" :span="2">
+        <el-col :offset="11" :span="3">
           <p v-if="authUser">
-            <img src="~assets/img/avatar.svg" /> {{authUser.user_name}}
+            <el-tooltip :content="authUser.user_name">
+              <img src="~assets/img/avatar.svg" />
+            </el-tooltip>
+            {{authUser.user_name}}
           </p>
         </el-col>
-        <el-col :span="2">
+        <el-col :span="3">
           <p><img src="~assets/img/pwd.svg" /> 修改密码</p>
         </el-col>
         <el-col :span="2">
@@ -92,7 +95,11 @@
       border-left: 1px solid #c0ccda;
       p {
         margin: 0 auto;
+        padding: 0 10px;
         text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis ;
         img {
           vertical-align:middle
         }

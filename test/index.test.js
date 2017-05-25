@@ -35,7 +35,7 @@ test('Route / exits and render index HTML', async t => {
     req: {
       session: {
         authUser: {
-          username: 'Clark',
+          user_name: 'Clark',
           email: 'clark.duxin@gmail.com'
         }
       }
@@ -60,7 +60,7 @@ test('Route / exits and render HTML', async t => {
     req: {
       session: {
         authUser: {
-          username: 'Clark',
+          user_name: 'Clark',
           email: 'clark.duxin@gmail.com'
         }
       }

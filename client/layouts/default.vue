@@ -1,8 +1,7 @@
 <template>
   <div class="app">
-    <fork-this v-if="$route.name == 'index'"/>
     <el-row class='main'>
-      <el-col :span="4"  :class="{hide: isMenuHidden, navCol: true}">
+      <el-col :span="4" :class="{hide: isMenuHidden, navCol: true}">
         <navbar :authUser="authUser"/>
       </el-col>
       <el-col :span="colSize" class="content">
@@ -10,11 +9,6 @@
         <el-row><nuxt/></el-row>
       </el-col>
     </el-row>
-    <!--<el-row>
-      <el-col :offset="offsetSize" :span="colSize">
-        <foot/>
-      </el-col>
-    </el-row>-->
   </div>
 </template>
 
@@ -48,13 +42,11 @@ import { mapGetters } from 'vuex'
 import Navbar from '~components/Navbar'
 import Footer from '~components/Footer'
 import Headbar from '~components/Headbar'
-import ForkThis from '~components/ForkThis'
 
 export default {
   components: {
     Navbar,
     Headbar,
-    ForkThis,
     foot: Footer
   },
   computed: {
@@ -62,12 +54,6 @@ export default {
       return this.isMenuHidden ? 24 : 20
     },
     ...mapGetters(['authUser', 'isMenuHidden'])
-  },
-  data () {
-    return {
-    //  colSize: 20,
-      offsetSize: 4
-    }
   }
 }
 </script>
