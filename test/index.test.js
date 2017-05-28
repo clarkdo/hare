@@ -45,6 +45,15 @@ test('Route / exits and render index HTML', async t => {
   t.true(html.includes('前端项目模板'))
 })
 
+test('Route /login exits and render HTML', async t => {
+  let context = {
+    req: { session: {} }
+  }
+  const { html } = await nuxt.renderRoute('/login', context)
+  t.true(html.includes('<input type="text" placeholder="请输入用户名"'))
+  t.true(html.includes('<input type="password" placeholder="请输入密码"'))
+})
+
 // Example of testing via dom checking
 test('Route / exits and render HTML with CSS applied', async t => {
   const window = await nuxt.renderAndGetWindow('http://localhost:4000/')
