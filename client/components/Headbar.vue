@@ -30,6 +30,28 @@
   </div>
 </template>
 
+<script>
+import Vue from 'vue'
+import { mapActions } from 'vuex'
+import Component, { Getter } from 'class-component'
+
+@Component({
+  methods: {
+    ...mapActions(['toggleMenu'])
+  }
+})
+export default class Headbar extends Vue {
+  @Getter isMenuHidden
+  @Getter authUser
+
+  logout () {
+    this.$store.dispatch('logout', () => {
+      this.$router.push('/login')
+    })
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .headbar {
   height: 60px;
@@ -114,25 +136,3 @@
   }
 }
 </style>
-
-<script>
-import Vue from 'vue'
-import { mapActions } from 'vuex'
-import Component, { Getter } from 'class-component'
-
-@Component({
-  methods: {
-    ...mapActions(['toggleMenu'])
-  }
-})
-export default class Headbar extends Vue {
-  @Getter isMenuHidden
-  @Getter authUser
-
-  logout () {
-    this.$store.dispatch('logout', () => {
-      this.$router.push('/login')
-    })
-  }
-}
-</script>

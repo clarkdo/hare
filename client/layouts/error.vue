@@ -10,6 +10,18 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'nuxt-error',
+  props: ['error'],
+  head () {
+    return {
+      title: this.error.message || 'An error occured'
+    }
+  }
+}
+</script>
+
 <style scoped>
 .error-page {
   color: #000;
@@ -52,15 +64,3 @@
   font-size: 14px;
 }
 </style>
-
-<script>
-export default {
-  name: 'nuxt-error',
-  props: ['error'],
-  head () {
-    return {
-      title: this.error.message || 'An error occured'
-    }
-  }
-}
-</script>
