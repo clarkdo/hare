@@ -3,10 +3,10 @@ import { getUserFromToken, setToken, unsetToken } from '~/utils/auth'
 
 export const strict = true
 
-export const state = {
+export const state = () => ({
   authUser: null,
   isMenuHidden: false
-}
+})
 
 export const mutations = {
   SET_USER: function (state, authUser) {
