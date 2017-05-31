@@ -64,7 +64,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'normalize.css',
+    'normalize.css/normalize.css',
     {src: '~assets/css/main.scss', lang: 'scss'}
   ],
   /*
