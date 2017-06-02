@@ -24,26 +24,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.navbar {
-  height: 100%;
-  z-index: 9999;
-  .el-menu {
-    height: 100%;
-    border-radius: 0;
-    header {
-      width: 100%;
-      height: 60px;
-      background-color: #324157;
-      img {
-        margin-left: 25%;
-        margin-top: 10px;
-      }
-    }
-  }
-}
-</style>
-
 <script>
 import Vue from 'vue'
 import Component from 'class-component'
@@ -89,3 +69,23 @@ export default class Navbar extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.navbar {
+  height: 100%;
+  z-index: 9999;
+  .el-menu {
+    height: 100%;
+    border-radius: 0;
+    header {
+      width: 100%;
+      height: 60px;
+      background-color: #324157;
+      img {
+        margin-left: 25%;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+</style>

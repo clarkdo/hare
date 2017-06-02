@@ -42,6 +42,61 @@
   </div>
 </template>
 
+<script>
+import Vue from 'vue'
+import axios from 'axios'
+import debounce from 'lodash/debounce'
+import Component from 'class-component'
+
+@Component
+export default class Login extends Vue {
+  user = {
+    userName: '',
+    password: '',
+    captcha: ''
+  }
+  rules = {}
+  captchaSvg = ''
+  // keepPwd = false
+  logining = false
+  layout () {
+    return 'empty'
+  }
+  beforeMount () {
+    this.getCaptcha()
+  }
+  login () {
+    this.logining = true
+    setTimeout(function () {
+      this.logining = false
+    }.bind(this), 1000)
+    this.$refs.user.validate((valid) => {
+      if (valid) {
+        this.$store.dispatch('login', this.user)
+        .then(() => {
+          this.$router.push('/')
+        })
+        .catch((e) => {
+          this.$message.warning(e.message)
+        })
+      }
+    })
+  }
+  getCaptcha () {
+    axios.get('/hpi/captcha')
+    .then((res) => {
+      this.captchaSvg = res.data
+    })
+  }
+
+  refreshCaptcha = debounce(this.getCaptcha, 500)
+
+  logout () {
+    this.$store.dispatch('logout')
+  }
+}
+</script>
+
 <style scoped lang="scss">
 img.bg {
   width: 100%;
@@ -97,58 +152,3 @@ img.bg {
   }
 }
 </style>
-
-<script>
-import Vue from 'vue'
-import axios from 'axios'
-import debounce from 'lodash/debounce'
-import Component from 'class-component'
-
-@Component
-export default class Login extends Vue {
-  user = {
-    userName: '',
-    password: '',
-    captcha: ''
-  }
-  rules = {}
-  captchaSvg = ''
-  // keepPwd = false
-  logining = false
-  layout () {
-    return 'empty'
-  }
-  beforeMount () {
-    this.getCaptcha()
-  }
-  login () {
-    this.logining = true
-    setTimeout(function () {
-      this.logining = false
-    }.bind(this), 1000)
-    this.$refs.user.validate((valid) => {
-      if (valid) {
-        this.$store.dispatch('login', this.user)
-        .then(() => {
-          this.$router.push('/')
-        })
-        .catch((e) => {
-          this.$message.warning(e.message)
-        })
-      }
-    })
-  }
-  getCaptcha () {
-    axios.get('/hpi/captcha')
-    .then((res) => {
-      this.captchaSvg = res.data
-    })
-  }
-
-  refreshCaptcha = debounce(this.getCaptcha, 500)
-
-  logout () {
-    this.$store.dispatch('logout')
-  }
-}
-</script>

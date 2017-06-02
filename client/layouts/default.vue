@@ -12,6 +12,27 @@
   </div>
 </template>
 
+<script>
+import { mapGetters } from 'vuex'
+import Navbar from '~components/Navbar'
+import Footer from '~components/Footer'
+import Headbar from '~components/Headbar'
+
+export default {
+  components: {
+    Navbar,
+    Headbar,
+    foot: Footer
+  },
+  computed: {
+    colSize () {
+      return this.isMenuHidden ? 24 : 20
+    },
+    ...mapGetters(['authUser', 'isMenuHidden'])
+  }
+}
+</script>
+
 <style src="element-ui/lib/theme-default/index.css"></style>
 
 <style scoped lang="scss">
@@ -36,24 +57,3 @@
   }
 }
 </style>
-
-<script>
-import { mapGetters } from 'vuex'
-import Navbar from '~components/Navbar'
-import Footer from '~components/Footer'
-import Headbar from '~components/Headbar'
-
-export default {
-  components: {
-    Navbar,
-    Headbar,
-    foot: Footer
-  },
-  computed: {
-    colSize () {
-      return this.isMenuHidden ? 24 : 20
-    },
-    ...mapGetters(['authUser', 'isMenuHidden'])
-  }
-}
-</script>

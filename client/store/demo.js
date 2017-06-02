@@ -1,4 +1,4 @@
-export const state = {
+export const state = () => ({
   num: '1',
   city: 'GuangZhou',
   province: '6',
@@ -8,7 +8,7 @@ export const state = {
   restaurant: null,
   restoptions: '1',
   multiFood: []
-}
+})
 
 export const mutations = {
   checkCity (state, city) {
