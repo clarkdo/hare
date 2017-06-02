@@ -101,12 +101,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.el-select, .el-cascader {
-  display: block
-}
-</style>
-
 <script>
 import Vue from 'vue'
 import Component, { Getter, namespace } from 'class-component'
@@ -185,3 +179,9 @@ export default class NewActivity extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.el-select, .el-cascader {
+  display: block
+}
+</style>

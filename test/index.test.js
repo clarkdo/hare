@@ -17,7 +17,7 @@ test.before('Init Nuxt.js', async t => {
   config.dev = false // production build
   config.srcDir = resolve(__dirname, '../client')
   delete config.router.middleware
-  nuxt = new Nuxt(config)
+  nuxt = await new Nuxt(config)
   await nuxt.build()
   server = new nuxt.Server(nuxt)
   server.listen(4000, 'localhost')
@@ -50,8 +50,8 @@ test('Route /login exits and render HTML', async t => {
     req: { session: {} }
   }
   const { html } = await nuxt.renderRoute('/login', context)
-  t.true(html.includes('<input type="text" placeholder="请输入用户名"'))
-  t.true(html.includes('<input type="password" placeholder="请输入密码"'))
+  t.true(html.includes('placeholder="请输入用户名"'))
+  t.true(html.includes('placeholder="请输入密码"'))
 })
 
 // Example of testing via dom checking
