@@ -17,7 +17,7 @@ test.before('Init Nuxt.js', async t => {
   config.dev = false // production build
   config.srcDir = resolve(__dirname, '../client')
   delete config.router.middleware
-  nuxt = await new Nuxt(config)
+  nuxt = new Nuxt(config)
   await nuxt.build()
   server = new nuxt.Server(nuxt)
   server.listen(4000, 'localhost')
