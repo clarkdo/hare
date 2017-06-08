@@ -65,7 +65,7 @@ async function start () {
   // session for flash messages (uses signed session cookies, with no server storage)
   app.use(session(app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
 
-  const nuxt = await new Nuxt(config)
+  const nuxt = new Nuxt(config)
   // Build only in dev mode
   if (config.dev) {
     const devConfigs = config.development
@@ -75,7 +75,6 @@ async function start () {
         app.use(proxy(proxyItem.path, proxyItem))
       }
     }
-    await nuxt.build()
   }
   app.use(async (ctx, next) => {
     await next()
