@@ -3,12 +3,8 @@ import Nuxt from 'nuxt'
 import { resolve } from 'path'
 
 const port = 4000
-// const url = (route) => 'http://localhost:' + port + route
-
 let nuxt = null
 let server = null
-
-const wp = p => /^win/.test(process.platform) ? p.replace(/[\\/]/g, '\\\\') : p
 
 // Init nuxt.js and create server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
@@ -33,8 +29,8 @@ test('Vendor', async t => {
 
 test('Plugin', async t => {
   const plugins = nuxt.options.plugins
-  t.is(plugins[0], wp('~plugins/element-ui'), 'element-ui plugin added to config')
-  t.is(plugins[1].src, wp('~plugins/auth-header'), 'auth-header plugin added to config')
+  t.is(plugins[0], '~plugins/element-ui', 'element-ui plugin added to config')
+  t.is(plugins[1].src, '~plugins/auth-header', 'auth-header plugin added to config')
   t.is(plugins[1].ssr, false, 'auth-header plugin ssr is false')
 })
 
