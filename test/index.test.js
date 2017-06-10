@@ -7,16 +7,28 @@ import { resolve } from 'path'
 // So we can close them at the end of the test
 let nuxt = null
 let server = null
-
+const req = {
+  session: {
+    authUser: {
+      user_name: 'Clark',
+      email: 'clark.duxin@gmail.com',
+      'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+        'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +
+        'nNjb3BlIjpbInJlYWQiXSwiZXhwIjoxNDk0MjY4ODY0LCJ1c2' +
+        'VySWQiOiIxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianR' +
+        'pIjoiN2FkN2VjYzUtNTdmNy00MmZlLThmZmQtYjUxMTJkNTZm' +
+        'M2NhIiwiY2xpZW50X2lkIjoidGF0LWNsaWVudCJ9.' +
+        'ovWxqcBptquNR5QUBz1it2Z3Fr0OxMvWsnXHIHTcliI'
+    }
+  }
+}
 // Init Nuxt.js and create a server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   const rootDir = resolve(__dirname, '..')
-  let config = {}
-  try { config = require(resolve(rootDir, 'nuxt.config.js')) } catch (e) {}
+  let config = require(resolve(rootDir, 'nuxt.config.js'))
   config.rootDir = rootDir // project folder
   config.dev = false // production build
-  config.srcDir = resolve(__dirname, '../client')
-  delete config.router.middleware
+  // delete config.router.middleware
   nuxt = new Nuxt(config)
   await nuxt.build()
   server = new nuxt.Server(nuxt)
@@ -30,52 +42,13 @@ test.before('Init Nuxt.js', async t => {
 })
 
 // Example of testing only generated html
-test('Route / exits and render index HTML', async t => {
-  let context = {
-    req: {
-      session: {
-        authUser: {
-          user_name: 'Clark',
-          email: 'clark.duxin@gmail.com'
-        }
-      }
-    }
-  }
-  const { html } = await nuxt.renderRoute('/', context)
+test('Route /', async t => {
+  const { html } = await nuxt.renderRoute('/', Object.assign({}, {req}))
   t.true(html.includes('前端项目模板'))
 })
 
-test('Route /login exits and render HTML', async t => {
-  let context = {
-    req: { session: {} }
-  }
-  const { html } = await nuxt.renderRoute('/login', context)
-  t.true(html.includes('placeholder="请输入用户名"'))
-  t.true(html.includes('placeholder="请输入密码"'))
-})
-
-// Example of testing via dom checking
-test('Route / exits and render HTML with CSS applied', async t => {
-  const window = await nuxt.renderAndGetWindow('http://localhost:4000/')
-  const element = window.document.querySelector('.banner-desc')
-  t.not(element, null)
-  t.is(element.className, 'banner-desc')
-  // t.is(element.textContent, 'Hello world!')
-  // t.is(window.getComputedStyle(element).color, 'red')
-})
-
-test('Route / exits and render HTML', async t => {
-  let context = {
-    req: {
-      session: {
-        authUser: {
-          user_name: 'Clark',
-          email: 'clark.duxin@gmail.com'
-        }
-      }
-    }
-  }
-  const { html } = await nuxt.renderRoute('/about', context)
+test('Route /about', async t => {
+  const { html } = await nuxt.renderRoute('/about', Object.assign({}, {req}))
   t.true(html.includes('<h1>About Page</h1>'))
 })
 
