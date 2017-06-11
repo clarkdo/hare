@@ -47,10 +47,11 @@ module.exports = {
       'vuex-class',
       'lodash/debounce'
     ],
+    extractCSS: true,
     filenames: {
-      vendor: 'vendor.[hash].js',
-      app: 'hare.[chunkhash].js',
-      css: 'hare.[chunkhash].css'
+      vendor: 'vendor.[hash:12].js',
+      app: 'hare.[chunkhash:12].js',
+      css: 'hare.[contenthash:12].css'
     },
     plugins: []
   },
@@ -65,6 +66,7 @@ module.exports = {
   */
   css: [
     'normalize.css/normalize.css',
+    'element-ui/lib/theme-default/index.css',
     {src: '~assets/css/main.scss', lang: 'scss'}
   ],
   /*

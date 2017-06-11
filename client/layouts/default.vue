@@ -33,8 +33,6 @@ export default {
 }
 </script>
 
-<style src="element-ui/lib/theme-default/index.css"></style>
-
 <style scoped lang="scss">
 .navCol {
   &.hide {
