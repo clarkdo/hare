@@ -2,36 +2,21 @@ import axios from 'axios'
 import cookie from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 
-const getQueryParams = () => {
-  const params = {}
-  window.location.href.replace(/([^(?|#)=&]+)(=([^&]*))?/g, ($0, $1, $2, $3) => {
-    params[$1] = $3
-  })
-  return params
-}
-
-export const extractInfoFromHash = () => {
-  if (process.SERVER_BUILD) return
-  const { id_token, state } = getQueryParams()
-  return {
-    token: id_token,
-    secret: state
-  }
-}
-
 export const setToken = (token) => {
   if (process.SERVER_BUILD) return
-  window.localStorage.setItem('token', token)
-  window.localStorage.setItem('user', JSON.stringify(getUserFromToken(token)))
-  cookie.set('jwt', token)
+  // TODO: confirm if exp  is a NumericDate
+  let exp = new Date().getTime() + jwtDecode(token).exp
+  window.localStorage.setItem('token', JSON.stringify({
+    value: token,
+    exp: exp
+  }))
+  cookie.set('jwt', token, { expires: new Date(exp) })
   setAuthHeader({})
 }
 
 export const unsetToken = () => {
   if (process.SERVER_BUILD) return
   window.localStorage.removeItem('token')
-  window.localStorage.removeItem('user')
-  window.localStorage.removeItem('secret')
   cookie.remove('jwt')
   window.localStorage.setItem('logout', Date.now())
   setAuthHeader({})
@@ -42,8 +27,7 @@ export const getUserFromToken = (token) => {
 }
 
 export const getUserInSSR = (req) => {
-  let jwt = getTokenInSSR(req)
-  return getUserFromToken(jwt)
+  return getUserFromToken(getTokenInSSR(req))
 }
 
 export const getTokenInSSR = (req) => {
@@ -51,16 +35,13 @@ export const getTokenInSSR = (req) => {
 }
 
 export const getTokenFromSession = (req) => {
-  if (!req || !req.session || !req.session.authUser) return
-  return req.session.authUser.access_token
+  if (req && req.session) {
+    return req.session.jwt
+  }
 }
 
 export const getTokenFromCookie = (req) => {
-  if (!req || !req.headers || !req.headers.cookie) return
-  const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='))
-  if (!jwtCookie) return
-  const jwt = jwtCookie.split('=')[1]
-  return jwt
+  return cookie.get('jwt')
 }
 
 export const getUserFromLocalStorage = () => {
@@ -69,7 +50,14 @@ export const getUserFromLocalStorage = () => {
 }
 
 export const getTokenFromLocalStorage = () => {
-  return window.localStorage ? window.localStorage.token : null
+  if (window.localStorage && window.localStorage.token) {
+    let token = JSON.parse(window.localStorage.token)
+    if (new Date().getTime() >= token.exp) {
+      unsetToken()
+      return
+    }
+    return token ? token.value : null
+  }
 }
 
 export const setAuthHeader = ({isServer = false, req}) => {
@@ -80,7 +68,3 @@ export const setAuthHeader = ({isServer = false, req}) => {
     delete axios.defaults.headers.common['Authorization']
   }
 }
-
-export const setSecret = (secret) => window.localStorage.setItem('secret', secret)
-
-export const checkSecret = (secret) => window.localStorage.secret === secret
