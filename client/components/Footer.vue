@@ -8,14 +8,14 @@
       </div>
       <div class="footer-social">
         <el-popover
-          ref="weixin"
+          ref="wechat"
           placement="top"
           width="120"
           popper-class="footer-popover"
           trigger="hover">
           <div class="footer-popover-title">CFC</div>
         </el-popover>
-        <i class="icon-weixin element-icons" v-popover:weixin></i>
+        <i class="icon-wechat element-icons" v-popover:wechat></i>
         <a href="//github.com/clarkdo/hare" target="_blank">
           <i class="icon-github element-icons"></i>
         </a>
@@ -89,7 +89,7 @@ export default class Footer extends Vue {
           transform: scale(1.2);
       }
     }
-    .icon-weixin {
+    .icon-wechat {
       margin-right: 36px;
       &:hover {
         color: #fff;

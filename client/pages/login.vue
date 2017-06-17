@@ -6,19 +6,19 @@
     <img src="~assets/img/login-bg.png" alt="" class="bg">
     <el-card>
       <el-form :model="user" ref="user">
-        <el-form-item prop="userName" :rules="[{ required: true, message: '用户名不能为空'}]">
+        <el-form-item prop="userName" :rules="[{ required: true, message: 'User Name is required'}]">
           <el-col :span="24">
-            <el-input v-model="user.userName" placeholder="请输入用户名"></el-input>
+            <el-input v-model="user.userName" placeholder="User Name"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item prop="password" :rules="[{ required: true, message: '密码不能为空'}]">
+        <el-form-item prop="password" :rules="[{ required: true, message: 'Password is required'}]">
           <el-col :span="24">
-            <el-input v-model="user.password" type="password" placeholder="请输入密码"></el-input>
+            <el-input v-model="user.password" type="password" placeholder="Password"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item prop="captcha" :rules="[{ required: true, message: '验证码不能为空'}]">
+        <el-form-item prop="captcha" :rules="[{ required: true, message: 'Captcha is required'}]">
             <el-col :span="12">
-              <el-input v-model="user.captcha" placeholder="请输入验证码"></el-input>
+              <el-input v-model="user.captcha" placeholder="Captcha"></el-input>
             </el-col>
             <el-col :offset="1" :span="9">
               <div v-html="captchaSvg" @click='refreshCaptcha()' class="captcha"></div>
@@ -26,7 +26,7 @@
         </el-form-item>
         <el-row>
           <el-col :span="24">
-            <el-button type="primary" class="login-btn" :loading="logining" @click="login">登录</el-button>
+            <el-button type="primary" class="login-btn" :loading="logging" @click="login">Login</el-button>
           </el-col>
         </el-row>
         <!--<el-row>
@@ -58,7 +58,7 @@ export default class Login extends Vue {
   rules = {}
   captchaSvg = ''
   // keepPwd = false
-  logining = false
+  logging = false
   layout () {
     return 'empty'
   }
@@ -66,9 +66,9 @@ export default class Login extends Vue {
     this.getCaptcha()
   }
   login () {
-    this.logining = true
+    this.logging = true
     setTimeout(function () {
-      this.logining = false
+      this.logging = false
     }.bind(this), 1000)
     this.$refs.user.validate((valid) => {
       if (valid) {

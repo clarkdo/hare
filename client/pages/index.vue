@@ -4,8 +4,8 @@
     <div class="banner-sky"></div>
     <div class="container">
       <div class="banner-desc">
-        <h2>前端项目模板</h2>
-        <p>Hare，一套基于Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js项目模板。</p>
+        <h2>Hare</h2>
+        <p>Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js</p>
       </div>
     </div>
   </div>

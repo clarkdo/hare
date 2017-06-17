@@ -16,7 +16,7 @@ export default {
   props: ['error'],
   head () {
     return {
-      title: this.error.message || 'An error occured'
+      title: this.error.message || 'An error occurred'
     }
   }
 }
