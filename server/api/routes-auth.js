@@ -35,14 +35,14 @@ router.post('/login', async function getAuth (ctx) {
       grant_type: 'password'
     }))
     ctx.body = Object.assign({}, response.data)
-    ctx.session.authUser = user
+    ctx.session.jwt = response.data.access_token
   } catch (error) {
     ctx.throw(401, error.response ? error.response.data.errors : '登录失败, 具体信息请联系维护人员')
   }
 })
 
 router.post('/logout', async function logout (ctx) {
-  ctx.session.authUser = null
+  ctx.session.jwt = null
   ctx.status = 200
 })
 
