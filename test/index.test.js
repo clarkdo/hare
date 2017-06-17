@@ -9,17 +9,13 @@ let nuxt = null
 let server = null
 const req = {
   session: {
-    authUser: {
-      user_name: 'Clark',
-      email: 'clark.duxin@gmail.com',
-      'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+    jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
         'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +
         'nNjb3BlIjpbInJlYWQiXSwiZXhwIjoxNDk0MjY4ODY0LCJ1c2' +
         'VySWQiOiIxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianR' +
         'pIjoiN2FkN2VjYzUtNTdmNy00MmZlLThmZmQtYjUxMTJkNTZm' +
         'M2NhIiwiY2xpZW50X2lkIjoidGF0LWNsaWVudCJ9.' +
         'ovWxqcBptquNR5QUBz1it2Z3Fr0OxMvWsnXHIHTcliI'
-    }
   }
 }
 // Init Nuxt.js and create a server listening on localhost:4000
