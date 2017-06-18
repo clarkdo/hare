@@ -78,7 +78,7 @@ module.exports = {
   */
   plugins: [
     '~plugins/element-ui',
-    '~plugins/i18n.js',
+    '~plugins/i18n',
     {src: '~plugins/auth-header', ssr: false}
   ],
 

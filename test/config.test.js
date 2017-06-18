@@ -29,9 +29,11 @@ test('Vendor', async t => {
 
 test('Plugin', async t => {
   const plugins = nuxt.options.plugins
+  console.log(plugins)
   t.is(plugins[0], '~plugins/element-ui', 'element-ui plugin added to config')
-  t.is(plugins[1].src, '~plugins/auth-header', 'auth-header plugin added to config')
-  t.is(plugins[1].ssr, false, 'auth-header plugin ssr is false')
+  t.is(plugins[1], '~plugins/i18n', 'i18n plugin added to config')
+  t.is(plugins[2].src, '~plugins/auth-header', 'auth-header plugin added to config')
+  t.is(plugins[2].ssr, false, 'auth-header plugin ssr is false')
 })
 
 test('Middleware', async t => {
