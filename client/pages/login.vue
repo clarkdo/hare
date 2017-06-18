@@ -6,19 +6,19 @@
     <img src="~assets/img/login-bg.png" alt="" class="bg">
     <el-card>
       <el-form :model="user" ref="user">
-        <el-form-item prop="userName" :rules="[{ required: true, message: 'User Name is required'}]">
+        <el-form-item prop="userName" :rules="[{ required: true, message: $t('login.userRequired')}]">
           <el-col :span="24">
-            <el-input v-model="user.userName" placeholder="User Name"></el-input>
+            <el-input v-model="user.userName" :placeholder="$t('login.userRequired')"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item prop="password" :rules="[{ required: true, message: 'Password is required'}]">
+        <el-form-item prop="password" :rules="[{ required: true, message: $t('login.pwdRequired')}]">
           <el-col :span="24">
-            <el-input v-model="user.password" type="password" placeholder="Password"></el-input>
+            <el-input v-model="user.password" type="password" :placeholder="$t('login.pwdPlaceholder')"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item prop="captcha" :rules="[{ required: true, message: 'Captcha is required'}]">
+        <el-form-item prop="captcha" :rules="[{ required: true, message: $t('login.captchaRequired')}]">
             <el-col :span="12">
-              <el-input v-model="user.captcha" placeholder="Captcha"></el-input>
+              <el-input v-model="user.captcha" :placeholder="$t('login.captchaPlaceholder')"></el-input>
             </el-col>
             <el-col :offset="1" :span="9">
               <div v-html="captchaSvg" @click='refreshCaptcha()' class="captcha"></div>
@@ -26,7 +26,7 @@
         </el-form-item>
         <el-row>
           <el-col :span="24">
-            <el-button type="primary" class="login-btn" :loading="logging" @click="login">Login</el-button>
+            <el-button type="primary" class="login-btn" :loading="logging" @click="login">{{$t('login.login')}}</el-button>
           </el-col>
         </el-row>
         <!--<el-row>

@@ -1,0 +1,11 @@
+{
+  "login": {
+    "userRequired": "User Name is required",
+    "userPlaceholder": "User Name",
+    "pwdRequired": "Password is required",
+    "pwdPlaceholder": "Password",
+    "captchaRequired": "Captcha is required",
+    "captchaPlaceholder": "Captcha",
+    "login": "Login"
+  }
+}
