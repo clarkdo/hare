@@ -5,12 +5,19 @@ export const strict = true
 
 export const state = () => ({
   authUser: null,
+  locale: null,
+  locales: ['zh', 'en'],
   isMenuHidden: false
 })
 
 export const mutations = {
   SET_USER: function (state, authUser) {
     state.authUser = authUser
+  },
+  SET_LANG (state, locale) {
+    if (state.locales.indexOf(locale) !== -1) {
+      state.locale = locale
+    }
   },
   SET_MENU_HIDDEN: function (state) {
     state.isMenuHidden = !state.isMenuHidden

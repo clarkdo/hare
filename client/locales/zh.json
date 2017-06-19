@@ -1,0 +1,11 @@
+{
+  "login": {
+    "userRequired": "用户名不能为空",
+    "userPlaceholder": "请输入用户名",
+    "pwdRequired": "密码不能为空",
+    "pwdPlaceholder": "请输入密码",
+    "captchaRequired": "验证码不能为空",
+    "captchaPlaceholder": "请输入验证码",
+    "login": "登录"
+  }
+}

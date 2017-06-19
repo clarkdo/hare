@@ -57,6 +57,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .icon-github:before { content: "\e603"; }
-.icon-weixin:before { content: "\e601"; }
+.icon-wechat:before { content: "\e601"; }
 
 

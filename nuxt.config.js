@@ -5,7 +5,9 @@ module.exports = {
   ** Router config
   */
   router: {
-    middleware: 'check-auth'
+    middleware: [
+      'check-auth'
+    ]
   },
   /*
   ** Headers of the page
@@ -45,6 +47,8 @@ module.exports = {
       'element-ui',
       'vue-class-component',
       'vuex-class',
+      'vue-i18n',
+      'negotiator',
       'lodash/debounce'
     ],
     extractCSS: true,
@@ -74,6 +78,7 @@ module.exports = {
   */
   plugins: [
     '~plugins/element-ui',
+    '~plugins/i18n',
     {src: '~plugins/auth-header', ssr: false}
   ],
 

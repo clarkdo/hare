@@ -12,7 +12,7 @@
           </el-row>
           <div style="margin-top: 100px;"></div>
           <el-row>
-            <el-col :span="6">
+            <el-col :offset="2" :span="6">
               <p>食物: {{food}}</p>
             </el-col>
             <el-col :span="6">
@@ -24,7 +24,7 @@
           </el-row>
           <div style="margin-top: 15px;"></div>
           <el-row>
-            <el-col :span="6">
+            <el-col :offset="2" :span="6">
               <el-select v-model="$store.state.demo.food" placeholder="请选择">
                 <el-option
                   v-for="item in foods"
@@ -49,7 +49,7 @@
                 </el-radio-button>
               </el-radio-group>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="4">
               <el-button @click="checkCity('GuangZhou')" type="primary">广州</el-button>
               <el-button @click="checkCity('ShenZhen')" type="text">深圳</el-button>
               <el-button @click="checkCity('ShangHai')">上海</el-button>
@@ -66,14 +66,14 @@
           </el-row>
           <div style="margin-top: 100px;"></div>
           <el-row>
-            <el-col :span="6">
+            <el-col :offset="2" :span="6">
               <el-radio-group v-model="$store.state.demo.province">
                 <el-radio label="3">辽宁</el-radio>
                 <el-radio disabled label="6">浙江</el-radio>
                 <el-radio label="9">台湾</el-radio>
               </el-radio-group>
             </el-col>
-            <el-col :span="12">
+            <el-col :offset="2" :span="12">
               <el-checkbox-group v-model="$store.state.demo.district">
                 <el-checkbox label="2">中山区</el-checkbox>
                 <el-checkbox label="4">东城区</el-checkbox>
@@ -89,7 +89,7 @@
           </el-row>
           <div style="margin-top: 20px;"></div>
           <el-row>
-            <el-col :span="6">
+            <el-col :offset="2" :span="6">
               <el-input placeholder="请输入内容" v-model="$store.state.demo.website">
                 <template slot="prepend">Http://</template>
                 <template slot="append">.com</template>
@@ -189,8 +189,6 @@ export default class Demo extends Vue {
 
 <style lang="scss" scoped>
 .content {
-  width: 70%;
-  margin-left: 15%;
   padding-top: 20px;
 }
 .el-carousel .new-activity {

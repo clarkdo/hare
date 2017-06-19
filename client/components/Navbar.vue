@@ -6,15 +6,15 @@
       </header>
       <nuxt-link to="/" exact><el-menu-item index="1"><i class="el-icon-message"></i>Home</el-menu-item></nuxt-link>
       <el-submenu index="2" v-if="authUser" >
-        <template slot="title"><i class="el-icon-edit"></i>活动</template>
+        <template slot="title"><i class="el-icon-edit"></i>Activity</template>
         <nuxt-link to="/demo" exact>
-          <el-menu-item index="2-1">展示页面</el-menu-item>
+          <el-menu-item index="2-1">Demo</el-menu-item>
         </nuxt-link>
         <nuxt-link to="/marketing/activity/" exact>
-          <el-menu-item index="2-2">活动信息</el-menu-item>
+          <el-menu-item index="2-2">List</el-menu-item>
         </nuxt-link>
         <nuxt-link to="/marketing/activity/create" exact>
-          <el-menu-item index="2-3">活动创建</el-menu-item>
+          <el-menu-item index="2-3">Create</el-menu-item>
         </nuxt-link>
       </el-submenu>
       <nuxt-link v-if="authUser" to="/about" exact>
