@@ -20,10 +20,10 @@
           </p>
         </el-col>
         <el-col :span="3">
-          <p><img src="~assets/img/pwd.svg" /> 修改密码</p>
+          <p><img src="~assets/img/pwd.svg" /> Password</p>
         </el-col>
         <el-col :span="2">
-          <p @click="logout"><img src="~assets/img/exit.svg" /> 退出</p>
+          <p @click="logout"><img src="~assets/img/exit.svg" /> Exit</p>
         </el-col>
       </el-row>
     </header>

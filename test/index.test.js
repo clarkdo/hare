@@ -8,6 +8,9 @@ import { resolve } from 'path'
 let nuxt = null
 let server = null
 const req = {
+  headers: {
+    'accept-language': 'zh'
+  },
   session: {
     jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
         'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +
@@ -40,7 +43,7 @@ test.before('Init Nuxt.js', async t => {
 // Example of testing only generated html
 test('Route /', async t => {
   const { html } = await nuxt.renderRoute('/', Object.assign({}, {req}))
-  t.true(html.includes('前端项目模板'))
+  t.true(html.includes('Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js'))
 })
 
 test('Route /about', async t => {
