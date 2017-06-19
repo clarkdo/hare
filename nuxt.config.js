@@ -6,7 +6,6 @@ module.exports = {
   */
   router: {
     middleware: [
-      'i18n',
       'check-auth'
     ]
   },
@@ -49,6 +48,7 @@ module.exports = {
       'vue-class-component',
       'vuex-class',
       'vue-i18n',
+      'negotiator',
       'lodash/debounce'
     ],
     extractCSS: true,

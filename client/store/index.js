@@ -5,8 +5,8 @@ export const strict = true
 
 export const state = () => ({
   authUser: null,
+  locale: null,
   locales: ['zh', 'en'],
-  locale: 'zh',
   isMenuHidden: false
 })
 
