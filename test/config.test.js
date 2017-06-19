@@ -29,7 +29,6 @@ test('Vendor', async t => {
 
 test('Plugin', async t => {
   const plugins = nuxt.options.plugins
-  console.log(plugins)
   t.is(plugins[0], '~plugins/element-ui', 'element-ui plugin added to config')
   t.is(plugins[1], '~plugins/i18n', 'i18n plugin added to config')
   t.is(plugins[2].src, '~plugins/auth-header', 'auth-header plugin added to config')
@@ -37,7 +36,7 @@ test('Plugin', async t => {
 })
 
 test('Middleware', async t => {
-  const { html, redirected } = await nuxt.renderRoute('/', {req: {}})
+  const { html, redirected } = await nuxt.renderRoute('/', {req: {headers: {'accept-language': 'zh'}}})
   t.true(html.includes('<div id="__nuxt"></div>'), 'auth plugin works 1')
   t.true(!html.includes('前端项目模板'), 'auth plugin works 2')
   t.true(redirected.path === '/login', 'auth plugin works 3')

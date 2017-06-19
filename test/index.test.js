@@ -8,6 +8,9 @@ import { resolve } from 'path'
 let nuxt = null
 let server = null
 const req = {
+  headers: {
+    'accept-language': 'zh'
+  },
   session: {
     jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
         'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +

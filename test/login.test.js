@@ -6,7 +6,9 @@ import { resolve } from 'path'
 // So we can close them at the end of the test
 let nuxt = null
 let server = null
-
+const headers = {
+  'accept-language': 'zh'
+}
 // Init Nuxt.js and create a server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   const rootDir = resolve(__dirname, '..')
@@ -20,7 +22,7 @@ test.before('Init Nuxt.js', async t => {
 })
 
 test('Route /login', async t => {
-  const { html } = await nuxt.renderRoute('/login', {req: {session: {}}})
+  const { html } = await nuxt.renderRoute('/login', {req: {session: {}, headers}})
   t.true(html.includes('placeholder="请输入用户名"'))
   t.true(html.includes('placeholder="请输入密码"'))
 })
