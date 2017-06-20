@@ -7,5 +7,84 @@
     "captchaRequired": "验证码不能为空",
     "captchaPlaceholder": "请输入验证码",
     "login": "登录"
+  },
+  "activity": {
+    "title": {
+      "create": "创建活动"
+    },
+    "account": "账号",
+    "date": "活动时间",
+    "type": "活动类型",
+    "area": "活动区域",
+    "priority": "优先级",
+    "organizer": "承办方",
+    "desc": "活动描述",
+    "tag": "活动标签",
+    "rate": "活动评分",
+    "create": "立即创建",
+    "reset": "重置",
+    "holder": {
+      "area": "请选择活动区域",
+      "tag": "请选择活动标签",
+      "date": "选择日期",
+      "time": "选择时间"
+    },
+    "label": {
+      "tag": {
+        "st": "赠票",
+        "reduction": "满减",
+        "points": "赠积分"
+      }
+    },
+    "city": {
+      "sh": "上海",
+      "bj": "北京"
+    },
+    "instDist": "即时配送",
+    "price": "价格优惠",
+    "rights": "价格权益",
+    "medium": "中",
+    "high": "高",
+    "rule": {
+      "account": {
+        "required": "请输入活动名称",
+        "length": "长度不少于 6 个字符"
+      },
+      "region": {
+        "required": "请选择活动区域"
+      },
+      "date1": {
+        "required": "请选择日期"
+      },
+      "date2": {
+        "required": "请选择时间"
+      },
+      "type": {
+        "required": "请至少选择一个活动类型"
+      },
+      "priority": {
+        "required": "请选择活动优先级"
+      },
+      "rate": {
+        "required": "请选择活动评分"
+      },
+      "desc": {
+        "required": "请填写活动描述"
+      }
+    },
+    "success": "提交成功!",
+    "failed": "提交失败!"
+  },
+  "nav": {
+    "home": "首页",
+    "activity": "活动",
+    "demo": "示例",
+    "list": "活动列表",
+    "create": "活动创建",
+    "about": "关于"
+  },
+  "head": {
+    "pwd": "修改密码",
+    "exit": "退出"
   }
 }
