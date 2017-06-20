@@ -87,14 +87,14 @@ export const getters = {
   },
   labels () {
     return [{
-      value: '赠票',
-      label: 'st'
+      value: 'st',
+      label: 'activity.label.tag.st'
     }, {
-      value: '满减',
-      label: 'reduction'
+      value: 'reduction',
+      label: 'activity.label.tag.reduction'
     }, {
-      value: '增积分',
-      label: 'points'
+      value: 'points',
+      label: 'activity.label.tag.points'
     }]
   },
   organizers () {

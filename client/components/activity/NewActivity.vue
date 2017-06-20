@@ -1,82 +1,82 @@
 <template>
   <div class="new-activity">
     <el-form :model="formData" :rules="formRules" ref="newActivity" label-width="100px" class="activity-form">
-      <el-row >
+      <el-row>
         <el-col :span="10">
-          <el-form-item label="账号" prop="account">
+          <el-form-item :label="$t('activity.account')" prop="account">
             <el-input v-model="formData.account"></el-input>
           </el-form-item>
         </el-col>
         <el-col :offset="2" :span="10">
-          <el-form-item label="活动区域" prop="region">
-            <el-select v-model="formData.region" placeholder="请选择活动区域">
-              <el-option label="上海" value="shanghai"></el-option>
-              <el-option label="北京" value="beijing"></el-option>
+          <el-form-item :label="$t('activity.area')" prop="region">
+            <el-select v-model="formData.region" :placeholder="$t('activity.holder.area')">
+              <el-option :label="$t('activity.city.sh')" value="shanghai"></el-option>
+              <el-option :label="$t('activity.city.bj')" value="beijing"></el-option>
             </el-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="10">
-          <el-form-item label="活动标签" prop="label">
-            <el-select v-model="formData.label" multiple filterable allow-create placeholder="请选择活动标签">
+          <el-form-item :label="$t('activity.tag')" prop="label">
+            <el-select v-model="formData.label" multiple filterable allow-create :placeholder="$t('activity.holder.tag')">
               <el-option
                 v-for="item in labels"
                 :key="item.label"
-                :label="item.label"
+                :label="$t(item.label)"
                 :value="item.value">
               </el-option>
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :offset="2" :span="3">
-          <el-form-item label="即时配送" prop="delivery">
+          <el-form-item :label="$t('activity.instDist')" prop="delivery">
             <el-switch on-text="" off-text="" v-model="formData.delivery"></el-switch>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="10">
-          <el-form-item label="活动类型" prop="type">
+          <el-form-item :label="$t('activity.type')" prop="type">
             <el-checkbox-group v-model="formData.type">
-              <el-checkbox label="价格优惠"></el-checkbox>
-              <el-checkbox label="价格权益"></el-checkbox>
+              <el-checkbox :label="$t('activity.price')"></el-checkbox>
+              <el-checkbox :label="$t('activity.rights')"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
         </el-col>
         <el-col :offset="2" :span="10">
-          <el-form-item label="优先级" prop="priority">
+          <el-form-item :label="$t('activity.priority')" prop="priority">
             <el-radio-group v-model="formData.priority">
-              <el-radio label="中"></el-radio>
-              <el-radio label="高"></el-radio>
+              <el-radio :label="$t('activity.medium')"></el-radio>
+              <el-radio :label="$t('activity.high')"></el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="10">
-          <el-form-item label="活动评分" prop="rate" required>
+          <el-form-item :label="$t('activity.rate')" prop="rate" required>
             <el-rate v-model="formData.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
           </el-form-item>
         </el-col>
         <el-col :offset="2" :span="10">
-          <el-form-item label="活动承办" prop="organizer">
+          <el-form-item :label="$t('activity.organizer')" prop="organizer">
             <el-cascader :options="organizers" v-model="formData.organizer" change-on-select></el-cascader>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="22">
-          <el-form-item label="活动时间" required>
+          <el-form-item :label="$t('activity.date')" required>
               <el-col :span="11">
                 <el-form-item prop="date1">
-                  <el-date-picker placeholder="选择日期" v-model="formData.date1" style="width: 100%;"></el-date-picker>
+                  <el-date-picker :placeholder="$t('activity.holder.date')" v-model="formData.date1" style="width: 100%;"></el-date-picker>
                 </el-form-item>
               </el-col>
             <el-col class="line" :span="2">-</el-col>
               <el-col :span="11">
                 <el-form-item prop="date2">
-                  <el-time-picker placeholder="选择时间" v-model="formData.date2" style="width: 100%;"></el-time-picker>
+                  <el-time-picker :placeholder="$t('activity.holder.time')" v-model="formData.date2" style="width: 100%;"></el-time-picker>
                 </el-form-item>
               </el-col>
           </el-form-item>
@@ -84,7 +84,7 @@
       </el-row>
       <el-row>
         <el-col :span="22">
-          <el-form-item label="活动描述" prop="desc">
+          <el-form-item :label="$t('activity.desc')" prop="desc">
             <el-input type="textarea" v-model="formData.desc"></el-input>
           </el-form-item>
         </el-col>
@@ -92,8 +92,8 @@
       <el-row>
         <el-col :offset="4" :span="14">
           <el-form-item>
-            <el-button type="primary" @click="submit('newActivity')">立即创建</el-button>
-            <el-button @click="reset('newActivity')">重置</el-button>
+            <el-button type="primary" @click="submit('newActivity')">{{$t('activity.create')}}</el-button>
+            <el-button @click="reset('newActivity')">{{$t('activity.reset')}}</el-button>
           </el-form-item>
         </el-col>
       </el-row>
@@ -127,6 +127,37 @@ const DemoGetter = namespace('demo', Getter)
         }
       }
     }
+  },
+  data () {
+    return {
+      formRules: {
+        account: [
+          { required: true, message: this.$t('activity.rule.account.required'), trigger: 'blur' },
+          { min: 6, message: this.$t('activity.rule.account.length'), trigger: 'blur' }
+        ],
+        region: [
+          { required: true, message: this.$t('activity.rule.region.required'), trigger: 'change' }
+        ],
+        date1: [
+          { type: 'date', required: true, message: this.$t('activity.rule.date1.required'), trigger: 'change' }
+        ],
+        date2: [
+          { type: 'date', required: true, message: this.$t('activity.rule.date2.required'), trigger: 'change' }
+        ],
+        type: [
+          { type: 'array', required: true, message: this.$t('activity.rule.type.required'), trigger: 'change' }
+        ],
+        priority: [
+          { required: true, message: this.$t('activity.rule.priority.required'), trigger: 'change' }
+        ],
+        rate: [
+          { type: 'integer', min: 1, required: true, message: this.$t('activity.rule.rate.required'), trigger: 'change' }
+        ],
+        desc: [
+          { required: true, message: this.$t('activity.rule.desc.required'), trigger: 'blur' }
+        ]
+      }
+    }
   }
 })
 export default class NewActivity extends Vue {
@@ -136,46 +167,19 @@ export default class NewActivity extends Vue {
   submit (formName) {
     this.$refs[formName].validate((valid) => {
       if (valid) {
-        this.$message.success('提交成功!')
+        this.$message.success(this.$t('activity.success'))
         if (formName === 'popForm') {
           this.popVisible = false
         }
         return false
       } else {
-        this.$message.warning('提交失败!!!')
+        this.$message.warning(this.$t('activity.failed'))
         return false
       }
     })
   }
   reset (formName) {
     this.$refs[formName].resetFields()
-  }
-  formRules = {
-    account: [
-      { required: true, message: '请输入活动名称', trigger: 'blur' },
-      { min: 6, message: '长度不少于 6 个字符', trigger: 'blur' }
-    ],
-    region: [
-      { required: true, message: '请选择活动区域', trigger: 'change' }
-    ],
-    date1: [
-      { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-    ],
-    date2: [
-      { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-    ],
-    type: [
-      { type: 'array', required: true, message: '请至少选择一个活动类型', trigger: 'change' }
-    ],
-    priority: [
-      { required: true, message: '请选择活动优先级', trigger: 'change' }
-    ],
-    rate: [
-      { type: 'integer', min: 1, required: true, message: '请选择活动评分', trigger: 'change' }
-    ],
-    desc: [
-      { required: true, message: '请填写活动描述', trigger: 'blur' }
-    ]
   }
 }
 </script>

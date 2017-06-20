@@ -20,10 +20,10 @@
           </p>
         </el-col>
         <el-col :span="3">
-          <p><img src="~assets/img/pwd.svg" /> Password</p>
+          <p><img src="~assets/img/pwd.svg" /> {{$t("head.pwd")}}</p>
         </el-col>
         <el-col :span="2">
-          <p @click="logout"><img src="~assets/img/exit.svg" /> Exit</p>
+          <p @click="logout"><img src="~assets/img/exit.svg" /> {{$t("head.exit")}}</p>
         </el-col>
       </el-row>
     </header>
