@@ -27,6 +27,12 @@ test('Route /login', async t => {
   t.true(html.includes('placeholder="请输入密码"'))
 })
 
+test('Route /login with locale [en]', async t => {
+  const { html } = await nuxt.renderRoute('/login', {req: {session: {}, headers: {'accept-language': 'en'}}})
+  t.true(html.includes('placeholder="User Name"'))
+  t.true(html.includes('placeholder="Password"'))
+})
+
 // Close server and ask nuxt to stop listening to file changes
 test.after('Closing server and nuxt.js', t => {
   server.close()
