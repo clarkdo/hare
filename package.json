@@ -33,6 +33,7 @@
     "koa": "^2.0.0",
     "koa-body": "^1.6.0",
     "koa-bunyan": "^1.0.0",
+    "koa-bunyan-logger": "^2.0.0",
     "koa-compose": "^3.2.1",
     "koa-compress": "^2.0.0",
     "koa-proxies": "^0.3.0",
