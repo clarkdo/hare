@@ -4,21 +4,21 @@
       <header>
           <img src="~assets/img/logo.svg" alt="Element">
       </header>
-      <nuxt-link to="/" exact><el-menu-item index="1"><i class="el-icon-message"></i>Home</el-menu-item></nuxt-link>
+      <nuxt-link to="/" exact><el-menu-item index="1"><i class="el-icon-message"></i>{{$t("nav.home")}}</el-menu-item></nuxt-link>
       <el-submenu index="2" v-if="authUser" >
-        <template slot="title"><i class="el-icon-edit"></i>Activity</template>
+        <template slot="title"><i class="el-icon-edit"></i>{{$t("nav.activity")}}</template>
         <nuxt-link to="/demo" exact>
-          <el-menu-item index="2-1">Demo</el-menu-item>
+          <el-menu-item index="2-1">{{$t("nav.demo")}}</el-menu-item>
         </nuxt-link>
         <nuxt-link to="/marketing/activity/" exact>
-          <el-menu-item index="2-2">List</el-menu-item>
+          <el-menu-item index="2-2">{{$t("nav.list")}}</el-menu-item>
         </nuxt-link>
         <nuxt-link to="/marketing/activity/create" exact>
-          <el-menu-item index="2-3">Create</el-menu-item>
+          <el-menu-item index="2-3">{{$t("nav.create")}}</el-menu-item>
         </nuxt-link>
       </el-submenu>
       <nuxt-link v-if="authUser" to="/about" exact>
-        <el-menu-item index="3" v-if="authUser"><i class="el-icon-menu"></i>About</el-menu-item>
+        <el-menu-item index="3" v-if="authUser"><i class="el-icon-menu"></i>{{$t("nav.about")}}</el-menu-item>
       </nuxt-link>
     </el-menu>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content" v-if="authUser">
-      <h2>{{title}}</h2>
+      <h2>{{$t(title)}}</h2>
       <new-activity :form-data="activity" ref="popActivity"></new-activity>
     </div>
   </div>
