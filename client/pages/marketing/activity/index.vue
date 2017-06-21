@@ -4,20 +4,20 @@
       <el-table ref="tb" :data="activities" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55">
         </el-table-column>
-        <el-table-column prop="account" label="账号" width="120">
+        <el-table-column prop="account" :label="$t('activity.account')" width="120">
         </el-table-column>
-        <el-table-column label="活动时间" width="120">
+        <el-table-column :label="$t('activity.date')" width="120">
           <template scope="scope">{{ scope.row.date }}</template>
         </el-table-column>
-        <el-table-column prop="type" label="活动类型" width="120">
+        <el-table-column prop="type" :label="$t('activity.type')" width="120">
         </el-table-column>
-        <el-table-column prop="region" label="活动区域" width="120">
+        <el-table-column prop="region" :label="$t('activity.area')" width="120">
         </el-table-column>
-        <el-table-column prop="priority" label="优先级" width="120">
+        <el-table-column prop="priority" :label="$t('activity.priority')" width="120">
         </el-table-column>
-        <el-table-column prop="organizer" label="承办方" width="120">
+        <el-table-column prop="organizer" :label="$t('activity.organizer')" width="120">
         </el-table-column>
-        <el-table-column prop="desc" label="活动描述" show-overflow-tooltip>
+        <el-table-column prop="desc" :label="$t('activity.desc')" show-overflow-tooltip>
         </el-table-column>
       </el-table>
     </div>

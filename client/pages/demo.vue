@@ -6,7 +6,7 @@
           <el-row>
             <el-col :offset="4" :span="16">
               <el-card>
-                Element 下拉框, 按钮, 计数器, 单选框演示
+                Element 下拉框, 按钮, 计数器, 单选框演示 (此Vuex用法不推荐)
               </el-card>
             </el-col>
           </el-row>
@@ -79,7 +79,6 @@
                 <el-checkbox label="4">东城区</el-checkbox>
                 <el-checkbox label="6">松山区</el-checkbox>
                 <el-checkbox label="8" disabled>和平区</el-checkbox>
-                <el-checkbox label="10" disabled>华盛顿哥伦比亚特区</el-checkbox>
               </el-checkbox-group>
             </el-col>
             <el-col :span="6">
