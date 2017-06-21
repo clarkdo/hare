@@ -98,7 +98,7 @@ module.exports = {
         logs: true,
         prependPath: false,
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/octocat(\/|\/\w+)?$/, '/vagusx')
+        rewrite: path => path.replace(/^\/pages(\/|\/\w+)?$/, '/service')
       } */
     ]
   }

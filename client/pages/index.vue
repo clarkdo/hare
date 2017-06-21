@@ -7,81 +7,41 @@
         <h2>Hare</h2>
         <p>Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js</p>
       </div>
-      <bar ref="bar" :width="500" :height="400" class="bar"></bar>
-      <lineChart ref="line" :width="500" :height="400" class="line"></lineChart>
+      <bar-demo ref="bar" :width="500" :height="400" class="bar"></bar-demo>
+      <line-demo ref="line" :width="500" :height="400" class="line"></line-demo>
     </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { Bar, Line } from 'vue-chartjs'
 import Component from 'class-component'
 import ForkThis from '~components/ForkThis'
+import BarDemo from '~components/charts/BarDemo'
+import LineDemo from '~components/charts/LineDemo'
 
 @Component({
   components: {
     ForkThis,
-    Bar,
-    lineChart: Line
+    BarDemo,
+    LineDemo
   }
 })
 export default class Home extends Vue {
-  mounted () {
-    this.$refs['bar'].renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datasets: [
-        {
-          label: 'GitHub Commits',
-          backgroundColor: '#20a0ff',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-        }
-      ]
-    })
-    this.$refs['line'].renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'Data One',
-          fill: false,
-          borderColor: '#20a0ff',
-          backgroundColor: '#20a0ff',
-          data: [40, 39, 10, 40, 39, 80, 40]
-        },
-        {
-          label: 'Data Two',
-          fill: false,
-          borderColor: '#f87979',
-          backgroundColor: '#f87979',
-          data: [37, 14, 49, 28, 92, 58, 51]
-        }
-      ]
-    }, {
-      tooltips: {
-        callbacks: {
-          label: (tooltipItem, data) => {
-            const item = data.datasets[tooltipItem.datasetIndex]
-            const desc = item.data[tooltipItem.index]
-            return 'Data is: ' + desc
-          }
-        }
-      }
-    })
-  }
 }
 </script>
 
 <style scoped lang="scss">
 .bar, .line {
-  width: 35%;
+  width: 40%;
   margin-top: 30px;
   position: absolute;
 }
 .bar {
-  left: 10%
+  left: 5%
 }
 .line {
-  left: 55%;
+  left: 53%;
 }
 .banner {
   text-align: center;
@@ -102,7 +62,7 @@ export default class Home extends Vue {
   background-image: linear-gradient(180deg, #0d1a44 13%, #3c4f91 56%, #5fc1e4 100%);
 }
 .banner-desc {
-  padding-top: 110px;
+  padding-top: 80px;
   padding-left: 30px;
   font-size: 46px;
   position: relative;
