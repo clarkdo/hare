@@ -1,4 +1,4 @@
-import webpack from 'webpack'
+const webpack = require('webpack')
 module.exports = {
   srcDir: 'client/',
   dev: (process.env.NODE_ENV !== 'production'),
