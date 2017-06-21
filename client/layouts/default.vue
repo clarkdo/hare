@@ -15,14 +15,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import Navbar from '~components/Navbar'
-import Footer from '~components/Footer'
 import Headbar from '~components/Headbar'
 
 export default {
   components: {
     Navbar,
-    Headbar,
-    foot: Footer
+    Headbar
   },
   computed: {
     colSize () {

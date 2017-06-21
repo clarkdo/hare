@@ -72,6 +72,8 @@ export default class Navbar extends Vue {
 
 <style lang="scss" scoped>
 .navbar {
+  position: fixed;
+  width: 16.66667%;
   height: 100%;
   z-index: 9999;
   .el-menu {

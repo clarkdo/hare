@@ -1,3 +1,4 @@
+import webpack from 'webpack'
 module.exports = {
   srcDir: 'client/',
   dev: (process.env.NODE_ENV !== 'production'),
@@ -45,10 +46,14 @@ module.exports = {
     vendor: [
       'axios',
       'element-ui',
+      'negotiator',
       'vue-class-component',
       'vuex-class',
       'vue-i18n',
-      'negotiator',
+      'vue-chartjs',
+      'moment',
+      'chart.js',
+      'lodash/fp/merge',
       'lodash/debounce'
     ],
     extractCSS: true,
@@ -57,7 +62,9 @@ module.exports = {
       app: 'hare.[chunkhash:12].js',
       css: 'hare.[contenthash:12].css'
     },
-    plugins: []
+    plugins: [
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/)
+    ]
   },
   /*
   ** Generate config
