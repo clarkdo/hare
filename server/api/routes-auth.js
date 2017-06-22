@@ -64,7 +64,7 @@ router.get('/captcha', async function getAuth (ctx, next) {
 
 router.post('/platform/uaano/oauth/token', async function getToken (ctx, next) {
   ctx.body = {
-    'access_toke': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+    'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
       'eyJhdWQiOlsiYmFzIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic' +
       '2NvcGUiOlsicmVhZCJdLCJleHAiOjk5OTk5OTk5OTk5OTksIn' +
       'VzZXJJZCI6IjQwMjg4YjdlNWJjZDc3MzMwMTViY2Q3ZmQ3MjI' +
