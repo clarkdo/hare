@@ -64,13 +64,14 @@ router.get('/captcha', async function getAuth (ctx, next) {
 
 router.post('/platform/uaano/oauth/token', async function getToken (ctx, next) {
   ctx.body = {
-    'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-      'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +
-      'nNjb3BlIjpbInJlYWQiXSwiZXhwIjoxNDk0MjY4ODY0LCJ1c2' +
-      'VySWQiOiIxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianR' +
-      'pIjoiN2FkN2VjYzUtNTdmNy00MmZlLThmZmQtYjUxMTJkNTZm' +
-      'M2NhIiwiY2xpZW50X2lkIjoidGF0LWNsaWVudCJ9.' +
-      'ovWxqcBptquNR5QUBz1it2Z3Fr0OxMvWsnXHIHTcliI'
+    'access_toke': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+      'eyJhdWQiOlsiYmFzIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic' +
+      '2NvcGUiOlsicmVhZCJdLCJleHAiOjk5OTk5OTk5OTk5OTksIn' +
+      'VzZXJJZCI6IjQwMjg4YjdlNWJjZDc3MzMwMTViY2Q3ZmQ3MjI' +
+      'wMDAxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianRpIjoi' +
+      'NzJlYzNjNDMtMDMwYS00MWVkLWFiYjItYjdhMjY5NTA2OTIzI' +
+      'iwiY2xpZW50X2lkIjoiYmFzLWNsaWVudCJ9.' +
+      'uwywziNetHyfSdiqcJt6XUGy4V_WYHR4K6l7OP2VB9I'
   }
 })
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
