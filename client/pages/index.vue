@@ -7,6 +7,8 @@
         <h2>Hare</h2>
         <p>Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js</p>
       </div>
+      <bar-demo ref="bar" :width="500" :height="400" class="bar"></bar-demo>
+      <line-demo ref="line" :width="500" :height="400" class="line"></line-demo>
     </div>
   </div>
 </template>
@@ -15,10 +17,14 @@
 import Vue from 'vue'
 import Component from 'class-component'
 import ForkThis from '~components/ForkThis'
+import BarDemo from '~components/charts/BarDemo'
+import LineDemo from '~components/charts/LineDemo'
 
 @Component({
   components: {
-    ForkThis
+    ForkThis,
+    BarDemo,
+    LineDemo
   }
 })
 export default class Home extends Vue {
@@ -26,11 +32,21 @@ export default class Home extends Vue {
 </script>
 
 <style scoped lang="scss">
+.bar, .line {
+  width: 40%;
+  margin-top: 30px;
+  position: absolute;
+}
+.bar {
+  left: 5%
+}
+.line {
+  left: 53%;
+}
 .banner {
   text-align: center;
   height: 100%;
   color: #fff;
-  margin-bottom: 130px;
   .container {
     padding: 0 20px;
     position: relative;
@@ -46,7 +62,7 @@ export default class Home extends Vue {
   background-image: linear-gradient(180deg, #0d1a44 13%, #3c4f91 56%, #5fc1e4 100%);
 }
 .banner-desc {
-  padding-top: 110px;
+  padding-top: 80px;
   padding-left: 30px;
   font-size: 46px;
   position: relative;

@@ -22,6 +22,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bunyan": "^1.8.10",
+    "chart.js": "^2.6.0",
     "cross-env": "^3.2.4",
     "element-ui": "^1.3.6",
     "https-proxy-agent": "^1.0.0",
@@ -32,6 +33,7 @@
     "koa": "^2.0.0",
     "koa-body": "^1.6.0",
     "koa-bunyan": "^1.0.0",
+    "koa-bunyan-logger": "^2.0.0",
     "koa-compose": "^3.2.1",
     "koa-compress": "^2.0.0",
     "koa-proxies": "^0.3.0",
@@ -39,10 +41,12 @@
     "koa-session": "^4.0.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
+    "moment": "^2.18.1",
     "negotiator": "^0.6.1",
     "normalize.css": "^5.0.0",
     "nuxt": "^1.0.0-alpha.4",
     "svg-captcha": "^1.3.4",
+    "vue-chartjs": "^2.6.5",
     "vue-class-component": "^5.0.1",
     "vuex-class": "^0.2.0",
     "xmlify": "^1.1.0"

@@ -2,7 +2,8 @@ import Koa from 'koa'
 import Nuxt from 'nuxt'
 import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
-import koaLogger from 'koa-bunyan'
+import koaBunyan from 'koa-bunyan'
+import koaLogger from 'koa-bunyan-logger'
 import body from 'koa-body'// body parser
 import compose from 'koa-compose'// middleware composer
 import compress from 'koa-compress'// HTTP compression
@@ -33,7 +34,7 @@ async function start () {
   const access = {
     type: 'rotating-file',
     path: `${logDir}hare-access.log`,
-    level: 'trace',
+    level: 'debug',
     period: '1d',
     count: 4
   }
@@ -48,7 +49,8 @@ async function start () {
     name: 'hare',
     streams: [access, error]
   })
-  app.use(koaLogger(logger, {}))
+  app.use(koaBunyan(logger, {level: 'debug'}))
+  app.use(koaLogger(logger))
 
   // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
   // separate sub-apps can be used for modularisation of a large system, for different login/access
