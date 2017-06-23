@@ -14,16 +14,16 @@
         <el-col :offset="11" :span="3">
           <p v-if="authUser">
             <el-tooltip :content="authUser.user_name">
-              <img src="~assets/img/avatar.svg" />
+              <img src="~assets/img/avatar.svg"></img>
             </el-tooltip>
             {{authUser.user_name}}
           </p>
         </el-col>
         <el-col :span="3">
-          <p><img src="~assets/img/pwd.svg" /> {{$t("head.pwd")}}</p>
+          <p><img src="~assets/img/pwd.svg"></img> {{$t("head.pwd")}}</p>
         </el-col>
         <el-col :span="2">
-          <p @click="logout"><img src="~assets/img/exit.svg" /> {{$t("head.exit")}}</p>
+          <p @click="logout"><img src="~assets/img/exit.svg"></img> {{$t("head.exit")}}</p>
         </el-col>
       </el-row>
     </header>
