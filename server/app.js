@@ -19,8 +19,8 @@ import proxy from 'koa-proxies'
 // Start nuxt.js
 async function start () {
   const isWin = /^win/.test(process.platform)
-  const host = process.env.HOST || '127.0.0.1'
-  const port = process.env.PORT || '3000'
+  const host = constants.HOST
+  const port = constants.PORT
   const debug = debugModule('app')
   const app = new Koa()
 

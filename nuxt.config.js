@@ -34,14 +34,6 @@ module.exports = {
     },
     extend (config, { dev, isClient }) {
       config.resolve.alias['class-component'] = '~plugins/class-component'
-      // const PostCompile = require('post-compile-webpack-plugin')
-      // dev && isClient && config.plugins.push(new PostCompile(() => {
-      //   if (process.env.NODE_ENV !== 'production') {
-      //     let host = process.env.HOST || '127.0.0.1'
-      //     let port = process.env.PORT || '3000'
-      //     require('opn')(`http://${host}:${port}`)
-      //   }
-      // }))
     },
     vendor: [
       'axios',
@@ -86,7 +78,7 @@ module.exports = {
   plugins: [
     '~plugins/element-ui',
     '~plugins/i18n',
-    '~plugins/auth-header'
+    '~plugins/axios-defaults'
   ],
 
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
