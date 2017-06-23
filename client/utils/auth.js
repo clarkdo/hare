@@ -4,8 +4,7 @@ import jwtDecode from 'jwt-decode'
 
 export const setToken = (token) => {
   if (process.SERVER_BUILD) return
-  // TODO: confirm if exp  is a NumericDate
-  let exp = new Date().getTime() + jwtDecode(token).exp
+  let exp = jwtDecode(token).exp
   window.localStorage.setItem('token', JSON.stringify({
     value: token,
     exp: exp
