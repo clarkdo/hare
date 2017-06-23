@@ -13,7 +13,7 @@ const router = koaRouter({
 
 var request = axios.create({
   baseURL: constants.LB_ADDR,
-  timeout: 1000,
+  timeout: 5000,
   headers: {
     'Authorization': 'Basic YmFzLWNsaWVudDpYMmNYeW1nWkRrRkE3RWR0',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

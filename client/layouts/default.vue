@@ -2,11 +2,11 @@
   <div class="app">
     <el-row class='main'>
       <el-col :span="4" :class="{hide: isMenuHidden, navCol: true}">
-        <navbar :authUser="authUser"/>
+        <navbar :authUser="authUser"></navbar>
       </el-col>
       <el-col :span="colSize" class="content">
-        <el-row><headbar/></el-row>
-        <el-row><nuxt/></el-row>
+        <el-row><headbar></headbar></el-row>
+        <el-row><nuxt></nuxt></el-row>
       </el-col>
     </el-row>
   </div>
