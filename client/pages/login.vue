@@ -102,9 +102,9 @@ img.bg {
   width: 100%;
   height: auto;
   min-width: 760px;
-  max-width: 1440px;
+  // max-width: 1440px;
   min-height: 695px;
-  max-height: 800px;
+  // max-height: 800px;
   position: fixed;
 }
 .header {
