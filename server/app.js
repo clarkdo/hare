@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import Nuxt from 'nuxt'
+import axios from 'axios'
 import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
 import koaBunyan from 'koa-bunyan'
@@ -76,6 +77,7 @@ async function start () {
         console.log(`Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`)
         app.use(proxy(proxyItem.path, proxyItem))
       }
+      axios.defaults.baseURL = `http://127.0.0.1:${port}`
     }
   }
   app.use(async (ctx, next) => {

@@ -1,3 +1,5 @@
 import { setAuthHeader } from '~/utils/auth'
 
-setAuthHeader({})
+export default ({ req }) => {
+  setAuthHeader(req)
+}
