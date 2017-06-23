@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <fork-this/>
+    <fork-this></fork-this>
     <div class="banner-sky"></div>
     <div class="container">
       <div class="banner-desc">
