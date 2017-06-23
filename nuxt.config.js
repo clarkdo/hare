@@ -86,7 +86,7 @@ module.exports = {
   plugins: [
     '~plugins/element-ui',
     '~plugins/i18n',
-    {src: '~plugins/auth-header', ssr: false}
+    '~plugins/auth-header'
   ],
 
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options

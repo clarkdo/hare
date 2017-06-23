@@ -1,6 +1,9 @@
 import axios from 'axios'
-import cookie from 'js-cookie'
+import cookie from 'cookie'
+import cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
+
+const inBrowser = typeof window !== 'undefined'
 
 export const setToken = (token) => {
   if (process.SERVER_BUILD) return
@@ -9,16 +12,16 @@ export const setToken = (token) => {
     value: token,
     exp: exp
   }))
-  cookie.set('jwt', token, { expires: new Date(exp) })
-  setAuthHeader({})
+  cookies.set('jwt', token, { expires: new Date(exp) })
+  setAuthHeader()
 }
 
 export const unsetToken = () => {
   if (process.SERVER_BUILD) return
   window.localStorage.removeItem('token')
-  cookie.remove('jwt')
+  cookies.remove('jwt')
   window.localStorage.setItem('logout', Date.now())
-  setAuthHeader({})
+  setAuthHeader()
 }
 
 export const getUserFromToken = (token) => {
@@ -40,7 +43,9 @@ export const getTokenFromSession = (req) => {
 }
 
 export const getTokenFromCookie = (req) => {
-  return cookie.get('jwt')
+  const cookieStr = inBrowser ? document.cookie : req.headers.cookie
+  const cookies = cookie.parse(cookieStr || '') || {}
+  return cookies.jwt
 }
 
 export const getUserFromLocalStorage = () => {
@@ -59,8 +64,8 @@ export const getTokenFromLocalStorage = () => {
   }
 }
 
-export const setAuthHeader = ({isServer = false, req}) => {
-  let jwt = isServer ? getTokenInSSR(req) : getTokenFromLocalStorage()
+export const setAuthHeader = (req) => {
+  let jwt = inBrowser ? getTokenFromLocalStorage() : getTokenInSSR(req)
   if (jwt) {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt
   } else {
