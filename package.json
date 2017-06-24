@@ -38,7 +38,7 @@
     "koa-compress": "^2.0.0",
     "koa-proxies": "^0.3.0",
     "koa-router": "^7.1.1",
-    "koa-session": "^4.0.0",
+    "koa-session": "^5.3.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "moment": "^2.18.1",
@@ -86,6 +86,6 @@
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
-    "node": ">=6.10.0"
+    "node": ">=7.6.0"
   }
 }
