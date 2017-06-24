@@ -12,7 +12,9 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "ava --verbose --serial "
+    "test": "ava --verbose --serial ",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "ava": {
     "require": [
@@ -49,7 +51,8 @@
     "vue-chartjs": "^2.6.5",
     "vue-class-component": "^5.0.1",
     "vuex-class": "^0.2.0",
-    "xmlify": "^1.1.0"
+    "xmlify": "^1.1.0",
+    "snyk": "^1.34.4"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -82,5 +85,6 @@
   },
   "engines": {
     "node": ">=6.10.0"
-  }
+  },
+  "snyk": true
 }
