@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import Nuxt from 'nuxt'
+import axios from 'axios'
 import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
 import koaBunyan from 'koa-bunyan'
@@ -18,8 +19,8 @@ import proxy from 'koa-proxies'
 // Start nuxt.js
 async function start () {
   const isWin = /^win/.test(process.platform)
-  const host = process.env.HOST || '127.0.0.1'
-  const port = process.env.PORT || '3000'
+  const host = constants.HOST
+  const port = constants.PORT
   const debug = debugModule('app')
   const app = new Koa()
 
@@ -76,6 +77,7 @@ async function start () {
         console.log(`Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`)
         app.use(proxy(proxyItem.path, proxyItem))
       }
+      axios.defaults.baseURL = `http://127.0.0.1:${port}`
     }
   }
   app.use(async (ctx, next) => {
