@@ -6,13 +6,15 @@
   "private": true,
   "scripts": {
     "dev": "cross-env DEBUG=nuxt:*,app nodemon -w server -w nuxt.config.js --exec babel-node server/app.js",
-    "build": "nuxt build && webpack --config server/webpack.config.babel.js",
+    "test": "npm run lint && npm run build:client && ava --verbose --serial ",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "build": "npm run build:client && build:server",
+    "build:client": "nuxt build",
+    "build:server": "webpack --config server/webpack.config.babel.js",
     "start": "cross-env NODE_ENV=production node .nuxt/dist/server-app.*.js",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint",
-    "test": "ava --verbose --serial "
+    "precommit": "npm run lint"
   },
   "ava": {
     "require": [
