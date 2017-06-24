@@ -31,7 +31,7 @@ router.post('/login', async function getAuth (ctx) {
   try {
     const response = await request.post('/platform/uaano/oauth/token', querystring.stringify({
       username: user.userName,
-      password: new Buffer(user.password).toString('base64'),
+      password: Buffer.from(user.password).toString('base64'),
       grant_type: 'password'
     }))
     ctx.body = Object.assign({}, response.data)
