@@ -1,6 +1,5 @@
 import test from 'ava'
-import Nuxt from 'nuxt'
-import { resolve } from 'path'
+import createNuxt from './helpers/create-nuxt'
 
 // We keep the nuxt and server instance
 // So we can close them at the end of the test
@@ -11,12 +10,7 @@ const headers = {
 }
 // Init Nuxt.js and create a server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
-  const rootDir = resolve(__dirname, '..')
-  let config = require(resolve(rootDir, 'nuxt.config.js'))
-  config.rootDir = rootDir // project folder
-  config.dev = false // production build
-  nuxt = new Nuxt(config)
-  await nuxt.build()
+  nuxt = createNuxt()
   server = new nuxt.Server(nuxt)
   server.listen(4000, 'localhost')
 })

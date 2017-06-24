@@ -32,10 +32,11 @@ test_script:
   # Output useful info for debugging.
   - node --version
   - yarn --version
-  - yarn run lint
+  # - yarn run lint
   # run tests
   - yarn run test
 
-build_script:
-  # run build
-  - yarn run build
+# build_script:
+#   # run build
+#   - yarn run build
+build: off
