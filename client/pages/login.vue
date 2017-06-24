@@ -73,20 +73,20 @@ export default class Login extends Vue {
     this.$refs.user.validate((valid) => {
       if (valid) {
         this.$store.dispatch('login', this.user)
-        .then(() => {
-          this.$router.push('/')
-        })
-        .catch((e) => {
-          this.$message.warning(e.message)
-        })
+          .then(() => {
+            this.$router.push('/')
+          })
+          .catch((e) => {
+            this.$message.warning(e.message)
+          })
       }
     })
   }
   getCaptcha () {
     axios.get('/hpi/captcha')
-    .then((res) => {
-      this.captchaSvg = res.data
-    })
+      .then((res) => {
+        this.captchaSvg = res.data
+      })
   }
 
   refreshCaptcha = debounce(this.getCaptcha, 500)
