@@ -13,7 +13,6 @@ max_jobs: 4
 # Test against the latest version of this Node.js version
 environment:
   matrix:
-    - nodejs_version: "6"
     - nodejs_version: "7"
     - nodejs_version: "8"
 
@@ -33,10 +32,11 @@ test_script:
   # Output useful info for debugging.
   - node --version
   - yarn --version
-  - yarn run lint
+  # - yarn run lint
   # run tests
   - yarn run test
 
-build_script:
-  # run build
-  - yarn run build
+# build_script:
+#   # run build
+#   - yarn run build
+build: off

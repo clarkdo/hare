@@ -1,7 +1,6 @@
 import test from 'ava'
-import Nuxt from 'nuxt'
 import moxios from 'moxios'
-import { resolve } from 'path'
+import createNuxt from './helpers/create-nuxt'
 
 // We keep the nuxt and server instance
 // So we can close them at the end of the test
@@ -21,23 +20,18 @@ const req = {
         'ovWxqcBptquNR5QUBz1it2Z3Fr0OxMvWsnXHIHTcliI'
   }
 }
-// Init Nuxt.js and create a server listening on localhost:4000
+
+// Init nuxt.js and create server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
-  const rootDir = resolve(__dirname, '..')
-  let config = require(resolve(rootDir, 'nuxt.config.js'))
-  config.rootDir = rootDir // project folder
-  config.dev = false // production build
-  // delete config.router.middleware
-  nuxt = new Nuxt(config)
-  await nuxt.build()
-  server = new nuxt.Server(nuxt)
-  server.listen(4000, 'localhost')
   // mock axios
   moxios.install()
   moxios.stubRequest('/hpi/captcha', {
     status: 200,
     data: '验证码Mock'
   })
+  nuxt = createNuxt()
+  server = new nuxt.Server(nuxt)
+  server.listen(4000, 'localhost')
 })
 
 // Example of testing only generated html

@@ -42,26 +42,26 @@ export const actions = {
       password,
       captcha
     })
-    .then((res) => {
-      let token = res.data['access_token']
-      setToken(token)
-      commit('SET_USER', getUserFromToken(token))
-    })
-    .catch((error) => {
-      let message = error.message
-      if (error.response.data) {
-        message = (error.response.data.message || message)
-      }
-      throw new Error(message)
-    })
+      .then((res) => {
+        let token = res.data['access_token']
+        setToken(token)
+        commit('SET_USER', getUserFromToken(token))
+      })
+      .catch((error) => {
+        let message = error.message
+        if (error.response.data) {
+          message = (error.response.data.message || message)
+        }
+        throw new Error(message)
+      })
   },
   logout ({ commit }, callback) {
     return axios.post('/hpi/logout')
-    .then(() => {
-      commit('SET_USER', null)
-      unsetToken()
-      callback()
-    })
+      .then(() => {
+        commit('SET_USER', null)
+        unsetToken()
+        callback()
+      })
   },
   toggleMenu ({ commit }) {
     commit('SET_MENU_HIDDEN')
