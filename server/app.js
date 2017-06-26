@@ -77,9 +77,10 @@ async function start () {
         console.log(`Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`)
         app.use(proxy(proxyItem.path, proxyItem))
       }
-      axios.defaults.baseURL = `http://127.0.0.1:${port}`
     }
   }
+  axios.defaults.baseURL = `http://127.0.0.1:${port}`
+
   app.use(async (ctx, next) => {
     await next()
     if (ctx.state.subapp !== constants.API) {
