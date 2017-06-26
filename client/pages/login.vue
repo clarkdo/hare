@@ -67,18 +67,16 @@ export default class Login extends Vue {
   }
   login () {
     this.logging = true
-    setTimeout(function () {
-      this.logging = false
-    }.bind(this), 1000)
-    this.$refs.user.validate((valid) => {
-      if (valid) {
-        this.$store.dispatch('login', this.user)
-          .then(() => {
-            this.$router.push('/')
-          })
-          .catch((e) => {
-            this.$message.warning(e.message)
-          })
+    this.$refs.user.validate(async (valid) => {
+      try {
+        if (valid) {
+          await this.$store.dispatch('login', this.user)
+          this.$router.push('/')
+        }
+      } catch (e) {
+        this.$message.warning(e.message)
+      } finally {
+        this.logging = false
       }
     })
   }
