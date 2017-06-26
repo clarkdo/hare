@@ -31,42 +31,9 @@ import Component from 'class-component'
 @Component({
   props: {
     authUser: Object
-  },
-  watch: {
-    '$route.path': {
-      immediate: true,
-      handler () {
-        this.isHome = /^(home|index)/.test(this.$route.name)
-        this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${this.isHome ? '0' : '1'})`
-      }
-    }
   }
 })
 export default class Navbar extends Vue {
-  isHome = false
-  scrolled = false
-  headerStyle = { backgroundColor: 'rgba(32, 160, 255, 0)' }
-  mounted () {
-    function scroll (fn) {
-      window.addEventListener('scroll', () => {
-        fn()
-      }, false)
-    }
-    scroll(() => {
-      let top = (document.documentElement.scrollTop || document.body.scrollTop)
-      if (this.isHome) {
-        const threshold = 200
-        let alpha = Math.min(top, threshold) / threshold
-        this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${alpha})`
-        this.scrolled = false
-      } else {
-        this.scrolled = top > 0
-        if (this.scrolled) {
-          this.headerStyle.backgroundColor = '#14afff'
-        }
-      }
-    })
-  }
 }
 </script>
 
