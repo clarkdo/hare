@@ -62,6 +62,46 @@ router.get('/captcha', async function getAuth (ctx, next) {
   ctx.body = captcha.data
 })
 
+router.get('/menus', async function getMenus (ctx) {
+  ctx.status = 200
+  ctx.type = 'application/json'
+  ctx.body = [
+    {
+      id: '1',
+      name: 'nav.home',
+      url: '/',
+      icon: 'el-icon-menu'
+    }, {
+      id: '2',
+      name: 'nav.activity',
+      icon: 'el-icon-edit',
+      children: [
+        {
+          id: '2-1',
+          name: 'nav.demo',
+          url: '/demo',
+          icon: 'el-icon-share'
+        }, {
+          id: '2-2',
+          name: 'nav.list',
+          url: '/marketing/activity',
+          icon: 'el-icon-view'
+        }, {
+          id: '2-3',
+          name: 'nav.create',
+          url: '/marketing/activity/create',
+          icon: 'el-icon-message'
+        }
+      ]
+    }, {
+      id: '3',
+      name: 'nav.about',
+      url: '/about',
+      icon: 'el-icon-setting'
+    }
+  ]
+})
+
 router.post('/platform/uaano/oauth/token', async function getToken (ctx, next) {
   ctx.body = {
     'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +

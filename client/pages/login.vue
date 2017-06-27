@@ -5,7 +5,7 @@
     </header>
     <img src="~assets/img/login-bg.png" alt="" class="bg">
     <el-card>
-      <el-form :model="user" ref="user">
+      <el-form :model="user" ref="user" @keyup.enter.native='login'>
         <el-form-item prop="userName" :rules="[{ required: true, message: $t('login.userRequired')}]">
           <el-col :span="24">
             <el-input v-model="user.userName" :placeholder="$t('login.userPlaceholder')"></el-input>
@@ -21,7 +21,7 @@
               <el-input v-model="user.captcha" :placeholder="$t('login.captchaPlaceholder')"></el-input>
             </el-col>
             <el-col :offset="1" :span="9">
-              <div v-html="captchaSvg" @click='refreshCaptcha()' class="captcha"></div>
+              <div v-html="captchaSvg" @click='refreshCaptcha' class="captcha"></div>
             </el-col>
         </el-form-item>
         <el-row>
@@ -67,18 +67,16 @@ export default class Login extends Vue {
   }
   login () {
     this.logging = true
-    setTimeout(function () {
-      this.logging = false
-    }.bind(this), 1000)
-    this.$refs.user.validate((valid) => {
-      if (valid) {
-        this.$store.dispatch('login', this.user)
-          .then(() => {
-            this.$router.push('/')
-          })
-          .catch((e) => {
-            this.$message.warning(e.message)
-          })
+    this.$refs.user.validate(async (valid) => {
+      try {
+        if (valid) {
+          await this.$store.dispatch('login', this.user)
+          this.$router.push('/')
+        }
+      } catch (e) {
+        this.$message.warning(e.message)
+      } finally {
+        this.logging = false
       }
     })
   }

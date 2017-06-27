@@ -1,7 +1,7 @@
 # ![Logo](http://clarkdo.github.io/public/img/hare-logo-blue.svg) Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js
 
-[![Travis Build Status](https://travis-ci.org/clarkdo/hare.svg?branch=master)](https://travis-ci.org/clarkdo/hare)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/16eua6xnlnwxqomp?svg=true)](https://ci.appveyor.com/project/clarkdo/hare)
+[![Max OSX and Linux](https://travis-ci.org/clarkdo/hare.svg?branch=master)](https://travis-ci.org/clarkdo/hare)
+[![Windows](https://ci.appveyor.com/api/projects/status/16eua6xnlnwxqomp?svg=true)](https://ci.appveyor.com/project/clarkdo/hare)
 [![Vulnerabilities](https://snyk.io/test/github/clarkdo/hare/badge.svg)](https://snyk.io/test/github/clarkdo/hare)
 [![Issues](https://img.shields.io/github/issues/clarkdo/hare.svg)](https://github.com/clarkdo/hare/issues)
 [![Stars](https://img.shields.io/github/stars/clarkdo/hare.svg)](https://github.com/clarkdo/hare/stargazers)

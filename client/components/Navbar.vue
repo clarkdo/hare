@@ -1,70 +1,60 @@
 <template>
   <div class="navbar">
-    <el-menu class="el-menu-demo" default-active="1" theme="dark">
+    <el-menu v-if="menus && menus.length" class="el-menu-demo"
+      :default-active="$route.path" theme="dark">
       <header>
           <img src="~assets/img/logo.svg" alt="Element">
       </header>
-      <nuxt-link to="/" exact><el-menu-item index="1"><i class="el-icon-message"></i>{{$t("nav.home")}}</el-menu-item></nuxt-link>
-      <el-submenu index="2" v-if="authUser" >
-        <template slot="title"><i class="el-icon-edit"></i>{{$t("nav.activity")}}</template>
-        <nuxt-link to="/demo" exact>
-          <el-menu-item index="2-1">{{$t("nav.demo")}}</el-menu-item>
+      <div v-for="menu in menus" :key="menu.id">
+        <el-submenu v-if="menu.children && menu.children.length" :index="menu.url || menu.name">
+          <template slot="title"><i v-if="menu.icon" :class="menu.icon"></i>{{menu.name}}</template>
+          <nuxt-link v-for="subMenu in menu.children" :key="subMenu.id" :to="subMenu.url" exact>
+            <el-menu-item :index="subMenu.url || subMenu.name">
+              <i v-if="subMenu.icon" :class="subMenu.icon"></i>{{subMenu.name}}
+            </el-menu-item>
+          </nuxt-link>
+        </el-submenu>
+        <nuxt-link v-else :to="menu.url" exact>
+          <el-menu-item :index="menu.url || menu.name">
+            <i v-if="menu.icon" :class="menu.icon"></i>{{menu.name}}
+            </el-menu-item>
         </nuxt-link>
-        <nuxt-link to="/marketing/activity/" exact>
-          <el-menu-item index="2-2">{{$t("nav.list")}}</el-menu-item>
-        </nuxt-link>
-        <nuxt-link to="/marketing/activity/create" exact>
-          <el-menu-item index="2-3">{{$t("nav.create")}}</el-menu-item>
-        </nuxt-link>
-      </el-submenu>
-      <nuxt-link v-if="authUser" to="/about" exact>
-        <el-menu-item index="3" v-if="authUser"><i class="el-icon-menu"></i>{{$t("nav.about")}}</el-menu-item>
-      </nuxt-link>
+      </div>
     </el-menu>
+    <ul class="el-menu el-menu-demo el-menu--dark">
+      <header>
+          <img src="~assets/img/logo.svg" alt="Element">
+      </header>
+    </ul>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import Component from 'class-component'
+import axios from 'axios'
+import Component, {Getter, namespace } from 'class-component'
 
-@Component({
-  props: {
-    authUser: Object
-  },
-  watch: {
-    '$route.path': {
-      immediate: true,
-      handler () {
-        this.isHome = /^(home|index)/.test(this.$route.name)
-        this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${this.isHome ? '0' : '1'})`
-      }
+const MenuGetter = namespace('menu', Getter)
+
+@Component
+export default class Navbar extends Vue {
+  @MenuGetter menus
+
+  async beforeMount () {
+    let {data: menus} = await axios.get('/hpi/menus')
+    if (Array.isArray(menus) && menus.length) {
+      this.$store.dispatch('menu/addAll', this.translateMenus(menus))
     }
   }
-})
-export default class Navbar extends Vue {
-  isHome = false
-  scrolled = false
-  headerStyle = { backgroundColor: 'rgba(32, 160, 255, 0)' }
-  mounted () {
-    function scroll (fn) {
-      window.addEventListener('scroll', () => {
-        fn()
-      }, false)
-    }
-    scroll(() => {
-      let top = (document.documentElement.scrollTop || document.body.scrollTop)
-      if (this.isHome) {
-        const threshold = 200
-        let alpha = Math.min(top, threshold) / threshold
-        this.headerStyle.backgroundColor = `rgba(32, 160, 255, ${alpha})`
-        this.scrolled = false
-      } else {
-        this.scrolled = top > 0
-        if (this.scrolled) {
-          this.headerStyle.backgroundColor = '#14afff'
-        }
+
+  translateMenus (menus) {
+    return menus.map((menu) => {
+      const subMenus = menu.children
+      if (Array.isArray(subMenus) && subMenus.length) {
+        this.translateMenus(subMenus)
       }
+      menu.name = this.$t(menu.name || '')
+      return menu
     })
   }
 }

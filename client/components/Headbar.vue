@@ -1,10 +1,9 @@
 <template>
   <div class="headbar">
-    <!--<header class="header" ref="header" :style="headerStyle" :class="{'scrolled': scrolled}">-->
     <header class="header" ref="header">
       <el-row>
         <el-col :span="5">
-          <div id="nav-icon" :class="{open: !isMenuHidden}" @click="toggleMenu()">
+          <div id="nav-icon" :class="{open: !isMenuHidden}" @click="toggleMenu">
             <span></span>
             <span></span>
             <span></span>
