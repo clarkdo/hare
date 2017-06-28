@@ -12,7 +12,7 @@ import Vue from 'vue'
 import NewActivity from '~components/activity/NewActivity'
 import Component, { Getter, namespace } from 'class-component'
 
-const ActivityGetter = namespace('marketing/activity/index', Getter)
+const ActivityGetter = namespace('examples/activity/index', Getter)
 
 // TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
@@ -20,7 +20,7 @@ const ActivityGetter = namespace('marketing/activity/index', Getter)
     NewActivity
   }
 })
-export default class Demo extends Vue {
+export default class Create extends Vue {
   @Getter authUser
   @ActivityGetter title
 

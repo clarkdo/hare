@@ -73,7 +73,7 @@
                   <el-date-picker :placeholder="$t('activity.holder.date')" v-model="formData.date1" style="width: 100%;"></el-date-picker>
                 </el-form-item>
               </el-col>
-            <el-col class="line" :span="2">-</el-col>
+            <el-col class="line" :span="1" :offset="1">-</el-col>
               <el-col :span="11">
                 <el-form-item prop="date2">
                   <el-time-picker :placeholder="$t('activity.holder.time')" v-model="formData.date2" style="width: 100%;"></el-time-picker>
@@ -90,12 +90,10 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :offset="4" :span="14">
-          <el-form-item>
-            <el-button type="primary" @click="submit('newActivity')">{{$t('activity.create')}}</el-button>
-            <el-button @click="reset('newActivity')">{{$t('activity.reset')}}</el-button>
-          </el-form-item>
-        </el-col>
+        <el-form-item>
+          <el-button type="primary" @click="submit('newActivity')">{{$t('activity.create')}}</el-button>
+          <el-button @click="reset('newActivity')">{{$t('activity.reset')}}</el-button>
+        </el-form-item>
       </el-row>
     </el-form>
   </div>
@@ -105,7 +103,7 @@
 import Vue from 'vue'
 import Component, { Getter, namespace } from 'class-component'
 
-const DemoGetter = namespace('demo', Getter)
+const ExampleGetter = namespace('examples/index', Getter)
 
 @Component({
   props: {
@@ -161,8 +159,8 @@ const DemoGetter = namespace('demo', Getter)
   }
 })
 export default class NewActivity extends Vue {
-  @DemoGetter labels
-  @DemoGetter organizers
+  @ExampleGetter labels
+  @ExampleGetter organizers
 
   submit (formName) {
     this.$refs[formName].validate((valid) => {
