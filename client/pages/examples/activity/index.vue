@@ -38,7 +38,7 @@ import Component from 'class-component'
     }
   }
 })
-export default class Demo extends Vue {
+export default class Example extends Vue {
   selections = []
 
   async asyncData ({ isServer }) {

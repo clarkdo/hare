@@ -1,16 +1,11 @@
 <template>
   <div>
     <div class="content" v-if="authUser">
-      <el-carousel :interval="50000" height="580px" indicator-position="outside">
-        <el-carousel-item>
-          <el-row>
-            <el-col :offset="4" :span="16">
-              <el-card>
-                Element 下拉框, 按钮, 计数器, 单选框演示 (此Vuex用法不推荐)
-              </el-card>
-            </el-col>
-          </el-row>
-          <div style="margin-top: 100px;"></div>
+      <el-row type="flex" justify="center" :gutter="0">
+        <el-card style="width:90%">
+          <div slot="header" class="clearfix">
+            <span>按钮, 计数器, 单选框 (此Vuex用法不推荐)</span>
+          </div>
           <el-row>
             <el-col :offset="2" :span="6">
               <p>食物: {{food}}</p>
@@ -22,10 +17,9 @@
               <p>城市: {{city}}</p>
             </el-col>
           </el-row>
-          <div style="margin-top: 15px;"></div>
           <el-row>
             <el-col :offset="2" :span="6">
-              <el-select v-model="$store.state.demo.food" placeholder="请选择">
+              <el-select v-model="$store.state.examples.index.food" placeholder="请选择">
                 <el-option
                   v-for="item in foods"
                   :key="item.label"
@@ -36,10 +30,10 @@
               </el-select>
             </el-col>
             <el-col :span="6">
-              <el-input-number v-model="$store.state.demo.num" :min="1" :max="10"></el-input-number>
+              <el-input-number v-model="$store.state.examples.index.num" :min="1" :max="10"></el-input-number>
             </el-col>
-            <el-col :span="6">
-              <el-radio-group v-model="$store.state.demo.city">
+            <el-col :span="8">
+              <el-radio-group v-model="$store.state.examples.index.city">
                 <el-radio-button
                   v-for="item in cities"
                   :key="item.value"
@@ -48,55 +42,43 @@
                   {{item.label}}
                 </el-radio-button>
               </el-radio-group>
-            </el-col>
-            <el-col :span="4">
-              <el-button @click="checkCity('GuangZhou')" type="primary">广州</el-button>
-              <el-button @click="checkCity('ShenZhen')" type="text">深圳</el-button>
-              <el-button @click="checkCity('ShangHai')">上海</el-button>
+              <el-button @click="checkCity('ShangHai')" type="text">&nbsp;&nbsp;上海</el-button>
             </el-col>
           </el-row>
-        </el-carousel-item>
-        <el-carousel-item>
-          <el-row>
-            <el-col :offset="4" :span="16">
-              <el-card>
-                Element 单选框, 多选框, 输入框, 多选下拉框演示
-              </el-card>
-            </el-col>
-          </el-row>
-          <div style="margin-top: 100px;"></div>
+        </el-card>
+      </el-row>
+      <el-row type="flex" justify="center" :gutter="0">
+        <el-card style="width:90%">
+          <div slot="header" class="clearfix">
+            <span>单选框, 多选框, 输入框, 多选下拉框 (此Vuex用法不推荐)</span>
+          </div>
           <el-row>
             <el-col :offset="2" :span="6">
-              <el-radio-group v-model="$store.state.demo.province">
+              <el-radio-group v-model="$store.state.examples.index.province">
                 <el-radio label="3">辽宁</el-radio>
                 <el-radio disabled label="6">浙江</el-radio>
                 <el-radio label="9">台湾</el-radio>
               </el-radio-group>
             </el-col>
             <el-col :offset="2" :span="12">
-              <el-checkbox-group v-model="$store.state.demo.district">
+              <el-checkbox-group v-model="$store.state.examples.index.district">
                 <el-checkbox label="2">中山区</el-checkbox>
                 <el-checkbox label="4">东城区</el-checkbox>
                 <el-checkbox label="6">松山区</el-checkbox>
                 <el-checkbox label="8" disabled>和平区</el-checkbox>
               </el-checkbox-group>
             </el-col>
-            <el-col :span="6">
-            </el-col>
-            <el-col :span="6">
-            </el-col>
           </el-row>
-          <div style="margin-top: 20px;"></div>
           <el-row>
             <el-col :offset="2" :span="6">
-              <el-input placeholder="请输入内容" v-model="$store.state.demo.website">
+              <el-input placeholder="请输入内容" v-model="$store.state.examples.index.website">
                 <template slot="prepend">Http://</template>
                 <template slot="append">.com</template>
               </el-input>
             </el-col>
             <el-col :offset="2" :span="6">
-              <el-input placeholder="请输入内容" v-model="$store.state.demo.restaurant">
-                <el-select class="input-sel" v-model="$store.state.demo.restoptions" slot="prepend" placeholder="请选择">
+              <el-input placeholder="请输入内容" v-model="$store.state.examples.index.restaurant">
+                <el-select class="input-sel" v-model="$store.state.examples.index.restoptions" slot="prepend" placeholder="请选择">
                   <el-option label="餐厅名" value="1"></el-option>
                   <el-option label="订单号" value="2"></el-option>
                   <el-option label="用户电话" value="3"></el-option>
@@ -105,7 +87,7 @@
               </el-input>
             </el-col>
             <el-col :offset="2" :span="6">
-              <el-select v-model="$store.state.demo.multiFood" multiple placeholder="请选择">
+              <el-select v-model="$store.state.examples.index.multiFood" multiple placeholder="请选择">
                 <el-option
                   v-for="item in foods"
                   :key="item.key"
@@ -116,19 +98,17 @@
               </el-select>
             </el-col>
           </el-row>
-        </el-carousel-item>
-        <el-carousel-item>
-          <el-row>
-            <el-col :offset="4" :span="16">
-              <el-card>
-                Element 表单, <el-button size="small" @click="popVisible = true">弹框</el-button> 演示
-              </el-card>
-            </el-col>
-          </el-row>
-          <div style="margin: 30px 0;"></div>
+        </el-card>
+      </el-row>
+      <el-row type="flex" justify="center" :gutter="0">
+        <el-card style="width:90%">
+          <div slot="header" class="clearfix">
+            <span style="line-height: 36px;">数据表单</span>
+            <el-button style="float: right;" type="primary" @click="popVisible=true">弹框</el-button>
+          </div>
           <new-activity :form-data="activity" ref="formActivity"></new-activity>
-        </el-carousel-item>
-      </el-carousel>
+        </el-card>
+      </el-row>
       <el-dialog title="新增活动" v-model="popVisible">
         <new-activity :form-data="activity" ref="popActivity"></new-activity>
       </el-dialog>
@@ -142,7 +122,7 @@ import { mapActions } from 'vuex'
 import NewActivity from '~components/activity/NewActivity'
 import Component, {Getter, namespace } from 'class-component'
 
-const DemoGetter = namespace('demo', Getter)
+const ExampleGetter = namespace('examples/index', Getter)
 
 // TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
@@ -150,24 +130,24 @@ const DemoGetter = namespace('demo', Getter)
     NewActivity
   },
   methods: {
-    ...mapActions('demo', [
+    ...mapActions('examples/index', [
       'checkCity'
     ])
   }
 })
 export default class Demo extends Vue {
   @Getter authUser
-  @DemoGetter num
-  @DemoGetter city
-  @DemoGetter province
-  @DemoGetter district
-  @DemoGetter food
-  @DemoGetter website
-  @DemoGetter restaurant
-  @DemoGetter restoptions
-  @DemoGetter multiFood
-  @DemoGetter foods
-  @DemoGetter cities
+  @ExampleGetter num
+  @ExampleGetter city
+  @ExampleGetter province
+  @ExampleGetter district
+  @ExampleGetter food
+  @ExampleGetter website
+  @ExampleGetter restaurant
+  @ExampleGetter restoptions
+  @ExampleGetter multiFood
+  @ExampleGetter foods
+  @ExampleGetter cities
 
   popVisible = false
   activity = {
@@ -188,16 +168,16 @@ export default class Demo extends Vue {
 
 <style lang="scss" scoped>
 .content {
-  padding-top: 20px;
-}
-.el-carousel .new-activity {
-  margin-left: 16.66667%;
-  width: 66.66667%;
+  margin-bottom: 35px;
+  .el-row {
+    margin-top: 35px;
+  }
+  .el-card .el-row {
+    margin-top: 20px;
+  }
+  .el-card .el-row:first-child {
+    margin-top: 0px;
+  }
 }
 </style>
 
-<style>
-.el-select.input-sel .el-input {
-  width: 110px;
-}
-</style>

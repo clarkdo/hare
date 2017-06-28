@@ -79,17 +79,17 @@ router.get('/menus', async function getMenus (ctx) {
         {
           id: '2-1',
           name: 'nav.demo',
-          url: '/demo',
+          url: '/examples',
           icon: 'el-icon-share'
         }, {
           id: '2-2',
           name: 'nav.list',
-          url: '/marketing/activity',
+          url: '/examples/activity',
           icon: 'el-icon-view'
         }, {
           id: '2-3',
           name: 'nav.create',
-          url: '/marketing/activity/create',
+          url: '/examples/activity/create',
           icon: 'el-icon-message'
         }
       ]
