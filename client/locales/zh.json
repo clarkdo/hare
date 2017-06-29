@@ -77,10 +77,10 @@
   },
   "nav": {
     "home": "首页",
-    "activity": "活动",
-    "demo": "示例",
-    "list": "活动列表",
-    "create": "活动创建",
+    "activity": "样例",
+    "demo": "Element 组件",
+    "list": "表格样例",
+    "create": "表单样例",
     "about": "关于"
   },
   "head": {

@@ -77,10 +77,10 @@
   },
   "nav": {
     "home": "Home",
-    "activity": "Activity",
-    "demo": "Demo",
-    "list": "List",
-    "create": "Create",
+    "activity": "Demo",
+    "demo": "Components",
+    "list": "Table List",
+    "create": "Creation Form",
     "about": "About"
   },
   "head": {
