@@ -23,6 +23,28 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row type="flex" justify="space-around">
+        <el-col :span="10">
+          <el-card>
+            <div slot="header" class="clearfix">
+              <span>Doughnut Chart</span>
+            </div>
+            <el-row>
+              <doughnut-demo :width="3" :height="2"></doughnut-demo>
+            </el-row>
+          </el-card>
+        </el-col>
+        <el-col :span="10">
+          <el-card>
+            <div slot="header" class="clearfix">
+              <span>Pie Chart</span>
+            </div>
+            <el-row>
+              <pie-demo :width="3" :height="2"></pie-demo>
+            </el-row>
+          </el-card>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -31,12 +53,16 @@
 import Vue from 'vue'
 import Component from 'class-component'
 import BarDemo from '~components/charts/BarDemo'
+import PieDemo from '~components/charts/PieDemo'
 import LineDemo from '~components/charts/LineDemo'
+import DoughnutDemo from '~components/charts/DoughnutDemo'
 
 @Component({
   components: {
     BarDemo,
-    LineDemo
+    PieDemo,
+    LineDemo,
+    DoughnutDemo
   }
 })
 export default class Charts extends Vue {
