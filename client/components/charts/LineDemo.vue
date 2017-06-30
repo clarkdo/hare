@@ -1,9 +1,9 @@
-<<script>
+<script>
 import Component from 'class-component'
 import { Line } from 'vue-chartjs'
 
 @Component
-export default class Home extends Line {
+export default class LineDemo extends Line {
   mounted () {
     this.renderChart({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
