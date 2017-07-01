@@ -91,6 +91,11 @@ router.get('/menus', async function getMenus (ctx) {
           name: 'nav.create',
           url: '/examples/activity/create',
           icon: 'el-icon-message'
+        }, {
+          id: '2-3',
+          name: 'nav.charts',
+          url: '/examples/charts',
+          icon: 'el-icon-picture'
         }
       ]
     }, {
