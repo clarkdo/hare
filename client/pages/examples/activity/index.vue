@@ -61,10 +61,6 @@ img {
   border-radius: 100px;
   margin: 15px 0;
 }
-.el-carousel .new-activity {
-  margin-left: 16.66667%;
-  width: 66.66667%;
-}
 </style>
 
 <style>
