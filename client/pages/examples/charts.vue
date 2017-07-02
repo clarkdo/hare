@@ -45,6 +45,19 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row type="flex" justify="space-around">
+        <el-col :span="10">
+          <el-card>
+            <div slot="header" class="clearfix">
+              <span>Reactive Chart</span>
+            </div>
+            <el-row>
+              <reactive-demo :width="3" :height="2"></reactive-demo>
+            </el-row>
+          </el-card>
+        </el-col>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -56,13 +69,15 @@ import BarDemo from '~components/charts/BarDemo'
 import PieDemo from '~components/charts/PieDemo'
 import LineDemo from '~components/charts/LineDemo'
 import DoughnutDemo from '~components/charts/DoughnutDemo'
+import ReactiveDemo from '~components/charts/ReactiveDemo'
 
 @Component({
   components: {
     BarDemo,
     PieDemo,
     LineDemo,
-    DoughnutDemo
+    DoughnutDemo,
+    ReactiveDemo
   }
 })
 export default class Charts extends Vue {
