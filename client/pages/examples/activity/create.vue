@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <div class="content" v-if="authUser">
-      <h2>{{$t(title)}}</h2>
-      <new-activity :form-data="activity" ref="popActivity"></new-activity>
-    </div>
+  <div class="content">
+    <el-row type="flex" justify="center" :gutter="0">
+      <el-card style="width:90%">
+        <div slot="header" class="clearfix">
+          <span>{{$t(title)}}</span>
+        </div>
+        <new-activity :form-data="activity" ref="popActivity"></new-activity>
+      </el-card>
+    </el-row>
   </div>
 </template>
 
@@ -21,7 +25,6 @@ const ActivityGetter = namespace('examples/activity/index', Getter)
   }
 })
 export default class Create extends Vue {
-  @Getter authUser
   @ActivityGetter title
 
   activity = {
@@ -42,25 +45,6 @@ export default class Create extends Vue {
 
 <style lang="scss" scoped>
 .content {
-  width: 70%;
-  margin-left: 15%;
-  text-align: center;
   padding-top: 20px;
-}
-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  margin: 15px 0;
-}
-.el-carousel .new-activity {
-  margin-left: 16.66667%;
-  width: 66.66667%;
-}
-</style>
-
-<style>
-.el-select.input-sel .el-input {
-  width: 110px;
 }
 </style>
