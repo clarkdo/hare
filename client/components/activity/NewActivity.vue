@@ -55,7 +55,7 @@
       </el-row>
       <el-row>
         <el-col :span="10">
-          <el-form-item :label="$t('activity.rate')" prop="rate" required>
+          <el-form-item :label="$t('activity.rate')" prop="rate">
             <el-rate v-model="formData.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
           </el-form-item>
         </el-col>
