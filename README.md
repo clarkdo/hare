@@ -58,6 +58,14 @@ $ yarn run generate
 $ yarn run analyze
 ```
 
+### Docker Dev
+
+``` bash
+# build image
+$ docker build -t hare-dev -f Dockerfile.dev ./
+$ docker run -d -p 3000:3000 --env HOST=0.0.0.0 hare-dev
+```
+
 Go to [http://localhost:8888](http://localhost:8888)
 
 ## Documentation
