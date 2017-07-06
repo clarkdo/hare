@@ -71,7 +71,7 @@ export default class Login extends Vue {
       try {
         if (valid) {
           await this.$store.dispatch('login', this.user)
-          this.$router.push('/')
+          this.$router.push(this.$route.query.page || '/')
         }
       } catch (e) {
         this.$message.warning(e.message)
