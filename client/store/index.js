@@ -34,7 +34,7 @@ export const getters = {
 }
 
 export const actions = {
-  nuxtServerInit ({ commit }, { req: { session } }) {
+  nuxtServerInit ({ commit }, { req }) {
   },
   login ({ commit }, { userName, password, captcha }) {
     return axios.post('hpi/login', {
@@ -56,7 +56,7 @@ export const actions = {
       })
   },
   logout ({ commit }, callback) {
-    return axios.post('/hpi/logout')
+    return axios.post('//hpi/logout')
       .then(() => {
         commit('SET_USER', null)
         unsetToken()
