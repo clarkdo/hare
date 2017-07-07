@@ -5,7 +5,7 @@ import Negotiator from 'negotiator'
 Vue.use(VueI18n)
 
 export default ({ app, store, isServer, req }) => {
-  if (isServer) {
+  if (isServer && req) {
     const negotiator = new Negotiator(req)
     const lang = negotiator.language(store.state.locales)
     store.commit('SET_LANG', lang || 'zh')
