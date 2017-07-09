@@ -103,6 +103,30 @@
       <el-row type="flex" justify="center" :gutter="0">
         <el-card style="width:90%">
           <div slot="header" class="clearfix">
+            <span>级联选择器, 开关, 滑块</span>
+          </div>
+          <el-row>
+            <el-col :offset="2" :span="6">
+              <el-cascader :options="organizers" change-on-select></el-cascader>
+            </el-col>
+            <el-col :offset="2" :span="6">
+              Switch:
+              <el-tooltip :content="'Switch value: ' + switcher" placement="top">
+                <el-switch v-model="switcher" on-color="#13ce66"
+                  off-color="#ff4949" on-value="1" off-value="0">
+                </el-switch>
+              </el-tooltip>
+              <el-switch value='0' off-value="0" disabled></el-switch>
+            </el-col>
+            <el-col :offset="2" :span="6">
+              <el-slider v-model="slider" :max="30" :min="10" :step="5" show-stops show-input></el-slider>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-row>
+      <el-row type="flex" justify="center" :gutter="0">
+        <el-card style="width:90%">
+          <div slot="header" class="clearfix">
             <span style="line-height: 36px;">数据表单</span>
             <el-button style="float: right;" type="primary" @click="popVisible=true">弹框</el-button>
           </div>
@@ -148,8 +172,11 @@ export default class Demo extends Vue {
   @ExampleGetter multiFood
   @ExampleGetter foods
   @ExampleGetter cities
+  @ExampleGetter organizers
 
   popVisible = false
+  switcher = '1'
+  slider = 15
   activity = {
     account: '',
     region: '',
