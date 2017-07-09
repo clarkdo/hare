@@ -77,14 +77,9 @@
     "moxios": "^0.4.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
-    "opn": "^4.0.2",
-    "post-compile-webpack-plugin": "^0.1.1",
     "progress-bar-webpack-plugin": "^1.9.3",
-    "proxyquire": "^1.7.11",
     "sass-loader": "^6.0.3",
-    "sinon": "^2.2.0",
     "webpack": "^3.0.0",
-    "webpack-dashboard": "^0.3.0",
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
