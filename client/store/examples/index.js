@@ -1,54 +1,16 @@
 export const state = () => ({
-  num: '1',
-  city: 'GuangZhou',
-  province: '6',
-  district: ['2', '8'],
-  food: 'Fine Noodles',
-  website: 'clarkdo.github.com',
-  restaurant: null,
-  restoptions: '1',
-  multiFood: []
+  city: 'GuangZhou'
 })
 
 export const mutations = {
-  checkCity (state, city) {
+  SET_CITY (state, city) {
     state.city = city || null
   }
 }
 
-export const actions = {
-  checkCity ({ commit }, city) {
-    commit('checkCity', city)
-  }
-}
-
 export const getters = {
-  num (state) {
-    return state.num
-  },
   city (state) {
     return state.city
-  },
-  province (state) {
-    return state.province
-  },
-  district (state) {
-    return state.district
-  },
-  food (state) {
-    return state.food
-  },
-  website (state) {
-    return state.website
-  },
-  restaurant (state) {
-    return state.restaurant
-  },
-  restoptions (state) {
-    return state.restoptions
-  },
-  multiFood (state) {
-    return state.multiFood
   },
   foods (state) {
     return [{
@@ -138,5 +100,12 @@ export const getters = {
         label: '客户发展'
       }]
     }]
+  }
+}
+
+export const actions = {
+  checkCity ({ commit }, city) {
+    console.log(city)
+    commit('SET_CITY', city)
   }
 }
