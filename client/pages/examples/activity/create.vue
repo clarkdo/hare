@@ -18,7 +18,6 @@ import Component, { Getter, namespace } from 'class-component'
 
 const ActivityGetter = namespace('examples/activity/index', Getter)
 
-// TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
   components: {
     NewActivity

@@ -80,7 +80,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import Component from 'class-component'
 
-// TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
   methods: {
     handleSelectionChange (val) {
