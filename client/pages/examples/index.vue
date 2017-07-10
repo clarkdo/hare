@@ -4,22 +4,22 @@
       <el-row type="flex" justify="center" :gutter="0">
         <el-card style="width:90%">
           <div slot="header" class="clearfix">
-            <span>按钮, 计数器, 单选框 (City 为 Vuex 用法)</span>
+            <span>{{$t('example.title1')}}</span>
           </div>
           <el-row>
             <el-col :offset="2" :span="6">
-              <p>食物: {{food}}</p>
+              <p>{{$t('example.food')}}: {{food}}</p>
             </el-col>
             <el-col :span="6">
-              <p>计数器: {{num}}</p>
+              <p>{{$t('example.counter')}}: {{num}}</p>
             </el-col>
             <el-col :span="6">
-              <p>城市: {{city}}</p>
+              <p>{{$t('example.city')}}: {{city}}</p>
             </el-col>
           </el-row>
           <el-row>
             <el-col :offset="2" :span="6">
-              <el-select v-model="food" placeholder="请选择">
+              <el-select v-model="food" :placeholder="$t('example.selPh')">
                 <el-option
                   v-for="item in foods"
                   :key="item.label"
@@ -50,7 +50,7 @@
       <el-row type="flex" justify="center" :gutter="0">
         <el-card style="width:90%">
           <div slot="header" class="clearfix">
-            <span>单选框, 多选框, 输入框, 多选下拉框</span>
+            <span>{{$t('example.title2')}}</span>
           </div>
           <el-row>
             <el-col :offset="2" :span="6">
@@ -77,8 +77,8 @@
               </el-input>
             </el-col>
             <el-col :offset="2" :span="6">
-              <el-input placeholder="请输入内容" v-model="restaurant">
-                <el-select class="input-sel" v-model="restOptions" slot="prepend" placeholder="请选择">
+              <el-input :placeholder="$t('example.inPh')" v-model="restaurant">
+                <el-select class="input-sel" v-model="restOptions" slot="prepend" :placeholder="$t('example.selPh')">
                   <el-option label="餐厅名" value="1"></el-option>
                   <el-option label="订单号" value="2"></el-option>
                   <el-option label="用户电话" value="3"></el-option>
@@ -87,7 +87,7 @@
               </el-input>
             </el-col>
             <el-col :offset="2" :span="6">
-              <el-select v-model="multiFood" multiple placeholder="请选择">
+              <el-select v-model="multiFood" multiple :placeholder="$t('example.selPh')">
                 <el-option
                   v-for="item in foods"
                   :key="item.key"
@@ -103,11 +103,11 @@
       <el-row type="flex" justify="center" :gutter="0">
         <el-card style="width:90%">
           <div slot="header" class="clearfix">
-            <span>级联选择器, 开关, 滑块</span>
+            <span>{{$t('example.title3')}}</span>
           </div>
           <el-row>
             <el-col :offset="2" :span="6">
-              <el-cascader :options="organizers" change-on-select></el-cascader>
+              <el-cascader :placeholder="$t('example.selPh')" :options="organizers" change-on-select></el-cascader>
             </el-col>
             <el-col :offset="2" :span="6">
               Switch:
@@ -127,13 +127,13 @@
       <el-row type="flex" justify="center" :gutter="0">
         <el-card style="width:90%">
           <div slot="header" class="clearfix">
-            <span style="line-height: 36px;">数据表单</span>
-            <el-button style="float: right;" type="primary" @click="popVisible=true">弹框</el-button>
+            <span style="line-height: 36px;">{{$t('example.title4')}}</span>
+            <el-button style="float: right;" type="primary" @click="popVisible=true">{{$t('example.pop')}}</el-button>
           </div>
           <new-activity :form-data="activity" ref="formActivity"></new-activity>
         </el-card>
       </el-row>
-      <el-dialog title="新增活动" v-model="popVisible">
+      <el-dialog :title="$t('activity.title.create')" v-model="popVisible">
         <new-activity :form-data="activity" ref="popActivity"></new-activity>
       </el-dialog>
     </div>
@@ -170,7 +170,7 @@ export default class Demo extends Vue {
   province = '6'
   district = ['2', '8']
   food = 'Fine Noodles'
-  website = 'clarkdo.github.com'
+  website = 'clarkdo.github'
   restaurant = null
   restOptions = '1'
   multiFood = []

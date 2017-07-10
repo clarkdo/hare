@@ -105,7 +105,6 @@ export const getters = {
 
 export const actions = {
   checkCity ({ commit }, city) {
-    console.log(city)
     commit('SET_CITY', city)
   }
 }
