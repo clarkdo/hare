@@ -75,6 +75,18 @@
     "success": "提交成功!",
     "failed": "提交失败!"
   },
+  "example": {
+    "title1": "按钮, 计数器, 单选框 (City 为 Vuex 用法)",
+    "title2": "单选框, 多选框, 输入框, 多选下拉框",
+    "title3": "级联选择器, 开关, 滑块",
+    "title4": "数据表单",
+    "food": "食物",
+    "counter": "计数器",
+    "city": "城市",
+    "inPh": "请输入内容",
+    "selPh": "请选择",
+    "pop": "弹框"
+  },
   "nav": {
     "home": "首页",
     "activity": "样例",

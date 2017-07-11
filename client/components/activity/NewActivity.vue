@@ -61,7 +61,9 @@
         </el-col>
         <el-col :offset="2" :span="10">
           <el-form-item :label="$t('activity.organizer')" prop="organizer">
-            <el-cascader :options="organizers" v-model="formData.organizer" change-on-select></el-cascader>
+            <el-cascader :options="organizers" v-model="formData.organizer"
+              :placeholder="$t('example.selPh')" change-on-select>
+            </el-cascader>
           </el-form-item>
         </el-col>
       </el-row>
