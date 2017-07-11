@@ -4,7 +4,7 @@ import { setAuthHeader } from '~/utils/auth'
 const PORT = process.env.PORT || '3000'
 
 export default ({ req, isDev, isServer }) => {
-  if (isServer && req) {
+  if (!isServer || req) {
     setAuthHeader(req)
   }
   axios.defaults.timeout = 5000
