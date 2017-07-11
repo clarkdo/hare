@@ -41,8 +41,8 @@
       "bj": "Beijing"
     },
     "instDist": "JD",
-    "price": "Price Discount",
-    "rights": "Price Rights",
+    "price": "Discount",
+    "rights": "Rights",
     "medium": "Medium",
     "high": "High",
     "rule": {
@@ -74,6 +74,18 @@
     },
     "success": "Create successfully!",
     "failed": "Create failure!"
+  },
+  "example": {
+    "title1": "Button, Counter, Radio (City is a Vuex demo)",
+    "title2": "Radio, Checkbox, Input, Multi-Select",
+    "title3": "Cascader, Switch, Slider",
+    "title4": "Data Form",
+    "food": "Food",
+    "counter": "Counter",
+    "city": "City",
+    "inPh": "Please input",
+    "selPh": "Please select",
+    "pop": "Popover"
   },
   "nav": {
     "home": "Home",
