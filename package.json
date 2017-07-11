@@ -14,7 +14,9 @@
     "start": "cross-env NODE_ENV=production node .nuxt/dist/server-app.*.js",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "ava": {
     "require": [
@@ -52,7 +54,8 @@
     "vue-class-component": "^5.0.1",
     "vue-i18n": "^7.0.3",
     "vuex-class": "^0.2.0",
-    "xmlify": "^1.1.0"
+    "xmlify": "^1.1.0",
+    "snyk": "^1.36.2"
   },
   "devDependencies": {
     "ava": "^0.19.1",
@@ -84,5 +87,6 @@
   },
   "engines": {
     "node": ">=7.6.0"
-  }
+  },
+  "snyk": true
 }
