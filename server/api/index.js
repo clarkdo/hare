@@ -53,16 +53,16 @@ app.use(async function handleErrors (ctx, next) {
       case 406: // Not Acceptable
       case 409: // Conflict
         ctx.body = {
-          message: e.message,
-          root: 'error'
+          root: 'error',
+          ...e
         }
         break
       default:
       case 500: // Internal Server Error (for uncaught or programming errors)
         console.error(ctx.status, e.message)
         ctx.body = {
-          message: e.message,
-          root: 'error'
+          root: 'error',
+          ...e
         }
         if (app.env !== 'production') ctx.body.stack = e.stack
         ctx.app.emit('error', e, ctx) // github.com/koajs/koa/wiki/Error-Handling

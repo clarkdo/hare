@@ -38,7 +38,12 @@ router.post('/login', async function getAuth (ctx) {
     ctx.session.jwt = response.data.access_token
   } catch (error) {
     ctx.log.error({error}, 'Call oath service failed!')
-    ctx.throw(401, error.response ? error.response.data.errors : '登录失败, 具体信息请联系维护人员')
+    let errMsg = '登录失败, 具体信息请联系维护人员'
+    let data = null
+    if ((data = error && error.response && error.response.data)) {
+      errMsg = data.message || data.errors
+    }
+    ctx.throw(401, errMsg)
   }
 })
 
