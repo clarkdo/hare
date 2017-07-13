@@ -10,7 +10,7 @@ import compose from 'koa-compose'// middleware composer
 import compress from 'koa-compress'// HTTP compression
 import session from 'koa-session'// session for flash messages
 import api from './api'
-import constants from './utils/constants'
+import consts from './utils/consts'
 import config from '../nuxt.config.js'
 import debugModule from 'debug'// small debugging utility
 
@@ -19,8 +19,8 @@ import proxy from 'koa-proxies'
 // Start nuxt.js
 async function start () {
   const isWin = /^win/.test(process.platform)
-  const host = constants.HOST
-  const port = constants.PORT
+  const host = consts.HOST
+  const port = consts.PORT
   const debug = debugModule('app')
   const app = new Koa()
 
@@ -66,7 +66,7 @@ async function start () {
   })
 
   const SESSION_CONFIG = {
-    key: 'hare:sess'
+    key: consts.SESS_KEY
   }
   // session for flash messages (uses signed session cookies, with no server storage)
   app.use(session(SESSION_CONFIG, app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
@@ -86,7 +86,7 @@ async function start () {
 
   app.use(async (ctx, next) => {
     await next()
-    if (ctx.state.subapp !== constants.API) {
+    if (ctx.state.subapp !== consts.API) {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       ctx.req.session = ctx.session
       await nuxt.render(ctx.req, ctx.res)
@@ -121,7 +121,7 @@ async function start () {
   // note no 'next' after composed subapp, this must be the last middleware
   app.use(async function composeSubapp (ctx, next) {
     switch (ctx.state.subapp) {
-      case constants.API: await compose(api.middleware)(ctx); break
+      case consts.API: await compose(api.middleware)(ctx); break
     }
   })
 

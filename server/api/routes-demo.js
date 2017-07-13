@@ -2,10 +2,10 @@
 /*  Route to handle authentication /auth element                                                  */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 import koaRouter from 'koa-router'
-import constants from '../utils/constants'
+import consts from '../utils/consts'
 
 const router = koaRouter({
-  prefix: constants.BASE_API
+  prefix: consts.BASE_API
 }) // router middleware for koa
 
 router.get('/activities', async function getActivities (ctx) {

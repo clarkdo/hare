@@ -5,14 +5,14 @@ import axios from 'axios'
 import querystring from 'querystring'
 import koaRouter from 'koa-router'
 import svgCaptcha from 'svg-captcha'
-import constants from '../utils/constants'
+import consts from '../utils/consts'
 
 const router = koaRouter({
-  prefix: constants.BASE_API
+  prefix: consts.BASE_API
 }) // router middleware for koa
 
 var request = axios.create({
-  baseURL: constants.LB_ADDR,
+  baseURL: consts.LB_ADDR,
   timeout: 5000,
   headers: {
     'Authorization': 'Basic YmFzLWNsaWVudDpYMmNYeW1nWkRrRkE3RWR0',

@@ -2,8 +2,10 @@ import axios from 'axios'
 import cookie from 'cookie'
 import cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
+import consts from '~/utils/consts'
 
 const inBrowser = typeof window !== 'undefined'
+const jwtKey = consts.COOKIE_JWT
 
 export const setToken = (token) => {
   if (process.SERVER_BUILD) return
@@ -12,14 +14,14 @@ export const setToken = (token) => {
     value: token,
     exp: exp
   }))
-  cookies.set('jwt', token, { expires: new Date(exp) })
+  cookies.set(jwtKey, token, { expires: new Date(exp) })
   setAuthHeader()
 }
 
 export const unsetToken = () => {
   if (process.SERVER_BUILD) return
   window.localStorage.removeItem('token')
-  cookies.remove('jwt')
+  cookies.remove(jwtKey)
   window.localStorage.setItem('logout', Date.now())
   setAuthHeader()
 }
@@ -45,7 +47,7 @@ export const getTokenFromSession = (req) => {
 export const getTokenFromCookie = (req) => {
   const cookieStr = inBrowser ? document.cookie : req.headers.cookie
   const cookies = cookie.parse(cookieStr || '') || {}
-  return cookies.jwt
+  return cookies[jwtKey]
 }
 
 export const getUserFromLocalStorage = () => {
