@@ -80,11 +80,9 @@ export default class Login extends Vue {
       }
     })
   }
-  getCaptcha () {
-    axios.get('/hpi/captcha')
-      .then((res) => {
-        this.captchaSvg = res.data
-      })
+  async getCaptcha () {
+    const {data: captcha} = await axios.get('/hpi/captcha')
+    this.captchaSvg = captcha
   }
 
   refreshCaptcha = debounce(this.getCaptcha, 500)
