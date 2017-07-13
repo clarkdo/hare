@@ -65,8 +65,11 @@ async function start () {
     await next()
   })
 
+  const SESSION_CONFIG = {
+    key: 'hare:sess'
+  }
   // session for flash messages (uses signed session cookies, with no server storage)
-  app.use(session(app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
+  app.use(session(SESSION_CONFIG, app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
 
   const nuxt = new Nuxt(config)
   // Build only in dev mode
