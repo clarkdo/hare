@@ -21,7 +21,7 @@
         </nuxt-link>
       </div>
     </el-menu>
-    <ul class="el-menu el-menu-demo el-menu--dark">
+    <ul v-else class="el-menu el-menu-demo el-menu--dark">
       <header>
           <img src="~assets/img/logo.svg" alt="Element">
       </header>
@@ -63,6 +63,8 @@ export default class Navbar extends Vue {
 <style lang="scss" scoped>
 .navbar {
   position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 16.66667%;
   height: 100%;
   z-index: 9999;
