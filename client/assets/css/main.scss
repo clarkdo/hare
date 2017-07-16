@@ -1,12 +1,16 @@
 @import '~assets/fonts/style.css';
-html, body, header, #__nuxt {
+html,
+body,
+header,
+#__nuxt {
   height: 100%;
   // max-width: 1440px;
   // max-height: 900px;
   margin: 0 auto;
 }
 body {
-  font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',SimSun,sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', SimSun, sans-serif;
   overflow: auto;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +19,10 @@ a {
   color: #4078c0;
   text-decoration: none;
 }
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -33,5 +40,4 @@ button, input, select, textarea {
   }
 }
 @media (max-width: 768px) {
-
 }

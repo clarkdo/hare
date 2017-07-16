@@ -34,20 +34,20 @@ export const getters = {
 }
 
 export const actions = {
-  nuxtServerInit ({ commit }, { req }) {
-  },
+  nuxtServerInit ({ commit }, { req }) {},
   async login ({ commit }, { userName, password, captcha }) {
     try {
-      const {data: {access_token: token}} = await axios.post(
-        '/hpi/login',
-        {userName, password, captcha}
-      )
+      const { data: { access_token: token } } = await axios.post('/hpi/login', {
+        userName,
+        password,
+        captcha
+      })
       setToken(token)
       commit('SET_USER', getUserFromToken(token))
     } catch (error) {
       let message = error.message
       if (error.response.data) {
-        message = (error.response.data.message || message)
+        message = error.response.data.message || message
       }
       throw new Error(message)
     }
@@ -61,5 +61,4 @@ export const actions = {
   toggleMenu ({ commit }) {
     commit('SET_MENU_HIDDEN')
   }
-
 }
