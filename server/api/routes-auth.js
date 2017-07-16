@@ -15,7 +15,7 @@ var request = axios.create({
   baseURL: consts.LB_ADDR,
   timeout: 5000,
   headers: {
-    'Authorization': 'Basic YmFzLWNsaWVudDpYMmNYeW1nWkRrRkE3RWR0',
+    Authorization: 'Basic YmFzLWNsaWVudDpYMmNYeW1nWkRrRkE3RWR0',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   }
 })
@@ -29,15 +29,18 @@ router.post('/login', async function getAuth (ctx) {
     ctx.throw(401, '验证码输入错误')
   }
   try {
-    const response = await request.post('/platform/uaano/oauth/token', querystring.stringify({
-      username: user.userName,
-      password: Buffer.from(user.password).toString('base64'),
-      grant_type: 'password'
-    }))
+    const response = await request.post(
+      '/platform/uaano/oauth/token',
+      querystring.stringify({
+        username: user.userName,
+        password: Buffer.from(user.password).toString('base64'),
+        grant_type: 'password'
+      })
+    )
     ctx.body = Object.assign({}, response.data)
     ctx.session.jwt = response.data.access_token
   } catch (error) {
-    ctx.log.error({error}, 'Call oath service failed!')
+    ctx.log.error({ error }, 'Call oath service failed!')
     let errMsg = '登录失败, 具体信息请联系维护人员'
     let data = null
     if ((data = error && error.response && error.response.data)) {
@@ -76,7 +79,8 @@ router.get('/menus', async function getMenus (ctx) {
       name: 'nav.home',
       url: '/',
       icon: 'el-icon-menu'
-    }, {
+    },
+    {
       id: '2',
       name: 'nav.activity',
       icon: 'el-icon-edit',
@@ -86,24 +90,28 @@ router.get('/menus', async function getMenus (ctx) {
           name: 'nav.demo',
           url: '/examples',
           icon: 'el-icon-share'
-        }, {
+        },
+        {
           id: '2-2',
           name: 'nav.list',
           url: '/examples/activity',
           icon: 'el-icon-view'
-        }, {
+        },
+        {
           id: '2-3',
           name: 'nav.create',
           url: '/examples/activity/create',
           icon: 'el-icon-message'
-        }, {
+        },
+        {
           id: '2-3',
           name: 'nav.charts',
           url: '/examples/charts',
           icon: 'el-icon-picture'
         }
       ]
-    }, {
+    },
+    {
       id: '3',
       name: 'nav.about',
       url: '/about',
@@ -114,7 +122,8 @@ router.get('/menus', async function getMenus (ctx) {
 
 router.post('/platform/uaano/oauth/token', async function getToken (ctx, next) {
   ctx.body = {
-    'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+    access_token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
       'eyJhdWQiOlsiYmFzIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic' +
       '2NvcGUiOlsicmVhZCJdLCJleHAiOjk5OTk5OTk5OTk5OTksIn' +
       'VzZXJJZCI6IjQwMjg4YjdlNWJjZDc3MzMwMTViY2Q3ZmQ3MjI' +

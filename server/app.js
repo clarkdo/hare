@@ -5,14 +5,14 @@ import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
 import koaBunyan from 'koa-bunyan'
 import koaLogger from 'koa-bunyan-logger'
-import body from 'koa-body'// body parser
-import compose from 'koa-compose'// middleware composer
-import compress from 'koa-compress'// HTTP compression
-import session from 'koa-session'// session for flash messages
+import body from 'koa-body' // body parser
+import compose from 'koa-compose' // middleware composer
+import compress from 'koa-compress' // HTTP compression
+import session from 'koa-session' // session for flash messages
 import api from './api'
 import consts from './utils/consts'
 import config from '../nuxt.config.js'
-import debugModule from 'debug'// small debugging utility
+import debugModule from 'debug' // small debugging utility
 
 import proxy from 'koa-proxies'
 
@@ -50,7 +50,7 @@ async function start () {
     name: 'hare',
     streams: [access, error]
   })
-  app.use(koaBunyan(logger, {level: 'debug'}))
+  app.use(koaBunyan(logger, { level: 'debug' }))
   app.use(koaLogger(logger))
 
   // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
@@ -60,7 +60,7 @@ async function start () {
 
   app.use(async function subApp (ctx, next) {
     // use subdomain to determine which app to serve: www. as default, or admin. or api
-    ctx.state.subapp = ctx.url.split('/')[1]// subdomain = part after first '/' of hostname
+    ctx.state.subapp = ctx.url.split('/')[1] // subdomain = part after first '/' of hostname
     // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
     await next()
   })
@@ -69,7 +69,7 @@ async function start () {
     key: consts.SESS_KEY
   }
   // session for flash messages (uses signed session cookies, with no server storage)
-  app.use(session(SESSION_CONFIG, app))// note koa-session@3.4.0 is v1 middleware which generates deprecation notice
+  app.use(session(SESSION_CONFIG, app)) // note koa-session@3.4.0 is v1 middleware which generates deprecation notice
 
   const nuxt = new Nuxt(config)
   // Build only in dev mode
@@ -77,7 +77,9 @@ async function start () {
     const devConfigs = config.development
     if (devConfigs && devConfigs.proxies) {
       for (let proxyItem of devConfigs.proxies) {
-        console.log(`Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`)
+        console.log(
+          `Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`
+        )
         app.use(proxy(proxyItem.path, proxyItem))
       }
     }
@@ -106,7 +108,9 @@ async function start () {
   // only search-index www subdomain
   app.use(async function robots (ctx, next) {
     await next()
-    if (ctx.hostname.slice(0, 3) !== 'www') ctx.response.set('X-Robots-Tag', 'noindex, nofollow')
+    if (ctx.hostname.slice(0, 3) !== 'www') {
+      ctx.response.set('X-Robots-Tag', 'noindex, nofollow')
+    }
   })
 
   // parse request body into ctx.request.body
@@ -121,7 +125,9 @@ async function start () {
   // note no 'next' after composed subapp, this must be the last middleware
   app.use(async function composeSubapp (ctx, next) {
     switch (ctx.state.subapp) {
-      case consts.API: await compose(api.middleware)(ctx); break
+      case consts.API:
+        await compose(api.middleware)(ctx)
+        break
     }
   })
 
