@@ -4073,11 +4073,12 @@ koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/koa-is-json/-/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
 
-koa-proxies@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/koa-proxies/-/koa-proxies-0.3.0.tgz#2a0c4a1a6d1d64513a635e679b19d258e4613490"
+koa-proxies@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/koa-proxies/-/koa-proxies-0.5.0.tgz#dd54ecda1bda4ceb825eb0dc61e8bda91b30cfcb"
   dependencies:
     http-proxy "^1.16.2"
+    path-match "^1.2.4"
 
 koa-router@^7.1.1:
   version "7.1.1"
@@ -5187,6 +5188,13 @@ path-key@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
 
+path-match@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/path-match/-/path-match-1.2.4.tgz#a62747f3c7e0c2514762697f24443585b09100ea"
+  dependencies:
+    http-errors "~1.4.0"
+    path-to-regexp "^1.0.0"
+
 path-parse@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
@@ -5195,7 +5203,7 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
-path-to-regexp@^1.1.1:
+path-to-regexp@^1.0.0, path-to-regexp@^1.1.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
   dependencies:
