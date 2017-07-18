@@ -4031,9 +4031,9 @@ koa-router@^7.1.1:
     methods "^1.0.1"
     path-to-regexp "^1.1.1"
 
-koa-session@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-5.3.0.tgz#828d02094ccb79e71404727b714107a451fce2c7"
+koa-session@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-5.4.0.tgz#9a9f0dfc2bf090153ae5f932eea10a5a6e6caf88"
   dependencies:
     crc "^3.4.4"
     debug "^2.2.0"
