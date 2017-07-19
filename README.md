@@ -58,6 +58,31 @@ $ yarn run generate
 $ yarn run analyze
 ```
 
+### Use PM
+
+#### Further more features refer: [PM2](https://github.com/Unitech/pm2)
+
+``` bash
+# install pm2 globally
+$ yarn global add pm2
+# launch development server
+$ yarn dev:pm2
+# launch production server
+$ yarn start:pm2
+# Display all processes status
+$ pm2 ls
+# Show all information about app
+$ pm2 show hare
+# Display memory and cpu usage of each app
+$ pm2 monit
+# Display logs
+$ pm2 logs
+# Stop
+$ pm2 stop hare
+# Kill and delete
+$ pm2 delete hare
+```
+
 ### Docker Dev
 
 ``` bash
