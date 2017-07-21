@@ -16,11 +16,16 @@
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
-    "precommit": "npm run lint"
+    "precommit": "lint-staged"
   },
   "ava": {
     "require": [
       "babel-register"
+    ]
+  },
+  "lint-staged": {
+    "{client,server,test}/**/*.{js,vue}": [
+      "eslint --ext .js,.vue --ignore-path .gitignore"
     ]
   },
   "dependencies": {
@@ -74,7 +79,9 @@
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "jsdom": "^11.0.0",
+    "lint-staged": "^4.0.2",
     "moxios": "^0.4.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
