@@ -6975,9 +6975,9 @@ vue-chartjs@^2.7.1:
   dependencies:
     lodash "^4.17.4"
 
-vue-class-component@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-5.0.1.tgz#feda06c3da266cee9064e224ba491e089923dce8"
+vue-class-component@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-5.0.2.tgz#3dcdc005c58c4e88d8ec2d46e01c74f4d90135c8"
 
 vue-hot-reload-api@^2.1.0:
   version "2.1.0"
