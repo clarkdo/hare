@@ -72,7 +72,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-es2015": "^6.24.0",
-    "eslint": "^4.1.0",
+    "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-html": "^3.0.0",
     "eslint-plugin-import": "^2.6.0",
