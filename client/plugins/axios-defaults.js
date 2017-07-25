@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setAuthHeader, getUserFromLocalStorage } from '~/utils/auth'
+import { setAuthHeader, getTokenFromLocalStorage } from '~/utils/auth'
 
 const PORT = process.env.PORT || '3000'
 
@@ -9,7 +9,7 @@ export default ({ req, isDev, isServer, route, redirect }) => {
     axios.interceptors.response.use(
       response => response,
       error => {
-        if (error.response.status === 401 && !getUserFromLocalStorage()) {
+        if (error.response.status === 401 && !getTokenFromLocalStorage()) {
           redirect('/login', { page: route.fullPath })
         }
         return Promise.reject(error)
