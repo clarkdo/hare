@@ -9,7 +9,11 @@ export default ({ req, isDev, isServer, route, redirect }) => {
     axios.interceptors.response.use(
       response => response,
       error => {
-        if (error.response.status === 401 && !getTokenFromLocalStorage()) {
+        if (
+          error.response.status === 401 &&
+          !getTokenFromLocalStorage() &&
+          route.name !== 'login'
+        ) {
           redirect('/login', { page: route.fullPath })
         }
         return Promise.reject(error)
