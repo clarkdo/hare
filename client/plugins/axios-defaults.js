@@ -6,9 +6,15 @@ const PORT = process.env.PORT || '3000'
 export default ({ req, isDev, isServer, route, redirect }) => {
   if (!isServer) {
     setAuthHeader(req)
-    if (!getUserFromLocalStorage() && route.name !== 'login') {
-      redirect('/login', { page: route.fullPath })
-    }
+    axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response.status === 401 && !getUserFromLocalStorage()) {
+          redirect('/login', { page: route.fullPath })
+        }
+        return Promise.reject(error)
+      }
+    )
   }
   axios.defaults.timeout = 5000
   // for generate
