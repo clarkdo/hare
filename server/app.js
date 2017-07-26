@@ -35,7 +35,7 @@ async function start () {
   const access = {
     type: 'rotating-file',
     path: `${logDir}hare-access.log`,
-    level: 'debug',
+    level: config.dev ? 'debug' : 'info',
     period: '1d',
     count: 4
   }
@@ -50,7 +50,7 @@ async function start () {
     name: 'hare',
     streams: [access, error]
   })
-  app.use(koaBunyan(logger, { level: 'debug' }))
+  app.use(koaBunyan(logger, { level: 'info' }))
   app.use(koaLogger(logger))
 
   // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
