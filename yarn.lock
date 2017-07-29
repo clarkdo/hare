@@ -6979,9 +6979,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-chartjs@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-2.7.1.tgz#4e8a01168f10bf747630930c3f9f1130fd00694a"
+vue-chartjs@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-2.7.2.tgz#b81e5386fb270c84b0db6f02e0b077f40a57ff6a"
   dependencies:
     lodash "^4.17.4"
 
