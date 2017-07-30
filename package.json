@@ -87,7 +87,7 @@
     "nodemon": "^1.11.0",
     "progress-bar-webpack-plugin": "^1.10.0",
     "sass-loader": "^6.0.3",
-    "webpack": "^3.3.0",
+    "webpack": "^3.4.1",
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
