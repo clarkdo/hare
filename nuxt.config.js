@@ -46,7 +46,9 @@ module.exports = {
       'moment',
       'chart.js',
       'lodash/fp/merge',
-      'lodash/debounce'
+      'lodash/debounce',
+      'lodash/isEqual',
+      'lodash/isEmpty'
     ],
     extractCSS: true,
     filenames: {
@@ -79,6 +81,7 @@ module.exports = {
     '~plugins/element-ui',
     '~plugins/i18n',
     '~plugins/axios-defaults',
+    {src: '~plugins/trace-event', ssr: false},
     {src: '~plugins/error-handler', ssr: false}
   ],
 
