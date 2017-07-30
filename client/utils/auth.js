@@ -7,13 +7,16 @@ import consts from '~/utils/consts'
 const inBrowser = typeof window !== 'undefined'
 const jwtKey = consts.COOKIE_JWT
 
-export const setToken = (token) => {
+export const setToken = token => {
   if (process.SERVER_BUILD) return
   let exp = jwtDecode(token).exp
-  window.localStorage.setItem('token', JSON.stringify({
-    value: token,
-    exp: exp
-  }))
+  window.localStorage.setItem(
+    'token',
+    JSON.stringify({
+      value: token,
+      exp: exp
+    })
+  )
   cookies.set(jwtKey, token, { expires: new Date(exp) })
   setAuthHeader()
 }
@@ -26,25 +29,25 @@ export const unsetToken = () => {
   setAuthHeader()
 }
 
-export const getUserFromToken = (token) => {
+export const getUserFromToken = token => {
   return token ? jwtDecode(token) : null
 }
 
-export const getUserInSSR = (req) => {
+export const getUserInSSR = req => {
   return getUserFromToken(getTokenInSSR(req))
 }
 
-export const getTokenInSSR = (req) => {
+export const getTokenInSSR = req => {
   return getTokenFromCookie(req) || getTokenFromSession(req)
 }
 
-export const getTokenFromSession = (req) => {
+export const getTokenFromSession = req => {
   if (req && req.session) {
     return req.session.jwt
   }
 }
 
-export const getTokenFromCookie = (req) => {
+export const getTokenFromCookie = req => {
   const cookieStr = inBrowser ? document.cookie : req.headers.cookie
   const cookies = cookie.parse(cookieStr || '') || {}
   return cookies[jwtKey]
@@ -66,7 +69,7 @@ export const getTokenFromLocalStorage = () => {
   }
 }
 
-export const setAuthHeader = (req) => {
+export const setAuthHeader = req => {
   let jwt = inBrowser ? getTokenFromLocalStorage() : getTokenInSSR(req)
   if (jwt) {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt
