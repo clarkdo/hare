@@ -13,8 +13,8 @@ import session from 'koa-session' // session for flash messages
 import api from './api'
 import consts from './utils/consts'
 import config from '../nuxt.config.js'
+import chalk from 'chalk'
 import debugModule from 'debug' // small debugging utility
-
 import proxy from 'koa-proxies'
 
 // Start nuxt.js
@@ -24,7 +24,16 @@ async function start () {
   const port = consts.PORT
   const debug = debugModule('app')
   const app = new Koa()
-
+  const STATUS = {
+    INITIAL: 1,
+    BUILD_DONE: 2,
+    BUILDING: 3
+  }
+  const showServer = () => {
+    const _host = host === '0.0.0.0' ? 'localhost' : host
+    // eslint-disable-next-line no-console
+    console.log('\n' + chalk.bold(chalk.bgBlue.black(' OPEN ') + chalk.blue(` http://${_host}:${port}\n`)))
+  }
   config.dev = !(app.env === 'production')
   app.keys = ['hare-server']
 
@@ -85,6 +94,11 @@ async function start () {
       }
     }
     const builder = new Builder(nuxt)
+    builder.plugin('done', function ({ builder }) {
+      if (builder._buildStatus === STATUS.BUILD_DONE) {
+        showServer()
+      }
+    })
     await builder.build()
   }
   const nuxtRender = koaConnect(nuxt.render)
@@ -138,8 +152,7 @@ async function start () {
   app.listen(port, host)
 
   if (!config.dev) {
-    console.log(`\nNode: ${process.version} ENV: ${app.env}`)
-    console.log(`Listening on http://${host}:${port}`)
+    showServer()
   }
 }
 
