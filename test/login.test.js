@@ -10,7 +10,6 @@ const headers = {
 // Init Nuxt.js and create a server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   nuxt = createNuxt()
-  nuxt = new nuxt.Server(nuxt)
 })
 
 test('Route /login', async t => {
