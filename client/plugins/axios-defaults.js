@@ -1,11 +1,24 @@
 import axios from 'axios'
-import { setAuthHeader } from '~/utils/auth'
+import { setAuthHeader, getTokenFromLocalStorage } from '~/utils/auth'
 
 const PORT = process.env.PORT || '3000'
 
-export default ({ req, isDev, isServer }) => {
+export default ({ req, isDev, isServer, route, redirect }) => {
   if (!isServer) {
     setAuthHeader(req)
+    axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (
+          error.response.status === 401 &&
+          !getTokenFromLocalStorage() &&
+          route.name !== 'login'
+        ) {
+          redirect('/login', { page: route.fullPath })
+        }
+        return Promise.reject(error)
+      }
+    )
   }
   axios.defaults.timeout = 5000
   // for generate

@@ -1,6 +1,6 @@
-import Koa from 'koa'// Koa framework
-import xmlify from 'xmlify'// JS object to XML
-import yaml from 'js-yaml'// JS object to YAML
+import Koa from 'koa' // Koa framework
+import xmlify from 'xmlify' // JS object to XML
+import yaml from 'js-yaml' // JS object to YAML
 import auth from './routes-auth'
 import demo from './routes-demo'
 

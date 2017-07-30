@@ -10,15 +10,15 @@
             <el-col :offset="2" :span="6">
               <p>{{$t('example.food')}}: {{food}}</p>
             </el-col>
-            <el-col :span="6">
+            <el-col :offset="1" :span="6">
               <p>{{$t('example.counter')}}: {{num}}</p>
             </el-col>
-            <el-col :span="6">
+            <el-col :offset="1" :span="6">
               <p>{{$t('example.city')}}: {{city}}</p>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-select v-model="food" :placeholder="$t('example.selPh')">
                 <el-option
                   v-for="item in foods"
@@ -29,10 +29,10 @@
                 </el-option>
               </el-select>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="6" :xs="{span: 20, offset: 2}">
               <el-input-number v-model.number="num" :min="1" :max="10"></el-input-number>
             </el-col>
-            <el-col :span="8">
+            <el-col :span="8" :xs="{span: 20, offset: 2}">
               <el-radio-group v-model="city" @input="checkCity">
                 <el-radio-button
                   v-for="item in cities"
@@ -53,14 +53,14 @@
             <span>{{$t('example.title2')}}</span>
           </div>
           <el-row>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-radio-group v-model="province">
                 <el-radio label="3">辽宁</el-radio>
                 <el-radio disabled label="6">浙江</el-radio>
                 <el-radio label="9">台湾</el-radio>
               </el-radio-group>
             </el-col>
-            <el-col :offset="2" :span="12">
+            <el-col :offset="2" :span="12" :xs="{span: 20, offset: 2}">
               <el-checkbox-group v-model="district">
                 <el-checkbox label="2">中山区</el-checkbox>
                 <el-checkbox label="4">东城区</el-checkbox>
@@ -70,13 +70,13 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-input placeholder="请输入内容" v-model="website">
                 <template slot="prepend">Http://</template>
                 <template slot="append">.com</template>
               </el-input>
             </el-col>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-input :placeholder="$t('example.inPh')" v-model="restaurant">
                 <el-select class="input-sel" v-model="restOptions" slot="prepend" :placeholder="$t('example.selPh')">
                   <el-option label="餐厅名" value="1"></el-option>
@@ -86,7 +86,7 @@
                 <el-button slot="append" icon="search"></el-button>
               </el-input>
             </el-col>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-select v-model="multiFood" multiple :placeholder="$t('example.selPh')">
                 <el-option
                   v-for="item in foods"
@@ -106,10 +106,10 @@
             <span>{{$t('example.title3')}}</span>
           </div>
           <el-row>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-cascader :placeholder="$t('example.selPh')" :options="organizers" change-on-select></el-cascader>
             </el-col>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               Switch:
               <el-tooltip :content="'Switch value: ' + switcher" placement="top">
                 <el-switch v-model="switcher" on-color="#13ce66"
@@ -118,7 +118,7 @@
               </el-tooltip>
               <el-switch value='0' off-value="0" disabled></el-switch>
             </el-col>
-            <el-col :offset="2" :span="6">
+            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
               <el-slider v-model="slider" :max="30" :min="10" :step="5" show-stops show-input></el-slider>
             </el-col>
           </el-row>
@@ -205,6 +205,17 @@ export default class Demo extends Vue {
   }
   .el-card .el-row:first-child {
     margin-top: 0px;
+  }
+  @media (max-width: 768px) {
+    .el-card .el-row {
+      margin-top: 0px;
+      .el-col{
+        margin-top: 20px;
+      }
+      &:first-child {
+        margin-top: -20px;
+      }
+    }
   }
 }
 </style>

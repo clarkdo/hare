@@ -15,14 +15,22 @@
             <el-tooltip :content="authUser.user_name">
               <img src="~assets/img/avatar.svg"></img>
             </el-tooltip>
-            {{authUser.user_name}}
+            <span> {{authUser.user_name}}</span>
           </p>
         </el-col>
         <el-col :span="3">
-          <p><img src="~assets/img/pwd.svg"></img> {{$t("head.pwd")}}</p>
+          <p>
+            <el-tooltip :content="$t('head.pwd')">
+              <img src="~assets/img/pwd.svg"></img>
+            </el-tooltip>
+            <span> {{$t("head.pwd")}}</span>
+          </p>
         </el-col>
         <el-col :span="2">
-          <p @click="logout"><img src="~assets/img/exit.svg"></img> {{$t("head.exit")}}</p>
+          <p @click="logout">
+            <img src="~assets/img/exit.svg"></img>
+            <span> {{$t("head.exit")}}</span>
+          </p>
         </el-col>
       </el-row>
     </header>
@@ -56,6 +64,11 @@ export default class Headbar extends Vue {
   height: 60px;
   position: relative;
   .header {
+    @media (max-width: 768px) {
+      .el-col p span {
+        display: none;
+      }
+    }
     /* Nav Icon */
     #nav-icon {
       $first-top: 5px;

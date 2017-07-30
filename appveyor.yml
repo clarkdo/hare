@@ -2,8 +2,8 @@
 branches:
   # whitelist
   only:
+    - dev
     - master
-    - production
   # blacklist
   except:
     - gh-pages
