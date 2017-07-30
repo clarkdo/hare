@@ -2,13 +2,13 @@ import axios from 'axios'
 import cookie from 'cookie'
 import cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
-import consts from '~/utils/consts'
+import consts from '@/utils/consts'
 
 const inBrowser = typeof window !== 'undefined'
 const jwtKey = consts.COOKIE_JWT
 
 export const setToken = token => {
-  if (process.SERVER_BUILD) return
+  if (process.server) return
   let exp = jwtDecode(token).exp
   window.localStorage.setItem(
     'token',
@@ -22,7 +22,7 @@ export const setToken = token => {
 }
 
 export const unsetToken = () => {
-  if (process.SERVER_BUILD) return
+  if (process.server) return
   window.localStorage.removeItem('token')
   cookies.remove(jwtKey)
   window.localStorage.setItem('logout', Date.now())

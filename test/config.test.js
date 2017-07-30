@@ -2,13 +2,11 @@ import test from 'ava'
 import createNuxt from './helpers/create-nuxt'
 
 let nuxt = null
-let server = null
 
 // Init nuxt.js and create server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   nuxt = createNuxt()
-  server = new nuxt.Server(nuxt)
-  server.listen(4000, 'localhost')
+  nuxt.listen(4000, 'localhost')
 })
 
 test('Vendor', async t => {
@@ -22,9 +20,9 @@ test('Vendor', async t => {
 
 test('Plugin', async t => {
   const plugins = nuxt.options.plugins
-  t.is(plugins[0], '~plugins/element-ui', 'element-ui plugin added to config')
-  t.is(plugins[1], '~plugins/i18n', 'i18n plugin added to config')
-  t.is(plugins[2], '~plugins/axios-defaults', 'axios defaults plugin added to config')
+  t.is(plugins[0], '@/plugins/element-ui', 'element-ui plugin added to config')
+  t.is(plugins[1], '@/plugins/i18n', 'i18n plugin added to config')
+  t.is(plugins[2], '@/plugins/axios-defaults', 'axios defaults plugin added to config')
 })
 
 test('Middleware', async t => {
@@ -37,6 +35,5 @@ test('Middleware', async t => {
 
 // Close server and ask nuxt to stop listening to file changes
 test.after('Closing server and nuxt.js', t => {
-  server.close()
   nuxt.close()
 })

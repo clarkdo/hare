@@ -33,7 +33,7 @@ module.exports = {
       plugins: ['transform-decorators-legacy', 'transform-class-properties']
     },
     extend (config, { dev, isClient }) {
-      config.resolve.alias['class-component'] = '~plugins/class-component'
+      config.resolve.alias['class-component'] = '@/plugins/class-component'
     },
     vendor: [
       'axios',
@@ -70,16 +70,16 @@ module.exports = {
   css: [
     'normalize.css/normalize.css',
     'element-ui/lib/theme-default/index.css',
-    {src: '~assets/css/main.scss', lang: 'scss'}
+    {src: '@/assets/css/main.scss', lang: 'scss'}
   ],
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
   */
   plugins: [
-    '~plugins/element-ui',
-    '~plugins/i18n',
-    '~plugins/axios-defaults',
-    {src: '~plugins/error-handler', ssr: false}
+    '@/plugins/element-ui',
+    '@/plugins/i18n',
+    '@/plugins/axios-defaults',
+    {src: '@/plugins/error-handler', ssr: false}
   ],
 
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options

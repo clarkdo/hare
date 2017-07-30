@@ -13,7 +13,7 @@
 
 <script>
 import Vue from 'vue'
-import NewActivity from '~components/activity/NewActivity'
+import NewActivity from '@/components/activity/NewActivity'
 import Component, { Getter, namespace } from 'class-component'
 
 const ActivityGetter = namespace('examples/activity/index', Getter)

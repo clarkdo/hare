@@ -3,7 +3,7 @@
     <el-menu v-if="menus && menus.length" class="el-menu-demo"
       :default-active="$route.path" theme="dark">
       <header>
-          <img src="~assets/img/logo.svg" alt="Element">
+          <img src="~@/assets/img/logo.svg" alt="Element">
       </header>
       <div v-for="menu in menus" :key="menu.id">
         <el-submenu v-if="menu.children && menu.children.length" :index="menu.url || menu.name">
@@ -23,7 +23,7 @@
     </el-menu>
     <ul v-else class="el-menu el-menu-demo el-menu--dark">
       <header>
-          <img src="~assets/img/logo.svg" alt="Element">
+          <img src="~@/assets/img/logo.svg" alt="Element">
       </header>
     </ul>
   </div>

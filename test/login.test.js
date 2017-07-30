@@ -4,15 +4,13 @@ import createNuxt from './helpers/create-nuxt'
 // We keep the nuxt and server instance
 // So we can close them at the end of the test
 let nuxt = null
-let server = null
 const headers = {
   'accept-language': 'zh'
 }
 // Init Nuxt.js and create a server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   nuxt = createNuxt()
-  server = new nuxt.Server(nuxt)
-  server.listen(4000, 'localhost')
+  nuxt = new nuxt.Server(nuxt)
 })
 
 test('Route /login', async t => {
@@ -29,6 +27,5 @@ test('Route /login with locale [en]', async t => {
 
 // Close server and ask nuxt to stop listening to file changes
 test.after('Closing server and nuxt.js', t => {
-  server.close()
   nuxt.close()
 })
