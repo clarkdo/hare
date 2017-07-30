@@ -1,4 +1,4 @@
-import { getUserInSSR, getUserFromLocalStorage } from '~/utils/auth'
+import { getUserInSSR, getUserFromLocalStorage } from '@/utils/auth'
 
 export default function ({ isServer, store, req, route, redirect }) {
   // If nuxt generate, pass this middleware

@@ -143,7 +143,7 @@
 <script>
 import Vue from 'vue'
 import { mapActions } from 'vuex'
-import NewActivity from '~components/activity/NewActivity'
+import NewActivity from '@/components/activity/NewActivity'
 import Component, {Getter, namespace } from 'class-component'
 
 const ExampleGetter = namespace('examples/index', Getter)

@@ -1,10 +1,11 @@
 import Koa from 'koa'
-import Nuxt from 'nuxt'
+import { Nuxt, Builder } from 'nuxt'
 import axios from 'axios'
 import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
 import koaBunyan from 'koa-bunyan'
 import koaLogger from 'koa-bunyan-logger'
+import koaConnect from 'koa-connect'
 import body from 'koa-body' // body parser
 import compose from 'koa-compose' // middleware composer
 import compress from 'koa-compress' // HTTP compression
@@ -83,6 +84,8 @@ async function start () {
         app.use(proxy(proxyItem.path, proxyItem))
       }
     }
+    const builder = new Builder(nuxt)
+    builder.build()
   }
   axios.defaults.baseURL = `http://127.0.0.1:${port}`
 
@@ -91,7 +94,7 @@ async function start () {
     if (ctx.state.subapp !== consts.API) {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       ctx.req.session = ctx.session
-      await nuxt.render(ctx.req, ctx.res)
+      await koaConnect(nuxt.render)(ctx)
     }
   })
   // return response time in X-Response-Time header

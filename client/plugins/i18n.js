@@ -16,8 +16,8 @@ export default ({ app, store, isServer, req }) => {
     locale: store.state.locale || 'zh',
     fallbackLocale: 'zh',
     messages: {
-      zh: require('~/locales/zh.json'),
-      en: require('~/locales/en.json')
+      zh: require('@/locales/zh.json'),
+      en: require('@/locales/en.json')
     }
   })
 }

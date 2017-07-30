@@ -1,4 +1,4 @@
-import Nuxt from 'nuxt'
+import { Nuxt } from 'nuxt'
 import { resolve } from 'path'
 
 export default function createNuxt () {

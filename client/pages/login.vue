@@ -1,9 +1,9 @@
 <template>
   <div class="login container">
     <header class="header" ref="header">
-      <img class="logo" src="~assets/img/logo.svg">
+      <img class="logo" src="~@/assets/img/logo.svg">
     </header>
-    <img src="~assets/img/login-bg.png" alt="" class="bg">
+    <img src="~@/assets/img/login-bg.png" alt="" class="bg">
     <el-card>
       <el-form :model="user" ref="user" @keyup.enter.native='!logging && login()'>
         <el-form-item prop="userName" :rules="[{ required: true, message: $t('login.userRequired')}]">

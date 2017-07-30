@@ -14,8 +14,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Navbar from '~components/Navbar'
-import Headbar from '~components/Headbar'
+import Navbar from '@/components/Navbar'
+import Headbar from '@/components/Headbar'
 
 export default {
   components: {

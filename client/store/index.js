@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getUserFromToken, setToken, unsetToken } from '~/utils/auth'
+import { getUserFromToken, setToken, unsetToken } from '@/utils/auth'
 
 export const strict = true
 
