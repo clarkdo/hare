@@ -85,8 +85,9 @@ async function start () {
       }
     }
     const builder = new Builder(nuxt)
-    builder.build()
+    await builder.build()
   }
+  const nuxtRender = koaConnect(nuxt.render)
   axios.defaults.baseURL = `http://127.0.0.1:${port}`
 
   app.use(async (ctx, next) => {
@@ -94,7 +95,7 @@ async function start () {
     if (ctx.state.subapp !== consts.API) {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       ctx.req.session = ctx.session
-      await koaConnect(nuxt.render)(ctx)
+      await nuxtRender(ctx)
     }
   })
   // return response time in X-Response-Time header
