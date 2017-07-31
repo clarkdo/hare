@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setAuthHeader, getTokenFromLocalStorage } from '~/utils/auth'
+import { setAuthHeader, getTokenFromLocalStorage } from '@/utils/auth'
 
 const PORT = process.env.PORT || '3000'
 
