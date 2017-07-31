@@ -5,7 +5,6 @@ import createNuxt from './helpers/create-nuxt'
 // We keep the nuxt and server instance
 // So we can close them at the end of the test
 let nuxt = null
-let server = null
 const req = {
   headers: {
     'accept-language': 'zh'
@@ -30,8 +29,7 @@ test.before('Init Nuxt.js', async t => {
     data: '验证码Mock'
   })
   nuxt = createNuxt()
-  server = new nuxt.Server(nuxt)
-  server.listen(4000, 'localhost')
+  nuxt.listen(4000, 'localhost')
 })
 
 // Example of testing only generated html
@@ -48,6 +46,5 @@ test('Route /about', async t => {
 // Close server and ask nuxt to stop listening to file changes
 test.after('Closing server and nuxt.js', t => {
   moxios.uninstall()
-  server.close()
   nuxt.close()
 })

@@ -74,12 +74,12 @@
 <script>
 import Vue from 'vue'
 import Component from 'class-component'
-import BarDemo from '~components/charts/BarDemo'
-import PieDemo from '~components/charts/PieDemo'
-import LineDemo from '~components/charts/LineDemo'
-import ScatterDemo from '~components/charts/ScatterDemo'
-import DoughnutDemo from '~components/charts/DoughnutDemo'
-import ReactiveDemo from '~components/charts/ReactiveDemo'
+import BarDemo from '@/components/charts/BarDemo'
+import PieDemo from '@/components/charts/PieDemo'
+import LineDemo from '@/components/charts/LineDemo'
+import ScatterDemo from '@/components/charts/ScatterDemo'
+import DoughnutDemo from '@/components/charts/DoughnutDemo'
+import ReactiveDemo from '@/components/charts/ReactiveDemo'
 
 @Component({
   components: {
