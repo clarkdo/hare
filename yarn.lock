@@ -2628,9 +2628,9 @@ eslint-plugin-import@^2.6.0:
     minimatch "^3.0.3"
     read-pkg-up "^2.0.0"
 
-eslint-plugin-node@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-node/-/eslint-plugin-node-5.0.0.tgz#948b1fb82e3f0a744e86fad19aa4f49537d246cc"
+eslint-plugin-node@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-node/-/eslint-plugin-node-5.1.1.tgz#a7ed956e780c22aef6afd1116005acd82f26eac6"
   dependencies:
     ignore "^3.3.3"
     minimatch "^3.0.4"
