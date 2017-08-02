@@ -3,7 +3,7 @@ import { setAuthHeader, getTokenFromLocalStorage } from '@/utils/auth'
 
 const PORT = process.env.PORT || '3000'
 
-export default ({ req, isDev, isServer, route, redirect }) => {
+export default ({ req, isServer, redirect }) => {
   if (!isServer) {
     setAuthHeader(req)
     axios.interceptors.response.use(
@@ -12,9 +12,9 @@ export default ({ req, isDev, isServer, route, redirect }) => {
         if (
           error.response.status === 401 &&
           !getTokenFromLocalStorage() &&
-          route.name !== 'login'
+          location.pathname !== '/login'
         ) {
-          redirect('/login', { page: route.fullPath })
+          redirect('/login', { page: location.pathname + location.search })
         }
         return Promise.reject(error)
       }
