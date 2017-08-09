@@ -33,7 +33,7 @@
     "bunyan": "^1.8.12",
     "chart.js": "^2.6.0",
     "cross-env": "^5.0.4",
-    "element-ui": "^1.4.1",
+    "element-ui": "^1.4.2",
     "es6-promise": "^4.1.1",
     "js-cookie": "^2.1.4",
     "js-yaml": "^3.9.1",
