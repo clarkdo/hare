@@ -15,6 +15,7 @@ test('Vendor', async t => {
   t.true(!!~vendor.indexOf('element-ui'), 'element-ui added to config')
   t.true(!!~vendor.indexOf('vue-class-component'), 'vue-class-component added to config')
   t.true(!!~vendor.indexOf('vuex-class'), 'vuex-class added to config')
+  t.true(!!~vendor.indexOf('vue-clipboards'), 'vue-clipboards added to config')
   t.true(!!~vendor.indexOf('lodash/debounce'), 'lodash/debounce added to config')
 })
 
@@ -23,6 +24,8 @@ test('Plugin', async t => {
   t.is(plugins[0], '@/plugins/element-ui', 'element-ui plugin added to config')
   t.is(plugins[1], '@/plugins/i18n', 'i18n plugin added to config')
   t.is(plugins[2], '@/plugins/axios-defaults', 'axios defaults plugin added to config')
+  t.is(plugins[3].src, '@/plugins/clipboard', 'clipboard plugin added to config')
+  t.is(plugins[4].src, '@/plugins/error-handler', 'error handler plugin added to config')
 })
 
 test('Middleware', async t => {

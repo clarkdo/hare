@@ -43,6 +43,7 @@ module.exports = {
       'vuex-class',
       'vue-i18n',
       'vue-chartjs',
+      'vue-clipboards',
       'moment',
       'chart.js',
       'lodash/fp/merge',
@@ -79,6 +80,7 @@ module.exports = {
     '@/plugins/element-ui',
     '@/plugins/i18n',
     '@/plugins/axios-defaults',
+    {src: '@/plugins/clipboard', ssr: false},
     {src: '@/plugins/error-handler', ssr: false}
   ],
 
