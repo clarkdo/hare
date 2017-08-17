@@ -65,7 +65,7 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.0",
     "babel-plugin-component": "^0.10.0",
