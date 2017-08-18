@@ -1,10 +1,10 @@
 <template>
   <div class="app">
     <el-row class="main">
-      <el-col :sm="4" :xs:="24" :class="{hide: isMenuHidden, navCol: true}">
+      <el-col :sm="4" :xs="24" :class="{hide: isMenuHidden, navCol: true}">
         <navbar :authUser="authUser"></navbar>
       </el-col>
-      <el-col :sm="colSize" xs:="24" class="content">
+      <el-col :sm="colSize" :xs="24" class="content">
         <el-row><headbar></headbar></el-row>
         <el-row><nuxt></nuxt></el-row>
       </el-col>
