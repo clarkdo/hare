@@ -1,9 +1,21 @@
 <template>
   <div class="navbar">
-    <el-menu v-if="menus && menus.length" class="el-menu-demo"
+    <el-menu class="el-menu-demo"
       :default-active="$route.path" theme="dark">
       <header>
-          <img src="~@/assets/img/logo.svg" alt="Element">
+          <el-row>
+            <el-col :span="20">
+              <img src="~@/assets/img/logo.svg" alt="Element">
+            </el-col>
+            <el-col :span="4">
+              <div class="nav-icon open" :class="{hide: isMenuHidden}" @click="toggleMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </el-col>
+          </el-row>
       </header>
       <div v-for="menu in menus" :key="menu.id">
         <el-submenu v-if="menu.children && menu.children.length" :index="menu.url || menu.name">
@@ -21,23 +33,24 @@
         </nuxt-link>
       </div>
     </el-menu>
-    <ul v-else class="el-menu el-menu-demo el-menu--dark">
-      <header>
-          <img src="~@/assets/img/logo.svg" alt="Element">
-      </header>
-    </ul>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import axios from 'axios'
+import { mapActions } from 'vuex'
 import Component, {Getter, namespace } from 'class-component'
 
 const MenuGetter = namespace('menu', Getter)
 
-@Component
+@Component({
+  methods: {
+    ...mapActions(['toggleMenu'])
+  }
+})
 export default class Navbar extends Vue {
+  @Getter isMenuHidden
   @MenuGetter menus
 
   async beforeMount () {
@@ -68,15 +81,25 @@ export default class Navbar extends Vue {
   width: 16.66667%;
   height: 100%;
   z-index: 9999;
+  .nav-icon {
+    span {
+      background: #bfcbd9;
+    }
+  }
   .el-menu {
     height: 100%;
     border-radius: 0;
     header {
+      .el-row {
+        margin: 0px 20px;
+        .nav-icon {
+          float: right;
+        }
+      }
       width: 100%;
       height: 60px;
       background-color: #324157;
       img {
-        margin-left: 25%;
         margin-top: 10px;
       }
     }

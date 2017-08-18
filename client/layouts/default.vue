@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <el-row class='main'>
+    <el-row class="main">
       <el-col :sm="4" :xs:="24" :class="{hide: isMenuHidden, navCol: true}">
         <navbar :authUser="authUser"></navbar>
       </el-col>
@@ -42,12 +42,13 @@ export default {
     }
     .navCol {
       &.hide {
-        opacity: 0;
-        width: 0;
         transition: width 0.5s, opacity 0.5s ease-out;
       }
       transition: width 0.5s, opacity 0.5s ease-in;
     }
+    .content {
+       transition: width 0.5s, opacity 0.5s ease-in;
+     }
   }
   @media (max-width: 768px) {
     height: auto;
