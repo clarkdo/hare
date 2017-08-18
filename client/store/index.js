@@ -19,7 +19,7 @@ export const mutations = {
       state.locale = locale
     }
   },
-  SET_MENU_HIDDEN: function (state) {
+  TOGGLE_MENU_HIDDEN: function (state) {
     state.isMenuHidden = !state.isMenuHidden
   }
 }
@@ -59,6 +59,6 @@ export const actions = {
     callback()
   },
   toggleMenu ({ commit }) {
-    commit('SET_MENU_HIDDEN')
+    commit('TOGGLE_MENU_HIDDEN')
   }
 }
