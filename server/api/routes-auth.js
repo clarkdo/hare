@@ -57,11 +57,14 @@ router.post('/logout', async function logout (ctx) {
 
 router.get('/captcha', async function getAuth (ctx, next) {
   await next()
+  const width = ctx.request.query.width || 150
+  const height = ctx.request.query.height || 36
   let captcha = svgCaptcha.create({
+    width,
+    height,
     size: 4,
     noise: 1,
-    height: 36,
-    fontSize: 40,
+    fontSize: width > 760 ? 40 : 30,
     // background: '#e8f5ff',
     ignoreChars: '0oO1iIl'
   })
