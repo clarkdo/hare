@@ -1,10 +1,10 @@
 <template>
   <div class="app">
     <el-row class='main'>
-      <el-col :span="4" :class="{hide: isMenuHidden, navCol: true}">
+      <el-col :sm="4" :xs:="24" :class="{hide: isMenuHidden, navCol: true}">
         <navbar :authUser="authUser"></navbar>
       </el-col>
-      <el-col :span="colSize" class="content">
+      <el-col :sm="colSize" xs:="24" class="content">
         <el-row><headbar></headbar></el-row>
         <el-row><nuxt></nuxt></el-row>
       </el-col>
@@ -32,14 +32,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.navCol {
-  &.hide {
-    opacity: 0;
-    width: 0;
-    transition: width 0.5s, opacity 0.5s ease-out;
-  }
-  transition: width 0.5s, opacity 0.5s ease-in;
-}
+
 .app {
   height: 100%;
   .el-row.main {
@@ -47,9 +40,17 @@ export default {
     .el-col {
       height: 100%;
     }
-    .content {
+    .navCol {
+      &.hide {
+        opacity: 0;
+        width: 0;
+        transition: width 0.5s, opacity 0.5s ease-out;
+      }
       transition: width 0.5s, opacity 0.5s ease-in;
     }
+  }
+  @media (max-width: 768px) {
+    height: auto;
   }
 }
 </style>
