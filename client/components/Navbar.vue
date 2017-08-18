@@ -81,5 +81,17 @@ export default class Navbar extends Vue {
       }
     }
   }
+  @media (max-width: 768px) {
+    position: inherit;
+    width: auto;
+    height: auto;
+    .el-menu {
+      header {
+        img {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 }
 </style>
