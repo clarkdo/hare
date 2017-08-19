@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <el-row type="flex" justify="space-around">
-        <el-col :span="10">
+        <el-col :xs="24" :sm="10">
           <el-card>
             <div slot="header" class="clearfix">
               <span>Bar Chart</span>
@@ -12,7 +12,7 @@
             </el-row>
           </el-card>
         </el-col>
-        <el-col :span="10">
+        <el-col :xs="24" :sm="10">
           <el-card>
             <div slot="header" class="clearfix">
               <span>Bar Chart</span>
@@ -24,7 +24,7 @@
         </el-col>
       </el-row>
       <el-row type="flex" justify="space-around">
-        <el-col :span="10">
+        <el-col :xs="24" :sm="10">
           <el-card>
             <div slot="header" class="clearfix">
               <span>Doughnut Chart</span>
@@ -34,7 +34,7 @@
             </el-row>
           </el-card>
         </el-col>
-        <el-col :span="10">
+        <el-col :xs="24" :sm="10">
           <el-card>
             <div slot="header" class="clearfix">
               <span>Pie Chart</span>
@@ -46,7 +46,7 @@
         </el-col>
       </el-row>
       <el-row type="flex" justify="space-around">
-        <el-col :span="10">
+        <el-col :xs="24" :sm="10">
           <el-card>
             <div slot="header" class="clearfix">
               <span>Reactive Chart</span>
@@ -56,7 +56,7 @@
             </el-row>
           </el-card>
         </el-col>
-        <el-col :span="10">
+        <el-col :xs="24" :sm="10">
           <el-card>
             <div slot="header" class="clearfix">
               <span>Scatter Chart</span>
@@ -101,11 +101,14 @@ export default class Charts extends Vue {
   .el-row {
     margin-top: 35px;
   }
-  .el-card .el-row {
-    margin-top: 20px;
-  }
-  .el-card .el-row:first-child {
-    margin-top: 0px;
+  @media (max-width: 768px) {
+    .el-row {
+      margin-top: 0px;
+      flex-direction:column;
+      .el-col {
+        margin-top: 35px
+      }
+    }
   }
 }
 </style>
