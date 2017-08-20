@@ -1,13 +1,13 @@
 <template>
   <div class="new-activity">
     <el-form :model="formData" :rules="formRules" ref="newActivity" label-width="100px" class="activity-form">
-      <el-row>
-        <el-col :span="10">
+      <el-row type="flex" justify="flex-start">
+        <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.account')" prop="account">
             <el-input v-model="formData.account"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="10">
+        <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.area')" prop="region">
             <el-select v-model="formData.region" :placeholder="$t('activity.holder.area')">
               <el-option :label="$t('activity.city.sh')" value="shanghai"></el-option>
@@ -16,8 +16,8 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="10">
+      <el-row type="flex" justify="flex-start">
+        <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.tag')" prop="label">
             <el-select v-model="formData.label" multiple filterable allow-create :placeholder="$t('activity.holder.tag')">
               <el-option
@@ -29,14 +29,14 @@
             </el-select>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="3">
+        <el-col :xs="24" :sm="{span: 3, offset: 2}">
           <el-form-item :label="$t('activity.instDist')" prop="delivery">
             <el-switch on-text="" off-text="" v-model="formData.delivery"></el-switch>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="10">
+      <el-row type="flex" justify="flex-start">
+        <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.type')" prop="type">
             <el-checkbox-group v-model="formData.type">
               <el-checkbox :label="$t('activity.price')"></el-checkbox>
@@ -44,7 +44,7 @@
             </el-checkbox-group>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="10">
+        <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.priority')" prop="priority">
             <el-radio-group v-model="formData.priority">
               <el-radio :label="$t('activity.medium')"></el-radio>
@@ -53,13 +53,13 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="10">
+      <el-row type="flex" justify="flex-start">
+        <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.rate')" prop="rate">
             <el-rate v-model="formData.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
           </el-form-item>
         </el-col>
-        <el-col :offset="2" :span="10">
+        <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.organizer')" prop="organizer">
             <el-cascader :options="organizers" v-model="formData.organizer"
               :placeholder="$t('example.selPh')" change-on-select>
@@ -67,35 +67,33 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="22">
+      <el-row type="flex" justify="flex-start">
+        <el-col :xs="24" :sm="22">
           <el-form-item :label="$t('activity.date')" required>
-              <el-col :span="11">
-                <el-form-item prop="date1">
-                  <el-date-picker :placeholder="$t('activity.holder.date')" v-model="formData.date1" style="width: 100%;"></el-date-picker>
-                </el-form-item>
-              </el-col>
+            <el-col :span="11">
+              <el-form-item prop="date1">
+                <el-date-picker :placeholder="$t('activity.holder.date')" v-model="formData.date1" style="width: 100%;"></el-date-picker>
+              </el-form-item>
+            </el-col>
             <el-col class="line" :span="1" :offset="1">-</el-col>
-              <el-col :span="11">
-                <el-form-item prop="date2">
-                  <el-time-picker :placeholder="$t('activity.holder.time')" v-model="formData.date2" style="width: 100%;"></el-time-picker>
-                </el-form-item>
-              </el-col>
+            <el-col :span="11">
+              <el-form-item prop="date2">
+                <el-time-picker :placeholder="$t('activity.holder.time')" v-model="formData.date2" style="width: 100%;"></el-time-picker>
+              </el-form-item>
+            </el-col>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="22">
+      <el-row type="flex" justify="flex-start">
+        <el-col :xs="24" :sm="22">
           <el-form-item :label="$t('activity.desc')" prop="desc">
             <el-input type="textarea" v-model="formData.desc"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-form-item>
-          <el-button type="primary" @click="submit('newActivity')">{{$t('activity.create')}}</el-button>
-          <el-button @click="reset('newActivity')">{{$t('activity.reset')}}</el-button>
-        </el-form-item>
+      <el-row type="flex" justify="center">
+        <el-button type="primary" @click="submit('newActivity')">{{$t('activity.create')}}</el-button>
+        <el-button @click="reset('newActivity')">{{$t('activity.reset')}}</el-button>
       </el-row>
     </el-form>
   </div>
@@ -187,5 +185,14 @@ export default class NewActivity extends Vue {
 <style lang="scss" scoped>
 .el-select, .el-cascader {
   display: block
+}
+@media (max-width: 768px) {
+  .el-row {
+    flex-direction:column;
+    .el-button+.el-button {
+      margin-left: 0px;
+      margin-top: 15px;
+    }
+  }
 }
 </style>
