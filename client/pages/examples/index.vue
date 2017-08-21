@@ -6,43 +6,47 @@
           <div slot="header" class="clearfix">
             <span>{{$t('example.title1')}}</span>
           </div>
-          <el-row>
-            <el-col :offset="2" :span="6">
-              <p>{{$t('example.food')}}: {{food}}</p>
+          <el-row type="flex" class="demo_row-flex">
+            <el-col :offset="2" :xs="22" :sm="6">
+              <el-row>
+                <el-col><p>{{$t('example.food')}}: {{food}}</p></el-col>
+                <el-col>
+                  <el-select v-model="food" :placeholder="$t('example.selPh')">
+                    <el-option
+                      v-for="item in foods"
+                      :key="item.label"
+                      :label="item.label"
+                      :value="item.value"
+                      :disabled="item.disabled">
+                    </el-option>
+                  </el-select>
+                </el-col>
+              </el-row>
             </el-col>
-            <el-col :offset="1" :span="6">
-              <p>{{$t('example.counter')}}: {{num}}</p>
+            <el-col :xs="{offset: 2, span: 22}" :sm="{offset: 1, span: 6}">
+              <el-row>
+                <el-col><p>{{$t('example.counter')}}: {{num}}</p></el-col>
+                <el-col>
+                  <el-input-number v-model.number="num" :min="1" :max="10"></el-input-number>
+                </el-col>
+              </el-row>
             </el-col>
-            <el-col :offset="1" :span="6">
-              <p>{{$t('example.city')}}: {{city}}</p>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
-              <el-select v-model="food" :placeholder="$t('example.selPh')">
-                <el-option
-                  v-for="item in foods"
-                  :key="item.label"
-                  :label="item.label"
-                  :value="item.value"
-                  :disabled="item.disabled">
-                </el-option>
-              </el-select>
-            </el-col>
-            <el-col :span="6" :xs="{span: 20, offset: 2}">
-              <el-input-number v-model.number="num" :min="1" :max="10"></el-input-number>
-            </el-col>
-            <el-col :span="8" :xs="{span: 20, offset: 2}">
-              <el-radio-group v-model="city" @input="checkCity">
-                <el-radio-button
-                  v-for="item in cities"
-                  :key="item.value"
-                  :label="item.value"
-                  :disabled="item.disabled">
-                  {{item.label}}
-                </el-radio-button>
-              </el-radio-group>
-              <el-button @click="checkCity('ShangHai')" type="text">&nbsp;&nbsp;上海</el-button>
+            <el-col :xs="{offset: 2, span: 22}" :sm="{offset: 1, span: 6}">
+              <el-row>
+                <el-col><p>{{$t('example.city')}}: {{city}}</p></el-col>
+                <el-col>
+                  <el-radio-group v-model="city" @input="checkCity">
+                    <el-radio-button
+                      v-for="item in cities"
+                      :key="item.value"
+                      :label="item.value"
+                      :disabled="item.disabled">
+                      {{item.label}}
+                    </el-radio-button>
+                  </el-radio-group>
+                  <el-button @click="checkCity('ShangHai')" type="text">&nbsp;&nbsp;上海</el-button>
+                </el-col>
+              </el-row>
             </el-col>
           </el-row>
         </el-card>
@@ -214,6 +218,12 @@ export default class Demo extends Vue {
       }
       &:first-child {
         margin-top: -20px;
+      }
+    }
+    .demo_row-flex {
+      flex-flow: column;
+      .el-row .el-col{
+        margin-top: 0px;
       }
     }
   }
