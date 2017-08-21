@@ -57,14 +57,14 @@
             <span>{{$t('example.title2')}}</span>
           </div>
           <el-row>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               <el-radio-group v-model="province">
                 <el-radio label="3">辽宁</el-radio>
                 <el-radio disabled label="6">浙江</el-radio>
                 <el-radio label="9">台湾</el-radio>
               </el-radio-group>
             </el-col>
-            <el-col :offset="2" :span="12" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="12" :xs="22">
               <el-checkbox-group v-model="district">
                 <el-checkbox label="2">中山区</el-checkbox>
                 <el-checkbox label="4">东城区</el-checkbox>
@@ -74,13 +74,13 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               <el-input placeholder="请输入内容" v-model="website">
                 <template slot="prepend">Http://</template>
                 <template slot="append">.com</template>
               </el-input>
             </el-col>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               <el-input :placeholder="$t('example.inPh')" v-model="restaurant">
                 <el-select class="input-sel" v-model="restOptions" slot="prepend" :placeholder="$t('example.selPh')">
                   <el-option label="餐厅名" value="1"></el-option>
@@ -90,7 +90,7 @@
                 <el-button slot="append" icon="search"></el-button>
               </el-input>
             </el-col>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               <el-select v-model="multiFood" multiple :placeholder="$t('example.selPh')">
                 <el-option
                   v-for="item in foods"
@@ -110,10 +110,10 @@
             <span>{{$t('example.title3')}}</span>
           </div>
           <el-row>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               <el-cascader :placeholder="$t('example.selPh')" :options="organizers" change-on-select></el-cascader>
             </el-col>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               Switch:
               <el-tooltip :content="'Switch value: ' + switcher" placement="top">
                 <el-switch v-model="switcher" on-color="#13ce66"
@@ -122,7 +122,7 @@
               </el-tooltip>
               <el-switch value='0' off-value="0" disabled></el-switch>
             </el-col>
-            <el-col :offset="2" :span="6" :xs="{span: 20, offset: 2}">
+            <el-col :offset="2" :span="6" :xs="22">
               <el-slider v-model="slider" :max="30" :min="10" :step="5" show-stops show-input></el-slider>
             </el-col>
           </el-row>
