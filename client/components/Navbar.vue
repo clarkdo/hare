@@ -5,7 +5,7 @@
       <header>
           <el-row>
             <el-col :span="20">
-              <img src="~@/assets/img/logo.svg" alt="Element">
+              <img src="~/assets/img/logo.svg" alt="Element">
             </el-col>
             <el-col :span="4">
               <div class="nav-icon open" :class="{hide: isMenuHidden}" @click="toggleMenu">

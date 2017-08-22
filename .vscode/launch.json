@@ -49,7 +49,7 @@
         "request": "launch",
         "protocol": "inspector",
         "name": "Debug Hare Prod",
-        "program": "${workspaceRoot}/.nuxt/dist/server-app",
+        "program": "${workspaceRoot}/.build/dist/server-app",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*"

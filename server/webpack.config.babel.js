@@ -8,7 +8,7 @@ export default {
   },
   target: 'node',
   output: {
-    path: process.cwd() + '/.nuxt/dist',
+    path: process.cwd() + '/.build/dist',
     filename: 'server-[name].[hash].js'
   },
   module: {

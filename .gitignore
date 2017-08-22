@@ -1,5 +1,6 @@
 # Nuxt build
 .nuxt
+.build
 dist
 
 # Nuxt generate
