@@ -71,7 +71,7 @@ module.exports = {
   css: [
     'normalize.css/normalize.css',
     'element-ui/lib/theme-default/index.css',
-    {src: '@/assets/css/main.scss', lang: 'scss'}
+    {src: '@/assets/styles/main.scss', lang: 'scss'}
   ],
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
