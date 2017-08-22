@@ -2,6 +2,7 @@
 .nuxt
 .build
 dist
+.cache
 
 # Nuxt generate
 .generated

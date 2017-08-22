@@ -24,18 +24,10 @@ async function start () {
   const port = consts.PORT
   const debug = debugModule('app')
   const app = new Koa()
-  const STATUS = {
-    INITIAL: 1,
-    BUILD_DONE: 2,
-    BUILDING: 3
-  }
-  const showServer = () => {
-    const _host = host === '0.0.0.0' ? 'localhost' : host
-    // eslint-disable-next-line no-console
-    console.log('\n' + chalk.bold(chalk.bgBlue.black(' OPEN ') + chalk.blue(` http://${_host}:${port}\n`)))
-  }
-  config.dev = !(app.env === 'production')
+
   app.keys = ['hare-server']
+  config.dev = !(app.env === 'production')
+  axios.defaults.baseURL = `http://127.0.0.1:${port}`
 
   // logging
   let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
@@ -82,6 +74,11 @@ async function start () {
   app.use(session(SESSION_CONFIG, app)) // note koa-session@3.4.0 is v1 middleware which generates deprecation notice
 
   const nuxt = new Nuxt(config)
+  nuxt.showOpen = () => {
+    const _host = host === '0.0.0.0' ? 'localhost' : host
+    // eslint-disable-next-line no-console
+    console.log('\n' + chalk.bgGreen.black(' OPEN ') + chalk.green(` http://${_host}:${port}\n`))
+  }
   // Build only in dev mode
   if (config.dev) {
     const devConfigs = config.development
@@ -93,16 +90,9 @@ async function start () {
         app.use(proxy(proxyItem.path, proxyItem))
       }
     }
-    const builder = new Builder(nuxt)
-    builder.plugin('done', function ({ builder }) {
-      if (builder._buildStatus === STATUS.BUILD_DONE) {
-        showServer()
-      }
-    })
-    await builder.build()
+    await new Builder(nuxt).build()
   }
   const nuxtRender = koaConnect(nuxt.render)
-  axios.defaults.baseURL = `http://127.0.0.1:${port}`
 
   app.use(async (ctx, next) => {
     await next()
@@ -150,10 +140,6 @@ async function start () {
   })
 
   app.listen(port, host)
-
-  if (!config.dev) {
-    showServer()
-  }
 }
 
 start()
