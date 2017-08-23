@@ -106,7 +106,7 @@ export default class Navbar extends Vue {
   }
   @media (max-width: 768px) {
     position: inherit;
-    width: auto;
+    width: 100%;
     height: auto;
     .el-menu {
       header {

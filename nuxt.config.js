@@ -61,6 +61,12 @@ module.exports = {
     ]
   },
   /*
+  ** Customize the Progress Bar
+  */
+  loading: {
+    color: '#60bbff'
+  },
+  /*
   ** Generate config
   */
   generate: {

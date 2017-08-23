@@ -2,7 +2,7 @@
   <div class="content">
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
-        <div slot="header" class="clearfix">
+        <div slot="header">
           <span>{{$t('nav.list')}}</span>
         </div>
         <el-table ref="tb" :data="activities" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
@@ -28,7 +28,7 @@
     </el-row>
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
-        <div slot="header" class="clearfix">
+        <div slot="header">
           <span>{{$t('nav.list')}}</span>
         </div>
         <el-table :data="activities" border tooltip-effect="dark">
