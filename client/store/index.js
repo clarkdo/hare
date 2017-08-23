@@ -11,8 +11,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_USER: function (state, authUser) {
-    state.authUser = authUser
+  SET_USER: function (state, user) {
+    state.authUser = user
   },
   SET_LANG (state, locale) {
     if (state.locales.indexOf(locale) !== -1) {

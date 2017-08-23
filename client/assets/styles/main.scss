@@ -35,8 +35,8 @@ textarea {
   margin: 20px 0;
 }
 .hide {
-  opacity: 0;
-  width: 0;
+  opacity: 0 !important;
+  width: 0 !important;
 }
 /* Nav Icon */
 .nav-icon {
