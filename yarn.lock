@@ -2660,9 +2660,9 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
-element-ui@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.2.tgz#26046a7c0e1229987dd87b9e5ec860f6cbe1e6b0"
+element-ui@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.3.tgz#d1b5c520bf19f9dec203de777a2a41c2bb8a204c"
   dependencies:
     async-validator "1.6.9"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -7746,9 +7746,9 @@ vue-hot-reload-api@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
 
-vue-i18n@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.1.1.tgz#c37259c9088bf821144b393146d342686e9554ea"
+vue-i18n@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.1.2.tgz#6f5b4b9101e7b92aa05089eb1c0d266aa344f8fc"
 
 vue-loader@^13.0.4:
   version "13.0.4"
