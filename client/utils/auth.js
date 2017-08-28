@@ -7,73 +7,58 @@ import consts from '@/utils/consts'
 const inBrowser = typeof window !== 'undefined'
 const jwtKey = consts.COOKIE_JWT
 
-export const setToken = token => {
-  if (process.server) return
-  let exp = jwtDecode(token).exp
-  window.localStorage.setItem(
-    'token',
-    JSON.stringify({
-      value: token,
-      exp: exp
-    })
-  )
-  cookies.set(jwtKey, token, { expires: new Date(exp) })
-  setAuthHeader()
+const cookieToken = req => {
+  const cookieStr = req && req.headers && req.headers.cookie
+  return !!cookieStr && cookie.parse(cookieStr)[jwtKey]
 }
 
-export const unsetToken = () => {
-  if (process.server) return
-  window.localStorage.removeItem('token')
-  cookies.remove(jwtKey)
-  window.localStorage.setItem('logout', Date.now())
-  setAuthHeader()
+const serverToken = req => {
+  let token = cookieToken(req)
+  if (!token && req && req.session) {
+    token = req.session.jwt
+  }
+  return token
 }
 
-export const getUserFromToken = token => {
+export const clientToken = () => {
+  if (!inBrowser || !window.localStorage.token) return null
+  let token = JSON.parse(window.localStorage.token)
+  if (new Date().getTime() >= token.exp) {
+    return delToken()
+  }
+  return token ? token.value : null
+}
+
+export const decode = token => {
   return token ? jwtDecode(token) : null
 }
 
-export const getUserInSSR = req => {
-  return getUserFromToken(getTokenInSSR(req))
+export const user = req => {
+  const token = req ? serverToken(req) : clientToken()
+  return decode(token)
 }
 
-export const getTokenInSSR = req => {
-  return getTokenFromCookie(req) || getTokenFromSession(req)
-}
-
-export const getTokenFromSession = req => {
-  if (req && req.session) {
-    return req.session.jwt
-  }
-}
-
-export const getTokenFromCookie = req => {
-  const cookieStr = inBrowser ? document.cookie : req.headers.cookie
-  const cookies = cookie.parse(cookieStr || '') || {}
-  return cookies[jwtKey]
-}
-
-export const getUserFromLocalStorage = () => {
-  const json = getTokenFromLocalStorage()
-  return json ? jwtDecode(json) : undefined
-}
-
-export const getTokenFromLocalStorage = () => {
-  if (window.localStorage && window.localStorage.token) {
-    let token = JSON.parse(window.localStorage.token)
-    if (new Date().getTime() >= token.exp) {
-      unsetToken()
-      return
-    }
-    return token ? token.value : null
-  }
-}
-
-export const setAuthHeader = req => {
-  let jwt = inBrowser ? getTokenFromLocalStorage() : getTokenInSSR(req)
+export const defaultHeader = jwt => {
   if (jwt) {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt
   } else {
     delete axios.defaults.headers.common['Authorization']
   }
+}
+
+export const saveToken = token => {
+  if (process.server) return
+  defaultHeader(token)
+  const user = decode(token)
+  cookies.set(jwtKey, token, { expires: new Date(user.exp) })
+  window.localStorage.setItem('token', JSON.stringify({ value: token, exp: user.exp }))
+  return user
+}
+
+export const delToken = () => {
+  if (process.server) return
+  defaultHeader()
+  cookies.remove(jwtKey)
+  window.localStorage.removeItem('token')
+  window.localStorage.setItem('logout', Date.now())
 }

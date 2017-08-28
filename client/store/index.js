@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getUserFromToken, setToken, unsetToken } from '@/utils/auth'
+import { saveToken, delToken } from '@/utils/auth'
 
 export const strict = true
 
@@ -42,8 +42,7 @@ export const actions = {
         password,
         captcha
       })
-      setToken(token)
-      commit('SET_USER', getUserFromToken(token))
+      commit('SET_USER', saveToken(token))
     } catch (error) {
       let message = error.message
       if (error.response.data) {
@@ -54,8 +53,7 @@ export const actions = {
   },
   async logout ({ commit }, callback) {
     await axios.post('/hpi/logout')
-    commit('SET_USER', null)
-    unsetToken()
+    commit('SET_USER', delToken())
     callback()
   },
   toggleMenu ({ commit }) {
