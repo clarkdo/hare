@@ -2248,9 +2248,9 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-loader@^0.28.5:
+"css-loader@https://github.com/nuxt/css-loader.git":
   version "0.28.5"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.5.tgz#dd02bb91b94545710212ef7f6aaa66663113d754"
+  resolved "https://github.com/nuxt/css-loader.git#43674428e42dd208f6192cfc0b1679935a0bae4b"
   dependencies:
     babel-code-frame "^6.11.0"
     css-selector-tokenizer "^0.7.0"
@@ -5281,9 +5281,9 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nuxt@^1.0.0-rc6:
-  version "1.0.0-rc6"
-  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.0.0-rc6.tgz#57b7eb06298f2a4519e19acb30e2ba564a196015"
+nuxt@^1.0.0-rc7:
+  version "1.0.0-rc7"
+  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.0.0-rc7.tgz#5b3400ab57dc88124b188b6e209177ffabeff3b6"
   dependencies:
     "@nuxtjs/youch" "3.0.2"
     ansi-html "^0.0.7"
@@ -5297,7 +5297,7 @@ nuxt@^1.0.0-rc6:
     clone "^2.1.1"
     compression "^1.7.0"
     connect "^3.6.3"
-    css-loader "^0.28.5"
+    css-loader "https://github.com/nuxt/css-loader.git"
     debug "^3.0.0"
     es6-promise "^4.1.1"
     etag "^1.8.0"
