@@ -13,7 +13,7 @@
 $ git clone git@github.com:clarkdo/hare.git
 $ cd hare
 # install dependencies
-$ yarn install
+$ yarn
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ $ yarn install
 
 ``` bash
 # serve with hot reloading at localhost:3000
-$ yarn run dev
+$ yarn dev
 ```
 
 Go to [http://localhost:3000](http://localhost:3000)
@@ -31,31 +31,31 @@ Go to [http://localhost:3000](http://localhost:3000)
 
 ``` bash
 # configure ESLint as a tool to keep codes clean
-$ yarn run lint
+$ yarn lint
 # use ava as testing framework, mixed with jsdom
-$ yarn run test
+$ yarn test
 ```
 
 ### Production
 
 ``` bash
 # build for production and launch the server
-$ yarn run build
-$ yarn run start
+$ yarn build
+$ yarn start
 ```
 
 ### Generate
 
 ``` bash
 # generate a static project
-$ yarn run generate
+$ yarn generate
 ```
 
 ### Analyze
 
 ``` bash
 # build and launch the bundle analyze
-$ yarn run analyze
+$ yarn analyze
 ```
 
 ### Use PM
