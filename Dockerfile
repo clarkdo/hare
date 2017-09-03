@@ -5,10 +5,9 @@ RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 # Bundle app source
-COPY . /usr/app/
-
-# Install app dependencies
-RUN yarn
+COPY package.json ./
+COPY node_modules ./node_modules/
+COPY .build ./.build
 
 EXPOSE 3000
-CMD [ "yarn", "dev" ]
+CMD [ "yarn", "start" ]
