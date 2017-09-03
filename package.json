@@ -7,9 +7,9 @@
   "scripts": {
     "dev": "cross-env DEBUG=nuxt:*,app nodemon -w server -w nuxt.config.js --exec babel-node server/app.js",
     "dev:pm2": "pm2 start yarn --name=hare -- dev",
-    "test": "npm run lint && npm run build:client && ava --verbose --serial ",
+    "test": "yarn lint && yarn build:client && ava --verbose --serial ",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "build": "npm run build:client && npm run build:server",
+    "build": "yarn build:client && yarn build:server",
     "build:client": "nuxt build",
     "build:server": "webpack --config server/webpack.config.babel.js",
     "start": "cross-env NODE_ENV=production node .build/dist/server-app.*.js",
