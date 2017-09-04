@@ -2872,11 +2872,12 @@ eslint-module-utils@^2.0.0:
     debug "^2.6.8"
     pkg-dir "^1.0.0"
 
-eslint-plugin-html@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-html/-/eslint-plugin-html-3.2.0.tgz#fb64c2789e9582b97f580a38814a57966f91a7b2"
+eslint-plugin-html@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-html/-/eslint-plugin-html-3.2.1.tgz#4289d38245f3d95134d22c17b1894d78db92c572"
   dependencies:
     htmlparser2 "^3.8.2"
+    semver "^5.4.1"
 
 eslint-plugin-import@^2.6.0:
   version "2.6.0"
@@ -2917,9 +2918,9 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.5.0.tgz#bb75d3b8bde97fb5e13efcd539744677feb019c3"
+eslint@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.6.1.tgz#ddc7fc7fd70bf93205b0b3449bb16a1e9e7d4950"
   dependencies:
     ajv "^5.2.0"
     babel-code-frame "^6.22.0"
@@ -4414,9 +4415,9 @@ koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/koa-is-json/-/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
 
-koa-proxies@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/koa-proxies/-/koa-proxies-0.6.0.tgz#a401c180cf9adce2eeef4ce182c6560251f6ddbf"
+koa-proxies@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/koa-proxies/-/koa-proxies-0.6.1.tgz#b58986d8554e2a50195c77b7fa20f2afe756be20"
   dependencies:
     http-proxy "^1.16.2"
     path-match "^1.2.4"
@@ -6933,6 +6934,10 @@ semver-diff@^2.0.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
+semver@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+
 send@0.15.3:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/send/-/send-0.15.3.tgz#5013f9f99023df50d1bd9892c19e3defd1d53309"
@@ -7772,9 +7777,9 @@ vue-hot-reload-api@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
 
-vue-i18n@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.1.2.tgz#6f5b4b9101e7b92aa05089eb1c0d266aa344f8fc"
+vue-i18n@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.2.0.tgz#849d496affc3dbdfb5f6ad675b79e86448bce14e"
 
 vue-loader@^13.0.4:
   version "13.0.4"
