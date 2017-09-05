@@ -3,6 +3,8 @@
 [![Max OSX and Linux](https://travis-ci.org/clarkdo/hare.svg?branch=master)](https://travis-ci.org/clarkdo/hare)
 [![Windows](https://ci.appveyor.com/api/projects/status/16eua6xnlnwxqomp?svg=true)](https://ci.appveyor.com/project/clarkdo/hare)
 [![Vulnerabilities](https://snyk.io/test/github/clarkdo/hare/badge.svg)](https://snyk.io/test/github/clarkdo/hare)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![ESLint](https://img.shields.io/badge/styled_with-eslint-blue.svg?colorB=8080f2)](https://github.com/eslint/eslint)
 [![Issues](https://img.shields.io/github/issues/clarkdo/hare.svg)](https://github.com/clarkdo/hare/issues)
 [![Stars](https://img.shields.io/github/stars/clarkdo/hare.svg)](https://github.com/clarkdo/hare/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/clarkdo/hare/master/LICENSE)
