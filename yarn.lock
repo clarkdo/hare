@@ -1185,9 +1185,9 @@ babel-preset-es2015@^6.24.1:
     babel-plugin-transform-es2015-unicode-regex "^6.24.1"
     babel-plugin-transform-regenerator "^6.24.1"
 
-babel-preset-vue-app@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/babel-preset-vue-app/-/babel-preset-vue-app-1.2.1.tgz#2f6b71890a21a675019ca1db8d0da15bf017ba24"
+babel-preset-vue-app@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-vue-app/-/babel-preset-vue-app-1.3.0.tgz#4b31f690a353c8735963e06927a072a0bb82126f"
   dependencies:
     babel-plugin-syntax-dynamic-import "^6.18.0"
     babel-plugin-transform-object-rest-spread "^6.26.0"
@@ -2262,7 +2262,7 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-loader@^0.28.6:
+css-loader@^0.28.7:
   version "0.28.7"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.7.tgz#5f2ee989dd32edd907717f953317656160999c1b"
   dependencies:
@@ -5296,9 +5296,9 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nuxt@^1.0.0-rc8:
-  version "1.0.0-rc8"
-  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.0.0-rc8.tgz#e073f1b0ce8938b4d0552b1ef68ea70a28d77945"
+nuxt@^1.0.0-rc9:
+  version "1.0.0-rc9"
+  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.0.0-rc9.tgz#74bb73f85b1e92a8ad7d7108386fbecccbe7a3d4"
   dependencies:
     "@nuxtjs/youch" "3.0.2"
     ansi-html "^0.0.7"
@@ -5306,13 +5306,13 @@ nuxt@^1.0.0-rc8:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
     babel-preset-es2015 "^6.24.1"
-    babel-preset-vue-app "^1.2.1"
+    babel-preset-vue-app "^1.3.0"
     chalk "^2.1.0"
     chokidar "^1.7.0"
     clone "^2.1.1"
     compression "^1.7.0"
     connect "^3.6.3"
-    css-loader "^0.28.6"
+    css-loader "^0.28.7"
     debug "^3.0.1"
     es6-promise "^4.1.1"
     etag "^1.8.0"
@@ -5342,7 +5342,7 @@ nuxt@^1.0.0-rc8:
     serve-static "^1.12.4"
     server-destroy "^1.0.1"
     source-map "^0.5.7"
-    source-map-support "^0.4.16"
+    source-map-support "^0.4.17"
     tappable "^1.1.0"
     url-loader "^0.5.9"
     vue "~2.4.2"
@@ -7099,9 +7099,9 @@ source-map-support@^0.4.15:
   dependencies:
     source-map "^0.5.6"
 
-source-map-support@^0.4.16:
-  version "0.4.16"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.16.tgz#16fecf98212467d017d586a2af68d628b9421cd8"
+source-map-support@^0.4.17:
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.17.tgz#6f2150553e6375375d0ccb3180502b78c18ba430"
   dependencies:
     source-map "^0.5.6"
 
