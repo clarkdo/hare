@@ -23,10 +23,12 @@ const serverToken = req => {
 export const clientToken = () => {
   if (!inBrowser || !window.localStorage.token) return null
   let token = JSON.parse(window.localStorage.token)
-  if (new Date().getTime() >= token.exp) {
-    return delToken()
+  if (token) {
+    if (new Date().getTime() >= token.exp) {
+      return delToken()
+    }
+    return token.value
   }
-  return token ? token.value : null
 }
 
 export const decode = token => {
