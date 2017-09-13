@@ -47,8 +47,7 @@ module.exports = {
       'vue-clipboards',
       'moment',
       'chart.js',
-      'lodash/fp/merge',
-      'lodash/debounce'
+      'deepmerge' // vue-chartjs dep
     ],
     extractCSS: true,
     filenames: {

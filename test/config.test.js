@@ -16,7 +16,6 @@ test('Vendor', async t => {
   t.true(!!~vendor.indexOf('vue-class-component'), 'vue-class-component added to config')
   t.true(!!~vendor.indexOf('vuex-class'), 'vuex-class added to config')
   t.true(!!~vendor.indexOf('vue-clipboards'), 'vue-clipboards added to config')
-  t.true(!!~vendor.indexOf('lodash/debounce'), 'lodash/debounce added to config')
 })
 
 test('Plugin', async t => {
