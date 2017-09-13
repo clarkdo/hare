@@ -45,7 +45,7 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
-import debounce from 'lodash/debounce'
+import debounce from '@/utils/debounce'
 import Component from 'class-component'
 
 @Component
