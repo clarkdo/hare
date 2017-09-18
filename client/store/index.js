@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getUserFromToken, setToken, unsetToken } from '~/utils/auth'
+import { saveToken, delToken } from '@/utils/auth'
 
 export const strict = true
 
@@ -11,15 +11,15 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_USER: function (state, authUser) {
-    state.authUser = authUser
+  SET_USER: function (state, user) {
+    state.authUser = user
   },
   SET_LANG (state, locale) {
     if (state.locales.indexOf(locale) !== -1) {
       state.locale = locale
     }
   },
-  SET_MENU_HIDDEN: function (state) {
+  TOGGLE_MENU_HIDDEN: function (state) {
     state.isMenuHidden = !state.isMenuHidden
   }
 }
@@ -42,8 +42,7 @@ export const actions = {
         password,
         captcha
       })
-      setToken(token)
-      commit('SET_USER', getUserFromToken(token))
+      commit('SET_USER', saveToken(token))
     } catch (error) {
       let message = error.message
       if (error.response.data) {
@@ -54,11 +53,10 @@ export const actions = {
   },
   async logout ({ commit }, callback) {
     await axios.post('/hpi/logout')
-    commit('SET_USER', null)
-    unsetToken()
+    commit('SET_USER', delToken())
     callback()
   },
   toggleMenu ({ commit }) {
-    commit('SET_MENU_HIDDEN')
+    commit('TOGGLE_MENU_HIDDEN')
   }
 }

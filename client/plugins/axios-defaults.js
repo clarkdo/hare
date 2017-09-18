@@ -1,20 +1,20 @@
 import axios from 'axios'
-import { setAuthHeader, getTokenFromLocalStorage } from '~/utils/auth'
+import { defaultHeader, clientToken } from '@/utils/auth'
 
 const PORT = process.env.PORT || '3000'
 
-export default ({ req, isDev, isServer, route, redirect }) => {
+export default ({ req, isServer, redirect }) => {
   if (!isServer) {
-    setAuthHeader(req)
+    defaultHeader(clientToken())
     axios.interceptors.response.use(
       response => response,
       error => {
         if (
           error.response.status === 401 &&
-          !getTokenFromLocalStorage() &&
-          route.name !== 'login'
+          !clientToken() &&
+          location.pathname !== '/login'
         ) {
-          redirect('/login', { page: route.fullPath })
+          redirect('/login', { page: location.pathname + location.search })
         }
         return Promise.reject(error)
       }

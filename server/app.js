@@ -1,10 +1,11 @@
 import Koa from 'koa'
-import Nuxt from 'nuxt'
+import { Nuxt, Builder } from 'nuxt'
 import axios from 'axios'
 import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
 import koaBunyan from 'koa-bunyan'
 import koaLogger from 'koa-bunyan-logger'
+import koaConnect from 'koa-connect'
 import body from 'koa-body' // body parser
 import compose from 'koa-compose' // middleware composer
 import compress from 'koa-compress' // HTTP compression
@@ -12,8 +13,8 @@ import session from 'koa-session' // session for flash messages
 import api from './api'
 import consts from './utils/consts'
 import config from '../nuxt.config.js'
+import chalk from 'chalk'
 import debugModule from 'debug' // small debugging utility
-
 import proxy from 'koa-proxies'
 
 // Start nuxt.js
@@ -24,8 +25,9 @@ async function start () {
   const debug = debugModule('app')
   const app = new Koa()
 
-  config.dev = !(app.env === 'production')
   app.keys = ['hare-server']
+  config.dev = !(app.env === 'production')
+  axios.defaults.baseURL = `http://127.0.0.1:${port}`
 
   // logging
   let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
@@ -72,6 +74,11 @@ async function start () {
   app.use(session(SESSION_CONFIG, app)) // note koa-session@3.4.0 is v1 middleware which generates deprecation notice
 
   const nuxt = new Nuxt(config)
+  nuxt.showOpen = () => {
+    const _host = host === '0.0.0.0' ? 'localhost' : host
+    // eslint-disable-next-line no-console
+    console.log('\n' + chalk.bgGreen.black(' OPEN ') + chalk.green(` http://${_host}:${port}\n`))
+  }
   // Build only in dev mode
   if (config.dev) {
     const devConfigs = config.development
@@ -83,15 +90,16 @@ async function start () {
         app.use(proxy(proxyItem.path, proxyItem))
       }
     }
+    await new Builder(nuxt).build()
   }
-  axios.defaults.baseURL = `http://127.0.0.1:${port}`
+  const nuxtRender = koaConnect(nuxt.render)
 
   app.use(async (ctx, next) => {
     await next()
     if (ctx.state.subapp !== consts.API) {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       ctx.req.session = ctx.session
-      await nuxt.render(ctx.req, ctx.res)
+      await nuxtRender(ctx)
     }
   })
   // return response time in X-Response-Time header
@@ -132,11 +140,6 @@ async function start () {
   })
 
   app.listen(port, host)
-
-  if (!config.dev) {
-    console.log(`\nNode: ${process.version} ENV: ${app.env}`)
-    console.log(`Listening on http://${host}:${port}`)
-  }
 }
 
 start()

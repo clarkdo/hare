@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 module.exports = {
   srcDir: 'client/',
+  buildDir: '.build/',
   dev: (process.env.NODE_ENV !== 'production'),
   /*
   ** Router config
@@ -33,7 +34,7 @@ module.exports = {
       plugins: ['transform-decorators-legacy', 'transform-class-properties']
     },
     extend (config, { dev, isClient }) {
-      config.resolve.alias['class-component'] = '~plugins/class-component'
+      config.resolve.alias['class-component'] = '@/plugins/class-component'
     },
     vendor: [
       'axios',
@@ -43,10 +44,10 @@ module.exports = {
       'vuex-class',
       'vue-i18n',
       'vue-chartjs',
+      'vue-clipboards',
       'moment',
       'chart.js',
-      'lodash/fp/merge',
-      'lodash/debounce'
+      'deepmerge' // vue-chartjs dep
     ],
     extractCSS: true,
     filenames: {
@@ -57,6 +58,12 @@ module.exports = {
     plugins: [
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/)
     ]
+  },
+  /*
+  ** Customize the Progress Bar
+  */
+  loading: {
+    color: '#60bbff'
   },
   /*
   ** Generate config
@@ -70,16 +77,17 @@ module.exports = {
   css: [
     'normalize.css/normalize.css',
     'element-ui/lib/theme-default/index.css',
-    {src: '~assets/css/main.scss', lang: 'scss'}
+    {src: '@/assets/styles/main.scss', lang: 'scss'}
   ],
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
   */
   plugins: [
-    '~plugins/element-ui',
-    '~plugins/i18n',
-    '~plugins/axios-defaults',
-    {src: '~plugins/error-handler', ssr: false}
+    '@/plugins/i18n',
+    '@/plugins/element-ui',
+    '@/plugins/axios-defaults',
+    {src: '@/plugins/clipboard', ssr: false},
+    {src: '@/plugins/error-handler', ssr: false}
   ],
 
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
