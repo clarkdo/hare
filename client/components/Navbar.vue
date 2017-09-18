@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div class="navbar el-menu--dark">
     <el-menu class="el-menu-demo"
       :default-active="$route.path" theme="dark">
       <header>
