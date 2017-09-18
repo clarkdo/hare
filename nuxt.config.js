@@ -83,8 +83,8 @@ module.exports = {
   ** Add element-ui in our app, see plugins/element-ui.js file
   */
   plugins: [
-    '@/plugins/element-ui',
     '@/plugins/i18n',
+    '@/plugins/element-ui',
     '@/plugins/axios-defaults',
     {src: '@/plugins/clipboard', ssr: false},
     {src: '@/plugins/error-handler', ssr: false}

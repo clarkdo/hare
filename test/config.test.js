@@ -20,8 +20,8 @@ test('Vendor', async t => {
 
 test('Plugin', async t => {
   const plugins = nuxt.options.plugins
-  t.is(plugins[0], '@/plugins/element-ui', 'element-ui plugin added to config')
-  t.is(plugins[1], '@/plugins/i18n', 'i18n plugin added to config')
+  t.is(plugins[0], '@/plugins/i18n', 'i18n plugin added to config')
+  t.is(plugins[1], '@/plugins/element-ui', 'element-ui plugin added to config')
   t.is(plugins[2], '@/plugins/axios-defaults', 'axios defaults plugin added to config')
   t.is(plugins[3].src, '@/plugins/clipboard', 'clipboard plugin added to config')
   t.is(plugins[4].src, '@/plugins/error-handler', 'error handler plugin added to config')
