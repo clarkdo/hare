@@ -3,6 +3,8 @@
 [![Max OSX and Linux](https://travis-ci.org/clarkdo/hare.svg?branch=master)](https://travis-ci.org/clarkdo/hare)
 [![Windows](https://ci.appveyor.com/api/projects/status/16eua6xnlnwxqomp?svg=true)](https://ci.appveyor.com/project/clarkdo/hare)
 [![Vulnerabilities](https://snyk.io/test/github/clarkdo/hare/badge.svg)](https://snyk.io/test/github/clarkdo/hare)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![ESLint](https://img.shields.io/badge/styled_with-eslint-blue.svg?colorB=8080f2)](https://github.com/eslint/eslint)
 [![Issues](https://img.shields.io/github/issues/clarkdo/hare.svg)](https://github.com/clarkdo/hare/issues)
 [![Stars](https://img.shields.io/github/stars/clarkdo/hare.svg)](https://github.com/clarkdo/hare/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/clarkdo/hare/master/LICENSE)
@@ -13,7 +15,7 @@
 $ git clone git@github.com:clarkdo/hare.git
 $ cd hare
 # install dependencies
-$ yarn install
+$ yarn
 ```
 
 ## Usage
@@ -22,7 +24,7 @@ $ yarn install
 
 ``` bash
 # serve with hot reloading at localhost:3000
-$ yarn run dev
+$ yarn dev
 ```
 
 Go to [http://localhost:3000](http://localhost:3000)
@@ -31,31 +33,31 @@ Go to [http://localhost:3000](http://localhost:3000)
 
 ``` bash
 # configure ESLint as a tool to keep codes clean
-$ yarn run lint
+$ yarn lint
 # use ava as testing framework, mixed with jsdom
-$ yarn run test
+$ yarn test
 ```
 
 ### Production
 
 ``` bash
 # build for production and launch the server
-$ yarn run build
-$ yarn run start
+$ yarn build
+$ yarn start
 ```
 
 ### Generate
 
 ``` bash
 # generate a static project
-$ yarn run generate
+$ yarn generate
 ```
 
 ### Analyze
 
 ``` bash
 # build and launch the bundle analyze
-$ yarn run analyze
+$ yarn analyze
 ```
 
 ### Use PM
@@ -88,7 +90,21 @@ $ pm2 delete hare
 ``` bash
 # build image
 $ docker build -t hare-dev -f Dockerfile.dev ./
-$ docker run -d -p 8888:3000 --env HOST=0.0.0.0 hare-dev
+$ docker run -d -p 8888:3000 -e HOST=0.0.0.0 hare-dev
+```
+
+### Docker Production
+
+``` bash
+# build bundle
+$ export NODE_ENV=''
+$ yarn
+$ yarn build
+# install production dependencies (remove devDependencies)
+$ yarn --prod
+# build image
+$ docker build -t hare-prod -f Dockerfile ./
+$ docker run -d -p 8889:3000 -e HOST=0.0.0.0 hare-prod
 ```
 
 Go to [http://localhost:8888](http://localhost:8888)

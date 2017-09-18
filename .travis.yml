@@ -10,8 +10,8 @@ os:
   - linux
   - osx
 install:
-  - yarn install
-  # - yarn run build
+  - yarn
+  # - yarn build
 script:
-  # - yarn run lint
-  - yarn run test
+  # - yarn lint
+  - yarn test

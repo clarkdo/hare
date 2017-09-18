@@ -1,10 +1,10 @@
 <template>
   <div class="app">
-    <el-row class='main'>
-      <el-col :span="4" :class="{hide: isMenuHidden, navCol: true}">
-        <navbar :authUser="authUser"></navbar>
+    <el-row class="main">
+      <el-col :sm="4" :xs="24" :class="{hide: isMenuHidden, navCol: true}">
+        <navbar :class="{hide: isMenuHidden, navCol: true}"></navbar>
       </el-col>
-      <el-col :span="colSize" class="content">
+      <el-col :sm="colSize" :xs="24" class="content">
         <el-row><headbar></headbar></el-row>
         <el-row><nuxt></nuxt></el-row>
       </el-col>
@@ -14,8 +14,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Navbar from '~components/Navbar'
-import Headbar from '~components/Headbar'
+import Navbar from '@/components/Navbar'
+import Headbar from '@/components/Headbar'
 
 export default {
   components: {
@@ -26,20 +26,13 @@ export default {
     colSize () {
       return this.isMenuHidden ? 24 : 20
     },
-    ...mapGetters(['authUser', 'isMenuHidden'])
+    ...mapGetters(['isMenuHidden'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-.navCol {
-  &.hide {
-    opacity: 0;
-    width: 0;
-    transition: width 0.5s, opacity 0.5s ease-out;
-  }
-  transition: width 0.5s, opacity 0.5s ease-in;
-}
+
 .app {
   height: 100%;
   .el-row.main {
@@ -47,9 +40,18 @@ export default {
     .el-col {
       height: 100%;
     }
-    .content {
-      transition: width 0.5s, opacity 0.5s ease-in;
+    .navCol {
+      transition: width 0.5s, opacity 0.15s ease-out;
+      &.hide {
+        transition: width 0.5s, opacity 2s ease-in;
+      }
     }
+    .content {
+       transition: width 0.5s, opacity 0.5s ease-in;
+     }
+  }
+  @media (max-width: 768px) {
+    height: auto;
   }
 }
 </style>

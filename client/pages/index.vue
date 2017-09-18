@@ -14,7 +14,7 @@
 <script>
 import Vue from 'vue'
 import Component from 'class-component'
-import ForkThis from '~components/ForkThis'
+import ForkThis from '@/components/ForkThis'
 
 @Component({
   components: {

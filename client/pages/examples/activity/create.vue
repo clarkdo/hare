@@ -2,7 +2,7 @@
   <div class="content">
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
-        <div slot="header" class="clearfix">
+        <div slot="header">
           <span>{{$t(title)}}</span>
         </div>
         <new-activity :form-data="activity" ref="popActivity"></new-activity>
@@ -13,7 +13,7 @@
 
 <script>
 import Vue from 'vue'
-import NewActivity from '~components/activity/NewActivity'
+import NewActivity from '@/components/activity/NewActivity'
 import Component, { Getter, namespace } from 'class-component'
 
 const ActivityGetter = namespace('examples/activity/index', Getter)

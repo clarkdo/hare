@@ -1,6 +1,8 @@
 # Nuxt build
 .nuxt
+.build
 dist
+.cache
 
 # Nuxt generate
 .generated
