@@ -1906,7 +1906,7 @@ clone@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
 
-co-body@*:
+co-body@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/co-body/-/co-body-5.1.1.tgz#d97781d1e3344ba4a820fd1806bddf8341505236"
   dependencies:
@@ -3383,7 +3383,7 @@ form-data@~2.1.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
-formidable@1.1.1:
+formidable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.1.1.tgz#96b8886f7c3c3508b932d6bd70c4d3a88f35f1a9"
 
@@ -4412,12 +4412,12 @@ kind-of@^3.2.2:
   dependencies:
     is-buffer "^1.1.5"
 
-koa-body@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/koa-body/-/koa-body-2.3.0.tgz#33edb06471e1c2e726d506af3e5b4dce39924f1f"
+koa-body@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/koa-body/-/koa-body-2.4.0.tgz#dbd9c796854ec0c43511661caac54a358f923c38"
   dependencies:
-    co-body "*"
-    formidable "1.1.1"
+    co-body "^5.1.1"
+    formidable "^1.1.1"
 
 koa-bunyan-logger@^2.0.0:
   version "2.0.0"
