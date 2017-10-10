@@ -16,7 +16,9 @@
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "ava": {
     "require": [
@@ -59,7 +61,8 @@
     "vue-clipboards": "^1.1.0",
     "vue-i18n": "^7.2.0",
     "vuex-class": "^0.2.0",
-    "xmlify": "^1.1.0"
+    "xmlify": "^1.1.0",
+    "snyk": "^1.41.1"
   },
   "devDependencies": {
     "ava": "^0.22.0",
@@ -94,5 +97,6 @@
   },
   "engines": {
     "node": ">=7.6.0"
-  }
+  },
+  "snyk": true
 }
