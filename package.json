@@ -16,7 +16,8 @@
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "heroku-postbuild": "yarn build"
   },
   "ava": {
     "require": [
