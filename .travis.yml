@@ -15,3 +15,9 @@ install:
 script:
   # - yarn lint
   - yarn test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Qql7NyYDdq2H7pPr6PjAfClK0QQ4GR1+xx6Jw1MFl2F101qshrDVuMl1BGiHfKv20NkbEoFjkTKB3QMfQhosV91tZxZrFFJuYPGKimiy4XyaxC6eCLhfXCTxwfZb2rKcMPwMg2thZTpEkkS3VHyDp8iJwF+Yt6+050t/lHlEquCJxZQSkBZQCOhQJWI0JxAvePvGCtL0owIlj/TkxM/YIGg3Rolw5Zt80sb5BBREpIFO25w3NK8vfAtQBixG2D3XLJZKk9UPqXQuhmYdjVp5nNMdjcLMUVhh5olL648vCtIyT2sNipYJlIONL2xoZQnQbs5wZhX2nOy5dmJ4WWnh0gGM/8xL7fPFcF0/huQ+nR+urNCPF4TVplvcoDtX6enCpDRwAtBZxM+13KJoLqZC4Snep6EUdwExgg9ZOtGi8QnPvd6C01mD/hD/POzxSGFf0Nlg2XOIsmnwtfBX4JxBbEq0OmL4Wu2NhiTDIYik2gRvJmEEWYktB8iYvZ1KaySP6ZYBrfR4IfpA+gAmnTnsINK4An4IFoW/Z34F+6O/AEcaT34UQmOHsNUT2XFujOvhsC9snFeOfRRJCJ12xaBf6GN1UkM7v1nV6ZiUxzKd1x9uifdSPV/BFtdkiiAhaUh/j5yDVPBUKXIpaVXvDWltGe4oORcVLwHupmRx4GzM1jk=
+  app: nuxt-hare
+  on: dev
