@@ -93,6 +93,8 @@ $ docker build -t hare-dev -f Dockerfile.dev ./
 $ docker run -d -p 8888:3000 -e HOST=0.0.0.0 hare-dev
 ```
 
+Go to [http://localhost:8888](http://locdoalhost:8888)
+
 ### Docker Production
 
 ``` bash
@@ -107,7 +109,7 @@ $ docker build -t hare-prod -f Dockerfile ./
 $ docker run -d -p 8889:3000 -e HOST=0.0.0.0 hare-prod
 ```
 
-Go to [http://localhost:8888](http://localhost:8888)
+Go to [http://localhost:8889](http://locdoalhost:8889)
 
 ## Documentation
 
