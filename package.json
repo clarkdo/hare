@@ -1,6 +1,6 @@
 {
   "name": "hare",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js",
   "author": "Clark Du",
   "license": "MIT",
