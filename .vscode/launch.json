@@ -37,19 +37,17 @@
         ],
         "cwd": "${workspaceRoot}",
         "sourceMaps": true,
-        "console": "integratedTerminal",
-        "internalConsoleOptions": "neverOpen",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*,app"
         }
       },
       {
+        "name": "Debug Hare Prod",
         "type": "node",
         "request": "launch",
         "protocol": "inspector",
-        "name": "Debug Hare Prod",
-        "program": "${workspaceRoot}/.build/dist/server-app",
+        "program": "${workspaceRoot}/dist/server-app",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*"
