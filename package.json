@@ -1,6 +1,6 @@
 {
   "name": "hare",
-  "version": "2.0.0",
+  "version": "0.1.4",
   "description": "Based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js",
   "author": "Clark Du",
   "private": true,
@@ -17,7 +17,8 @@
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
     "precommit": "lint-staged",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "yarn build",
+    "release": "standard-version"
   },
   "ava": {
     "require": [
@@ -90,6 +91,7 @@
     "nodemon": "^1.11.0",
     "progress-bar-webpack-plugin": "^1.10.0",
     "sass-loader": "^6.0.6",
+    "standard-version": "^4.2.0",
     "webpack": "^3.5.5",
     "webpack-node-externals": "^1.6.0"
   },
