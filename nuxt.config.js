@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 module.exports = {
   srcDir: 'client/',
-  buildDir: '.build/',
+  buildDir: 'dist/client/',
   dev: (process.env.NODE_ENV !== 'production'),
   /*
   ** Router config

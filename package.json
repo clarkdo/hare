@@ -3,7 +3,8 @@
   "version": "0.2.0",
   "description": "Based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js",
   "author": "Clark Du",
-  "private": true,
+  "license": "MIT",
+  "main": "dist/server-app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/clarkdo/hare.git"
@@ -16,12 +17,13 @@
     "build": "yarn build:client && yarn build:server",
     "build:client": "nuxt build",
     "build:server": "webpack --config server/webpack.config.babel.js",
-    "start": "cross-env NODE_ENV=production node .build/dist/server-app.*.js",
+    "start": "cross-env NODE_ENV=production node dist/server-app.js",
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
     "precommit": "lint-staged",
     "heroku-postbuild": "yarn build",
+    "prepublish": "yarn lint && yarn test && yarn build:server",
     "release": "standard-version"
   },
   "ava": {
