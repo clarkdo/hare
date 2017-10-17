@@ -11,7 +11,7 @@ WORKDIR /usr/app
 # Bundle app source
 COPY package.json ./
 COPY node_modules ./node_modules/
-COPY .build ./.build
+COPY dist ./dist
 
 EXPOSE 3000
 CMD [ "yarn", "start" ]
