@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="0.2.0"></a>
-# [0.2.0](https://github.com/clarkdo/hare/compare/v0.1.2...v0.2.0) (2017-10-17)
+# [0.2.0](https://github.com/clarkdo/hare/compare/v0.1.4...v0.2.0) (2017-10-17)
 
 
 ### Bug Fixes
@@ -14,5 +14,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* add i18n for element ([beb0b72](https://github.com/clarkdo/hare/commit/beb0b72))
+* refactor: login page ([c4ab867](https://github.com/clarkdo/hare/commit/c4ab867))
+* add heroku in travis building ([8c5334](https://github.com/clarkdo/hare/commit/8c5334))
 * add standard-version ([2760b35](https://github.com/clarkdo/hare/commit/2760b35))
