@@ -1,9 +1,13 @@
 {
   "name": "hare",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js",
   "author": "Clark Du",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clarkdo/hare.git"
+  },
   "scripts": {
     "dev": "cross-env DEBUG=nuxt:*,app nodemon -w server -w nuxt.config.js --exec babel-node server/app.js",
     "dev:pm2": "pm2 start yarn --name=hare -- dev",
