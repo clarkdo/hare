@@ -2,6 +2,7 @@ const webpack = require('webpack')
 module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
+  rootDir: './',
   dev: (process.env.NODE_ENV !== 'production'),
   /*
   ** Router config
@@ -89,7 +90,9 @@ module.exports = {
     {src: '@/plugins/clipboard', ssr: false},
     {src: '@/plugins/error-handler', ssr: false}
   ],
-
+  modules: [
+    '@nuxtjs/webpackmonitor'
+  ],
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
   development: {
     proxies: [

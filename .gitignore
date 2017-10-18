@@ -186,3 +186,6 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+# webpackmonitor
+.monitor/
+

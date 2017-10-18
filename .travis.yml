@@ -9,6 +9,10 @@ node_js:
 os:
   - linux
   - osx
+cache:
+  yarn: true
+  directories:
+    - node_modules
 install:
   - yarn
   # - yarn build
