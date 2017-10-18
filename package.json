@@ -88,7 +88,7 @@
     "eslint-plugin-html": "^3.2.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "jsdom": "^11.2.0",
