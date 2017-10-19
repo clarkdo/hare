@@ -8,7 +8,7 @@ node_js:
 - '8'
 os:
 - linux
-- osx
+# - osx
 cache:
   yarn: true
   directories:
