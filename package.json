@@ -23,7 +23,7 @@
     "generate": "nuxt generate",
     "precommit": "lint-staged",
     "heroku-postbuild": "yarn build",
-    "prepublish": "yarn lint && yarn test && yarn build:server",
+    "prepublishOnly": "yarn lint && yarn test && yarn build:server",
     "release": "standard-version"
   },
   "ava": {
@@ -103,6 +103,7 @@
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
-    "node": ">=7.6.0"
+    "node": ">=7.6.0",
+    "npm": ">=4.0.0"
   }
 }
