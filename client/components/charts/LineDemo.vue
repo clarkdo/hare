@@ -2,8 +2,10 @@
 import Component from 'class-component'
 import { Line } from 'vue-chartjs'
 
-@Component
-export default class LineDemo extends Line {
+@Component({
+  extends: Line
+})
+export default class LineDemo {
   chartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [

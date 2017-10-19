@@ -3,9 +3,10 @@ import Component from 'class-component'
 import { Bar, mixins } from 'vue-chartjs'
 
 @Component({
+  extends: Bar,
   mixins: [mixins.reactiveData]
 })
-export default class ReactiveDemo extends Bar {
+export default class ReactiveDemo {
   chartData = ''
   created () {
     this.fillData()

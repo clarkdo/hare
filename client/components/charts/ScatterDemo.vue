@@ -2,8 +2,10 @@
 import Component from 'class-component'
 import { Scatter } from 'vue-chartjs'
 
-@Component
-export default class ScatterDemo extends Scatter {
+@Component({
+  extends: Scatter
+})
+export default class ScatterDemo {
   chartData = {
     datasets: [{
       label: 'Alibaba',
