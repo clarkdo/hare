@@ -1,9 +1,16 @@
 <script>
+import Vue from 'vue'
 import Component from 'class-component'
 import { Line } from 'vue-chartjs'
 
-@Component
-export default class LineDemo extends Line {
+/*
+  Component class must inherit Vue or its descendant class
+  when class property is used.
+*/
+@Component({
+  extends: Line
+})
+export default class LineDemo extends Vue {
   chartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [

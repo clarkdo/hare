@@ -2,8 +2,10 @@
 import Component from 'class-component'
 import { Bar } from 'vue-chartjs'
 
-@Component
-export default class BarDemo extends Bar {
+@Component({
+  extends: Bar
+})
+export default class BarDemo {
   mounted () {
     this.renderChart({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

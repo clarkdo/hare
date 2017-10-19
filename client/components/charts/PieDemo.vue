@@ -2,8 +2,10 @@
 import Component from 'class-component'
 import { Pie } from 'vue-chartjs'
 
-@Component
-export default class PieDemo extends Pie {
+@Component({
+  extends: Pie
+})
+export default class PieDemo {
   mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
