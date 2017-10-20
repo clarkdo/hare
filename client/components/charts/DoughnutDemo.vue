@@ -2,8 +2,10 @@
 import Component from 'class-component'
 import { Doughnut } from 'vue-chartjs'
 
-@Component
-export default class DoughnutDemo extends Doughnut {
+@Component({
+  extends: Doughnut
+})
+export default class DoughnutDemo {
   mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],

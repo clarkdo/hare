@@ -8,8 +8,8 @@ export default {
   },
   target: 'node',
   output: {
-    path: process.cwd() + '/.build/dist',
-    filename: 'server-[name].[hash].js'
+    path: process.cwd() + '/dist',
+    filename: 'server-[name].js'
   },
   module: {
     rules: [

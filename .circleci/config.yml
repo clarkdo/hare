@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build: &build
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/hare
+    branches:
+      only:
+        - master
+        - dev
+    steps: &steps
+      - checkout
+      - restore_cache:
+          keys:
+          - hare-deps-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - hare-deps-
+      - run: yarn
+      - save_cache:
+          paths:
+            - node_modules
+          key: hare-deps-{{ checksum "yarn.lock" }}
+      - run: yarn test
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: nuxt-hare
+#   node-7:
+#     <<: *build
+#     docker:
+#       - image: circleci/node:7.10
+# workflows:
+#   version: 2
+#   build:
+#     jobs:
+#       - node-latest
+#       - node-7
+
