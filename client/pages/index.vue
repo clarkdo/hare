@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Component from 'class-component'
 import ForkThis from '@/components/ForkThis'
 
@@ -21,7 +20,7 @@ import ForkThis from '@/components/ForkThis'
     ForkThis
   }
 })
-export default class Home extends Vue {
+export default class Home {
 }
 </script>
 
