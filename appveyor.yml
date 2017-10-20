@@ -7,7 +7,7 @@ branches:
   # blacklist
   except:
     - gh-pages
-
+skip_branch_with_pr: true
 max_jobs: 4
 
 # Test against the latest version of this Node.js version
