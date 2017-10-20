@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Component from 'class-component'
 import BarDemo from '@/components/charts/BarDemo'
 import PieDemo from '@/components/charts/PieDemo'
@@ -89,7 +88,7 @@ import ReactiveDemo from '@/components/charts/ReactiveDemo'
     ReactiveDemo
   }
 })
-export default class Charts extends Vue {
+export default class Charts {
 }
 </script>
 
