@@ -43,7 +43,7 @@
     "cross-env": "^5.1.0",
     "element-ui": "^1.4.8",
     "es6-promise": "^4.1.1",
-    "js-cookie": "^2.1.4",
+    "js-cookie": "^2.2.0",
     "js-yaml": "^3.9.1",
     "jwt-decode": "^2.2.0",
     "koa": "^2.3.0",
