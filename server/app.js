@@ -71,7 +71,7 @@ async function start () {
     key: consts.SESS_KEY
   }
   // session for flash messages (uses signed session cookies, with no server storage)
-  app.use(session(SESSION_CONFIG, app)) // note koa-session@3.4.0 is v1 middleware which generates deprecation notice
+  app.use(session(SESSION_CONFIG, app))
 
   const nuxt = new Nuxt(config)
   nuxt.showOpen = () => {
@@ -137,6 +137,7 @@ async function start () {
         await compose(api.middleware)(ctx)
         break
     }
+    await next()
   })
 
   app.listen(port, host)
