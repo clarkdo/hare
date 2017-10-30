@@ -338,9 +338,11 @@ async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
 
-async-validator@1.6.9:
-  version "1.6.9"
-  resolved "https://registry.yarnpkg.com/async-validator/-/async-validator-1.6.9.tgz#a8309daa8b83421cdbd4628e026d6abb25192d34"
+async-validator@~1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/async-validator/-/async-validator-1.8.1.tgz#6665788ca39269af770e5ee02f0e557f2438d2ca"
+  dependencies:
+    babel-runtime "6.x"
 
 async@^1.4.0:
   version "1.5.2"
@@ -1332,19 +1334,19 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
+babel-runtime@6.x, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
 babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
-
-babel-runtime@^6.23.0, babel-runtime@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.11.0"
 
 babel-template@7.0.0-beta.0:
   version "7.0.0-beta.0"
@@ -3083,11 +3085,11 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
-element-ui@^1.4.3:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.6.tgz#2f4f718fb3b12f23ef6508251adfae80d7f81793"
+element-ui@^1.4.8:
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.8.tgz#2bd32fb022ab2482e08e1559daaa7774a86517bc"
   dependencies:
-    async-validator "1.6.9"
+    async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
     deepmerge "^1.2.0"
     throttle-debounce "^1.0.1"
@@ -8834,9 +8836,9 @@ vue-hot-reload-api@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
 
-vue-i18n@^7.2.0:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.3.1.tgz#62930f0f229d4ba467209140f15b664539c1794b"
+vue-i18n@^7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.3.2.tgz#1205bb8811323fd5c44e57e4fd619beaf2f7a9a1"
 
 vue-loader@^13.0.4:
   version "13.0.4"

@@ -41,7 +41,7 @@
     "bunyan": "^1.8.12",
     "chart.js": "^2.6.0",
     "cross-env": "^5.1.0",
-    "element-ui": "^1.4.3",
+    "element-ui": "^1.4.8",
     "es6-promise": "^4.1.1",
     "js-cookie": "^2.1.4",
     "js-yaml": "^3.9.1",
@@ -65,7 +65,7 @@
     "vue-chartjs": "^3.0.0",
     "vue-class-component": "^5.0.1",
     "vue-clipboards": "^1.1.0",
-    "vue-i18n": "^7.2.0",
+    "vue-i18n": "^7.3.2",
     "vuex-class": "^0.2.0",
     "xmlify": "^1.1.0"
   },
