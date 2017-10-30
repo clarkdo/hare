@@ -39,7 +39,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "bunyan": "^1.8.12",
-    "chart.js": "^2.6.0",
+    "chart.js": "^2.7.1",
     "cross-env": "^5.1.0",
     "element-ui": "^1.4.8",
     "es6-promise": "^4.1.1",
