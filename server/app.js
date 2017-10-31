@@ -67,12 +67,6 @@ async function start () {
     await next()
   })
 
-  const SESSION_CONFIG = {
-    key: consts.SESS_KEY
-  }
-  // session for flash messages (uses signed session cookies, with no server storage)
-  app.use(session(SESSION_CONFIG, app))
-
   const nuxt = new Nuxt(config)
   nuxt.showOpen = () => {
     const _host = host === '0.0.0.0' ? 'localhost' : host
@@ -102,6 +96,13 @@ async function start () {
       await nuxtRender(ctx)
     }
   })
+
+  const SESSION_CONFIG = {
+    key: consts.SESS_KEY
+  }
+  // session for flash messages (uses signed session cookies, with no server storage)
+  app.use(session(SESSION_CONFIG, app))
+
   // return response time in X-Response-Time header
   app.use(async function responseTime (ctx, next) {
     const t1 = Date.now()
@@ -137,7 +138,6 @@ async function start () {
         await compose(api.middleware)(ctx)
         break
     }
-    await next()
   })
 
   app.listen(port, host)
