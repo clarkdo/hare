@@ -46,7 +46,7 @@
     "js-cookie": "^2.2.0",
     "js-yaml": "^3.9.1",
     "jwt-decode": "^2.2.0",
-    "koa": "^2.3.0",
+    "koa": "^2.4.1",
     "koa-body": "^2.3.0",
     "koa-bunyan": "^1.0.0",
     "koa-bunyan-logger": "^2.0.0",
