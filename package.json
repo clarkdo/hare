@@ -94,7 +94,7 @@
     "jsdom": "^11.2.0",
     "lint-staged": "^4.3.0",
     "moxios": "^0.4.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.6.1",
     "nodemon": "^1.11.0",
     "progress-bar-webpack-plugin": "^1.10.0",
     "sass-loader": "^6.0.6",
