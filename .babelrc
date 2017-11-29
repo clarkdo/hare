@@ -1,13 +1,8 @@
 {
-  "presets": ["es2015"],
-  "plugins": ["transform-runtime",
-    "transform-decorators-legacy",
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    "transform-async-to-generator", ["component", [{
-      "libraryName": "element-ui",
-      "styleLibraryName": "theme-default"
-    }]]
+  "plugins": [
+    "transform-runtime",
+    "transform-es2015-modules-commonjs",
+    "transform-object-rest-spread"
   ],
   "comments": false,
   "env": {
