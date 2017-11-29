@@ -4998,9 +4998,9 @@ koa-router@^7.3.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
-koa-session@^5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-5.5.0.tgz#743ea5e5ead0a23444788c8776d66f674f325815"
+koa-session@^5.5.1:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-5.5.1.tgz#ec491cd61950916caeb1a107d62815eb797cbba9"
   dependencies:
     crc "^3.4.4"
     debug "^2.2.0"
