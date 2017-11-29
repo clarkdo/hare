@@ -44,11 +44,11 @@
   dependencies:
     arrify "^1.0.1"
 
-"@nuxtjs/webpackmonitor@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/webpackmonitor/-/webpackmonitor-0.0.3.tgz#c3f9098c9a79b9108b637d19327f344dfe57e8ca"
+"@nuxtjs/webpackmonitor@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/webpackmonitor/-/webpackmonitor-0.1.0.tgz#6864239fd05f5ab76ac5125f47b2faa8ff49b0ad"
   dependencies:
-    "@pi0/webpack-monitor" "^0.0.4"
+    webpack-monitor "^1.0.13"
 
 "@nuxtjs/youch@3.0.2":
   version "3.0.2"
@@ -57,16 +57,6 @@
     cookie "^0.3.1"
     mustache "^2.3.0"
     stack-trace "0.0.10"
-
-"@pi0/webpack-monitor@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@pi0/webpack-monitor/-/webpack-monitor-0.0.4.tgz#e82aa406b1080e4654ab6765b9436302dd234671"
-  dependencies:
-    babel-core "^6.26.0"
-    colors "^1.1.2"
-    express "^4.15.5"
-    opener "^1.4.3"
-    purify-css "^1.2.5"
 
 "@types/node@^6.0.46":
   version "6.0.73"
@@ -8882,6 +8872,16 @@ webpack-hot-middleware@^2.18.2:
     html-entities "^1.2.0"
     querystring "^0.2.0"
     strip-ansi "^3.0.0"
+
+webpack-monitor@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/webpack-monitor/-/webpack-monitor-1.0.13.tgz#a3bb31db1420fb08a3dd6a06fd67d92470e08df4"
+  dependencies:
+    babel-core "^6.26.0"
+    colors "^1.1.2"
+    express "^4.15.5"
+    opener "^1.4.3"
+    purify-css "^1.2.5"
 
 webpack-node-externals@^1.6.0:
   version "1.6.0"
