@@ -1,19 +1,19 @@
 !function(e) {
-    function t(n) {
-        if (o[n]) return o[n].exports;
-        var r = o[n] = {
-            i: n,
+    function t(a) {
+        if (o[a]) return o[a].exports;
+        var n = o[a] = {
+            i: a,
             l: !1,
             exports: {}
         };
-        return e[n].call(r.exports, r, r.exports, t), r.l = !0, r.exports;
+        return e[a].call(n.exports, n, n.exports, t), n.l = !0, n.exports;
     }
     var o = {};
-    t.m = e, t.c = o, t.d = function(e, o, n) {
+    t.m = e, t.c = o, t.d = function(e, o, a) {
         t.o(e, o) || Object.defineProperty(e, o, {
             configurable: !1,
             enumerable: !0,
-            get: n
+            get: a
         });
     }, t.n = function(e) {
         var o = e && e.__esModule ? function() {
@@ -24,56 +24,55 @@
         return t.d(o, "a", o), o;
     }, t.o = function(e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
-    }, t.p = "", t(t.s = 4);
+    }, t.p = "", t(t.s = 6);
 }([ function(e, t, o) {
     "use strict";
-    Object.defineProperty(t, "__esModule", {
-        value: !0
-    });
-    var n = Object.assign || function(e) {
-        for (var t = 1; t < arguments.length; t++) {
-            var o = arguments[t];
-            for (var n in o) Object.prototype.hasOwnProperty.call(o, n) && (e[n] = o[n]);
-        }
-        return e;
-    }, r = function(e) {
+    function a(e) {
         return e && e.__esModule ? e : {
             default: e
         };
-    }(o(21));
-    const a = process.env.HOST || "0.0.0.0", s = process.env.PORT || "3000";
-    t.default = Object.freeze(n({
-        HOST: a,
-        PORT: s,
-        LB_ADDR: process.env.LB_ADDR || `http://${a}:${s}/hpi`
-    }, r.default));
+    }
+    Object.defineProperty(t, "__esModule", {
+        value: !0
+    });
+    var n = a(o(3)), r = a(o(5)), s = a(o(24));
+    const i = process.env.HOST || "0.0.0.0", c = process.env.PORT || "3000";
+    t.default = (0, r.default)((0, n.default)({
+        HOST: i,
+        PORT: c,
+        LB_ADDR: process.env.LB_ADDR || `http://${i}:${c}/hpi`
+    }, s.default));
 }, function(e, t) {
     e.exports = require("koa");
 }, function(e, t) {
     e.exports = require("axios");
 }, function(e, t) {
+    e.exports = require("babel-runtime/helpers/extends");
+}, function(e, t) {
     e.exports = require("koa-router");
+}, function(e, t) {
+    e.exports = require("babel-runtime/core-js/object/freeze");
 }, function(e, t, o) {
     "use strict";
-    function n(e) {
+    function a(e) {
         return e && e.__esModule ? e : {
             default: e
         };
     }
-    var r = n(o(1)), a = o(5), s = n(o(2)), i = n(o(6)), c = n(o(7)), u = n(o(8)), l = n(o(9)), p = n(o(10)), d = n(o(11)), f = n(o(12)), y = n(o(13)), m = n(o(14)), h = n(o(15)), g = n(o(0)), v = n(o(24)), x = n(o(26)), b = n(o(27)), w = n(o(28));
+    var n = a(o(1)), r = o(7), s = a(o(2)), i = a(o(8)), c = a(o(9)), u = a(o(10)), l = a(o(11)), d = a(o(12)), p = a(o(13)), f = a(o(14)), y = a(o(15)), m = a(o(16)), h = a(o(17)), g = a(o(0)), x = a(o(26)), b = a(o(28)), v = a(o(29)), w = a(o(30));
     !async function() {
-        const e = /^win/.test(process.platform), t = g.default.HOST, o = g.default.PORT, n = (0, 
-        b.default)("app"), k = new r.default();
-        k.keys = [ "hare-server" ], v.default.dev = !("production" === k.env), s.default.defaults.baseURL = `http://127.0.0.1:${o}`;
+        const e = /^win/.test(process.platform), t = g.default.HOST, o = g.default.PORT, a = (0, 
+        v.default)("app"), k = new n.default();
+        k.keys = [ "hare-server" ], x.default.dev = !("production" === k.env), s.default.defaults.baseURL = `http://127.0.0.1:${o}`;
         let j = process.env.LOG_DIR || (e ? "C:\\\\log" : "/var/tmp/log");
         c.default.sync(j);
-        const O = {
+        const _ = {
             type: "rotating-file",
             path: `${j = j.replace(/(\\|\/)+$/, "") + (e ? "\\\\" : "/")}hare-access.log`,
-            level: v.default.dev ? "debug" : "info",
+            level: x.default.dev ? "debug" : "info",
             period: "1d",
             count: 4
-        }, _ = {
+        }, q = {
             type: "rotating-file",
             path: `${j}hare-error.log`,
             level: "error",
@@ -81,40 +80,40 @@
             count: 4
         }, I = i.default.createLogger({
             name: "hare",
-            streams: [ O, _ ]
+            streams: [ _, q ]
         });
         k.use((0, u.default)(I, {
             level: "info"
         })), k.use((0, l.default)(I)), k.use(async function(e, t) {
             e.state.subapp = e.url.split("/")[1], await t();
         });
-        const q = {
-            key: g.default.SESS_KEY
-        };
-        k.use((0, m.default)(q, k));
-        const z = new a.Nuxt(v.default);
-        if (z.showOpen = (() => {
+        const O = new r.Nuxt(x.default);
+        if (O.showOpen = (() => {
             const e = "0.0.0.0" === t ? "localhost" : t;
-            console.log("\n" + x.default.bgGreen.black(" OPEN ") + x.default.green(` http://${e}:${o}\n`));
-        }), v.default.dev) {
-            const e = v.default.development;
+            console.log("\n" + b.default.bgGreen.black(" OPEN ") + b.default.green(` http://${e}:${o}\n`));
+        }), x.default.dev) {
+            const e = x.default.development;
             if (e && e.proxies) for (let t of e.proxies) console.log(`Active Proxy: path[${t.path}] target[${t.target}]`), 
             k.use((0, w.default)(t.path, t));
-            await new a.Builder(z).build();
+            await new r.Builder(O).build();
         }
-        const D = (0, p.default)(z.render);
+        const z = (0, d.default)(O.render);
         k.use(async (e, t) => {
             await t(), e.state.subapp !== g.default.API && (e.status = 200, e.req.session = e.session, 
-            await D(e));
-        }), k.use(async function(e, t) {
+            await z(e));
+        });
+        const D = {
+            key: g.default.SESS_KEY
+        };
+        k.use((0, m.default)(D, k)), k.use(async function(e, t) {
             const o = Date.now();
             await t();
-            const n = Date.now();
-            e.set("X-Response-Time", Math.ceil(n - o) + "ms");
+            const a = Date.now();
+            e.set("X-Response-Time", Math.ceil(a - o) + "ms");
         }), k.use((0, y.default)({})), k.use(async function(e, t) {
             await t(), "www" !== e.hostname.slice(0, 3) && e.response.set("X-Robots-Tag", "noindex, nofollow");
-        }), k.use((0, d.default)()), k.use(async function(e, t) {
-            n(e.method + " " + e.url), await t();
+        }), k.use((0, p.default)()), k.use(async function(e, t) {
+            a(e.method + " " + e.url), await t();
         }), k.use(async function(e, t) {
             switch (e.state.subapp) {
               case g.default.API:
@@ -144,7 +143,7 @@
     e.exports = require("koa-session");
 }, function(e, t, o) {
     "use strict";
-    function n(e) {
+    function a(e) {
         return e && e.__esModule ? e : {
             default: e
         };
@@ -152,14 +151,8 @@
     Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var r = Object.assign || function(e) {
-        for (var t = 1; t < arguments.length; t++) {
-            var o = arguments[t];
-            for (var n in o) Object.prototype.hasOwnProperty.call(o, n) && (e[n] = o[n]);
-        }
-        return e;
-    }, a = n(o(1)), s = n(o(16)), i = n(o(17)), c = n(o(18)), u = n(o(23));
-    const l = new a.default();
+    var n = a(o(3)), r = a(o(1)), s = a(o(18)), i = a(o(19)), c = a(o(20)), u = a(o(25));
+    const l = new r.default();
     l.use(async function(e, t) {
         if (await t(), !e.body) return;
         const o = e.accepts("json", "xml", "yaml", "text");
@@ -196,14 +189,14 @@
               case 404:
               case 406:
               case 409:
-                e.body = r({
+                e.body = (0, n.default)({
                     root: "error"
                 }, t);
                 break;
 
               default:
               case 500:
-                console.error(e.status, t.message), e.body = r({
+                console.error(e.status, t.message), e.body = (0, n.default)({
                     root: "error"
                 }, t), "production" !== l.env && (e.body.stack = t.stack), e.app.emit("error", t, e);
             }
@@ -215,55 +208,55 @@
     e.exports = require("js-yaml");
 }, function(e, t, o) {
     "use strict";
-    function n(e) {
+    function a(e) {
         return e && e.__esModule ? e : {
             default: e
         };
     }
-    var r = n(o(2)), a = n(o(19)), s = n(o(3)), i = n(o(20)), c = n(o(0));
-    const u = (0, s.default)({
-        prefix: c.default.BASE_API
+    var n = a(o(21)), r = a(o(2)), s = a(o(22)), i = a(o(4)), c = a(o(23)), u = a(o(0));
+    const l = (0, i.default)({
+        prefix: u.default.BASE_API
     });
-    var l = r.default.create({
-        baseURL: c.default.LB_ADDR,
+    var d = r.default.create({
+        baseURL: u.default.LB_ADDR,
         timeout: 5e3,
         headers: {
             Authorization: "Basic YmFzLWNsaWVudDpYMmNYeW1nWkRrRkE3RWR0",
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
         }
     });
-    u.post("/login", async function(e) {
+    l.post("/login", async function(e) {
         const t = e.request.body;
         t && t.userName && t.password || e.throw(401, "用户名/密码未填写"), e.session.captcha.toLowerCase() !== t.captcha.toLowerCase() && e.throw(401, "验证码输入错误");
         try {
-            const o = await l.post("/platform/uaano/oauth/token", a.default.stringify({
+            const o = await d.post("/platform/uaano/oauth/token", s.default.stringify({
                 username: t.userName,
                 password: Buffer.from(t.password).toString("base64"),
                 grant_type: "password"
             }));
-            e.body = Object.assign({}, o.data), e.session.jwt = o.data.access_token;
+            e.body = (0, n.default)({}, o.data), e.session.jwt = o.data.access_token;
         } catch (t) {
             e.log.error({
                 error: t
             }, "Call oath service failed!");
-            let o = "登录失败, 具体信息请联系维护人员", n = null;
-            (n = t && t.response && t.response.data) && (o = n.message || n.errors), e.throw(401, o);
+            let o = "登录失败, 具体信息请联系维护人员", a = null;
+            (a = t && t.response && t.response.data) && (o = a.message || a.errors), e.throw(401, o);
         }
-    }), u.post("/logout", async function(e) {
+    }), l.post("/logout", async function(e) {
         e.session.jwt = null, e.status = 200;
-    }), u.get("/captcha", async function(e, t) {
+    }), l.get("/captcha", async function(e, t) {
         await t();
-        const o = e.request.query.width || 150, n = e.request.query.height || 36;
-        let r = i.default.create({
+        const o = e.request.query.width || 150, a = e.request.query.height || 36;
+        let n = c.default.create({
             width: o,
-            height: n,
+            height: a,
             size: 4,
             noise: 1,
             fontSize: o > 760 ? 40 : 30,
             ignoreChars: "0oO1iIl"
         });
-        e.session.captcha = r.text, e.type = "image/svg+xml", e.body = r.data;
-    }), u.get("/menus", async function(e) {
+        e.session.captcha = n.text, e.type = "image/svg+xml", e.body = n.data;
+    }), l.get("/menus", async function(e) {
         e.status = 200, e.type = "application/json", e.body = [ {
             id: "1",
             name: "nav.home",
@@ -300,11 +293,13 @@
             url: "/about",
             icon: "el-icon-setting"
         } ];
-    }), u.post("/platform/uaano/oauth/token", async function(e, t) {
+    }), l.post("/platform/uaano/oauth/token", async function(e, t) {
         e.body = {
             access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYmFzIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicmVhZCJdLCJleHAiOjk5OTk5OTk5OTk5OTksInVzZXJJZCI6IjQwMjg4YjdlNWJjZDc3MzMwMTViY2Q3ZmQ3MjIwMDAxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianRpIjoiNzJlYzNjNDMtMDMwYS00MWVkLWFiYjItYjdhMjY5NTA2OTIzIiwiY2xpZW50X2lkIjoiYmFzLWNsaWVudCJ9.uwywziNetHyfSdiqcJt6XUGy4V_WYHR4K6l7OP2VB9I"
         };
-    }), e.exports = u.routes();
+    }), e.exports = l.routes();
+}, function(e, t) {
+    e.exports = require("babel-runtime/core-js/object/assign");
 }, function(e, t) {
     e.exports = require("querystring");
 }, function(e, t) {
@@ -314,30 +309,28 @@
     Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var n = function(e) {
+    var a = function(e) {
         return e && e.__esModule ? e : {
             default: e
         };
-    }(o(22));
-    t.default = (0, n.default)({
+    }(o(5));
+    t.default = (0, a.default)({
         APP: "hare",
         API: "hpi",
         BASE_API: "/hpi",
         SESS_KEY: "hare:sess",
         COOKIE_JWT: "hare_jwt"
     });
-}, function(e, t) {
-    e.exports = require("babel-runtime/core-js/object/freeze");
 }, function(e, t, o) {
     "use strict";
-    function n(e) {
+    function a(e) {
         return e && e.__esModule ? e : {
             default: e
         };
     }
-    var r = n(o(3)), a = n(o(0));
-    const s = (0, r.default)({
-        prefix: a.default.BASE_API
+    var n = a(o(4)), r = a(o(0));
+    const s = (0, n.default)({
+        prefix: r.default.BASE_API
     });
     s.get("/activities", async function(e) {
         e.status = 200, e.body = [ {
@@ -424,7 +417,7 @@
     }), e.exports = s.routes();
 }, function(e, t, o) {
     "use strict";
-    var n = o(25);
+    const a = o(27);
     e.exports = {
         srcDir: "client/",
         buildDir: "dist/client/",
@@ -456,8 +449,7 @@
             babel: {
                 plugins: [ "transform-decorators-legacy", "transform-class-properties" ]
             },
-            extend: function(e, t) {
-                t.dev, t.isClient;
+            extend(e, {dev: t, isClient: o}) {
                 e.resolve.alias["class-component"] = "@/plugins/class-component";
             },
             vendor: [ "axios", "element-ui", "negotiator", "vue-class-component", "vuex-class", "vue-i18n", "vue-chartjs", "vue-clipboards", "moment", "chart.js", "deepmerge" ],
@@ -467,7 +459,7 @@
                 app: "hare.[chunkhash:12].js",
                 css: "hare.[contenthash:12].css"
             },
-            plugins: [ new n.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/) ]
+            plugins: [ new a.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/) ]
         },
         loading: {
             color: "#60bbff"
