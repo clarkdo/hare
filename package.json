@@ -24,7 +24,9 @@
     "precommit": "lint-staged",
     "heroku-postbuild": "yarn build",
     "prepublishOnly": "yarn lint && yarn test && yarn build:server",
-    "release": "standard-version"
+    "release": "standard-version",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "ava": {
     "require": [
@@ -66,7 +68,8 @@
     "vue-clipboards": "^1.2.0",
     "vue-i18n": "^7.3.2",
     "vuex-class": "^0.2.0",
-    "xmlify": "^1.1.0"
+    "xmlify": "^1.1.0",
+    "snyk": "^1.52.0"
   },
   "devDependencies": {
     "@nuxtjs/webpackmonitor": "^0.1.0",
@@ -99,5 +102,6 @@
   "engines": {
     "node": ">=7.6.0",
     "npm": ">=4.0.0"
-  }
+  },
+  "snyk": true
 }
