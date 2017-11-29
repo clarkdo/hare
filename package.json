@@ -37,7 +37,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.17.0",
+    "axios": "^0.17.1",
     "bunyan": "^1.8.12",
     "chart.js": "^2.7.1",
     "cross-env": "^5.1.0",
