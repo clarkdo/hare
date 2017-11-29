@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.0
+version: v1.8.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:ms:20170412':
@@ -21,4 +21,18 @@ ignore:
     - nuxt > webpack-bundle-analyzer > express > serve-static > send > ms:
         reason: None given
         expires: '2017-06-16T14:36:46.455Z'
+  'npm:mime:20170907':
+    - nuxt > url-loader > mime:
+        reason: None given
+        expires: '2017-12-29T09:11:19.784Z'
+  'npm:moment:20170905':
+    - moment:
+        reason: None given
+        expires: '2017-12-29T09:11:19.785Z'
+    - bunyan > moment:
+        reason: None given
+        expires: '2017-12-29T09:11:19.785Z'
+    - chart.js > moment:
+        reason: None given
+        expires: '2017-12-29T09:11:19.785Z'
 patch: {}
