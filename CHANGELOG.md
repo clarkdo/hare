@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/clarkdo/hare/compare/v0.2.1...v0.2.3) (2017-12-09)
+
+
+### Bug Fixes
+
+* error parsing appveyor.yml ([3eb5682](https://github.com/clarkdo/hare/commit/3eb5682))
+* ignore prepublish when installing ([6d57eda](https://github.com/clarkdo/hare/commit/6d57eda))
+* ignore unavailable vulnerabilities for 30 days ([9cff0b3](https://github.com/clarkdo/hare/commit/9cff0b3))
+* re-generate heroku api key ([6d8efd7](https://github.com/clarkdo/hare/commit/6d8efd7))
+* session missing issue ([2b3d32e](https://github.com/clarkdo/hare/commit/2b3d32e))
+* session not saved issue ([9f71d76](https://github.com/clarkdo/hare/commit/9f71d76))
+* switch off macos building for now due to unstable travis ([b2ecea9](https://github.com/clarkdo/hare/commit/b2ecea9))
+
+
+### Features
+
+* cache dependencies in ci ([4470bd9](https://github.com/clarkdo/hare/commit/4470bd9))
+* upgrade vue-chartjs to 3.0.0 ([37ad277](https://github.com/clarkdo/hare/commit/37ad277))
+* use circleci instead of travis for building ([fbe5d8f](https://github.com/clarkdo/hare/commit/fbe5d8f))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/clarkdo/hare/compare/v0.2.1...v0.2.2) (2017-11-17)
 
