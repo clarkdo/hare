@@ -4,8 +4,8 @@ import Negotiator from 'negotiator'
 
 Vue.use(VueI18n)
 
-export default ({ app, store, isServer, req }) => {
-  if (isServer && req) {
+export default ({ app, store, req }) => {
+  if (process.server) {
     const negotiator = new Negotiator(req)
     const lang = negotiator.language(store.state.locales)
     store.commit('SET_LANG', lang || 'zh')

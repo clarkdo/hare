@@ -11,7 +11,7 @@
           <el-table-column prop="account" :label="$t('activity.account')" width="120" sortable>
           </el-table-column>
           <el-table-column :label="$t('activity.date')" width="120" sortable>
-            <template scope="scope">{{ scope.row.date }}</template>
+            <template slot-scope="scope">{{ scope.row.date }}</template>
           </el-table-column>
           <el-table-column prop="type" :label="$t('activity.type')" width="120" sortable>
           </el-table-column>
@@ -35,7 +35,7 @@
           <el-table-column type="selection" width="55">
           </el-table-column>
           <el-table-column type="expand">
-            <template scope="props">
+            <template slot-scope="props">
               <el-form label-position="left" inline class="demo-table-expand">
                 <el-form-item :label="$t('activity.area')+':'">
                   <span>{{ props.row.region }}</span>
@@ -55,7 +55,7 @@
           <el-table-column prop="account" :label="$t('activity.account')">
           </el-table-column>
           <el-table-column :label="$t('activity.date')">
-            <template scope="scope">{{ scope.row.date }}</template>
+            <template slot-scope="scope">{{ scope.row.date }}</template>
           </el-table-column>
            <el-table-column
             prop="type"
@@ -63,7 +63,7 @@
             :filters="[{ text: '优惠', value: '价格优惠' }, { text: '权限', value: '价格权益' }]"
             :filter-method="filterTag"
             filter-placement="bottom-end">
-            <template scope="tag">
+            <template slot-scope="tag">
               <el-tag
                 :type="tag.row.type === '价格优惠' ? 'primary' : 'success'"
                 close-transition>{{tag.row.type}}</el-tag>
@@ -90,7 +90,7 @@ import Component from 'class-component'
 export default class Example extends Vue {
   selections = []
 
-  async asyncData ({ isServer }) {
+  async asyncData () {
     let {data: activities} = await axios.get('/hpi/activities')
     return {activities}
   }

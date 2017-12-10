@@ -3,8 +3,8 @@ import { defaultHeader, clientToken } from '@/utils/auth'
 
 const PORT = process.env.PORT || '3000'
 
-export default ({ req, isServer, redirect }) => {
-  if (!isServer) {
+export default ({ req, redirect }) => {
+  if (process.client) {
     defaultHeader(clientToken())
     axios.interceptors.response.use(
       response => response,
@@ -19,10 +19,8 @@ export default ({ req, isServer, redirect }) => {
         return Promise.reject(error)
       }
     )
-  }
-  axios.defaults.timeout = 5000
-  // for generate
-  if (isServer && !req) {
+  } else {
     axios.defaults.baseURL = `http://127.0.0.1:${PORT}`
   }
+  axios.defaults.timeout = 5000
 }

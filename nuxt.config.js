@@ -34,7 +34,7 @@ module.exports = {
     babel: {
       plugins: ['transform-decorators-legacy', 'transform-class-properties']
     },
-    extend (config, { dev, isClient }) {
+    extend (config, { isDev }) {
       config.resolve.alias['class-component'] = '@/plugins/class-component'
     },
     vendor: [

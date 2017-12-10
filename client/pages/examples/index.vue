@@ -80,14 +80,14 @@
             </el-input>
           </el-col>
           <el-col :offset="2" :span="6" :xs="22">
-            <el-input :placeholder="$t('example.inPh')" v-model="restaurant">
+            <!-- <el-input :placeholder="$t('example.inPh')" v-model="restaurant">
               <el-select class="input-sel" v-model="restOptions" slot="prepend" :placeholder="$t('example.selPh')">
                 <el-option label="餐厅名" value="1"></el-option>
                 <el-option label="订单号" value="2"></el-option>
                 <el-option label="用户电话" value="3"></el-option>
               </el-select>
               <el-button slot="append" icon="search"></el-button>
-            </el-input>
+            </el-input> -->
           </el-col>
           <el-col :offset="2" :span="6" :xs="22">
             <el-select v-model="multiFood" multiple :placeholder="$t('example.selPh')">

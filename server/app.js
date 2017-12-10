@@ -1,6 +1,5 @@
 import Koa from 'koa'
 import { Nuxt, Builder } from 'nuxt'
-import axios from 'axios'
 import bunyan from 'bunyan'
 import mkdirp from 'mkdirp'
 import koaBunyan from 'koa-bunyan'
@@ -27,8 +26,6 @@ async function start () {
 
   app.keys = ['hare-server']
   config.dev = !(app.env === 'production')
-  axios.defaults.baseURL = `http://127.0.0.1:${port}`
-
   // logging
   let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
   mkdirp.sync(logDir)
@@ -68,11 +65,6 @@ async function start () {
   })
 
   const nuxt = new Nuxt(config)
-  nuxt.showOpen = () => {
-    const _host = host === '0.0.0.0' ? 'localhost' : host
-    // eslint-disable-next-line no-console
-    console.log('\n' + chalk.bgGreen.black(' OPEN ') + chalk.green(` http://${_host}:${port}\n`))
-  }
   // Build only in dev mode
   if (config.dev) {
     const devConfigs = config.development
@@ -141,6 +133,9 @@ async function start () {
   })
 
   app.listen(port, host)
+  const _host = host === '0.0.0.0' ? 'localhost' : host
+  // eslint-disable-next-line no-console
+  console.log('\n' + chalk.bgGreen.black(' OPEN ') + chalk.green(` http://${_host}:${port}\n`))
 }
 
 start()

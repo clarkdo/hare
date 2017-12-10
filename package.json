@@ -41,13 +41,13 @@
     "bunyan": "^1.8.12",
     "chart.js": "^2.7.1",
     "cross-env": "^5.1.0",
-    "element-ui": "^1.4.8",
+    "element-ui": "^1.4.12",
     "js-cookie": "^2.2.0",
     "js-yaml": "^3.9.1",
     "jwt-decode": "^2.2.0",
     "koa": "^2.4.1",
     "koa-body": "^2.3.0",
-    "koa-bunyan": "^1.0.0",
+    "koa-bunyan": "^1.0.1",
     "koa-bunyan-logger": "^2.0.0",
     "koa-compose": "^4.0.0",
     "koa-compress": "^2.0.0",
@@ -59,13 +59,13 @@
     "moment": "^2.19.2",
     "negotiator": "^0.6.1",
     "normalize.css": "^7.0.0",
-    "nuxt": "^1.0.0-rc11",
+    "nuxt": "^1.0.0-gh-0b9cd1b",
     "svg-captcha": "^1.3.11",
     "vue-chartjs": "^3.0.2",
-    "vue-class-component": "^5.0.1",
+    "vue-class-component": "^6.1.1",
     "vue-clipboards": "^1.2.0",
     "vue-i18n": "^7.3.2",
-    "vuex-class": "^0.2.0",
+    "vuex-class": "^0.3.0",
     "xmlify": "^1.1.0"
   },
   "devDependencies": {
@@ -77,7 +77,8 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "eslint": "^4.12.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "eslint": "^4.13.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-html": "^4.0.1",
     "eslint-plugin-import": "^2.8.0",
@@ -88,16 +89,16 @@
     "lint-staged": "^5.0.0",
     "moxios": "^0.4.0",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.12.5",
     "progress-bar-webpack-plugin": "^1.10.0",
     "sass-loader": "^6.0.6",
     "standard-version": "^4.2.0",
     "uglifyjs-webpack-plugin": "^1.1.1",
-    "webpack": "^3.5.5",
+    "webpack": "^3.10.0",
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
-    "node": ">=7.6.0",
-    "npm": ">=4.0.0"
+    "node": ">=8.0.0",
+    "npm": ">=5.0.0"
   }
 }
