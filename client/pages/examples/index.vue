@@ -80,14 +80,14 @@
             </el-input>
           </el-col>
           <el-col :offset="2" :span="6" :xs="22">
-            <!-- <el-input :placeholder="$t('example.inPh')" v-model="restaurant">
-              <el-select class="input-sel" v-model="restOptions" slot="prepend" :placeholder="$t('example.selPh')">
+            <el-input :placeholder="$t('example.inPh')" v-model="restaurant" class="input-with-select">
+              <el-select v-model="restOptions" slot="prepend" :placeholder="$t('example.selPh')">
                 <el-option label="餐厅名" value="1"></el-option>
                 <el-option label="订单号" value="2"></el-option>
                 <el-option label="用户电话" value="3"></el-option>
               </el-select>
-              <el-button slot="append" icon="search"></el-button>
-            </el-input> -->
+              <el-button slot="append" icon="el-icon-search"></el-button>
+            </el-input>
           </el-col>
           <el-col :offset="2" :span="6" :xs="22">
             <el-select v-model="multiFood" multiple :placeholder="$t('example.selPh')">
@@ -115,11 +115,11 @@
           <el-col :offset="2" :span="6" :xs="22">
             Switch:
             <el-tooltip :content="'Switch value: ' + switcher" placement="top">
-              <el-switch v-model="switcher" on-color="#13ce66"
-                off-color="#ff4949" on-value="1" off-value="0">
+              <el-switch v-model="switcher" active-color="#13ce66"
+                inactive-color="#ff4949" active-value="1" inactive-value="0">
               </el-switch>
             </el-tooltip>
-            <el-switch value='0' off-value="0" disabled></el-switch>
+            <el-switch value='0' inactive-value="0" disabled></el-switch>
           </el-col>
           <el-col :offset="2" :span="6" :xs="22">
             <el-slider v-model="slider" :max="30" :min="10" :step="5" show-stops show-input></el-slider>

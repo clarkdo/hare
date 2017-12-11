@@ -93,6 +93,9 @@ textarea {
     }
   }
 }
+.input-with-select .el-input-group__prepend {
+  width: auto
+}
 @media (max-width: 1440px) {
   .container {
     width: 100%;

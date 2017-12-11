@@ -77,7 +77,7 @@ module.exports = {
   */
   css: [
     'normalize.css/normalize.css',
-    'element-ui/lib/theme-default/index.css',
+    'element-ui/lib/theme-chalk/index.css',
     {src: '@/assets/styles/main.scss', lang: 'scss'}
   ],
   /*

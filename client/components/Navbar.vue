@@ -1,7 +1,7 @@
 <template>
-  <div class="navbar el-menu--dark">
-    <el-menu class="el-menu-demo"
-      :default-active="$route.path" theme="dark">
+  <div class="navbar">
+    <el-menu class="el-menu-demo" :default-active="$route.path"
+      background-color="#324157" text-color="#bfcbd9">
       <header>
           <el-row>
             <el-col :span="20">

@@ -31,7 +31,7 @@
         </el-col>
         <el-col :xs="24" :sm="{span: 3, offset: 2}">
           <el-form-item :label="$t('activity.instDist')" prop="delivery">
-            <el-switch on-text="" off-text="" v-model="formData.delivery"></el-switch>
+            <el-switch active-text="" inactive-text="" v-model="formData.delivery"></el-switch>
           </el-form-item>
         </el-col>
       </el-row>

@@ -24,7 +24,7 @@
         return t.d(o, "a", o), o;
     }, t.o = function(e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
-    }, t.p = "", t(t.s = 6);
+    }, t.p = "", t(t.s = 5);
 }([ function(e, t, o) {
     "use strict";
     function a(e) {
@@ -35,17 +35,15 @@
     Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var n = a(o(3)), r = a(o(5)), s = a(o(24));
-    const i = process.env.HOST || "0.0.0.0", c = process.env.PORT || "3000";
+    var n = a(o(2)), r = a(o(4)), i = a(o(24));
+    const s = process.env.HOST || "0.0.0.0", c = process.env.PORT || "3000";
     t.default = (0, r.default)((0, n.default)({
-        HOST: i,
+        HOST: s,
         PORT: c,
-        LB_ADDR: process.env.LB_ADDR || `http://${i}:${c}/hpi`
-    }, s.default));
+        LB_ADDR: process.env.LB_ADDR || `http://${s}:${c}/hpi`
+    }, i.default));
 }, function(e, t) {
     e.exports = require("koa");
-}, function(e, t) {
-    e.exports = require("axios");
 }, function(e, t) {
     e.exports = require("babel-runtime/helpers/extends");
 }, function(e, t) {
@@ -59,67 +57,66 @@
             default: e
         };
     }
-    var n = a(o(1)), r = o(7), s = a(o(2)), i = a(o(8)), c = a(o(9)), u = a(o(10)), l = a(o(11)), d = a(o(12)), p = a(o(13)), f = a(o(14)), y = a(o(15)), m = a(o(16)), h = a(o(17)), g = a(o(0)), x = a(o(26)), b = a(o(28)), v = a(o(29)), w = a(o(30));
+    var n = a(o(1)), r = o(6), i = a(o(7)), s = a(o(8)), c = a(o(9)), u = a(o(10)), l = a(o(11)), d = a(o(12)), p = a(o(13)), f = a(o(14)), y = a(o(15)), m = a(o(16)), h = a(o(0)), g = a(o(26)), x = a(o(28)), b = a(o(29)), v = a(o(30));
     !async function() {
-        const e = /^win/.test(process.platform), t = g.default.HOST, o = g.default.PORT, a = (0, 
-        v.default)("app"), k = new n.default();
-        k.keys = [ "hare-server" ], x.default.dev = !("production" === k.env), s.default.defaults.baseURL = `http://127.0.0.1:${o}`;
-        let j = process.env.LOG_DIR || (e ? "C:\\\\log" : "/var/tmp/log");
-        c.default.sync(j);
-        const _ = {
+        const e = /^win/.test(process.platform), t = h.default.HOST, o = h.default.PORT, a = (0, 
+        b.default)("app"), w = new n.default();
+        w.keys = [ "hare-server" ], g.default.dev = !("production" === w.env);
+        let k = process.env.LOG_DIR || (e ? "C:\\\\log" : "/var/tmp/log");
+        s.default.sync(k);
+        const j = {
             type: "rotating-file",
-            path: `${j = j.replace(/(\\|\/)+$/, "") + (e ? "\\\\" : "/")}hare-access.log`,
-            level: x.default.dev ? "debug" : "info",
+            path: `${k = k.replace(/(\\|\/)+$/, "") + (e ? "\\\\" : "/")}hare-access.log`,
+            level: g.default.dev ? "debug" : "info",
             period: "1d",
             count: 4
-        }, q = {
+        }, _ = {
             type: "rotating-file",
-            path: `${j}hare-error.log`,
+            path: `${k}hare-error.log`,
             level: "error",
             period: "1d",
             count: 4
-        }, I = i.default.createLogger({
+        }, q = i.default.createLogger({
             name: "hare",
-            streams: [ _, q ]
+            streams: [ j, _ ]
         });
-        k.use((0, u.default)(I, {
+        w.use((0, c.default)(q, {
             level: "info"
-        })), k.use((0, l.default)(I)), k.use(async function(e, t) {
+        })), w.use((0, u.default)(q)), w.use(async function(e, t) {
             e.state.subapp = e.url.split("/")[1], await t();
         });
-        const O = new r.Nuxt(x.default);
-        if (O.showOpen = (() => {
-            const e = "0.0.0.0" === t ? "localhost" : t;
-            console.log("\n" + b.default.bgGreen.black(" OPEN ") + b.default.green(` http://${e}:${o}\n`));
-        }), x.default.dev) {
-            const e = x.default.development;
+        const I = new r.Nuxt(g.default);
+        if (g.default.dev) {
+            const e = g.default.development;
             if (e && e.proxies) for (let t of e.proxies) console.log(`Active Proxy: path[${t.path}] target[${t.target}]`), 
-            k.use((0, w.default)(t.path, t));
-            await new r.Builder(O).build();
+            w.use((0, v.default)(t.path, t));
+            await new r.Builder(I).build();
         }
-        const z = (0, d.default)(O.render);
-        k.use(async (e, t) => {
-            await t(), e.state.subapp !== g.default.API && (e.status = 200, e.req.session = e.session, 
+        const z = (0, l.default)(I.render);
+        w.use(async (e, t) => {
+            await t(), e.state.subapp !== h.default.API && (e.status = 200, e.req.session = e.session, 
             await z(e));
         });
         const D = {
-            key: g.default.SESS_KEY
+            key: h.default.SESS_KEY
         };
-        k.use((0, m.default)(D, k)), k.use(async function(e, t) {
+        w.use((0, y.default)(D, w)), w.use(async function(e, t) {
             const o = Date.now();
             await t();
             const a = Date.now();
             e.set("X-Response-Time", Math.ceil(a - o) + "ms");
-        }), k.use((0, y.default)({})), k.use(async function(e, t) {
+        }), w.use((0, f.default)({})), w.use(async function(e, t) {
             await t(), "www" !== e.hostname.slice(0, 3) && e.response.set("X-Robots-Tag", "noindex, nofollow");
-        }), k.use((0, p.default)()), k.use(async function(e, t) {
+        }), w.use((0, d.default)()), w.use(async function(e, t) {
             a(e.method + " " + e.url), await t();
-        }), k.use(async function(e, t) {
+        }), w.use(async function(e, t) {
             switch (e.state.subapp) {
-              case g.default.API:
-                await (0, f.default)(h.default.middleware)(e);
+              case h.default.API:
+                await (0, p.default)(m.default.middleware)(e);
             }
-        }), k.listen(o, t);
+        }), w.listen(o, t);
+        const O = "0.0.0.0" === t ? "localhost" : t;
+        console.log("\n" + x.default.bgGreen.black(" OPEN ") + x.default.green(` http://${O}:${o}\n`));
     }();
 }, function(e, t) {
     e.exports = require("nuxt");
@@ -151,7 +148,7 @@
     Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var n = a(o(3)), r = a(o(1)), s = a(o(18)), i = a(o(19)), c = a(o(20)), u = a(o(25));
+    var n = a(o(2)), r = a(o(1)), i = a(o(17)), s = a(o(18)), c = a(o(19)), u = a(o(25));
     const l = new r.default();
     l.use(async function(e, t) {
         if (await t(), !e.body) return;
@@ -165,12 +162,12 @@
           case "xml":
             e.type = o;
             const t = e.body.root;
-            delete e.body.root, e.body = (0, s.default)(e.body, t);
+            delete e.body.root, e.body = (0, i.default)(e.body, t);
             break;
 
           case "yaml":
           case "text":
-            delete e.body.root, e.type = "yaml", e.body = i.default.dump(e.body);
+            delete e.body.root, e.type = "yaml", e.body = s.default.dump(e.body);
             break;
 
           case !1:
@@ -213,8 +210,8 @@
             default: e
         };
     }
-    var n = a(o(21)), r = a(o(2)), s = a(o(22)), i = a(o(4)), c = a(o(23)), u = a(o(0));
-    const l = (0, i.default)({
+    var n = a(o(20)), r = a(o(21)), i = a(o(22)), s = a(o(3)), c = a(o(23)), u = a(o(0));
+    const l = (0, s.default)({
         prefix: u.default.BASE_API
     });
     var d = r.default.create({
@@ -229,7 +226,7 @@
         const t = e.request.body;
         t && t.userName && t.password || e.throw(401, "用户名/密码未填写"), e.session.captcha.toLowerCase() !== t.captcha.toLowerCase() && e.throw(401, "验证码输入错误");
         try {
-            const o = await d.post("/platform/uaano/oauth/token", s.default.stringify({
+            const o = await d.post("/platform/uaano/oauth/token", i.default.stringify({
                 username: t.userName,
                 password: Buffer.from(t.password).toString("base64"),
                 grant_type: "password"
@@ -301,6 +298,8 @@
 }, function(e, t) {
     e.exports = require("babel-runtime/core-js/object/assign");
 }, function(e, t) {
+    e.exports = require("axios");
+}, function(e, t) {
     e.exports = require("querystring");
 }, function(e, t) {
     e.exports = require("svg-captcha");
@@ -313,7 +312,7 @@
         return e && e.__esModule ? e : {
             default: e
         };
-    }(o(5));
+    }(o(4));
     t.default = (0, a.default)({
         APP: "hare",
         API: "hpi",
@@ -328,11 +327,11 @@
             default: e
         };
     }
-    var n = a(o(4)), r = a(o(0));
-    const s = (0, n.default)({
+    var n = a(o(3)), r = a(o(0));
+    const i = (0, n.default)({
         prefix: r.default.BASE_API
     });
-    s.get("/activities", async function(e) {
+    i.get("/activities", async function(e) {
         e.status = 200, e.body = [ {
             account: "活动1",
             date: "2017-1-1",
@@ -414,7 +413,7 @@
             organizer: "销售部海外部",
             desc: "Description example of activity in New York"
         } ];
-    }), e.exports = s.routes();
+    }), e.exports = i.routes();
 }, function(e, t, o) {
     "use strict";
     const a = o(27);
@@ -449,7 +448,7 @@
             babel: {
                 plugins: [ "transform-decorators-legacy", "transform-class-properties" ]
             },
-            extend(e, {dev: t, isClient: o}) {
+            extend(e, {isDev: t}) {
                 e.resolve.alias["class-component"] = "@/plugins/class-component";
             },
             vendor: [ "axios", "element-ui", "negotiator", "vue-class-component", "vuex-class", "vue-i18n", "vue-chartjs", "vue-clipboards", "moment", "chart.js", "deepmerge" ],
@@ -467,7 +466,7 @@
         generate: {
             dir: ".generated"
         },
-        css: [ "normalize.css/normalize.css", "element-ui/lib/theme-default/index.css", {
+        css: [ "normalize.css/normalize.css", "element-ui/lib/theme-chalk/index.css", {
             src: "@/assets/styles/main.scss",
             lang: "scss"
         } ],
