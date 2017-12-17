@@ -13,8 +13,8 @@ max_jobs: 4
 # Test against the latest version of this Node.js version
 environment:
   matrix:
-    - nodejs_version: "7"
     - nodejs_version: "8"
+    - nodejs_version: "9"
 
 platform:
   # - x86
