@@ -4,10 +4,10 @@ jobs:
     docker:
       - image: circleci/node:latest
     working_directory: ~/hare
-    branches:
-      only:
-        - master
-        - dev
+    # branches:
+    #   only:
+    #     - master
+    #     - dev
     steps: &steps
       - checkout
       - restore_cache:
