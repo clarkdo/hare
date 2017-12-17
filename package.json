@@ -56,7 +56,7 @@
     "koa-router": "^7.3.0",
     "koa-session": "^5.5.1",
     "mkdirp": "^0.5.1",
-    "moment": "^2.19.2",
+    "moment": "^2.19.4",
     "negotiator": "^0.6.1",
     "normalize.css": "^7.0.0",
     "nuxt": "^1.0.0-gh-0b9cd1b",
