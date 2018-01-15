@@ -9013,11 +9013,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-chartjs@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-3.0.2.tgz#960d0ba9c2f3720b85ff02417707adc02f953de9"
-  dependencies:
-    lodash.merge "^4.6.0"
+vue-chartjs@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-3.1.0.tgz#bf29bd940312bfdbbde337e03cb538f2805b184e"
 
 vue-class-component@^6.1.2:
   version "6.1.2"
