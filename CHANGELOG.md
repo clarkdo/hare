@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/clarkdo/hare/compare/v0.2.3...v0.3.0) (2018-01-17)
+
+
+### Bug Fixes
+
+* bump appveyor node engine ([cb62f57](https://github.com/clarkdo/hare/commit/cb62f57))
+* circleci not build pr ([8f8a198](https://github.com/clarkdo/hare/commit/8f8a198))
+
+
+### Features
+
+* upgrade nuxt.js to next before 1.0.0 released ([e15d4b1](https://github.com/clarkdo/hare/commit/e15d4b1))
+* use element-ui 2.0 ([fa16771](https://github.com/clarkdo/hare/commit/fa16771))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/clarkdo/hare/compare/v0.2.1...v0.2.3) (2017-12-09)
 
