@@ -107,7 +107,7 @@ router.get('/menus', async function getMenus (ctx) {
           icon: 'el-icon-message'
         },
         {
-          id: '2-3',
+          id: '2-4',
           name: 'nav.charts',
           url: '/examples/charts',
           icon: 'el-icon-picture'
