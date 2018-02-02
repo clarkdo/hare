@@ -64,13 +64,13 @@
     "vue-chartjs": "^3.1.0",
     "vue-class-component": "^6.1.2",
     "vue-clipboards": "^1.2.1",
-    "vue-i18n": "^7.4.0",
+    "vue-i18n": "^7.4.2",
     "vuex-class": "^0.3.0",
     "xmlify": "^1.1.0"
   },
   "devDependencies": {
     "@nuxtjs/webpackmonitor": "^0.1.0",
-    "ava": "^0.23.0",
+    "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -80,7 +80,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-html": "^4.0.2",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.5.0",
@@ -93,7 +93,7 @@
     "progress-bar-webpack-plugin": "^1.10.0",
     "sass-loader": "^6.0.6",
     "standard-version": "4.3.0",
-    "uglifyjs-webpack-plugin": "^1.1.6",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.10.0",
     "webpack-node-externals": "^1.6.0"
   },
