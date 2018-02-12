@@ -94,7 +94,7 @@
     "sass-loader": "^6.0.6",
     "standard-version": "4.3.0",
     "uglifyjs-webpack-plugin": "^1.1.8",
-    "webpack": "^3.10.0",
+    "webpack": "^3.11.0",
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
