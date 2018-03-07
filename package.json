@@ -90,7 +90,7 @@
     "moxios": "^0.4.0",
     "node-sass": "^4.7.2",
     "nodemon": "^1.14.11",
-    "progress-bar-webpack-plugin": "^1.10.0",
+    "progress-bar-webpack-plugin": "^1.11.0",
     "sass-loader": "^6.0.6",
     "standard-version": "4.3.0",
     "uglifyjs-webpack-plugin": "^1.1.8",
