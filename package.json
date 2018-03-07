@@ -89,7 +89,7 @@
     "lint-staged": "^6.0.1",
     "moxios": "^0.4.0",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.14.11",
+    "nodemon": "^1.17.1",
     "progress-bar-webpack-plugin": "^1.10.0",
     "sass-loader": "^6.0.6",
     "standard-version": "4.3.0",
