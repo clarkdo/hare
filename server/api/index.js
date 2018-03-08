@@ -1,8 +1,8 @@
-import Koa from 'koa' // Koa framework
-import xmlify from 'xmlify' // JS object to XML
-import yaml from 'js-yaml' // JS object to YAML
-import auth from './routes-auth'
-import demo from './routes-demo'
+const Koa = require('koa') // Koa framework
+const xmlify = require('xmlify') // JS object to XML
+const yaml = require('js-yaml') // JS object to YAML
+const auth = require('./routes-auth')
+const demo = require('./routes-demo')
 
 const app = new Koa() // API app
 
@@ -53,16 +53,16 @@ app.use(async function handleErrors (ctx, next) {
       case 406: // Not Acceptable
       case 409: // Conflict
         ctx.body = {
-          root: 'error',
-          ...e
+          root: 'error'
+          // ...e
         }
         break
       default:
       case 500: // Internal Server Error (for uncaught or programming errors)
         console.error(ctx.status, e.message)
         ctx.body = {
-          root: 'error',
-          ...e
+          root: 'error'
+          // ...e
         }
         if (app.env !== 'production') ctx.body.stack = e.stack
         ctx.app.emit('error', e, ctx) // github.com/koajs/koa/wiki/Error-Handling
@@ -82,4 +82,4 @@ app.use(demo)
 
 // custom modules here
 
-export default app
+module.exports = app

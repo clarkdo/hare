@@ -1,11 +1,11 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 /*  Route to handle authentication /auth element                                                  */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-import axios from 'axios'
-import querystring from 'querystring'
-import koaRouter from 'koa-router'
-import svgCaptcha from 'svg-captcha'
-import consts from '../utils/consts'
+const axios = require('axios')
+const querystring = require('querystring')
+const koaRouter = require('koa-router')
+const svgCaptcha = require('svg-captcha')
+const consts = require('../utils/consts')
 
 const router = koaRouter({
   prefix: consts.BASE_API

@@ -1,8 +1,8 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 /*  Route to handle authentication /auth element                                                  */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-import koaRouter from 'koa-router'
-import consts from '../utils/consts'
+const koaRouter = require('koa-router')
+const consts = require('../utils/consts')
 
 const router = koaRouter({
   prefix: consts.BASE_API

@@ -1,8 +1,9 @@
-import webpack from 'webpack'
-import nodeExternals from 'webpack-node-externals'
-import ProgressBarPlugin from 'progress-bar-webpack-plugin'
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
-export default {
+const { DefinePlugin } = require('webpack')
+const nodeExternals = require('webpack-node-externals')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
+module.exports = {
   entry: {
     app: './server/app.js'
   },
@@ -11,16 +12,11 @@ export default {
     path: process.cwd() + '/dist',
     filename: 'server-[name].js'
   },
-  module: {
-    rules: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
-    ]
-  },
   externals: [
     nodeExternals()
   ],
   plugins: [
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new ProgressBarPlugin(),

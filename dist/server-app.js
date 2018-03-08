@@ -1,122 +1,106 @@
 !function(e) {
-    function t(a) {
-        if (o[a]) return o[a].exports;
-        var n = o[a] = {
-            i: a,
+    var t = {};
+    function o(n) {
+        if (t[n]) return t[n].exports;
+        var i = t[n] = {
+            i: n,
             l: !1,
             exports: {}
         };
-        return e[a].call(n.exports, n, n.exports, t), n.l = !0, n.exports;
+        return e[n].call(i.exports, i, i.exports, o), i.l = !0, i.exports;
     }
-    var o = {};
-    t.m = e, t.c = o, t.d = function(e, o, a) {
-        t.o(e, o) || Object.defineProperty(e, o, {
+    o.m = e, o.c = t, o.d = function(e, t, n) {
+        o.o(e, t) || Object.defineProperty(e, t, {
             configurable: !1,
             enumerable: !0,
-            get: a
+            get: n
         });
-    }, t.n = function(e) {
-        var o = e && e.__esModule ? function() {
+    }, o.n = function(e) {
+        var t = e && e.__esModule ? function() {
             return e.default;
         } : function() {
             return e;
         };
-        return t.d(o, "a", o), o;
-    }, t.o = function(e, t) {
+        return o.d(t, "a", t), t;
+    }, o.o = function(e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
-    }, t.p = "", t(t.s = 5);
-}([ function(e, t, o) {
-    "use strict";
-    function a(e) {
-        return e && e.__esModule ? e : {
-            default: e
-        };
-    }
-    Object.defineProperty(t, "__esModule", {
-        value: !0
+    }, o.p = "", o(o.s = 3);
+}([ function(e, t) {
+    const o = process.env.HOST || "0.0.0.0", n = process.env.PORT || "3000";
+    e.exports = Object.freeze({
+        APP: "hare",
+        API: "hpi",
+        BASE_API: "/hpi",
+        SESS_KEY: "hare:sess",
+        COOKIE_JWT: "hare_jwt",
+        HOST: o,
+        PORT: n,
+        LB_ADDR: process.env.LB_ADDR || `http://${o}:${n}/hpi`
     });
-    var n = a(o(2)), r = a(o(4)), i = a(o(24));
-    const s = process.env.HOST || "0.0.0.0", c = process.env.PORT || "3000";
-    t.default = (0, r.default)((0, n.default)({
-        HOST: s,
-        PORT: c,
-        LB_ADDR: process.env.LB_ADDR || `http://${s}:${c}/hpi`
-    }, i.default));
 }, function(e, t) {
     e.exports = require("koa");
 }, function(e, t) {
-    e.exports = require("babel-runtime/helpers/extends");
-}, function(e, t) {
     e.exports = require("koa-router");
-}, function(e, t) {
-    e.exports = require("babel-runtime/core-js/object/freeze");
 }, function(e, t, o) {
-    "use strict";
-    function a(e) {
-        return e && e.__esModule ? e : {
-            default: e
-        };
-    }
-    var n = a(o(1)), r = o(6), i = a(o(7)), s = a(o(8)), c = a(o(9)), u = a(o(10)), l = a(o(11)), d = a(o(12)), p = a(o(13)), f = a(o(14)), y = a(o(15)), m = a(o(16)), h = a(o(0)), g = a(o(26)), x = a(o(28)), b = a(o(29)), v = a(o(30));
+    const n = o(1), {Nuxt: i, Builder: s} = o(4), r = o(5), a = o(6), c = o(7), u = o(8), p = o(9), l = o(10), d = o(11), y = o(12), f = o(13), m = o(14), h = o(0), g = o(22), x = o(24), w = o(25), b = o(26);
     !async function() {
-        const e = /^win/.test(process.platform), t = h.default.HOST, o = h.default.PORT, a = (0, 
-        b.default)("app"), w = new n.default();
-        w.keys = [ "hare-server" ], g.default.dev = !("production" === w.env);
-        let k = process.env.LOG_DIR || (e ? "C:\\\\log" : "/var/tmp/log");
-        s.default.sync(k);
+        const e = /^win/.test(process.platform), t = h.HOST, o = h.PORT, v = w("app"), k = new n();
+        k.keys = [ "hare-server" ], g.dev = !("production" === k.env);
+        let I = process.env.LOG_DIR || (e ? "C:\\\\log" : "/var/tmp/log");
+        a.sync(I);
         const j = {
             type: "rotating-file",
-            path: `${k = k.replace(/(\\|\/)+$/, "") + (e ? "\\\\" : "/")}hare-access.log`,
-            level: g.default.dev ? "debug" : "info",
+            path: `${I = I.replace(/(\\|\/)+$/, "") + (e ? "\\\\" : "/")}hare-access.log`,
+            level: g.dev ? "debug" : "info",
             period: "1d",
             count: 4
-        }, _ = {
+        }, q = {
             type: "rotating-file",
-            path: `${k}hare-error.log`,
+            path: `${I}hare-error.log`,
             level: "error",
             period: "1d",
             count: 4
-        }, q = i.default.createLogger({
+        }, z = r.createLogger({
             name: "hare",
-            streams: [ j, _ ]
+            streams: [ j, q ]
         });
-        w.use((0, c.default)(q, {
+        k.use(c(z, {
             level: "info"
-        })), w.use((0, u.default)(q)), w.use(async function(e, t) {
+        })), k.use(u(z)), k.use(async function(e, t) {
             e.state.subapp = e.url.split("/")[1], await t();
         });
-        const I = new r.Nuxt(g.default);
-        if (g.default.dev) {
-            const e = g.default.development;
+        const D = new i(g);
+        if (g.dev) {
+            const e = g.development;
             if (e && e.proxies) for (let t of e.proxies) console.log(`Active Proxy: path[${t.path}] target[${t.target}]`), 
-            w.use((0, v.default)(t.path, t));
-            await new r.Builder(I).build();
+            k.use(b(t.path, t));
+            await new s(D).build();
         }
-        const z = (0, l.default)(I.render);
-        w.use(async (e, t) => {
-            await t(), e.state.subapp !== h.default.API && (e.status = 200, e.req.session = e.session, 
-            await z(e));
+        const O = p(D.render);
+        k.use(async (e, t) => {
+            await t(), e.state.subapp !== h.API && (e.status = 200, e.req.session = e.session, 
+            await O(e));
         });
-        const D = {
-            key: h.default.SESS_KEY
+        const R = {
+            key: h.SESS_KEY
         };
-        w.use((0, y.default)(D, w)), w.use(async function(e, t) {
+        k.use(f(R, k)), k.use(async function(e, t) {
             const o = Date.now();
             await t();
-            const a = Date.now();
-            e.set("X-Response-Time", Math.ceil(a - o) + "ms");
-        }), w.use((0, f.default)({})), w.use(async function(e, t) {
+            const n = Date.now();
+            e.set("X-Response-Time", Math.ceil(n - o) + "ms");
+        }), k.use(y({})), k.use(async function(e, t) {
             await t(), "www" !== e.hostname.slice(0, 3) && e.response.set("X-Robots-Tag", "noindex, nofollow");
-        }), w.use((0, d.default)()), w.use(async function(e, t) {
-            a(e.method + " " + e.url), await t();
-        }), w.use(async function(e, t) {
+        }), k.use(l()), k.use(async function(e, t) {
+            v(e.method + " " + e.url), await t();
+        }), k.use(async function(e, t) {
             switch (e.state.subapp) {
-              case h.default.API:
-                await (0, p.default)(m.default.middleware)(e);
+              case h.API:
+                await d(m.middleware)(e);
             }
-        }), w.listen(o, t);
-        const O = "0.0.0.0" === t ? "localhost" : t;
-        console.log("\n" + x.default.bgGreen.black(" OPEN ") + x.default.green(` http://${O}:${o}\n`));
+        }), k.listen(o, t);
+        const S = "0.0.0.0" === t ? "localhost" : t;
+        console.log("\n" + x.bgGreen.black(" OPEN ") + x.green(` http://${S}:${o}\n`));
     }();
 }, function(e, t) {
     e.exports = require("nuxt");
@@ -139,18 +123,8 @@
 }, function(e, t) {
     e.exports = require("koa-session");
 }, function(e, t, o) {
-    "use strict";
-    function a(e) {
-        return e && e.__esModule ? e : {
-            default: e
-        };
-    }
-    Object.defineProperty(t, "__esModule", {
-        value: !0
-    });
-    var n = a(o(2)), r = a(o(1)), i = a(o(17)), s = a(o(18)), c = a(o(19)), u = a(o(25));
-    const l = new r.default();
-    l.use(async function(e, t) {
+    const n = o(1), i = o(15), s = o(16), r = o(17), a = o(21), c = new n();
+    c.use(async function(e, t) {
         if (await t(), !e.body) return;
         const o = e.accepts("json", "xml", "yaml", "text");
         switch (o) {
@@ -162,18 +136,18 @@
           case "xml":
             e.type = o;
             const t = e.body.root;
-            delete e.body.root, e.body = (0, i.default)(e.body, t);
+            delete e.body.root, e.body = i(e.body, t);
             break;
 
           case "yaml":
           case "text":
-            delete e.body.root, e.type = "yaml", e.body = s.default.dump(e.body);
+            delete e.body.root, e.type = "yaml", e.body = s.dump(e.body);
             break;
 
           case !1:
             e.throw(406);
         }
-    }), l.use(async function(e, t) {
+    }), c.use(async function(e, t) {
         try {
             await t();
         } catch (t) {
@@ -186,74 +160,67 @@
               case 404:
               case 406:
               case 409:
-                e.body = (0, n.default)({
+                e.body = {
                     root: "error"
-                }, t);
+                };
                 break;
 
               default:
               case 500:
-                console.error(e.status, t.message), e.body = (0, n.default)({
+                console.error(e.status, t.message), e.body = {
                     root: "error"
-                }, t), "production" !== l.env && (e.body.stack = t.stack), e.app.emit("error", t, e);
+                }, "production" !== c.env && (e.body.stack = t.stack), e.app.emit("error", t, e);
             }
         }
-    }), l.use(c.default), l.use(u.default), t.default = l;
+    }), c.use(r), c.use(a), e.exports = c;
 }, function(e, t) {
     e.exports = require("xmlify");
 }, function(e, t) {
     e.exports = require("js-yaml");
 }, function(e, t, o) {
-    "use strict";
-    function a(e) {
-        return e && e.__esModule ? e : {
-            default: e
-        };
-    }
-    var n = a(o(20)), r = a(o(21)), i = a(o(22)), s = a(o(3)), c = a(o(23)), u = a(o(0));
-    const l = (0, s.default)({
-        prefix: u.default.BASE_API
+    const n = o(18), i = o(19), s = o(2), r = o(20), a = o(0), c = s({
+        prefix: a.BASE_API
     });
-    var d = r.default.create({
-        baseURL: u.default.LB_ADDR,
+    var u = n.create({
+        baseURL: a.LB_ADDR,
         timeout: 5e3,
         headers: {
             Authorization: "Basic YmFzLWNsaWVudDpYMmNYeW1nWkRrRkE3RWR0",
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
         }
     });
-    l.post("/login", async function(e) {
+    c.post("/login", async function(e) {
         const t = e.request.body;
         t && t.userName && t.password || e.throw(401, "用户名/密码未填写"), e.session.captcha.toLowerCase() !== t.captcha.toLowerCase() && e.throw(401, "验证码输入错误");
         try {
-            const o = await d.post("/platform/uaano/oauth/token", i.default.stringify({
+            const o = await u.post("/platform/uaano/oauth/token", i.stringify({
                 username: t.userName,
                 password: Buffer.from(t.password).toString("base64"),
                 grant_type: "password"
             }));
-            e.body = (0, n.default)({}, o.data), e.session.jwt = o.data.access_token;
+            e.body = Object.assign({}, o.data), e.session.jwt = o.data.access_token;
         } catch (t) {
             e.log.error({
                 error: t
             }, "Call oath service failed!");
-            let o = "登录失败, 具体信息请联系维护人员", a = null;
-            (a = t && t.response && t.response.data) && (o = a.message || a.errors), e.throw(401, o);
+            let o = "登录失败, 具体信息请联系维护人员", n = null;
+            (n = t && t.response && t.response.data) && (o = n.message || n.errors), e.throw(401, o);
         }
-    }), l.post("/logout", async function(e) {
+    }), c.post("/logout", async function(e) {
         e.session.jwt = null, e.status = 200;
-    }), l.get("/captcha", async function(e, t) {
+    }), c.get("/captcha", async function(e, t) {
         await t();
-        const o = e.request.query.width || 150, a = e.request.query.height || 36;
-        let n = c.default.create({
+        const o = e.request.query.width || 150, n = e.request.query.height || 36;
+        let i = r.create({
             width: o,
-            height: a,
+            height: n,
             size: 4,
             noise: 1,
             fontSize: o > 760 ? 40 : 30,
             ignoreChars: "0oO1iIl"
         });
-        e.session.captcha = n.text, e.type = "image/svg+xml", e.body = n.data;
-    }), l.get("/menus", async function(e) {
+        e.session.captcha = i.text, e.type = "image/svg+xml", e.body = i.data;
+    }), c.get("/menus", async function(e) {
         e.status = 200, e.type = "application/json", e.body = [ {
             id: "1",
             name: "nav.home",
@@ -279,7 +246,7 @@
                 url: "/examples/activity/create",
                 icon: "el-icon-message"
             }, {
-                id: "2-3",
+                id: "2-4",
                 name: "nav.charts",
                 url: "/examples/charts",
                 icon: "el-icon-picture"
@@ -290,13 +257,11 @@
             url: "/about",
             icon: "el-icon-setting"
         } ];
-    }), l.post("/platform/uaano/oauth/token", async function(e, t) {
+    }), c.post("/platform/uaano/oauth/token", async function(e, t) {
         e.body = {
             access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYmFzIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicmVhZCJdLCJleHAiOjk5OTk5OTk5OTk5OTksInVzZXJJZCI6IjQwMjg4YjdlNWJjZDc3MzMwMTViY2Q3ZmQ3MjIwMDAxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianRpIjoiNzJlYzNjNDMtMDMwYS00MWVkLWFiYjItYjdhMjY5NTA2OTIzIiwiY2xpZW50X2lkIjoiYmFzLWNsaWVudCJ9.uwywziNetHyfSdiqcJt6XUGy4V_WYHR4K6l7OP2VB9I"
         };
-    }), e.exports = l.routes();
-}, function(e, t) {
-    e.exports = require("babel-runtime/core-js/object/assign");
+    }), e.exports = c.routes();
 }, function(e, t) {
     e.exports = require("axios");
 }, function(e, t) {
@@ -304,34 +269,10 @@
 }, function(e, t) {
     e.exports = require("svg-captcha");
 }, function(e, t, o) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", {
-        value: !0
+    const n = o(2)({
+        prefix: o(0).BASE_API
     });
-    var a = function(e) {
-        return e && e.__esModule ? e : {
-            default: e
-        };
-    }(o(4));
-    t.default = (0, a.default)({
-        APP: "hare",
-        API: "hpi",
-        BASE_API: "/hpi",
-        SESS_KEY: "hare:sess",
-        COOKIE_JWT: "hare_jwt"
-    });
-}, function(e, t, o) {
-    "use strict";
-    function a(e) {
-        return e && e.__esModule ? e : {
-            default: e
-        };
-    }
-    var n = a(o(3)), r = a(o(0));
-    const i = (0, n.default)({
-        prefix: r.default.BASE_API
-    });
-    i.get("/activities", async function(e) {
+    n.get("/activities", async function(e) {
         e.status = 200, e.body = [ {
             account: "活动1",
             date: "2017-1-1",
@@ -413,10 +354,9 @@
             organizer: "销售部海外部",
             desc: "Description example of activity in New York"
         } ];
-    }), e.exports = i.routes();
+    }), e.exports = n.routes();
 }, function(e, t, o) {
-    "use strict";
-    const a = o(27);
+    const n = o(23);
     e.exports = {
         srcDir: "client/",
         buildDir: "dist/client/",
@@ -458,7 +398,7 @@
                 app: "hare.[chunkhash:12].js",
                 css: "hare.[contenthash:12].css"
             },
-            plugins: [ new a.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/) ]
+            plugins: [ new n.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/) ]
         },
         loading: {
             color: "#60bbff"

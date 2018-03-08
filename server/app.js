@@ -1,20 +1,20 @@
-import Koa from 'koa'
-import { Nuxt, Builder } from 'nuxt'
-import bunyan from 'bunyan'
-import mkdirp from 'mkdirp'
-import koaBunyan from 'koa-bunyan'
-import koaLogger from 'koa-bunyan-logger'
-import koaConnect from 'koa-connect'
-import body from 'koa-body' // body parser
-import compose from 'koa-compose' // middleware composer
-import compress from 'koa-compress' // HTTP compression
-import session from 'koa-session' // session for flash messages
-import api from './api'
-import consts from './utils/consts'
-import config from '../nuxt.config.js'
-import chalk from 'chalk'
-import debugModule from 'debug' // small debugging utility
-import proxy from 'koa-proxies'
+const Koa = require('koa')
+const { Nuxt, Builder } = require('nuxt')
+const bunyan = require('bunyan')
+const mkdirp = require('mkdirp')
+const koaBunyan = require('koa-bunyan')
+const koaLogger = require('koa-bunyan-logger')
+const koaConnect = require('koa-connect')
+const body = require('koa-body') // body parser
+const compose = require('koa-compose') // middleware composer
+const compress = require('koa-compress') // HTTP compression
+const session = require('koa-session') // session for flash messages
+const api = require('./api')
+const consts = require('./utils/consts')
+const config = require('../nuxt.config.js')
+const chalk = require('chalk')
+const debugModule = require('debug') // small debugging utility
+const proxy = require('koa-proxies')
 
 // Start nuxt.js
 async function start () {
