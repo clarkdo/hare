@@ -5,28 +5,20 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Debug Hare Dev",
+        "name": "Hare Dev",
         "type": "node",
         "request": "launch",
         "protocol": "inspector",
-        "program": "${workspaceRoot}/server/app.js",
+        "program": "${workspaceRoot}/server/app",
         "stopOnEntry": false,
-        "args": [],
-        "cwd": "${workspaceRoot}",
-        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
-        "runtimeArgs": [
-          "--nolazy"
-        ],
         "sourceMaps": true,
-        "console": "integratedTerminal",
-        "internalConsoleOptions": "neverOpen",
         "env": {
             "NODE_ENV": "development",
             "DEBUG": "nuxt:*,app"
         }
       },
       {
-        "name": "Run Test Cases",
+        "name": "Test Cases",
         "type": "node",
         "request": "launch",
         "protocol": "inspector",
@@ -43,11 +35,11 @@
         }
       },
       {
-        "name": "Debug Hare Prod",
+        "name": "Hare Prod",
         "type": "node",
         "request": "launch",
         "protocol": "inspector",
-        "program": "${workspaceRoot}/dist/server-app",
+        "program": "${workspaceRoot}/dist/server/app",
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*"
