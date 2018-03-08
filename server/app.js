@@ -1,5 +1,4 @@
 const Koa = require('koa')
-const { resolve } = require('path')
 const { Nuxt, Builder } = require('nuxt')
 const bunyan = require('bunyan')
 const mkdirp = require('mkdirp')
@@ -12,7 +11,7 @@ const compress = require('koa-compress') // HTTP compression
 const session = require('koa-session') // session for flash messages
 const api = require('./api')
 const consts = require('./utils/consts')
-const config = require(resolve(process.cwd(), 'nuxt.config.js'))
+const config = require('../nuxt.config.js')
 const chalk = require('chalk')
 const debugModule = require('debug') // small debugging utility
 const proxy = require('koa-proxies')
