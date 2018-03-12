@@ -63,7 +63,7 @@
     "vue-chartjs": "^3.2.1",
     "vue-class-component": "^6.2.0",
     "vue-clipboards": "^1.2.2",
-    "vue-i18n": "^7.4.2",
+    "vue-i18n": "^7.5.0",
     "vuex-class": "^0.3.0",
     "xmlify": "^1.1.0"
   },
