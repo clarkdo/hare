@@ -9061,9 +9061,9 @@ vue-class-component@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.2.0.tgz#7adb1daa9a868c75f30f97f33f4f1b94aee62089"
 
-vue-clipboards@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/vue-clipboards/-/vue-clipboards-1.2.2.tgz#3349d0096de4dd43318d005dd2b5a1baa5a98681"
+vue-clipboards@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/vue-clipboards/-/vue-clipboards-1.2.4.tgz#31bc7e47f962c6ce0ba974649fc6f8a35d83a6ef"
   dependencies:
     clipboard "^1.7.1"
 
