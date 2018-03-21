@@ -40,7 +40,7 @@
     "axios": "^0.18.0",
     "bunyan": "^1.8.12",
     "chart.js": "^2.7.2",
-    "element-ui": "^2.2.1",
+    "element-ui": "^2.2.2",
     "js-cookie": "^2.2.0",
     "js-yaml": "^3.11.0",
     "jwt-decode": "^2.2.0",
