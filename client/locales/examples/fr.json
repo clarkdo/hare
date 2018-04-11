@@ -1,0 +1,97 @@
+{
+  "login": {
+    "userPlaceholder": "Nom d’utilisateur (admin)",
+    "pwdPlaceholder": "Mot de passe (admin)"
+  },
+  "activity": {
+    "title": {
+      "create": "Créer une activité"
+    },
+    "account": "Compte",
+    "date": "Date",
+    "type": "Type",
+    "area": "Région",
+    "priority": "Priorité",
+    "organizer": "Organisateur",
+    "desc": "Description",
+    "tag": "Étiquette",
+    "rate": "Appréciation",
+    "create": "Créer",
+    "reset": "Réinitialiser",
+    "holder": {
+      "area": "Choisir une région",
+      "tag": "Choisir une étiquette",
+      "date": "Choisir une date",
+      "time": "Choisir un moment"
+    },
+    "label": {
+      "tag": {
+        "st": "Billet",
+        "reduction": "Rabais",
+        "points": "Points"
+      }
+    },
+    "city": {
+      "sh": "ShangHai",
+      "bj": "BeiJing",
+      "gz": "GuangZhou",
+      "ly": "Lyster",
+      "sz": "ShenZhen"
+    },
+    "instDist": "JD",
+    "price": "Rabais",
+    "rights": "Droit",
+    "medium": "Médium",
+    "high": "Élevé",
+    "rule": {
+      "account": {
+        "required": "Veuillez spécifier un nom d’utilisateur",
+        "length": "Il y a un maximum de 6 caractères"
+      },
+      "region": {
+        "required": "Veuillez spécifier une région"
+      },
+      "date1": {
+        "required": "Veuillez spécifier une date"
+      },
+      "date2": {
+        "required": "Veuillez spécifier un moment"
+      },
+      "type": {
+        "required": "Il faut au moins avoir choisi un Type"
+      },
+      "priority": {
+        "required": "Veuillez choisir une priorité"
+      },
+      "rate": {
+        "required": "Vous devez absolument donner votre degré d’appréciation"
+      },
+      "desc": {
+        "required": "Veuillez entrer une description"
+      }
+    },
+    "success": "L’Activité crée!",
+    "failed": "Il a été impossible de créer l’activité, désolé!"
+  },
+  "example": {
+    "title1":
+      "Button, Counter, Radio (Le champ City est un demo d’usage de Vuex)",
+    "title2": "Radio, Checkbox, Input, Multi-Select",
+    "title3": "Cascader, Switch, Slider",
+    "title4": "Formulaire de données exemple",
+    "food": "Nourriture",
+    "counter": "Compteur",
+    "city": "Ville",
+    "inPh": "Veuillez entrer",
+    "selPh": "Veuillez choisir",
+    "pop": "Mise en avant"
+  },
+  "nav": {
+    "kitchenSink": "Examples dans Kitchen Sink",
+    "demo": "Components",
+    "list": "Données tabulaires",
+    "create": "Forumlaire de création",
+    "charts": "Chartes et graphiques",
+    "about": "À propos"
+  }
+}

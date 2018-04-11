@@ -9,5 +9,6 @@ module.exports = Object.freeze({
   COOKIE_JWT: 'hare_jwt',
   HOST,
   PORT,
+  MOCK_AUTHENTICATION_ENDPOINT: '/platform/uaano/oauth/token',
   LB_ADDR: process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
 })

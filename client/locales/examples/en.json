@@ -1,0 +1,96 @@
+{
+  "login": {
+    "userPlaceholder": "User Name (admin)",
+    "pwdPlaceholder": "Password (admin)"
+  },
+  "activity": {
+    "title": {
+      "create": "Create Activity"
+    },
+    "account": "Account",
+    "date": "Date",
+    "type": "Type",
+    "area": "Area",
+    "priority": "Priority",
+    "organizer": "Organizer",
+    "desc": "Description",
+    "tag": "Tag",
+    "rate": "Rate",
+    "create": "Create",
+    "reset": "Reset",
+    "holder": {
+      "area": "Pls select area",
+      "tag": "Pls select tag",
+      "date": "Pls Select date",
+      "time": "Pls Select time"
+    },
+    "label": {
+      "tag": {
+        "st": "Ticket",
+        "reduction": "Discount",
+        "points": "Points"
+      }
+    },
+    "city": {
+      "sh": "ShangHai",
+      "bj": "BeiJing",
+      "gz": "GuangZhou",
+      "ly": "Lyster",
+      "sz": "ShenZhen"
+    },
+    "instDist": "JD",
+    "price": "Discount",
+    "rights": "Rights",
+    "medium": "Medium",
+    "high": "High",
+    "rule": {
+      "account": {
+        "required": "Pls input account name",
+        "length": "Length is no longer than 6"
+      },
+      "region": {
+        "required": "Pls select region"
+      },
+      "date1": {
+        "required": "Pls select date"
+      },
+      "date2": {
+        "required": "Pls select time"
+      },
+      "type": {
+        "required": "Pls select at least on type"
+      },
+      "priority": {
+        "required": "Pls select priority"
+      },
+      "rate": {
+        "required": "Pls select rate"
+      },
+      "desc": {
+        "required": "Pls input description"
+      }
+    },
+    "success": "Create successfully!",
+    "failed": "Create failure!"
+  },
+  "example": {
+    "title1": "Button, Counter, Radio (City is a Vuex demo)",
+    "title2": "Radio, Checkbox, Input, Multi-Select",
+    "title3": "Cascader, Switch, Slider",
+    "title4": "Data Form",
+    "food": "Food",
+    "counter": "Counter",
+    "city": "City",
+    "inPh": "Please input",
+    "selPh": "Please select",
+    "pop": "Popover"
+  },
+  "nav": {
+    "kitchenSink": "Kitchen Sink examples",
+    "demo": "Components",
+    "list": "Table List",
+    "create": "Creation Form",
+    "charts": "Charts",
+    "about": "About"
+  }
+}

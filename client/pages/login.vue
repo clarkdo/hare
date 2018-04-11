@@ -7,7 +7,7 @@
           <el-form :model="user" ref="user" @keyup.enter.native='!logging && login()'>
             <el-form-item prop="userName" :rules="[{ required: true, message: $t('login.userRequired')}]">
               <el-col :span="24">
-                <el-input v-model="user.userName" :placeholder="$t('login.userPlaceholder')"></el-input>
+                <el-input v-model="user.userName" autofocus :placeholder="$t('login.userPlaceholder')"></el-input>
               </el-col>
             </el-form-item>
             <el-form-item prop="password" :rules="[{ required: true, message: $t('login.pwdRequired')}]">

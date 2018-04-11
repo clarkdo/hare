@@ -1,0 +1,21 @@
+{
+  "login": {
+    "userRequired": "Un nom d’utilisateur est requis",
+    "userPlaceholder": "Nom d’utilisateur",
+    "pwdRequired": "Un mot de passe est requis",
+    "pwdPlaceholder": "Mot de passe",
+    "captchaRequired":
+      "Avoir saisi correctement le «Captcha» est requis pour se connecter",
+    "captchaPlaceholder": "Captcha",
+    "login": "Se connecter"
+  },
+  "nav": {
+    "home": "Accueil"
+  },
+  "head": {
+    "pwd": "Mot de passe",
+    "exit": "Quitter"
+  },
+  "tagline":
+    "Point de départ d’une Application Web utilisant Vue.js 2.x, Koa 2.x, Element-UI, Axios, Vue i18n, et Nuxt.js"
+}

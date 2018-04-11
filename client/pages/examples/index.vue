@@ -32,18 +32,18 @@
           </el-col>
           <el-col :xs="{offset: 2, span: 22}" :sm="{offset: 1, span: 6}">
             <el-row>
-              <el-col><p>{{$t('example.city')}}: {{city}}</p></el-col>
+              <el-col><p>{{$t('example.city')}}: {{$t(city)}}</p></el-col>
               <el-col>
                 <el-radio-group v-model="city" @input="checkCity">
                   <el-radio-button
                     v-for="item in cities"
                     :key="item.value"
-                    :label="item.value"
+                    :label="$t(item.label)"
                     :disabled="item.disabled">
-                    {{item.label}}
+                    {{$t(item.label)}}
                   </el-radio-button>
                 </el-radio-group>
-                <el-button @click="checkCity('ShangHai')" type="text">&nbsp;&nbsp;上海</el-button>
+                <el-button @click="checkCity('ShangHai')" type="text">&nbsp;&nbsp;{{$t('activity.city.sh')}}</el-button>
               </el-col>
             </el-row>
           </el-col>
@@ -145,7 +145,7 @@
 <script>
 import Vue from 'vue'
 import { mapActions } from 'vuex'
-import NewActivity from '@/components/activity/NewActivity'
+import NewActivity from '@/components/examples/activity/NewActivity'
 import Component, {Getter, namespace } from 'class-component'
 
 const ExampleGetter = namespace('examples/index', Getter)
