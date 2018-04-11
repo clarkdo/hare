@@ -95,7 +95,8 @@
     "standard-version": "4.3.0",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.10.0",
-    "webpack-node-externals": "^1.6.0"
+    "webpack-node-externals": "^1.6.0",
+    "lodash": "^4.2.0"
   },
   "engines": {
     "node": ">=8.0.0",

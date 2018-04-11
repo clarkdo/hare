@@ -9,9 +9,14 @@
         </el-col>
         <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.area')" prop="region">
-            <el-select v-model="formData.region" :placeholder="$t('activity.holder.area')">
-              <el-option :label="$t('activity.city.sh')" value="shanghai"></el-option>
-              <el-option :label="$t('activity.city.bj')" value="beijing"></el-option>
+            <el-select v-model="formData.region" filterable allow-create :placeholder="$t('activity.holder.area')">
+              <el-option
+                v-for="item in cities"
+                v-if="!item.disabled"
+                :key="item.label"
+                :label="$t(item.label)"
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -112,7 +117,7 @@ const ExampleGetter = namespace('examples/index', Getter)
       default () {
         return {
           account: '',
-          region: '',
+          region: 'activity.city.ly',
           date1: '',
           date2: '',
           delivery: false,
@@ -161,8 +166,18 @@ const ExampleGetter = namespace('examples/index', Getter)
 export default class NewActivity extends Vue {
   @ExampleGetter labels
   @ExampleGetter organizers
+  @ExampleGetter cities
 
   submit (formName) {
+    /**
+     * Example of how we can see each field value
+     */
+    let formData = {}
+    for (const v of Object.keys(this.formData)) {
+      formData[v] = this.formData[v]
+    }
+    console.log('NewActivity submit formData', formData)
+
     this.$refs[formName].validate((valid) => {
       if (valid) {
         this.$message.success(this.$t('activity.success'))

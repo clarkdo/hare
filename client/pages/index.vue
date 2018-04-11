@@ -5,7 +5,7 @@
     <div class="container">
       <div class="banner-desc">
         <h2>Hare</h2>
-        <p>Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js</p>
+        <p>{{$t('tagline')}}</p>
       </div>
     </div>
   </div>

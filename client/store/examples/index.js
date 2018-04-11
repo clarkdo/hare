@@ -1,5 +1,26 @@
 export const state = () => ({
-  city: 'GuangZhou'
+  city: 'activity.city.ly',
+  foods: [{
+    value: 'Golden Paste',
+    label: '黄金糕'
+  },
+  {
+    value: 'Double-skinned Milk',
+    label: '双皮奶',
+    disabled: true
+  },
+  {
+    value: 'Oyster Omelet',
+    label: '蚵仔煎'
+  },
+  {
+    value: 'Fine Noodles',
+    label: '龙须面'
+  },
+  {
+    value: 'Beijing Roast Duck',
+    label: '北京烤鸭'
+  }]
 })
 
 export const mutations = {
@@ -13,48 +34,41 @@ export const getters = {
     return state.city
   },
   foods (state) {
-    return [{
-      value: 'Golden Paste',
-      label: '黄金糕'
-    }, {
-      value: 'Double-skinned Milk',
-      label: '双皮奶',
-      disabled: true
-    }, {
-      value: 'Oyster Omelet',
-      label: '蚵仔煎'
-    }, {
-      value: 'Fine Noodles',
-      label: '龙须面'
-    }, {
-      value: 'Beijing Roast Duck',
-      label: '北京烤鸭'
-    }]
+    return state.foods
   },
   cities (state) {
     return [{
       value: 'ShangHai',
-      label: '上海'
-    }, {
+      label: 'activity.city.sh'
+    },
+    {
       value: 'BeiJing',
-      label: '北京',
+      label: 'activity.city.bj',
       disabled: true
-    }, {
+    },
+    {
       value: 'GuangZhou',
-      label: '广州'
-    }, {
+      label: 'activity.city.gz'
+    },
+    {
+      value: 'Lyster',
+      label: 'activity.city.ly'
+    },
+    {
       value: 'ShenZhen',
-      label: '深圳'
+      label: 'activity.city.sz'
     }]
   },
   labels () {
     return [{
       value: 'st',
       label: 'activity.label.tag.st'
-    }, {
+    },
+    {
       value: 'reduction',
       label: 'activity.label.tag.reduction'
-    }, {
+    },
+    {
       value: 'points',
       label: 'activity.label.tag.points'
     }]
@@ -66,17 +80,21 @@ export const getters = {
       children: [{
         value: 'market',
         label: '交易部'
-      }, {
+      },
+      {
         value: 'execution',
         label: '执行部'
-      }, {
+      },
+      {
         value: 'promotion',
         label: '推广部'
       }]
-    }, {
+    },
+    {
       value: 'operation',
       label: '运营部'
-    }, {
+    },
+    {
       value: 'sales',
       label: '销售部',
       children: [{
@@ -85,17 +103,21 @@ export const getters = {
         children: [{
           value: 'eastSales',
           label: '华东销售'
-        }, {
+        },
+        {
           value: 'northSales',
           label: '华北销售'
-        }, {
+        },
+        {
           value: 'southSales',
           label: '华南销售'
         }]
-      }, {
+      },
+      {
         value: 'product',
         label: '商品部'
-      }, {
+      },
+      {
         value: 'development',
         label: '客户发展'
       }]
@@ -104,7 +126,9 @@ export const getters = {
 }
 
 export const actions = {
-  checkCity ({ commit }, city) {
+  checkCity ({
+    commit
+  }, city) {
     commit('SET_CITY', city)
   }
 }

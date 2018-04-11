@@ -1,4 +1,5 @@
 export default Object.freeze({
+  SHOW_EXAMPLES: true, // Allow /examples
   APP: 'hare',
   API: 'hpi',
   BASE_API: '/hpi',

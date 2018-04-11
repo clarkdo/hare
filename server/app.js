@@ -26,6 +26,7 @@ async function start () {
 
   app.keys = ['hare-server']
   config.dev = !(app.env === 'production')
+
   // logging
   let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
   mkdirp.sync(logDir)
@@ -47,9 +48,12 @@ async function start () {
   }
   const logger = bunyan.createLogger({
     name: 'hare',
-    streams: [access, error]
+    streams: [access,
+      error]
   })
-  app.use(koaBunyan(logger, { level: 'info' }))
+  app.use(koaBunyan(logger, {
+    level: 'info'
+  }))
   app.use(koaLogger(logger))
 
   // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
