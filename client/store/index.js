@@ -37,7 +37,7 @@ export const actions = {
   nuxtServerInit ({ commit }, { req }) {},
   async login ({ commit }, { userName, password, captcha }) {
     try {
-      const { data: { access_token: token } } = await axios.post('/hpi/login', {
+      const { data: { access_token: token } } = await axios.post('/hpi/auth/login', {
         userName,
         password,
         captcha
@@ -52,7 +52,7 @@ export const actions = {
     }
   },
   async logout ({ commit }, callback) {
-    await axios.post('/hpi/logout')
+    await axios.post('/hpi/auth/logout')
     commit('SET_USER', delToken())
     callback()
   },

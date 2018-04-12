@@ -1,7 +1,7 @@
 {
   "login": {
-    "userPlaceholder": "Nom d’utilisateur (admin)",
-    "pwdPlaceholder": "Mot de passe (admin)"
+    "userPlaceholder": "Nom d’utilisateur",
+    "pwdPlaceholder": "Mot de passe"
   },
   "activity": {
     "title": {

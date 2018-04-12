@@ -1,7 +1,7 @@
 {
   "login": {
-    "userPlaceholder": "请输入用户名 (admin)",
-    "pwdPlaceholder": "请输入密码 (admin)"
+    "userPlaceholder": "请输入用户名",
+    "pwdPlaceholder": "请输入密码"
   },
   "activity": {
     "title": {
