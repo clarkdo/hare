@@ -87,7 +87,7 @@ export default class Login extends Vue {
       params.width = this.$refs.captcha.$el.clientWidth || 150
       params.height = this.$refs.captcha.$el.clientHeight || 36
     }
-    const {data: captcha} = await axios.get('/hpi/captcha', { params })
+    const {data: captcha} = await axios.get('/hpi/auth/captcha', { params })
     this.captchaSvg = captcha
   }
 
