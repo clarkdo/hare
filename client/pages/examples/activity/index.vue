@@ -60,12 +60,12 @@
            <el-table-column
             prop="type"
             :label="$t('activity.type')"
-            :filters="[{ text: '优惠', value: '价格优惠' }, { text: '权限', value: '价格权益' }]"
+            :filters="[{ text: 'Price', value: 'price' }, { text: 'Rights', value: 'rights' }]"
             :filter-method="filterTag"
             filter-placement="bottom-end">
             <template slot-scope="tag">
               <el-tag
-                :type="tag.row.type === '价格优惠' ? 'primary' : 'success'"
+                :type="tag.row.type === 'price' ? 'primary' : 'success'"
                 close-transition>{{tag.row.type}}</el-tag>
             </template>
           </el-table-column>
@@ -91,7 +91,7 @@ export default class Example extends Vue {
   selections = []
 
   async asyncData () {
-    let {data: activities} = await axios.get('/hpi/activities')
+    let {data: activities} = await axios.get('/hpi/examples/activities')
     return {activities}
   }
 

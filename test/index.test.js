@@ -24,7 +24,7 @@ const req = {
 test.before('Init Nuxt.js', async t => {
   // mock axios
   moxios.install()
-  moxios.stubRequest('/hpi/captcha', {
+  moxios.stubRequest('/hpi/auth/captcha', {
     status: 200,
     data: '验证码Mock'
   })
@@ -35,7 +35,7 @@ test.before('Init Nuxt.js', async t => {
 // Example of testing only generated html
 test('Route /', async t => {
   const { html } = await nuxt.renderRoute('/', Object.assign({}, {req}))
-  t.true(html.includes('Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js'))
+  t.true(html.includes('Application boilerplate based on Vue.js 2.x, Koa 2.x, Element-UI, Axios, Vue i18n and Nuxt.js'))
 })
 
 test('Route /about', async t => {
