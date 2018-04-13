@@ -26,8 +26,8 @@ export default class ReactiveDemo extends Vue {
       'October', 'November', `December${this.getRandomInt()}`
     ]
     const data = []
-    for (let index in labels) {
-      data[index] = this.getRandomInt()
+    for (let i = 0; i < labels.length; i++) {
+      data[i] = this.getRandomInt()
     }
     this.chartData = {
       labels,
