@@ -14,6 +14,12 @@ const defaultNavigation = [
     name: 'nav.home',
     url: '/',
     icon: 'el-icon-menu'
+  },
+  {
+    id: '3',
+    name: 'nav.about',
+    url: '/about',
+    icon: 'el-icon-menu'
   }
 ]
 
