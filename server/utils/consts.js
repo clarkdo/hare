@@ -29,15 +29,11 @@ const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
 const ENDPOINT_BACKEND_AUTH = '/platform/uaano/oauth/token'
 const ENDPOINT_BACKEND_VALIDATE = '/platform/uaano/oauth/validate'
 
-// Please, reader, fix this with proper environment variable management before deploying (!)
-const MOCK_ENDPOINT_BACKEND = true
-
 export default Object.freeze({
   HOST,
   PORT,
-  LB_ADDR,
   ENDPOINT_BACKEND_AUTH,
   ENDPOINT_BACKEND_VALIDATE,
-  MOCK_ENDPOINT_BACKEND,
+  LB_ADDR,
   ...consts
 })
