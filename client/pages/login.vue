@@ -66,7 +66,7 @@ export default class Login extends Vue {
   mounted () {
     this.getCaptcha()
   }
-  login () {
+  async login () {
     this.logging = true
     this.$refs.user.validate(async (valid) => {
       try {
@@ -92,10 +92,6 @@ export default class Login extends Vue {
   }
 
   refreshCaptcha = debounce(this.getCaptcha, 500)
-
-  logout () {
-    this.$store.dispatch('logout')
-  }
 }
 </script>
 

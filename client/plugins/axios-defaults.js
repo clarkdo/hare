@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { defaultHeader, clientToken } from '@/utils/auth'
+import consts from '@/utils/consts'
 
 const PORT = process.env.PORT || '3000'
 
@@ -22,5 +23,5 @@ export default ({ req, redirect }) => {
   } else {
     axios.defaults.baseURL = `http://127.0.0.1:${PORT}`
   }
-  axios.defaults.timeout = 5000
+  axios.defaults.timeout = consts.AXIOS_DEFAULT_TIMEOUT
 }
