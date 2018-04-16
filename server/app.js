@@ -112,8 +112,9 @@ async function start () {
      * In case you wanna see what you received from postRequest, or other endpoints.
      */
     let logRequestUrlResponse = '/hpi/auth/login'
-    let logThis = ctx.request.url === logRequestUrlResponse
-    if (logThis) {
+    let logHpiAuthLogin = ctx.request.url === logRequestUrlResponse
+    logHpiAuthLogin = false
+    if (logHpiAuthLogin) {
       const debugObj = JSON.parse(JSON.stringify(ctx))
       const body = JSON.parse(JSON.stringify(ctx.body || null))
       let responseHeaders = {}
@@ -125,6 +126,12 @@ async function start () {
         requestHeaders = Object.assign(requestHeaders, JSON.parse(JSON.stringify(ctx.request.header)))
       }
       console.log(`Received for ${logRequestUrlResponse}`, {ctx: debugObj, body, responseHeaders, requestHeaders})
+    }
+    const isHpi = /^\/hpi\//.test(ctx.request.url)
+    const logHpi = false
+    if (isHpi && logHpi && logHpiAuthLogin === false) {
+      const headers = Object.assign({}, JSON.parse(JSON.stringify(ctx.request.header)))
+      console.log(`Request headers for ${ctx.url}`, headers)
     }
   })
 

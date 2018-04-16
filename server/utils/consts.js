@@ -15,11 +15,13 @@ const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
  * To switch such behavior, you can set LB_ADDR constant.
  */
 const ENDPOINT_BACKEND_AUTH = '/platform/uaano/oauth/token'
+const ENDPOINT_BACKEND_VALIDATE = '/platform/uaano/oauth/validate'
 
 export default Object.freeze({
   HOST,
   PORT,
   ENDPOINT_BACKEND_AUTH,
+  ENDPOINT_BACKEND_VALIDATE,
   LB_ADDR,
   ...consts
 })
