@@ -48,12 +48,43 @@ export const defaultHeader = jwt => {
   }
 }
 
+/**
+ * Handle possibility where token endpoint, at exp returns seconds instead of µ seconds
+ */
+const handleTokenExp = exp => {
+  let out = exp
+
+  const milliseconds = new Date().getTime()
+  // const millisecondsDigitCount = ((milliseconds).toString()).length
+  const seconds = Math.floor(milliseconds / 1000)
+  const secondsDigitCount = ((seconds).toString()).length
+
+  const isExpressedInSeconds = ((exp).toString()).length === secondsDigitCount
+  // const isExpressedInMilliSeconds = ((exp).toString()).length === millisecondsDigitCount
+
+  // If the exp is 25 hours or less, adjust the time to miliseconds
+  // Otherwise let's not touch it
+  if (isExpressedInSeconds) {
+    const durationInSeconds = Math.floor((exp - seconds))
+    const hours = Math.floor(durationInSeconds / 3600)
+    if (hours < 25) { // Make 25 configurable?
+      out *= 1000
+    }
+  }
+
+  return out
+}
+
 export const saveToken = token => {
   if (process.server) return
   defaultHeader(token)
   const user = decode(token)
-  cookies.set(jwtKey, token, { expires: new Date(user.exp) })
-  window.localStorage.setItem('token', JSON.stringify({ value: token, exp: user.exp }))
+  const exp = handleTokenExp(user.exp)
+  const cookieData = {
+    expires: new Date(exp)
+  }
+  cookies.set(jwtKey, token, cookieData)
+  window.localStorage.setItem('token', JSON.stringify({ value: token, exp }))
   return user
 }
 

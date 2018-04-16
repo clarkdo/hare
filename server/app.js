@@ -48,11 +48,13 @@ async function start () {
   }
   const logger = bunyan.createLogger({
     name: 'hare',
-    streams: [access,
-      error]
+    streams: [
+      access,
+      error
+    ]
   })
   app.use(koaBunyan(logger, {
-    level: 'info'
+    level: config.dev ? 'debug' : 'info'
   }))
   app.use(koaLogger(logger))
 
@@ -105,6 +107,25 @@ async function start () {
     await next()
     const t2 = Date.now()
     ctx.set('X-Response-Time', Math.ceil(t2 - t1) + 'ms')
+
+    /**
+     * In case you wanna see what you received from postRequest, or other endpoints.
+     */
+    let logRequestUrlResponse = '/hpi/auth/login'
+    let logThis = ctx.request.url === logRequestUrlResponse
+    if (logThis) {
+      const debugObj = JSON.parse(JSON.stringify(ctx))
+      const body = JSON.parse(JSON.stringify(ctx.body || null))
+      let responseHeaders = {}
+      if (ctx.response) {
+        responseHeaders = Object.assign(responseHeaders, JSON.parse(JSON.stringify(ctx.response.header)))
+      }
+      let requestHeaders = {}
+      if (ctx.request) {
+        requestHeaders = Object.assign(requestHeaders, JSON.parse(JSON.stringify(ctx.request.header)))
+      }
+      console.log(`Received for ${logRequestUrlResponse}`, {ctx: debugObj, body, responseHeaders, requestHeaders})
+    }
   })
 
   // HTTP compression
