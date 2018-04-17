@@ -11,11 +11,11 @@
           </div>
         </el-col>
         <el-col :offset="11" :span="3">
-          <p v-if="authUser">
-            <el-tooltip :content="authUser.user_name">
-              <img src="~/assets/img/avatar.svg"></img>
+          <p v-if="!!displayName">
+            <el-tooltip :content="displayName">
+              <img src="~/assets/img/avatar.svg" />
             </el-tooltip>
-            <span> {{authUser.user_name}}</span>
+            <span> {{displayName}}</span>
           </p>
         </el-col>
         <el-col :span="3">
@@ -50,6 +50,7 @@ import Component, { Getter } from 'class-component'
 export default class Headbar extends Vue {
   @Getter isMenuHidden
   @Getter authUser
+  @Getter displayName
   async logout () {
     await this.$store.dispatch('logout', async () => {
       await this.$router.push('/login')

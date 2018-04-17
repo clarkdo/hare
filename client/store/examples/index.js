@@ -104,6 +104,24 @@ export const state = () => ({
   }]
 })
 
+export const getters = {
+  city (state) {
+    return state.city
+  },
+  organizers (state) {
+    return state.organizers
+  },
+  cities (state) {
+    return state.cities
+  },
+  foods (state) {
+    return state.foods
+  },
+  labels (state) {
+    return state.labels
+  }
+}
+
 export const mutations = {
   SET_CITY (state, city) {
     state.city = city || null

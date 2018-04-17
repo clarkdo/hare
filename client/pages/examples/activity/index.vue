@@ -91,7 +91,8 @@ export default class Example extends Vue {
   selections = []
 
   async asyncData () {
-    let {data: activities} = await axios.get('/hpi/examples/activities')
+    // TODO figure out how mapMutations work with Vuex class.
+    const {data: activities} = await axios.get('/hpi/examples/activities')
     return {activities}
   }
 

@@ -86,12 +86,12 @@ module.exports = {
   plugins: [
     '@/plugins/i18n',
     '@/plugins/element-ui',
-    '@/plugins/axios-defaults',
     {src: '@/plugins/clipboard', ssr: false},
     {src: '@/plugins/error-handler', ssr: false}
   ],
   modules: [
-    '@nuxtjs/webpackmonitor'
+    '@nuxtjs/webpackmonitor',
+    '@nuxtjs/axios'
   ],
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
   development: {

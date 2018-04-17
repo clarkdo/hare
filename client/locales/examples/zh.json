@@ -1,8 +1,4 @@
 {
-  "login": {
-    "userPlaceholder": "请输入用户名",
-    "pwdPlaceholder": "请输入密码"
-  },
   "activity": {
     "title": {
       "create": "创建活动"

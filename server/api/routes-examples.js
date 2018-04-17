@@ -8,7 +8,7 @@ const router = koaRouter({
   prefix: consts.BASE_API
 }) // router middleware for koa
 
-router.get('/examples/activities', async function getActivities (ctx) {
+router.get('/examples/activities', async (ctx) => {
   ctx.status = 200
   ctx.body = [{
     'account': '活动1',

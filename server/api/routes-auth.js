@@ -18,13 +18,13 @@ const ENDPOINT_BACKEND_AUTH = consts.ENDPOINT_BACKEND_AUTH
 const ENDPOINT_BACKEND_VALIDATE = consts.ENDPOINT_BACKEND_VALIDATE
 
 /**
- * Notice we're not setting BASE_API as /hpi/auth
+ * Notice we’re not setting BASE_API as /hpi/auth
  * because this file is about serving readymade data for
  * Vue.js.
  *
- * Meaning that the client's .vue files would call /hpi/auth/login
- * which this fill will answer for, BUT = require(here, we'll call
- * other endpoints that aren't available to the public.
+ * Meaning that the client’s .vue files would call /hpi/auth/login
+ * which this fill will answer for, BUT from here, we’ll call
+ * other endpoints that aren’t available to the public.
  *
  * In other words, this Koa sub app responds to /hpi (consts.BASE_API)
  * and if you need mocking an actual backend, provide a mocking answser
@@ -149,7 +149,7 @@ router.get('/auth/whois', async (ctx) => {
    * Index 1 is the default value
    */
   const keysMapWithLodashPathAndDefault = {
-    username: ['user_name', ''],
+    user_name: ['user_name', ''], // Refactor ../client/components/Headbar.vue!
     uid: ['userId', ''],
     roles: ['scope', []],
     exp: ['exp', 9999999999999],
