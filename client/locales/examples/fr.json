@@ -1,8 +1,4 @@
 {
-  "login": {
-    "userPlaceholder": "Nom d’utilisateur",
-    "pwdPlaceholder": "Mot de passe"
-  },
   "activity": {
     "title": {
       "create": "Créer une activité"

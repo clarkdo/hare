@@ -180,6 +180,7 @@ export default class NewActivity extends Vue {
 
     this.$refs[formName].validate((valid) => {
       if (valid) {
+        this.$store.dispatch('examples/activity/add', this.formData)
         this.$message.success(this.$t('activity.success'))
         if (formName === 'popForm') {
           this.popVisible = false

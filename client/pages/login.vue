@@ -45,7 +45,6 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
 import debounce from '@/utils/debounce'
 import Component from 'class-component'
 
@@ -56,6 +55,7 @@ export default class Login extends Vue {
     password: '',
     captcha: ''
   }
+  authenticated = false // #WatchHowDoWe ... How do we?
   rules = {}
   captchaSvg = ''
   // keepPwd = false
@@ -67,31 +67,57 @@ export default class Login extends Vue {
     this.getCaptcha()
   }
   async login () {
+    const goBackTo = this.$route.query.page || '/'
     this.logging = true
-    this.$refs.user.validate(async (valid) => {
-      try {
-        if (valid) {
-          await this.$store.dispatch('login', this.user)
-          this.$router.push(this.$route.query.page || '/')
-        }
-      } catch (e) {
-        this.$message.warning(e.message)
-      } finally {
-        this.logging = false
+    const valid = this.$refs.user.validate()
+    try {
+      if (valid) {
+        await this.$store.dispatch('login', this.user)
+        this.authenticated = await this.$store.getters.authenticated
       }
-    })
+    } catch (e) {
+      this.$message.warning(e.message)
+    } finally {
+      if (this.authenticated) {
+        this.redirect(goBackTo)
+      } else {
+        const message = 'Not authenticated'
+        this.$message.warning(message)
+      }
+    }
+    this.logging = false
   }
-  async getCaptcha () {
+  redirect (goTo) {
+    this.$router.push(goTo)
+  }
+  getCaptcha () {
     const params = {}
     if (this.$refs.captcha) {
       params.width = this.$refs.captcha.$el.clientWidth || 150
       params.height = this.$refs.captcha.$el.clientHeight || 36
     }
-    const {data: captcha} = await axios.get('/hpi/auth/captcha', { params })
-    this.captchaSvg = captcha
+    this.captchaSvg = this.$axios.get('/hpi/auth/captcha', { params })
+      .then(response => {
+        // #WatchHowDoWe
+        // Just passing through :|
+        // TODO, improve this, figure out how @watch works
+        const authenticated = this.$store.getters.authenticated
+        if (authenticated) {
+          this.redirect('/')
+        }
+        const data = response.data
+        return data
+      })
+      .then(captcha => {
+        this.captchaSvg = captcha
+      })
+      .catch(error => {
+        const errorMessage = error.toString()
+        this.captchaSvg = `<small style="line-height:1em;display:block;">${errorMessage}</small>`
+      })
   }
 
-  refreshCaptcha = debounce(this.getCaptcha, 500)
+  refreshCaptcha = debounce(this.getCaptcha, 500) // Note to you, reader, does this still work?
 }
 </script>
 
