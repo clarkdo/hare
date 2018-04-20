@@ -1,8 +1,9 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  Route to handle authentication /auth element                                                  */
+/*  Routes to handle authentication                                                               */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 const koaRouter = require('koa-router')
 const svgCaptcha = require('svg-captcha')
+const translatorFactory = require('../utils/translator')
 const consts = require('../utils/consts')
 const { get } = require('lodash')
 const {
@@ -17,13 +18,19 @@ const {
 const ENDPOINT_BACKEND_AUTH = consts.ENDPOINT_BACKEND_AUTH
 const ENDPOINT_BACKEND_VALIDATE = consts.ENDPOINT_BACKEND_VALIDATE
 
+/*
+ * Feature flag whether or not we want to mock authentication.
+ * This should maybe in consts, or via .env file. TODO.
+ */
+const MOCK_ENDPOINT_BACKEND = consts.MOCK_ENDPOINT_BACKEND === true
+
 /**
  * Notice we’re not setting BASE_API as /hpi/auth
  * because this file is about serving readymade data for
  * Vue.js.
  *
  * Meaning that the client’s .vue files would call /hpi/auth/login
- * which this fill will answer for, BUT from here, we’ll call
+ * which this fill will answer for, BUT = require(here, we’ll call
  * other endpoints that aren’t available to the public.
  *
  * In other words, this Koa sub app responds to /hpi (consts.BASE_API)
@@ -33,6 +40,16 @@ const ENDPOINT_BACKEND_VALIDATE = consts.ENDPOINT_BACKEND_VALIDATE
 const router = koaRouter({
   prefix: consts.BASE_API
 })
+
+/**
+ * Refer to ../utils/translator
+ * One would want to detect user locale and serve in proper language
+ * but more work would be needed here, because this isn’t run
+ * client-side and with fresh data for every load, here it’s a runtime
+ * that has a persistent state.
+ * We therefore can’t have Koa keep in-memory ALL possible translations.
+ */
+const translator = translatorFactory('en')
 
 /**
  * Answer to Authentication requests = require(Vue/Nuxt.
@@ -45,15 +62,18 @@ const router = koaRouter({
  * stolen or accessible.
  * HttpOnly Cookie is made for this.
  */
-router.post('/auth/login', async function getAuth (ctx) {
+router.post('/auth/login', async (ctx) => {
   const user = ctx.request.body
   if (!user || !user.userName || !user.password) {
-    ctx.throw(401, '用户名/密码未填写')
+    ctx.throw(401, translator.translate('auth.login.required.missing'))
   }
-  let enforceCaptcha = ctx.session.captcha.toLowerCase() !== user.captcha.toLowerCase()
+  let enforceCaptcha = false
+  const shouldBe = ctx.session.captcha.toLowerCase() || 'bogus-user-captcha-entry'
+  const userCaptchaEntry = user.captcha.toLowerCase() || 'bogus-should-be'
+  enforceCaptcha = shouldBe !== userCaptchaEntry
   // enforceCaptcha = false
   if (enforceCaptcha) {
-    ctx.throw(401, '验证码输入错误')
+    ctx.throw(401, translator.translate('auth.login.captcha.invalid'))
   }
   try {
     // Assuming your API only wants base64 encoded version of the password
@@ -93,13 +113,13 @@ router.post('/auth/login', async function getAuth (ctx) {
     ctx.session.jwt = jwt
     ctx.body = response
   } catch (error) {
-    ctx.log.error({ error }, 'Call OAuth get token service failed!')
-    let errMsg = '登录失败, 具体信息请联系维护人员'
+    let message = translator.translate('auth.login.service.error')
+    ctx.log.error({ error }, message)
     let data = null
     if ((data = error && error.response && error.response.data)) {
-      errMsg = data.message || data.errors
+      message = data.message || data.errors
     }
-    ctx.throw(401, errMsg)
+    ctx.throw(401, message)
   }
 })
 
@@ -123,23 +143,22 @@ router.post('/auth/login', async function getAuth (ctx) {
  * [1]: https://dev.to/rdegges/please-stop-using-local-storage-1i04
  */
 router.get('/auth/whois', async (ctx) => {
-  let body = {}
+  let body = {
+    authenticated: false
+  }
   const jwt = ctx.session.jwt || null
   let data = {}
   if (jwt !== null) {
     data = decode(jwt)
   }
-
   let userData = {}
-  body.authenticated = false
-
   try {
     userData = await getUserData(jwt)
     const UserInfo = get(userData, 'UserInfo', {})
     data.UserInfo = Object.assign({}, UserInfo)
     body.authenticated = userData.status === 'valid' || false
   } catch (e) {
-    // Do something
+    // Nothing to do, body.authenticated defaults to false. Which would be what we want.
   }
 
   /**
@@ -149,7 +168,7 @@ router.get('/auth/whois', async (ctx) => {
    * Index 1 is the default value
    */
   const keysMapWithLodashPathAndDefault = {
-    user_name: ['user_name', ''], // Refactor ../client/components/Headbar.vue!
+    userName: ['UserInfo.UserName', 'anonymous'],
     uid: ['userId', ''],
     roles: ['scope', []],
     exp: ['exp', 9999999999999],
@@ -168,8 +187,28 @@ router.get('/auth/whois', async (ctx) => {
     body[key] = attempt
   }
 
-  ctx.body = body
   ctx.status = 200
+  ctx.body = body
+})
+
+/**
+ * This is to compensate using localStorage for token
+ * Ideally, this should NOT be used as-is for a production Web App.
+ * Only moment you’d want to expose token is if you have SysAdmins
+ * who wants to poke APIs manually and needs their JWT tokens.
+ */
+router.get('/auth/token', async (ctx) => {
+  ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
+  let body = {}
+  try {
+    const token = ctx.session.jwt
+    body.jwt = token
+  } catch (e) {
+    // Nothing to do, body.authenticated defaults to false. Which would be what we want.
+  }
+
+  ctx.status = 200
+  ctx.body = body
 })
 
 router.get('/auth/validate', async (ctx) => {
@@ -182,7 +221,7 @@ router.get('/auth/validate', async (ctx) => {
     userData = await getUserData(jwt)
     authenticated = userData.status === 'valid' || false
   } catch (e) {
-    // Do something
+    // Nothing to do, body.authenticated defaults to false. Which would be what we want.
   }
 
   // Maybe your endpoint returns a string here.
@@ -193,6 +232,7 @@ router.get('/auth/validate', async (ctx) => {
 })
 
 router.post('/auth/logout', async (ctx) => {
+  ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
   ctx.session.jwt = null
   ctx.status = 200
 })
@@ -215,6 +255,7 @@ router.get('/auth/captcha', async (ctx, next) => {
   ctx.body = captcha.data
 })
 
+if (MOCK_ENDPOINT_BACKEND) {
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * Mocking responses, this is how you can emulate an actual backend.
  * Notice the URL below is assumed to begin by /hpi.
@@ -222,33 +263,33 @@ router.get('/auth/captcha', async (ctx, next) => {
  * When you'll use your own backend, URLs below WILL NOT have /hpi as prefix.
  */
 
-router.post(ENDPOINT_BACKEND_AUTH, async (ctx) => {
-  console.log(`Mocking a response for ${ctx.url}`)
-  /**
-   * The following JWT access_token contains;
-   * See https://jwt.io/
-   *
-   * ```json
-   * {
-   *   "aud": [
-   *     "bas"
-   *   ],
-   *   "user_name": "admin",
-   *   "scope": [
-   *     "read"
-   *   ],
-   *   "exp": 9999999999999,
-   *   "userId": "40288b7e5bcd7733015bcd7fd7220001",
-   *   "authorities": [
-   *     "admin"
-   *   ],
-   *   "jti": "72ec3c43-030a-41ed-abb2-b7a269506923",
-   *   "client_id": "bas-client"
-   * }
-   * ```
-   */
-  ctx.body = {
-    access_token:
+  router.post(ENDPOINT_BACKEND_AUTH, async (ctx) => {
+    console.log(`Mocking a response for ${ctx.url}`)
+    /**
+     * The following JWT access_token contains;
+     * See https://jwt.io/
+     *
+     * ```json
+     * {
+     *   "aud": [
+     *     "bas"
+     *   ],
+     *   "user_name": "admin",
+     *   "scope": [
+     *     "read"
+     *   ],
+     *   "exp": 9999999999999,
+     *   "userId": "40288b7e5bcd7733015bcd7fd7220001",
+     *   "authorities": [
+     *     "admin"
+     *   ],
+     *   "jti": "72ec3c43-030a-41ed-abb2-b7a269506923",
+     *   "client_id": "bas-client"
+     * }
+     * ```
+     */
+    ctx.body = {
+      access_token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
       'eyJhdWQiOlsiYmFzIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic' +
       '2NvcGUiOlsicmVhZCJdLCJleHAiOjk5OTk5OTk5OTk5OTksIn' +
@@ -257,33 +298,37 @@ router.post(ENDPOINT_BACKEND_AUTH, async (ctx) => {
       'NzJlYzNjNDMtMDMwYS00MWVkLWFiYjItYjdhMjY5NTA2OTIzI' +
       'iwiY2xpZW50X2lkIjoiYmFzLWNsaWVudCJ9.' +
       'uwywziNetHyfSdiqcJt6XUGy4V_WYHR4K6l7OP2VB9I'
-  }
-})
-
-router.get(ENDPOINT_BACKEND_VALIDATE, async (ctx) => {
-  console.log(`Mocking a response for ${ctx.url}`)
-  let fakeIsValid = false
-  // Just mimicking we only accept as a valid session the hardcoded JWT token
-  // = require(ENDPOINT_BACKEND_AUTH above.
-  const tokenBeginsWith = /^Token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\./.test(ctx.querystring)
-  if (tokenBeginsWith) {
-    fakeIsValid = true
-  }
-  // When API returns strings, we will handle at validate
-  const Status = fakeIsValid ? 'valid' : 'invalid'
-  const validated = {
-    Status
-  }
-  if (fakeIsValid) {
-    validated.UserInfo = {
-      DisplayName: 'Haaw D. Minh',
-      PreferredLanguage: 'zh-HK',
-      TimeZone: 'America/New_York'
     }
-  }
-  ctx.status = fakeIsValid ? 200 : 401
-  ctx.body = validated
-})
+  })
+  router.get(ENDPOINT_BACKEND_VALIDATE, async (ctx) => {
+    console.log(`Mocking a response for ${ctx.url}`)
+    let fakeIsValid = false
+    // Just mimicking we only accept as a valid session the hardcoded JWT token
+    // = require(ENDPOINT_BACKEND_AUTH above.
+    const tokenBeginsWith = /^Token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\./.test(ctx.querystring)
+    if (tokenBeginsWith) {
+      fakeIsValid = true
+    }
+    // When API returns strings, we will handle at validate
+    const Status = fakeIsValid ? 'valid' : 'invalid'
+    const validated = {
+      Status
+    }
+    if (fakeIsValid) {
+      validated.UserInfo = {
+        UserName: 'admin',
+        DisplayName: 'Haaw D. Minh',
+        FirstName: 'Haaw',
+        LastName: 'D. Minh',
+        Email: 'root@example.org',
+        PreferredLanguage: 'zh-HK',
+        TimeZone: 'Asia/Hong_Kong'
+      }
+    }
+    ctx.status = fakeIsValid ? 200 : 401
+    ctx.body = validated
+  })
+} /* END MOCK_ENDPOINT_BACKEND */
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 

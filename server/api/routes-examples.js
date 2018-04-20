@@ -1,5 +1,5 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  Route to handle authentication /auth element                                                  */
+/*  Routes to define development "kitchen sink" samples                                           */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 const koaRouter = require('koa-router')
 const consts = require('../utils/consts')

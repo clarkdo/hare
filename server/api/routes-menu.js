@@ -1,14 +1,16 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  Route to handle authentication /auth element                                                  */
+/*  Route to handle /menu                                                                         */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 import koaRouter from 'koa-router'
 import consts from '../utils/consts'
 
+const SHOW_EXAMPLES = consts.SHOW_EXAMPLES === true
+
 const router = koaRouter({
   prefix: consts.BASE_API
-}) // router middleware for koa
+})
 
-const defaultNavigation = [
+let menu = [
   {
     id: '1',
     name: 'nav.home',
@@ -23,48 +25,47 @@ const defaultNavigation = [
   }
 ]
 
-const examplesRoutes = [
-  {
-    id: '2',
-    name: 'nav.kitchenSink',
-    icon: 'el-icon-goods',
-    children: [
-      {
-        id: '2-1',
-        name: 'nav.demo',
-        url: '/examples',
-        icon: 'el-icon-share'
-      },
-      {
-        id: '2-2',
-        name: 'nav.list',
-        url: '/examples/activity',
-        icon: 'el-icon-view'
-      },
-      {
-        id: '2-3',
-        name: 'nav.create',
-        url: '/examples/activity/create',
-        icon: 'el-icon-message'
-      },
-      {
-        id: '2-4',
-        name: 'nav.charts',
-        url: '/examples/charts',
-        icon: 'el-icon-picture'
-      }
-    ]
-  }
-]
+if (SHOW_EXAMPLES) {
+  menu = menu.concat([
+    {
+      id: '20',
+      name: 'nav.kitchenSink',
+      icon: 'el-icon-goods',
+      children: [
+        {
+          id: '20-1',
+          name: 'nav.demo',
+          url: '/examples',
+          icon: 'el-icon-share'
+        },
+        {
+          id: '20-2',
+          name: 'nav.list',
+          url: '/examples/activity',
+          icon: 'el-icon-view'
+        },
+        {
+          id: '20-3',
+          name: 'nav.create',
+          url: '/examples/activity/create',
+          icon: 'el-icon-message'
+        },
+        {
+          id: '20-4',
+          name: 'nav.charts',
+          url: '/examples/charts',
+          icon: 'el-icon-picture'
+        }
+      ]
+    }
+  ])
+}
 
-router.get('/ui/menu', async function getMenus (ctx) {
+router.get('/ui/menu', async (ctx, next) => {
+  ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
+
   ctx.status = 200
-  ctx.type = 'application/json'
-  let navigation = [...defaultNavigation]
-  if (consts.SHOW_EXAMPLES === true) {
-    navigation = navigation.concat(examplesRoutes)
-  }
-  ctx.body = navigation
+  ctx.body = menu
 })
 
 module.exports = router.routes()

@@ -23,10 +23,14 @@ app.use(async function contentNegotiation (ctx, next) {
       delete ctx.body.root // xml root element
       break // ... koa takes care of type
     case 'xml':
-      ctx.type = type
-      const root = ctx.body.root // xml root element
-      delete ctx.body.root
-      ctx.body = xmlify(ctx.body, root)
+      try {
+        const root = ctx.body.root // xml root element
+        delete ctx.body.root
+        ctx.body = xmlify(ctx.body, root)
+        ctx.type = type // Only change type if xmlify did not throw
+      } catch (e) {
+        console.log(`Could not convert to XML, falling back to default`)
+      }
       break
     case 'yaml':
     case 'text':

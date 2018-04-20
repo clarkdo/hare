@@ -51,6 +51,16 @@ export const getters = {
     }
     return authenticated
   },
+  userTimeZone (state) {
+    const hasTimeZone = Reflect.has(state.authUser, 'tz')
+    const timeZone = 'America/New_York' // Default, in case of
+    return hasTimeZone ? state.authUser.tz : timeZone
+  },
+  userLocale (state) {
+    const hasLocale = Reflect.has(state.authUser, 'locale')
+    const locale = 'en-US' // Default, in case of
+    return hasLocale ? state.authUser.locale : locale
+  },
   authUser (state) {
     return state.authUser
   },
