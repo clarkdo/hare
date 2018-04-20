@@ -95,9 +95,11 @@ async function start () {
     }
   })
 
+  // Add valid and beforeSave hooks here to ensure session is valid #TODO
   const SESSION_CONFIG = {
     key: consts.SESS_KEY
   }
+
   // session for flash messages (uses signed session cookies, with no server storage)
   app.use(session(SESSION_CONFIG, app))
 

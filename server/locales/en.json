@@ -1,0 +1,5 @@
+{
+  "auth.login.required.missing": "Required login input missing",
+  "auth.login.captcha.invalid": "Invalid Captcha input",
+  "auth.login.service.error": "Call OAuth service failed"
+}

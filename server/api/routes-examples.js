@@ -1,5 +1,5 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  Route to handle authentication /auth element                                                  */
+/*  Routes to define development "kitchen sink" samples                                           */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 import koaRouter from 'koa-router'
 import consts from '../utils/consts'

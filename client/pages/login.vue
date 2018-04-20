@@ -80,9 +80,6 @@ export default class Login extends Vue {
     } finally {
       if (this.authenticated) {
         this.redirect(goBackTo)
-      } else {
-        const message = 'Not authenticated'
-        this.$message.warning(message)
       }
     }
     this.logging = false

@@ -57,7 +57,7 @@ module.exports = {
       css: 'hare.[contenthash:12].css'
     },
     plugins: [
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en/)
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en|fr/)
     ]
   },
   /*
