@@ -1,3 +1,17 @@
+/**
+ * Nuxt Server API Side-Car (Using Koa).
+ *
+ * Should mirror with ../client/utils/consts.js
+ * But here, we should have only what matters for the backend.
+ *
+ * In other words, where Nuxt will read data from.
+ * This will be what serves all data to Nuxt client,
+ * and will read from our backends.
+ * It will also ensure only authenticated requests yields data.
+ */
+
+import consts from '../../client/utils/consts.json'
+
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || '3000'
 const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
@@ -14,19 +28,16 @@ const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
  */
 const ENDPOINT_BACKEND_AUTH = '/platform/uaano/oauth/token'
 const ENDPOINT_BACKEND_VALIDATE = '/platform/uaano/oauth/validate'
+
 // Please, reader, fix this with proper environment variable management before deploying (!)
 const MOCK_ENDPOINT_BACKEND = true
 
-module.exports = Object.freeze({
-  APP: 'hare',
-  API: 'hpi',
-  BASE_API: '/hpi',
-  SESS_KEY: 'hare:sess',
-  COOKIE_JWT: 'hare_jwt',
+export default Object.freeze({
   HOST,
   PORT,
   LB_ADDR,
   ENDPOINT_BACKEND_AUTH,
   ENDPOINT_BACKEND_VALIDATE,
-  MOCK_ENDPOINT_BACKEND
+  MOCK_ENDPOINT_BACKEND,
+  ...consts
 })
