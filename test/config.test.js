@@ -6,7 +6,7 @@ let nuxt = null
 // Init nuxt.js and create server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   nuxt = createNuxt()
-  nuxt.listen(4000, 'localhost')
+  await nuxt.listen(3000, 'localhost')
 })
 
 test('Vendor', async t => {
@@ -20,10 +20,10 @@ test('Vendor', async t => {
 
 test('Plugin', async t => {
   const plugins = nuxt.options.plugins
-  t.is(plugins[0], '@/plugins/i18n', 'i18n plugin added to config')
-  t.is(plugins[1], '@/plugins/element-ui', 'element-ui plugin added to config')
-  t.is(plugins[2].src, '@/plugins/clipboard', 'clipboard plugin added to config')
-  t.is(plugins[3].src, '@/plugins/error-handler', 'error handler plugin added to config')
+  t.is(plugins[1], '@/plugins/i18n', 'i18n plugin added to config')
+  t.is(plugins[2], '@/plugins/element-ui', 'element-ui plugin added to config')
+  t.is(plugins[3].src, '@/plugins/clipboard', 'clipboard plugin added to config')
+  t.is(plugins[4].src, '@/plugins/error-handler', 'error handler plugin added to config')
 })
 
 test('Modules', async t => {
@@ -41,6 +41,6 @@ test('Middleware', async t => {
 })
 
 // Close server and ask nuxt to stop listening to file changes
-test.after('Closing server and nuxt.js', t => {
-  nuxt.close()
+test.after('Closing server and nuxt.js', async t => {
+  await nuxt.close()
 })
