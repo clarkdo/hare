@@ -10,6 +10,7 @@ const headers = {
 // Init Nuxt.js and create a server listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
   nuxt = createNuxt()
+  await nuxt.listen(3000, 'localhost')
 })
 
 test('Route /login', async t => {
@@ -25,6 +26,6 @@ test('Route /login with locale [en]', async t => {
 })
 
 // Close server and ask nuxt to stop listening to file changes
-test.after('Closing server and nuxt.js', t => {
-  nuxt.close()
+test.after('Closing server and nuxt.js', async t => {
+  await nuxt.close()
 })
