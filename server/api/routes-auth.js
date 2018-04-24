@@ -76,6 +76,7 @@ router.post('/auth/login', async (ctx) => {
     ctx.throw(401, translator.translate('auth.login.captcha.invalid'))
   }
   try {
+    console.log(11111)
     // Assuming your API only wants base64 encoded version of the password
     const password = Buffer.from(user.password).toString('base64')
     const payload = {

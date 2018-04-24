@@ -21,7 +21,7 @@ class Translator {
   }
 }
 
-export default (locale) => {
+module.exports = (locale) => {
   let fallbackLocale = 'en'
   let messages = {}
   try {

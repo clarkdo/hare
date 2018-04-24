@@ -1,16 +1,16 @@
-import axios from 'axios'
-import querystring from 'querystring'
-import consts from '../utils/consts'
-import jwtDecode from 'jwt-decode'
+const axios = require('axios')
+const querystring = require('querystring')
+const consts = require('../utils/consts')
+const jwtDecode = require('jwt-decode')
 
-export const decode = token => {
+const decode = token => {
   return token ? jwtDecode(token) : null
 }
 
 /**
  * Handle possibility where token endpoint, at exp returns seconds instead of µ seconds
  */
-export const handleTokenExp = exp => {
+const handleTokenExp = exp => {
   let out = exp
 
   const milliseconds = new Date().getTime()
@@ -46,7 +46,7 @@ export const handleTokenExp = exp => {
  * All of this is done when you set your own LB_ADDR environment setup
  * to point to your own API.
  */
-export const createRequest = async (method, url, requestConfig) => {
+const createRequest = async (method, url, requestConfig) => {
   const {
     payload = null,
     ...restOfRequestConfig
@@ -68,7 +68,7 @@ export const createRequest = async (method, url, requestConfig) => {
   return Promise.resolve(data)
 }
 
-export const getUserData = async (token) => {
+const getUserData = async (token) => {
   const userinfo = [
     'DisplayName',
     'PreferredLanguage',
@@ -92,4 +92,11 @@ export const getUserData = async (token) => {
   body.UserInfo = response.UserInfo || {}
 
   return Promise.resolve(body)
+}
+
+module.exports = {
+  decode,
+  handleTokenExp,
+  createRequest,
+  getUserData
 }
