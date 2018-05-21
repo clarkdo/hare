@@ -89,7 +89,7 @@
     "lodash": "^4.17.5",
     "moxios": "^0.4.0",
     "node-sass": "^4.8.3",
-    "nodemon": "^1.17.3",
+    "nodemon": "^1.17.4",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "standard-version": "4.3.0"
