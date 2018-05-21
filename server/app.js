@@ -13,7 +13,6 @@ const api = require('./api')
 const consts = require('./utils/consts')
 const config = require('../nuxt.config.js')
 const chalk = require('chalk')
-const debugModule = require('debug') // small debugging utility
 const proxy = require('koa-proxies')
 
 // Start nuxt.js
@@ -21,7 +20,6 @@ async function start () {
   const isWin = /^win/.test(process.platform)
   const host = consts.HOST
   const port = consts.PORT
-  const debug = debugModule('app')
   const app = new Koa()
 
   app.keys = ['hare-server']
@@ -146,7 +144,6 @@ async function start () {
 
   // sometimes useful to be able to track each request...
   app.use(async function (ctx, next) {
-    debug(ctx.method + ' ' + ctx.url)
     await next()
   })
 

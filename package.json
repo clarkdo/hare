@@ -10,7 +10,7 @@
     "url": "git+https://github.com/clarkdo/hare.git"
   },
   "scripts": {
-    "dev": "cross-env DEBUG=nuxt:*,app nodemon -w server -w nuxt.config.js server/app.js",
+    "dev": "cross-env DEBUG=nuxt:* nodemon -w server -w nuxt.config.js server/app.js",
     "dev:pm2": "pm2 start yarn --name=hare -- dev",
     "test": "yarn lint && yarn build:client && ava --verbose --serial ",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",

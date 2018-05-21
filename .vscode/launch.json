@@ -14,7 +14,7 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "development",
-            "DEBUG": "nuxt:*,app"
+            "DEBUG": "nuxt:*"
         }
       },
       {
@@ -31,7 +31,7 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "production",
-            "DEBUG": "nuxt:*,app"
+            "DEBUG": "nuxt:*"
         }
       },
       {
