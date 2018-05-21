@@ -5191,9 +5191,9 @@ koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/koa-is-json/-/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
 
-koa-proxies@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/koa-proxies/-/koa-proxies-0.6.2.tgz#faa4343baf73f70862a00444e51aea4f21ac8957"
+koa-proxies@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/koa-proxies/-/koa-proxies-0.7.0.tgz#868a47aebad6d8a3c19aa0f4c03fa2a518ffbd2a"
   dependencies:
     http-proxy "^1.16.2"
     path-match "^1.2.4"
