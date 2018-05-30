@@ -6,7 +6,16 @@
     "pwdPlaceholder": "请输入密码",
     "captchaRequired": "验证码不能为空",
     "captchaPlaceholder": "请输入验证码",
-    "login": "登录"
+    "login": "登录",
+    "showAccessToken": "Show me the accessToken"
+  },
+  "action": {
+    "copy": "Copy"
+  },
+  "session": {
+    "whois": {
+      "title": "What are the credentials of the current session and communicated with the Back-End?"
+    }
   },
   "nav": {
     "home": "首页"

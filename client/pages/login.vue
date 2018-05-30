@@ -23,6 +23,11 @@
                   <div v-html="captchaSvg" @click='refreshCaptcha' class="captcha"></div>
                 </el-col>
             </el-form-item>
+            <el-form-item prop="showAccessToken">
+              <el-col>
+                <el-checkbox v-model="user.showAccessToken">{{$t('login.showAccessToken')}}</el-checkbox>
+              </el-col>
+            </el-form-item>
             <el-row>
               <el-col :span="24">
                 <el-button type="primary" class="login-btn" :loading="logging" @click="login">{{$t('login.login')}}</el-button>
@@ -53,7 +58,8 @@ export default class Login extends Vue {
   user = {
     userName: '',
     password: '',
-    captcha: ''
+    captcha: '',
+    showAccessToken: false
   }
   authenticated = false // #WatchHowDoWe ... How do we?
   rules = {}
@@ -72,8 +78,9 @@ export default class Login extends Vue {
     const valid = this.$refs.user.validate()
     try {
       if (valid) {
-        await this.$store.dispatch('login', this.user)
-        this.authenticated = await this.$store.getters.authenticated
+        console.log('async login', {...this.user})
+        await this.$store.dispatch('session/login', this.user)
+        this.authenticated = await this.$store.getters['session/authenticated']
       }
     } catch (e) {
       this.$message.warning(e.message)
@@ -98,7 +105,7 @@ export default class Login extends Vue {
         // #WatchHowDoWe
         // Just passing through :|
         // TODO, improve this, figure out how @watch works
-        const authenticated = this.$store.getters.authenticated
+        const authenticated = this.$store.getters['session/authenticated']
         if (authenticated) {
           this.redirect('/')
         }

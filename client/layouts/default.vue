@@ -13,9 +13,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
 import Navbar from '@/components/Navbar'
 import Headbar from '@/components/Headbar'
+
+const { mapState } = createNamespacedHelpers('menu')
 
 export default {
   components: {
@@ -23,16 +25,17 @@ export default {
     Headbar
   },
   computed: {
+    ...mapState({
+      isMenuHidden: state => state.hidden
+    }),
     colSize () {
       return this.isMenuHidden ? 24 : 20
-    },
-    ...mapGetters(['isMenuHidden'])
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-
 .app {
   height: 100%;
   .el-row.main {

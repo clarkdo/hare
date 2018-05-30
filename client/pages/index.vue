@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
-    <fork-this></fork-this>
-    <div class="banner-sky"></div>
+    <fork-this />
+    <div class="banner-sky" />
     <div class="container">
       <div class="banner-desc">
         <h2>Hare</h2>

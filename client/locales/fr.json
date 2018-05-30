@@ -7,7 +7,16 @@
     "captchaRequired":
       "Avoir saisi correctement le «Captcha» est requis pour se connecter",
     "captchaPlaceholder": "Captcha",
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "showAccessToken": "Laissez-moi voir le billet accessToken"
+  },
+  "action": {
+    "copy": "Copier"
+  },
+  "session": {
+    "whois": {
+      "title": "Quels sont les données associées à cette session et transigées au Back-End?"
+    }
   },
   "nav": {
     "home": "Accueil"

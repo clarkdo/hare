@@ -68,12 +68,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  margin-bottom: 35px;
-  .el-row {
-    margin-top: 35px;
-  }
-}
 .el-form-item a {
   margin-left: 10px;
 }

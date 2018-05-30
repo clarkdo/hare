@@ -6,7 +6,16 @@
     "pwdPlaceholder": "Password",
     "captchaRequired": "Captcha is required",
     "captchaPlaceholder": "Captcha",
-    "login": "Login"
+    "login": "Login",
+    "showAccessToken": "Show me the accessToken"
+  },
+  "action": {
+    "copy": "Copy"
+  },
+  "session": {
+    "whois": {
+      "title": "What are the credentials of the current session and communicated with the Back-End?"
+    }
   },
   "nav": {
     "home": "Home"

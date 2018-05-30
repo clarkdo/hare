@@ -197,10 +197,6 @@ export default class Demo extends Vue {
 
 <style lang="scss" scoped>
 .content {
-  margin-bottom: 35px;
-  .el-row {
-    margin-top: 35px;
-  }
   .el-card .el-row {
     margin-top: 20px;
   }

@@ -1,14 +1,18 @@
 <template>
   <div class="navbar">
-    <el-menu class="el-menu-demo" :default-active="$route.path"
-      background-color="#324157" text-color="#bfcbd9">
+    <el-menu
+      class="el-menu-demo"
+      :default-active="$route.path"
+      background-color="#324157"
+      text-color="#bfcbd9"
+    >
       <header>
           <el-row>
             <el-col :span="20">
               <img src="~/assets/img/logo.svg" alt="Element">
             </el-col>
             <el-col :span="4">
-              <div class="nav-icon open" :class="{hide: isMenuHidden}" @click="toggleMenu">
+              <div class="nav-icon open is-toggle-hidden-toggler" :class="{hide: isMenuHidden}" @click="toggleHidden">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -39,19 +43,16 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
-import { mapActions } from 'vuex'
-import Component, {Getter, namespace } from 'class-component'
+import Component, { Action, Getter, namespace } from 'class-component'
 
 const MenuGetter = namespace('menu', Getter)
+const MenuAction = namespace('menu', Action)
 
-@Component({
-  methods: {
-    ...mapActions(['toggleMenu'])
-  }
-})
+@Component
 export default class Navbar extends Vue {
-  @Getter isMenuHidden
   @MenuGetter menus
+  @MenuGetter('hidden') isMenuHidden
+  @MenuAction toggleHidden
 
   async beforeMount () {
     let {data: menus} = await axios.get('/hpi/ui/menu')
