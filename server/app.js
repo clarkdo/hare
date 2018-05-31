@@ -62,8 +62,9 @@ async function start () {
   // pages (content negotiation, error handling, handlebars templating, etc).
 
   app.use(async function subApp (ctx, next) {
+    const subapp = ctx.url.split('/')[1] // subdomain = part after first '/' of hostname
     // use subdomain to determine which app to serve: www. as default, or admin. or api
-    ctx.state.subapp = ctx.url.split('/')[1] // subdomain = part after first '/' of hostname
+    ctx.state.subapp = subapp
     // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
     await next()
   })

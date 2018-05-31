@@ -93,6 +93,9 @@ export const getters = {
   },
   token (state) {
     return state.accessToken
+  },
+  user (state) {
+    return state.user
   }
 }
 

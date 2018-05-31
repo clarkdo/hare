@@ -59,7 +59,7 @@ export default class Login extends Vue {
     userName: '',
     password: '',
     captcha: '',
-    showAccessToken: false
+    showAccessToken: true
   }
   authenticated = false // #WatchHowDoWe ... How do we?
   rules = {}
@@ -78,7 +78,7 @@ export default class Login extends Vue {
     const valid = this.$refs.user.validate()
     try {
       if (valid) {
-        console.log('async login', {...this.user})
+        // console.log('async login', {...this.user})
         await this.$store.dispatch('session/login', this.user)
         this.authenticated = await this.$store.getters['session/authenticated']
       }

@@ -115,7 +115,7 @@ router.post('/auth/login', async (ctx) => {
     ctx.body = response
   } catch (error) {
     let message = translator.translate('auth.login.service.error')
-    ctx.log.error({ error }, message)
+    console.log({ error }, message)
     let data = null
     if ((data = error && error.response && error.response.data)) {
       message = data.message || data.errors
@@ -144,6 +144,7 @@ router.post('/auth/login', async (ctx) => {
  * [1]: https://dev.to/rdegges/please-stop-using-local-storage-1i04
  */
 router.get('/auth/whois', async (ctx) => {
+  console.log(`1. ${ctx.method} ${ctx.url}`)
   let body = {
     authenticated: false
   }

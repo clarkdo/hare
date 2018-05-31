@@ -4,6 +4,7 @@
       <el-card style="width:90%">
         <div slot="header">
           <span>{{$t('nav.list')}}</span>
+          &nbsp;<small>(<a href="/hpi/examples/activities" target="_blank">/hpi/examples/activities</a>)</small>
         </div>
         <el-table ref="tb" :data="activities" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="55">
@@ -77,7 +78,6 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
 import Component from 'class-component'
 
 @Component({
@@ -90,9 +90,10 @@ import Component from 'class-component'
 export default class Example extends Vue {
   selections = []
 
-  async asyncData () {
-    // TODO figure out how mapMutations work with Vuex class.
-    const {data: activities} = await axios.get('/hpi/examples/activities')
+  async asyncData ({
+    $axios
+  }) {
+    const activities = await $axios.get('/hpi/examples/activities').then(recv => recv.data)
     return {activities}
   }
 

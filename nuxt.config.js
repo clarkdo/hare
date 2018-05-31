@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const appName = 'Hare 2.0'
 module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
@@ -13,10 +14,18 @@ module.exports = {
     ]
   },
   /*
+  ** Axios config
+  */
+  axios: {
+    // See "Apply defaults" in node_modules/@nuxtjs/axios/lib/module.js
+    debug: (process.env.NODE_ENV !== 'production')
+  },
+  /*
   ** Headers of the page
   */
   head: {
-    title: 'Hare 2.0',
+    title: `${appName}`,
+    titleTemplate: `%s — ${appName}`,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -86,6 +95,7 @@ module.exports = {
   plugins: [
     '@/plugins/i18n',
     '@/plugins/element-ui',
+    '@/plugins/axios',
     {src: '@/plugins/clipboard', ssr: false},
     {src: '@/plugins/error-handler', ssr: false}
   ],

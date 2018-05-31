@@ -1,28 +1,21 @@
 <template>
-  <div
-    class="access-token--component"
+  <el-form-item
+    :label="$t('session.accessTokenComponent.label')"
+    :error="accessTokenFieldMessage"
   >
-    <el-form
-      label-width="120px"
-      v-if="token"
+    <el-input
+      v-model="token"
+      readonly
+      select
     >
-      <el-form-item label="Token">
-        <el-input
-          readonly
-          select
-          v-model="token"
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button
-          v-clipboard="token"
-          type="primary"
-        >
+      <el-button
+        v-clipboard="token"
+        slot="append"
+      >
           {{$t('action.copy')}}
-        </el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+      </el-button>
+    </el-input>
+  </el-form-item>
 </template>
 
 <script>
@@ -32,8 +25,15 @@ import Component, { Getter, namespace } from 'class-component'
 const SessionGetter = namespace('session', Getter)
 
 @Component
-export default class Headbar extends Vue {
+export default class AccessToken extends Vue {
   @SessionGetter token
+  accessTokenFieldMessage = null
+
+  created () {
+    const hasToken = this.token !== ''
+    const message = hasToken ? null : this.$t('session.accessTokenComponent.mustCheckShowAccessToken')
+    this.accessTokenFieldMessage = message
+  }
 }
 </script>
 

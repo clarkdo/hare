@@ -11,6 +11,15 @@ const router = koaRouter({
 router.get('/examples/activities', async (ctx) => {
   ctx.status = 200
   ctx.body = [{
+    'account': '123',
+    'date': '2018-05-31',
+    'type': 'price',
+    'region': 'ly',
+    'priority': 'high',
+    'organizer': '市场部',
+    'desc': 'New Activity, lets see if we can use key names for translatable data, instead of hardcoded result value'
+  },
+  {
     'account': '活动1',
     'date': '2017-1-1',
     'type': 'price',

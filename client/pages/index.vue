@@ -12,15 +12,36 @@
 </template>
 
 <script>
-import Component from 'class-component'
+import Vue from 'vue'
+import Component, { Getter, namespace } from 'class-component'
 import ForkThis from '@/components/ForkThis'
+
+const SessionGetter = namespace('session', Getter)
 
 @Component({
   components: {
     ForkThis
   }
 })
-export default class Home {
+export default class Home extends Vue {
+  @SessionGetter token
+
+  created () {
+    const redirectToSession = this.token !== ''
+    if (redirectToSession) {
+      let message = this.$t('session.accessTokenComponent.tokenAvailableNotification')
+      const title = this.$t('session.accessTokenComponent.label')
+      this.$notify({
+        dangerouslyUseHTMLString: true,
+        type: 'success',
+        message,
+        title,
+        onClick: function notifyOnClickHandler () {
+          this.$router.push('/session')
+        }.bind(this)
+      })
+    }
+  }
 }
 </script>
 
