@@ -96,6 +96,9 @@ export const getters = {
   },
   user (state) {
     return state.user
+  },
+  hydrated (state) {
+    return Object.keys(state.user).length > 1
   }
 }
 

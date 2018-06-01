@@ -3,7 +3,7 @@
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
         <div slot="header">
-          <span>{{$t(title)}}</span>
+          <span>{{$t('activity.title.create')}}</span>
         </div>
         <new-activity :form-data="activity" ref="popActivity"></new-activity>
       </el-card>
@@ -13,22 +13,23 @@
 
 <script>
 import Vue from 'vue'
+import Component from 'class-component'
 import NewActivity from '@/components/examples/activity/NewActivity'
-import Component, { Getter, namespace } from 'class-component'
-
-const ActivityGetter = namespace('examples/activity', Getter)
 
 @Component({
   components: {
     NewActivity
+  },
+  head () {
+    return {
+      title: 'Examples Activity Create'
+    }
   }
 })
 export default class Create extends Vue {
-  @ActivityGetter title
-
   activity = {
     account: '',
-    region: '',
+    city: '',
     date1: '',
     date2: '',
     delivery: false,

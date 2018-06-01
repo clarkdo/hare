@@ -13,13 +13,22 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Component, { Getter, namespace } from 'class-component'
 import { createNamespacedHelpers } from 'vuex'
 import Navbar from '@/components/Navbar'
 import Headbar from '@/components/Headbar'
 
 const { mapState } = createNamespacedHelpers('menu')
 
-export default {
+const SessionGetter = namespace('session', Getter)
+
+@Component({
+  head () {
+    return {
+      title: 'Home'
+    }
+  },
   components: {
     Navbar,
     Headbar
@@ -30,6 +39,26 @@ export default {
     }),
     colSize () {
       return this.isMenuHidden ? 24 : 20
+    }
+  }
+})
+export default class DefaultLayout extends Vue {
+  @SessionGetter token
+
+  created () {
+    const isNotSessionPath = this.$route.path !== '/session'
+    const redirectToSession = this.token !== ''
+    if (redirectToSession && isNotSessionPath) {
+      let message = this.$t('session.accessTokenComponent.tokenAvailableNotification')
+      const title = this.$t('session.accessTokenComponent.label')
+      this.$notify({
+        type: 'success',
+        message,
+        title,
+        onClick: function notifyOnClickHandler () {
+          this.$router.push('/session')
+        }.bind(this)
+      })
     }
   }
 }

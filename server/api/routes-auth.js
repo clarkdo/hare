@@ -115,7 +115,7 @@ router.post('/auth/login', async (ctx) => {
     ctx.body = response
   } catch (error) {
     let message = translator.translate('auth.login.service.error')
-    console.log({ error }, message)
+    ctx.log.error({ error }, message)
     let data = null
     if ((data = error && error.response && error.response.data)) {
       message = data.message || data.errors

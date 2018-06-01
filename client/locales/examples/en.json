@@ -5,9 +5,12 @@
     },
     "account": "Account",
     "date": "Date",
-    "type": "Type",
-    "area": "Area",
-    "priority": "Priority",
+    "priority": {
+      "label": "Priority",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
     "organizer": "Organizer",
     "desc": "Description",
     "tag": "Tag",
@@ -28,17 +31,20 @@
       }
     },
     "city": {
+      "label": "City",
       "sh": "ShangHai",
       "bj": "BeiJing",
       "gz": "GuangZhou",
-      "ly": "Lyster",
+      "ly": "Lyster Beach 🌴",
+      "ny": "New-York 🍎",
       "sz": "ShenZhen"
     },
     "instDist": "JD",
-    "price": "Discount",
-    "rights": "Rights",
-    "medium": "Medium",
-    "high": "High",
+    "type": {
+      "label": "Type of activity",
+      "price": "Discount",
+      "rights": "Rights"
+    },
     "rule": {
       "account": {
         "required": "Pls input account name",

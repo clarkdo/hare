@@ -8,8 +8,13 @@
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="{span: 10, offset: 2}">
-          <el-form-item :label="$t('activity.area')" prop="region">
-            <el-select v-model="formData.region" filterable allow-create :placeholder="$t('activity.holder.area')">
+          <el-form-item :label="$t('activity.city.label')" prop="city">
+            <el-select
+              v-model="formData.city"
+              filterable
+              allow-create
+              :placeholder="$t('activity.holder.area')"
+            >
               <el-option
                 v-for="item in cities"
                 v-if="!item.disabled"
@@ -41,19 +46,52 @@
         </el-col>
       </el-row>
       <el-row type="flex" justify="flex-start">
-        <el-col :xs="24" :sm="10">
-          <el-form-item :label="$t('activity.type')" prop="type">
+        <el-col
+          :xs="24"
+          :sm="10"
+        >
+          <el-form-item
+            :label="$t('activity.type.label')"
+            prop="type"
+          >
             <el-checkbox-group v-model="formData.type">
-              <el-checkbox :label="$t('activity.price')"></el-checkbox>
-              <el-checkbox :label="$t('activity.rights')"></el-checkbox>
+              <el-checkbox
+                label="activity.type.price"
+              >
+                {{$t('activity.type.price')}}
+              </el-checkbox>
+              <el-checkbox
+                label="activity.type.rights"
+              >
+                {{$t('activity.type.rights')}}
+              </el-checkbox>
             </el-checkbox-group>
           </el-form-item>
         </el-col>
-        <el-col :xs="24" :sm="{span: 10, offset: 2}">
-          <el-form-item :label="$t('activity.priority')" prop="priority">
+        <el-col
+          :xs="24"
+          :sm="{span: 10, offset: 2}"
+        >
+          <el-form-item
+            :label="$t('activity.priority.label')"
+            prop="priority"
+          >
             <el-radio-group v-model="formData.priority">
-              <el-radio :label="$t('activity.medium')"></el-radio>
-              <el-radio :label="$t('activity.high')"></el-radio>
+              <el-radio
+                label="activity.priority.low"
+              >
+                {{$t('activity.priority.low')}}
+              </el-radio>
+              <el-radio
+                label="activity.priority.medium"
+              >
+                {{$t('activity.priority.medium')}}
+              </el-radio>
+              <el-radio
+                label="activity.priority.high"
+              >
+                {{$t('activity.priority.high')}}
+              </el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -106,9 +144,10 @@
 
 <script>
 import Vue from 'vue'
-import Component, { Getter, namespace } from 'class-component'
+import Component, { Action, Getter, namespace } from 'class-component'
 
-const ExampleGetter = namespace('examples/index', Getter)
+const ActivityGetter = namespace('examples/index', Getter)
+const ActivityAction = namespace('examples/activity', Action)
 
 @Component({
   props: {
@@ -117,12 +156,12 @@ const ExampleGetter = namespace('examples/index', Getter)
       default () {
         return {
           account: '',
-          region: 'activity.city.ly',
+          city: 'activity.city.ly',
           date1: '',
           date2: '',
           delivery: false,
           type: [],
-          priority: '',
+          priority: 'activity.priority.low',
           rate: 0,
           organizer: [],
           desc: '',
@@ -138,8 +177,8 @@ const ExampleGetter = namespace('examples/index', Getter)
           { required: true, message: this.$t('activity.rule.account.required'), trigger: 'blur' },
           { min: 6, message: this.$t('activity.rule.account.length'), trigger: 'blur' }
         ],
-        region: [
-          { required: true, message: this.$t('activity.rule.region.required'), trigger: 'change' }
+        city: [
+          { required: true, message: this.$t('activity.rule.city.required'), trigger: 'change' }
         ],
         date1: [
           { type: 'date', required: true, message: this.$t('activity.rule.date1.required'), trigger: 'change' }
@@ -164,9 +203,10 @@ const ExampleGetter = namespace('examples/index', Getter)
   }
 })
 export default class NewActivity extends Vue {
-  @ExampleGetter labels
-  @ExampleGetter organizers
-  @ExampleGetter cities
+  @ActivityGetter labels
+  @ActivityGetter organizers
+  @ActivityGetter cities
+  @ActivityAction('add') addActivity
 
   submit (formName) {
     /**
@@ -180,7 +220,7 @@ export default class NewActivity extends Vue {
 
     this.$refs[formName].validate((valid) => {
       if (valid) {
-        this.$store.dispatch('examples/activity/add', this.formData)
+        this.addActivity(this.formData)
         this.$message.success(this.$t('activity.success'))
         if (formName === 'popForm') {
           this.popVisible = false

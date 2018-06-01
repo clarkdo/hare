@@ -86,6 +86,11 @@ import ReactiveDemo from '@/components/examples/charts/ReactiveDemo'
     ScatterDemo,
     DoughnutDemo,
     ReactiveDemo
+  },
+  head () {
+    return {
+      title: 'Examples Charts'
+    }
   }
 })
 export default class Charts {

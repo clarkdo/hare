@@ -146,7 +146,7 @@
 import Vue from 'vue'
 import { mapActions } from 'vuex'
 import NewActivity from '@/components/examples/activity/NewActivity'
-import Component, {Getter, namespace } from 'class-component'
+import Component, { Getter, namespace } from 'class-component'
 
 const ExampleGetter = namespace('examples/index', Getter)
 
@@ -159,6 +159,11 @@ const ExampleGetter = namespace('examples/index', Getter)
     ...mapActions('examples/index', [
       'checkCity'
     ])
+  },
+  head () {
+    return {
+      title: 'Examples'
+    }
   }
 })
 export default class Demo extends Vue {

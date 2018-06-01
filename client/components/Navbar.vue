@@ -60,7 +60,6 @@ export default class Navbar extends Vue {
       this.$store.dispatch('menu/addAll', this.translateMenus(menus))
     }
   }
-
   translateMenus (menus) {
     return menus.map((menu) => {
       const subMenus = menu.children

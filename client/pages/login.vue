@@ -50,10 +50,16 @@
 
 <script>
 import Vue from 'vue'
-import debounce from '@/utils/debounce'
 import Component from 'class-component'
+import debounce from '@/utils/debounce'
 
-@Component
+@Component({
+  head () {
+    return {
+      title: 'Sign In'
+    }
+  }
+})
 export default class Login extends Vue {
   user = {
     userName: '',
@@ -61,16 +67,27 @@ export default class Login extends Vue {
     captcha: '',
     showAccessToken: true
   }
-  authenticated = false // #WatchHowDoWe ... How do we?
   rules = {}
   captchaSvg = ''
   // keepPwd = false
   logging = false
+
   layout () {
     return 'empty'
   }
   mounted () {
     this.getCaptcha()
+  }
+  async asyncData ({
+    redirect,
+    query,
+    store
+  }) {
+    let path = query.page || '/'
+    let authenticated = await store.getters['session/authenticated']
+    if (authenticated) {
+      redirect(path)
+    }
   }
   async login () {
     const goBackTo = this.$route.query.page || '/'
@@ -78,7 +95,6 @@ export default class Login extends Vue {
     const valid = this.$refs.user.validate()
     try {
       if (valid) {
-        // console.log('async login', {...this.user})
         await this.$store.dispatch('session/login', this.user)
         this.authenticated = await this.$store.getters['session/authenticated']
       }
