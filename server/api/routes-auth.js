@@ -144,7 +144,6 @@ router.post('/auth/login', async (ctx) => {
  * [1]: https://dev.to/rdegges/please-stop-using-local-storage-1i04
  */
 router.get('/auth/whois', async (ctx) => {
-  console.log(`1. ${ctx.method} ${ctx.url}`)
   let body = {
     authenticated: false
   }

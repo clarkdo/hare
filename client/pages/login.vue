@@ -117,17 +117,7 @@ export default class Login extends Vue {
       params.height = this.$refs.captcha.$el.clientHeight || 36
     }
     this.captchaSvg = this.$axios.get('/hpi/auth/captcha', { params })
-      .then(response => {
-        // #WatchHowDoWe
-        // Just passing through :|
-        // TODO, improve this, figure out how @watch works
-        const authenticated = this.$store.getters['session/authenticated']
-        if (authenticated) {
-          this.redirect('/')
-        }
-        const data = response.data
-        return data
-      })
+      .then(response => response.data)
       .then(captcha => {
         this.captchaSvg = captcha
       })

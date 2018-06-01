@@ -47,14 +47,18 @@ const handleTokenExp = exp => {
  * to point to your own API.
  */
 const createRequest = async (method, url, requestConfig) => {
+  // #TODO Make this only return a request configuration object, and factor axios out from this.
+  const baseURL = process.env.LB_ADDR || consts.LB_ADDR
+  const verb = method.toUpperCase()
+  console.log(`createRequest ${verb} ${baseURL}${url}, requestConfig`, requestConfig)
   const {
     payload = null,
     ...restOfRequestConfig
   } = requestConfig
   let requestConfigObj = {
     timeout: consts.AXIOS_DEFAULT_TIMEOUT,
-    baseURL: consts.LB_ADDR,
-    method,
+    baseURL,
+    method: verb,
     url,
     ...restOfRequestConfig
   }

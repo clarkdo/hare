@@ -14,7 +14,7 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "development",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,koa:*"
         }
       },
       {
@@ -42,7 +42,8 @@
         "program": "${workspaceRoot}/dist/server/app",
         "env": {
             "NODE_ENV": "production",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,koa:*",
+            "LB_ADDR": "http://example.private.local:8080"
         }
       }
     ]

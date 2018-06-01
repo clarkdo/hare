@@ -11,7 +11,7 @@ export default async ({ app, store, req }) => {
   if (process.server) {
     const negotiator = new Negotiator(req)
     const negotiatorDetectedLang = negotiator.language(store.state.locales)
-    store.commit('session/SET_LANG', negotiatorDetectedLang || fallbackLang)
+    store.commit('session/SET_LOCALE', negotiatorDetectedLang || fallbackLang)
   }
 
   // Project specific locales
