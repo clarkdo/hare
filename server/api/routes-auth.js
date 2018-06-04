@@ -63,7 +63,7 @@ const translator = translatorFactory('en')
  * HttpOnly Cookie is made for this.
  */
 router.post('/auth/login', async (ctx) => {
-  console.log('POST /auth/login', {...ctx.request.body})
+  // console.log('POST /auth/login', {...ctx.request.body})
   const user = ctx.request.body
   if (!user || !user.userName || !user.password) {
     ctx.throw(401, translator.translate('auth.login.required.missing'))
@@ -202,6 +202,8 @@ router.get('/auth/validate', async (ctx) => {
 
   try {
     userData = await getUserData(jwt)
+    // This is assuming your UserData object has a status property, and when the credentials we've given
+    // are still valid (i.e. not expired) as per that backend, it returns exactly the String "valid"
     authenticated = userData.status === 'valid' || false
   } catch (e) {
     // Nothing to do, body.authenticated defaults to false. Which would be what we want.

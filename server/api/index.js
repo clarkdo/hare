@@ -1,10 +1,9 @@
 const Koa = require('koa') // Koa framework
 const xmlify = require('xmlify') // JS object to XML
 const yaml = require('js-yaml') // JS object to YAML
-const consts = require('../utils/consts')
 const auth = require('./routes-auth')
 const examples = require('./routes-examples')
-const menu = require('./routes-menu')
+const ui = require('./routes-ui')
 
 const app = new Koa() // API app
 
@@ -82,9 +81,9 @@ app.use(async function handleErrors (ctx, next) {
 // public (unsecured) modules first
 
 app.use(auth)
-app.use(menu)
+app.use(ui)
 
-if (consts.SHOW_EXAMPLES === true) {
+if (process.env.SHOW_EXAMPLES === 'true') {
   app.use(examples)
 }
 

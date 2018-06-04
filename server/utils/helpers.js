@@ -47,7 +47,7 @@ const handleTokenExp = exp => {
  * to point to your own API.
  */
 const createRequest = async (method, url, requestConfig) => {
-  // #TODO Make this only return a request configuration object, and factor axios out from this.
+  // #TODO #refactorCreateRequestBackIntoKoa Make this only return a request configuration object, and factor axios out from this.
   const baseURL = process.env.LB_ADDR || consts.LB_ADDR
   const verb = method.toUpperCase()
   console.log(`createRequest ${verb} ${baseURL}${url}, requestConfig`, requestConfig)
@@ -87,8 +87,11 @@ const getUserData = async (token) => {
    * Would create a request like this;
    *
    *     GET /platform/uaano/oauth/validate?Token=111.222.333&userinfo=PreferredLanguage,TimeZone
+   *
+   * rel: #refactorCreateRequestBackIntoKoa
    */
   const response = await createRequest('GET', consts.ENDPOINT_BACKEND_VALIDATE, { params })
+  // console.log(`getUserData response`, {...response})
 
   const body = {
     status: response.Status

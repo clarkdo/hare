@@ -14,7 +14,8 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "development",
-            "DEBUG": "nuxt:*,koa:*"
+            "DEBUG": "nuxt:*,koa:*",
+            "SHOW_EXAMPLES": "true"
         }
       },
       {
