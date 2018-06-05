@@ -83,6 +83,8 @@ const getUserData = async (token) => {
     userinfo: userinfo.join(',')
   }
 
+  const ENDPOINT_BACKEND_VALIDATE = process.env.ENDPOINT_BACKEND_VALIDATE || consts.ENDPOINT_BACKEND_VALIDATE
+
   /**
    * Would create a request like this;
    *
@@ -90,7 +92,7 @@ const getUserData = async (token) => {
    *
    * rel: #refactorCreateRequestBackIntoKoa
    */
-  const response = await createRequest('GET', consts.ENDPOINT_BACKEND_VALIDATE, { params })
+  const response = await createRequest('GET', ENDPOINT_BACKEND_VALIDATE, { params })
   // console.log(`getUserData response`, {...response})
 
   const body = {

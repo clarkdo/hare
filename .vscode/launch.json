@@ -61,7 +61,9 @@
         "env": {
             "NODE_ENV": "production",
             "DEBUG": "nuxt:*,koa:*",
-            "LB_ADDR": "http://example.private.local:8080"
+            "LB_ADDR": "http://example.private.local:8080",
+            "ENDPOINT_BACKEND_AUTH": "/your/own/namespace/oauth/token",
+            "ENDPOINT_BACKEND_VALIDATE": "/your/own/namespace/user/validate"
         }
       }
     ]

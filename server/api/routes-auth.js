@@ -15,8 +15,8 @@ const {
 /**
  * Have a look at ../utils/consts.js
  */
-const ENDPOINT_BACKEND_AUTH = consts.ENDPOINT_BACKEND_AUTH
-const ENDPOINT_BACKEND_VALIDATE = consts.ENDPOINT_BACKEND_VALIDATE
+const ENDPOINT_BACKEND_AUTH = process.env.ENDPOINT_BACKEND_AUTH || consts.ENDPOINT_BACKEND_AUTH
+const ENDPOINT_BACKEND_VALIDATE = process.env.ENDPOINT_BACKEND_VALIDATE || consts.ENDPOINT_BACKEND_VALIDATE
 
 /*
  * Feature flag whether or not we want to mock authentication.
