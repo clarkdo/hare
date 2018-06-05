@@ -100,7 +100,6 @@ module.exports = {
     {src: '@/plugins/error-handler', ssr: false}
   ],
   modules: [
-    '@nuxtjs/webpackmonitor',
     '@nuxtjs/axios'
   ],
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options

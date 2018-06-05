@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.1",
-    "@nuxtjs/webpackmonitor": "^0.1.0",
     "cross-env": "^5.1.4",
     "axios": "^0.18.0",
     "bunyan": "^1.8.12",

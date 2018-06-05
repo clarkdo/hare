@@ -36,6 +36,23 @@
         }
       },
       {
+        "name": "Build",
+        "type": "node",
+        "request": "launch",
+        "protocol": "inspector",
+        "program": "${workspaceRoot}/node_modules/.bin/nuxt",
+        "stopOnEntry": false,
+        "args": [
+          "build"
+        ],
+        "cwd": "${workspaceRoot}",
+        "sourceMaps": true,
+        "env": {
+            "NODE_ENV": "",
+            "DEBUG": "nuxt:*,koa:*"
+        }
+      },
+      {
         "name": "Hare Prod",
         "type": "node",
         "request": "launch",
