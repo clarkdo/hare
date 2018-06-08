@@ -5,9 +5,12 @@
     },
     "account": "Compte",
     "date": "Date",
-    "type": "Type",
-    "area": "Région",
-    "priority": "Priorité",
+    "priority": {
+      "label": "Priorité",
+      "low": "Basse",
+      "medium": "Moyenne",
+      "high": "Élevée"
+    },
     "organizer": "Organisateur",
     "desc": "Description",
     "tag": "Étiquette",
@@ -15,7 +18,7 @@
     "create": "Créer",
     "reset": "Réinitialiser",
     "holder": {
-      "area": "Choisir une région",
+      "area": "Choisir une ville",
       "tag": "Choisir une étiquette",
       "date": "Choisir une date",
       "time": "Choisir un moment"
@@ -28,17 +31,20 @@
       }
     },
     "city": {
+      "label": "Ville",
       "sh": "ShangHai",
       "bj": "BeiJing",
       "gz": "GuangZhou",
-      "ly": "Lyster",
+      "ly": "Lyster Beach 🌴",
+      "ny": "New-York 🍎",
       "sz": "ShenZhen"
     },
     "instDist": "JD",
-    "price": "Rabais",
-    "rights": "Droit",
-    "medium": "Médium",
-    "high": "Élevé",
+    "type": {
+      "label": "Type d’activité",
+      "price": "Rabais",
+      "rights": "Droit"
+    },
     "rule": {
       "account": {
         "required": "Veuillez spécifier un nom d’utilisateur",

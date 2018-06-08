@@ -21,29 +21,34 @@ export const state = () => ({
     value: 'Beijing Roast Duck',
     label: '北京烤鸭'
   }],
+  // #TODO Review how choices are handled between value and translation tag
   cities: [{
-    value: 'ShangHai',
+    value: 'activity.city.sh',
     label: 'activity.city.sh'
   },
   {
-    value: 'BeiJing',
+    value: 'activity.city.bj',
     label: 'activity.city.bj',
     disabled: true
   },
   {
-    value: 'GuangZhou',
+    value: 'activity.city.gz',
     label: 'activity.city.gz'
   },
   {
-    value: 'Lyster',
+    value: 'activity.city.ly',
     label: 'activity.city.ly'
   },
   {
-    value: 'ShenZhen',
+    value: 'activity.city.ny',
+    label: 'activity.city.ny'
+  },
+  {
+    value: 'activity.city.sz',
     label: 'activity.city.sz'
   }],
   labels: [{
-    value: 'st',
+    value: 'activity.label.tag.st',
     label: 'activity.label.tag.st'
   },
   {

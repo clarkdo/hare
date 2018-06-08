@@ -7,16 +7,8 @@ import createNuxt from './helpers/create-nuxt'
 let nuxt = null
 const req = {
   headers: {
-    'accept-language': 'zh'
-  },
-  session: {
-    jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-        'eyJhdWQiOlsidGF0Il0sInVzZXJfbmFtZSI6IlRlc3RlciIsI' +
-        'nNjb3BlIjpbInJlYWQiXSwiZXhwIjoxNDk0MjY4ODY0LCJ1c2' +
-        'VySWQiOiIxIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianR' +
-        'pIjoiN2FkN2VjYzUtNTdmNy00MmZlLThmZmQtYjUxMTJkNTZm' +
-        'M2NhIiwiY2xpZW50X2lkIjoidGF0LWNsaWVudCJ9.' +
-        'ovWxqcBptquNR5QUBz1it2Z3Fr0OxMvWsnXHIHTcliI'
+    'accept-language': 'zh',
+    Cookie: 'hare:sess=eyJjYXB0Y2hhIjoiR2hDTCIsImp3dCI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpoZFdRaU9sc2lZbUZ6SWwwc0luVnpaWEpmYm1GdFpTSTZJbUZrYldsdUlpd2ljMk52Y0dVaU9sc2ljbVZoWkNKZExDSmxlSEFpT2prNU9UazVPVGs1T1RrNU9Ua3NJblZ6WlhKSlpDSTZJalF3TWpnNFlqZGxOV0pqWkRjM016TXdNVFZpWTJRM1ptUTNNakl3TURBeElpd2lZWFYwYUc5eWFYUnBaWE1pT2xzaVlXUnRhVzRpWFN3aWFuUnBJam9pTnpKbFl6TmpORE10TURNd1lTMDBNV1ZrTFdGaVlqSXRZamRoTWpZNU5UQTJPVEl6SWl3aVkyeHBaVzUwWDJsa0lqb2lZbUZ6TFdOc2FXVnVkQ0o5LnV3eXd6aU5ldEh5ZlNkaXFjSnQ2WFVHeTRWX1dZSFI0SzZsN09QMlZCOUkiLCJfZXhwaXJlIjoxNTI4NTYyNDA0NDkwLCJfbWF4QWdlIjo4NjQwMDAwMH0=; hare:sess.sig=0gGUUVRpb3VRbsj8ibRHRXlie30'
   }
 }
 
@@ -28,6 +20,22 @@ test.before('Init Nuxt.js', async t => {
   moxios.stubRequest('/hpi/auth/captcha', {
     status: 200,
     data: '验证码Mock'
+  })
+  moxios.stubRequest('/hpi/auth/whois', {
+    status: 200,
+    data: {
+      authenticated: true,
+      userName: 'admin',
+      displayName: 'Haaw D. Minh',
+      tz: 'Asia/Hong_Kong',
+      locale: 'zh-HK'
+    }
+  })
+  moxios.stubRequest('/hpi/auth/validate', {
+    status: 200,
+    data: {
+      authenticated: true
+    }
   })
   nuxt = createNuxt()
   await nuxt.listen(3000, 'localhost')

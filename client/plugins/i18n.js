@@ -6,11 +6,12 @@ import { defaultsDeep } from 'lodash'
 
 Vue.use(VueI18n)
 
-export default ({ app, store, req }) => {
+export default async ({ app, store, req }) => {
+  const fallbackLang = 'zh'
   if (process.server) {
     const negotiator = new Negotiator(req)
-    const lang = negotiator.language(store.state.locales)
-    store.commit('SET_LANG', lang || 'zh')
+    const negotiatorDetectedLang = negotiator.language(store.state.locales)
+    store.commit('session/SET_LOCALE', negotiatorDetectedLang || fallbackLang)
   }
 
   // Project specific locales
@@ -30,9 +31,10 @@ export default ({ app, store, req }) => {
 
   // Set i18n instance on app
   // This way we can use it in middleware and pages asyncData/fetch
+  const sessionLang = store.getters['session/lang']
   app.i18n = new VueI18n({
-    locale: store.state.locale || 'zh',
-    fallbackLocale: 'zh',
+    locale: sessionLang,
+    fallbackLocale: fallbackLang,
     messages: { en, fr, zh }
   })
 }

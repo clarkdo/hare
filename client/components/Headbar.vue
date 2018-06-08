@@ -3,7 +3,7 @@
     <header class="header" ref="header">
       <el-row>
         <el-col :span="5">
-          <div class="nav-icon" :class="{hide: !isMenuHidden}" @click="toggleMenu">
+          <div class="nav-icon is-toggle-hidden-toggler" :class="{hide: !isMenuHidden}" @click="toggleHidden">
             <span></span>
             <span></span>
             <span></span>
@@ -11,7 +11,7 @@
           </div>
         </el-col>
         <el-col :offset="11" :span="3">
-          <p v-if="!!displayName">
+          <p @click="$router.push('/session')">
             <el-tooltip :content="displayName">
               <img src="~/assets/img/avatar.svg" />
             </el-tooltip>
@@ -19,16 +19,16 @@
           </p>
         </el-col>
         <el-col :span="3">
-          <p @click="$router.push('/account/token')">
+          <p>
             <el-tooltip :content="$t('head.pwd')">
-              <img src="~/assets/img/pwd.svg"></img>
+              <img src="~/assets/img/pwd.svg" />
             </el-tooltip>
             <span> {{$t("head.pwd")}}</span>
           </p>
         </el-col>
         <el-col :span="2">
           <p @click="logout">
-            <img src="~/assets/img/exit.svg"></img>
+            <img src="~/assets/img/exit.svg" />
             <span> {{$t("head.exit")}}</span>
           </p>
         </el-col>
@@ -39,20 +39,20 @@
 
 <script>
 import Vue from 'vue'
-import { mapActions } from 'vuex'
-import Component, { Getter } from 'class-component'
+import Component, { Action, Getter, namespace } from 'class-component'
 
-@Component({
-  methods: {
-    ...mapActions(['toggleMenu'])
-  }
-})
+const MenuGetter = namespace('menu', Getter)
+const MenuAction = namespace('menu', Action)
+const SessionGetter = namespace('session', Getter)
+
+@Component
 export default class Headbar extends Vue {
-  @Getter isMenuHidden
-  @Getter authUser
-  @Getter displayName
+  @MenuGetter('hidden') isMenuHidden
+  @MenuAction toggleHidden
+  @SessionGetter displayName
+
   async logout () {
-    await this.$store.dispatch('logout', async () => {
+    await this.$store.dispatch('session/logout', async () => {
       await this.$router.push('/login')
     })
   }

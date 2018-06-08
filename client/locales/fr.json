@@ -7,7 +7,22 @@
     "captchaRequired":
       "Avoir saisi correctement le «Captcha» est requis pour se connecter",
     "captchaPlaceholder": "Captcha",
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "showAccessToken": "Laissez-moi voir le billet accessToken"
+  },
+  "action": {
+    "copy": "Copier"
+  },
+  "session": {
+    "index": {
+      "title": "Quels sont les données associées à cette session et transigées au Back-End?",
+      "seeAlsoSideCar": "Consultez quelques autres sources de données disponibles"
+    },
+    "accessTokenComponent": {
+      "label": "Billet JWT AccessToken",
+      "tokenAvailableNotification": "Le billet JWT est disponible. Veuillez cliquer sur cette carte de notification pour aller vers /session",
+      "mustCheckShowAccessToken": "Pour pouvoir avoir une copie du billet, vous devez vous déconnecter puis vous re-connecter avec l’option \"Laissez-moi voir le billet accessToken\" cochée"
+    }
   },
   "nav": {
     "home": "Accueil"

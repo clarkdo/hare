@@ -23,6 +23,11 @@
                   <div v-html="captchaSvg" @click='refreshCaptcha' class="captcha"></div>
                 </el-col>
             </el-form-item>
+            <el-form-item prop="showAccessToken">
+              <el-col>
+                <el-checkbox v-model="user.showAccessToken">{{$t('login.showAccessToken')}}</el-checkbox>
+              </el-col>
+            </el-form-item>
             <el-row>
               <el-col :span="24">
                 <el-button type="primary" class="login-btn" :loading="logging" @click="login">{{$t('login.login')}}</el-button>
@@ -45,26 +50,44 @@
 
 <script>
 import Vue from 'vue'
-import debounce from '@/utils/debounce'
 import Component from 'class-component'
+import debounce from '@/utils/debounce'
 
-@Component
+@Component({
+  head () {
+    return {
+      title: 'Sign In'
+    }
+  }
+})
 export default class Login extends Vue {
   user = {
     userName: '',
     password: '',
-    captcha: ''
+    captcha: '',
+    showAccessToken: true
   }
-  authenticated = false // #WatchHowDoWe ... How do we?
   rules = {}
   captchaSvg = ''
   // keepPwd = false
   logging = false
+
   layout () {
     return 'empty'
   }
   mounted () {
     this.getCaptcha()
+  }
+  async asyncData ({
+    redirect,
+    query,
+    store
+  }) {
+    let path = query.page || '/'
+    let authenticated = await store.getters['session/authenticated']
+    if (authenticated) {
+      redirect(path)
+    }
   }
   async login () {
     const goBackTo = this.$route.query.page || '/'
@@ -72,8 +95,8 @@ export default class Login extends Vue {
     const valid = this.$refs.user.validate()
     try {
       if (valid) {
-        await this.$store.dispatch('login', this.user)
-        this.authenticated = await this.$store.getters.authenticated
+        await this.$store.dispatch('session/login', this.user)
+        this.authenticated = await this.$store.getters['session/authenticated']
       }
     } catch (e) {
       this.$message.warning(e.message)
@@ -94,17 +117,7 @@ export default class Login extends Vue {
       params.height = this.$refs.captcha.$el.clientHeight || 36
     }
     this.captchaSvg = this.$axios.get('/hpi/auth/captcha', { params })
-      .then(response => {
-        // #WatchHowDoWe
-        // Just passing through :|
-        // TODO, improve this, figure out how @watch works
-        const authenticated = this.$store.getters.authenticated
-        if (authenticated) {
-          this.redirect('/')
-        }
-        const data = response.data
-        return data
-      })
+      .then(response => response.data)
       .then(captcha => {
         this.captchaSvg = captcha
       })

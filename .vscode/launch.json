@@ -14,7 +14,9 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "development",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,axios:*,koa:*,koa-session:*,koa-router:*,follow-redirects:*",
+            "SHOW_EXAMPLES": "true",
+            "LOG_DIR": "${workspaceRoot}/logs"
         }
       },
       {
@@ -31,7 +33,24 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "production",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,koa:*"
+        }
+      },
+      {
+        "name": "Build",
+        "type": "node",
+        "request": "launch",
+        "protocol": "inspector",
+        "program": "${workspaceRoot}/node_modules/.bin/nuxt",
+        "stopOnEntry": false,
+        "args": [
+          "build"
+        ],
+        "cwd": "${workspaceRoot}",
+        "sourceMaps": true,
+        "env": {
+            "NODE_ENV": "",
+            "DEBUG": "nuxt:*,koa:*"
         }
       },
       {
@@ -42,7 +61,10 @@
         "program": "${workspaceRoot}/dist/server/app",
         "env": {
             "NODE_ENV": "production",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,koa:*",
+            "LB_ADDR": "http://example.private.local:8080",
+            "ENDPOINT_BACKEND_AUTH": "/your/own/namespace/oauth/token",
+            "ENDPOINT_BACKEND_VALIDATE": "/your/own/namespace/user/validate"
         }
       }
     ]

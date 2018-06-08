@@ -15,14 +15,14 @@ const {
 /**
  * Have a look at ../utils/consts.js
  */
-const ENDPOINT_BACKEND_AUTH = consts.ENDPOINT_BACKEND_AUTH
-const ENDPOINT_BACKEND_VALIDATE = consts.ENDPOINT_BACKEND_VALIDATE
+const ENDPOINT_BACKEND_AUTH = process.env.ENDPOINT_BACKEND_AUTH || consts.ENDPOINT_BACKEND_AUTH
+const ENDPOINT_BACKEND_VALIDATE = process.env.ENDPOINT_BACKEND_VALIDATE || consts.ENDPOINT_BACKEND_VALIDATE
 
 /*
  * Feature flag whether or not we want to mock authentication.
  * This should maybe in consts, or via .env file. TODO.
  */
-const MOCK_ENDPOINT_BACKEND = consts.MOCK_ENDPOINT_BACKEND === true
+const MOCK_ENDPOINT_BACKEND = consts.MOCK_ENDPOINT_URL === consts.LB_ADDR
 
 /**
  * Notice we’re not setting BASE_API as /hpi/auth
@@ -30,7 +30,7 @@ const MOCK_ENDPOINT_BACKEND = consts.MOCK_ENDPOINT_BACKEND === true
  * Vue.js.
  *
  * Meaning that the client’s .vue files would call /hpi/auth/login
- * which this fill will answer for, BUT = require(here, we’ll call
+ * which this fill will answer for, BUT here, we’ll call
  * other endpoints that aren’t available to the public.
  *
  * In other words, this Koa sub app responds to /hpi (consts.BASE_API)
@@ -52,7 +52,7 @@ const router = koaRouter({
 const translator = translatorFactory('en')
 
 /**
- * Answer to Authentication requests = require(Vue/Nuxt.
+ * Answer to Authentication.
  *
  * Notice we're also setting a cookie here.
  * That is because we WANT it to be HttpOnly, Nuxt (in ../client/)
@@ -63,6 +63,7 @@ const translator = translatorFactory('en')
  * HttpOnly Cookie is made for this.
  */
 router.post('/auth/login', async (ctx) => {
+  // console.log('POST /auth/login', {...ctx.request.body})
   const user = ctx.request.body
   if (!user || !user.userName || !user.password) {
     ctx.throw(401, translator.translate('auth.login.required.missing'))
@@ -76,7 +77,6 @@ router.post('/auth/login', async (ctx) => {
     ctx.throw(401, translator.translate('auth.login.captcha.invalid'))
   }
   try {
-    console.log(11111)
     // Assuming your API only wants base64 encoded version of the password
     const password = Buffer.from(user.password).toString('base64')
     const payload = {
@@ -101,7 +101,7 @@ router.post('/auth/login', async (ctx) => {
      * It is OK to use cookie to store JWT Token ONLY IF it is shared with the
      * browser as an HttpOnly cookie.
      * Which is what Koa Session does by default.
-     * We are doing this here instead of = require(Axios and Nuxt because Koa
+     * We are doing this here instead of Axios/Nuxt because Koa
      * can actually write HttpOnly cookies.
      *
      * Refer to koajs/session at External Session Store [1] if you want to
@@ -128,13 +128,13 @@ router.post('/auth/login', async (ctx) => {
  * #JwtTokenAreTooValuableToBeNonHttpOnly
  *
  * What keys/values do you want to expose to the UI.
- * Those are taken = require(an authoritative source (the JWT token)
+ * Those are taken an authoritative source (the JWT token)
  * and we might want the UI to show some data.
  *
  * Notice one thing here, although we’re reading the raw JWT token
- * = require(cookie, it IS HttpOnly, so JavaScript client can't access it.
+ * cookie, it IS HttpOnly, so JavaScript client can't access it.
  *
- * So, if you want to expose data served = require(your trusty backend,
+ * So, if you want to expose data served your trusty backend,
  * here is your chance.
  *
  * This is how we’ll have Vue/Nuxt (the "client") read user data.
@@ -156,7 +156,7 @@ router.get('/auth/whois', async (ctx) => {
   try {
     userData = await getUserData(jwt)
     const UserInfo = get(userData, 'UserInfo', {})
-    data.UserInfo = Object.assign({}, UserInfo)
+    data.UserInfo = {...UserInfo}
     body.authenticated = userData.status === 'valid' || false
   } catch (e) {
     // Nothing to do, body.authenticated defaults to false. Which would be what we want.
@@ -167,6 +167,8 @@ router.get('/auth/whois', async (ctx) => {
    * Each member has an array of two;
    * Index 0 is "where" inside the decoded token you want to get data from
    * Index 1 is the default value
+   *
+   * See also ../../client/store/session.js
    */
   const keysMapWithLodashPathAndDefault = {
     userName: ['UserInfo.UserName', 'anonymous'],
@@ -175,7 +177,7 @@ router.get('/auth/whois', async (ctx) => {
     exp: ['exp', 9999999999999],
     displayName: ['UserInfo.DisplayName', 'Anonymous'],
     tz: ['UserInfo.TimeZone', 'UTC'],
-    locale: ['UserInfo.PreferredLanguage', 'en-US']
+    locale: ['UserInfo.PreferredLanguage', 'fr-CA']
   }
 
   for (const [
@@ -192,26 +194,6 @@ router.get('/auth/whois', async (ctx) => {
   ctx.body = body
 })
 
-/**
- * This is to compensate using localStorage for token
- * Ideally, this should NOT be used as-is for a production Web App.
- * Only moment you’d want to expose token is if you have SysAdmins
- * who wants to poke APIs manually and needs their JWT tokens.
- */
-router.get('/auth/token', async (ctx) => {
-  ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
-  let body = {}
-  try {
-    const token = ctx.session.jwt
-    body.jwt = token
-  } catch (e) {
-    // Nothing to do, body.authenticated defaults to false. Which would be what we want.
-  }
-
-  ctx.status = 200
-  ctx.body = body
-})
-
 router.get('/auth/validate', async (ctx) => {
   let body = {}
   let userData = {}
@@ -220,6 +202,8 @@ router.get('/auth/validate', async (ctx) => {
 
   try {
     userData = await getUserData(jwt)
+    // This is assuming your UserData object has a status property, and when the credentials we've given
+    // are still valid (i.e. not expired) as per that backend, it returns exactly the String "valid"
     authenticated = userData.status === 'valid' || false
   } catch (e) {
     // Nothing to do, body.authenticated defaults to false. Which would be what we want.
@@ -256,7 +240,6 @@ router.get('/auth/captcha', async (ctx, next) => {
   ctx.body = captcha.data
 })
 
-if (MOCK_ENDPOINT_BACKEND) {
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * Mocking responses, this is how you can emulate an actual backend.
  * Notice the URL below is assumed to begin by /hpi.
@@ -264,6 +247,7 @@ if (MOCK_ENDPOINT_BACKEND) {
  * When you'll use your own backend, URLs below WILL NOT have /hpi as prefix.
  */
 
+if (MOCK_ENDPOINT_BACKEND) {
   router.post(ENDPOINT_BACKEND_AUTH, async (ctx) => {
     console.log(`Mocking a response for ${ctx.url}`)
     /**
@@ -305,7 +289,7 @@ if (MOCK_ENDPOINT_BACKEND) {
     console.log(`Mocking a response for ${ctx.url}`)
     let fakeIsValid = false
     // Just mimicking we only accept as a valid session the hardcoded JWT token
-    // = require(ENDPOINT_BACKEND_AUTH above.
+    // ENDPOINT_BACKEND_AUTH above.
     const tokenBeginsWith = /^Token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\./.test(ctx.querystring)
     if (tokenBeginsWith) {
       fakeIsValid = true
@@ -325,6 +309,9 @@ if (MOCK_ENDPOINT_BACKEND) {
         PreferredLanguage: 'zh-HK',
         TimeZone: 'Asia/Hong_Kong'
       }
+      // validated.UserInfo.PreferredLanguage = 'th-TH-u-nu-thai'
+      // validated.UserInfo.PreferredLanguage = 'zh-Hans-CN-u-nu-hanidec'
+      // validated.UserInfo.PreferredLanguage = 'en-CA'
     }
     ctx.status = fakeIsValid ? 200 : 401
     ctx.body = validated

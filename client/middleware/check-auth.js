@@ -2,22 +2,21 @@ export default async ({
   redirect,
   route,
   store,
-  req,
-  $axios
+  req
 }) => {
   // If nuxt generate, pass this middleware
   if (process.static) return
-  const maybeReq = process.server ? req : null
-  const hasSession = maybeReq !== null && !!maybeReq.session
-  let maybeAuthenticated = await store.getters.authenticated
-  if (hasSession === true && maybeAuthenticated === false) {
-    const { data } = await $axios.get('/hpi/auth/whois')
-    store.commit('SET_USER', data)
-    maybeAuthenticated = data.authenticated || false
+  const path = route.path
+  const isNotLogin = /\/login$/.test(path) !== true
+  const isHydrated = await store.getters['session/hydrated']
+  // const isClient = process.client
+  // const isServer = process.server
+  // console.log('client/middleware/check-auth', { path, isNotLogin, isHydrated, isClient, isServer })
+  if (!isHydrated) {
+    await store.dispatch('session/hydrate')
   }
-  const currentPath = route.path
-  const isNotLogin = currentPath !== '/login'
-  if (isNotLogin && maybeAuthenticated === false) {
+  let authenticated = await store.getters['session/authenticated']
+  if (isNotLogin && authenticated === false) {
     redirect('/login', { page: route.fullPath })
   }
 }
