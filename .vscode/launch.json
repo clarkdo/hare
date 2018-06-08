@@ -14,8 +14,9 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "development",
-            "DEBUG": "nuxt:*,koa:*",
-            "SHOW_EXAMPLES": "true"
+            "DEBUG": "nuxt:*,axios:*,koa:*,koa-session:*,koa-router:*,follow-redirects:*",
+            "SHOW_EXAMPLES": "true",
+            "LOG_DIR": "${workspaceRoot}/logs"
         }
       },
       {
@@ -32,7 +33,7 @@
         "sourceMaps": true,
         "env": {
             "NODE_ENV": "production",
-            "DEBUG": "nuxt:*"
+            "DEBUG": "nuxt:*,koa:*"
         }
       },
       {

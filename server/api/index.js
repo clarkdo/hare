@@ -4,6 +4,7 @@ const yaml = require('js-yaml') // JS object to YAML
 const auth = require('./routes-auth')
 const examples = require('./routes-examples')
 const ui = require('./routes-ui')
+const env = require('./routes-env')
 
 const app = new Koa() // API app
 
@@ -80,8 +81,26 @@ app.use(async function handleErrors (ctx, next) {
 
 // public (unsecured) modules first
 
+app.use(env)
 app.use(auth)
 app.use(ui)
+
+/**
+ * #TODO Figure out how we could optionally add a route
+ *
+ * Possibly like this;
+ *
+ * ```js
+ * app.use(async function maybeAddExamples (ctx, next) {
+ *  if (Reflect.has(ctx.processEnv, 'SHOW_EXAMPLES') && ctx.processEnv.SHOW_EXAMPLES === true) {
+ *    // Add the route.
+ *  }
+ *  next()
+ * })
+ * ```
+ *
+ * See https://koajs.com/#context
+ */
 
 if (process.env.SHOW_EXAMPLES === 'true') {
   app.use(examples)

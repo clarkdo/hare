@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Koa = require('koa')
 const { Nuxt, Builder } = require('nuxt')
 const bunyan = require('bunyan')
@@ -14,6 +15,7 @@ const consts = require('./utils/consts')
 const config = require('../nuxt.config.js')
 const chalk = require('chalk')
 const proxy = require('koa-proxies')
+const processEnv = require('./utils/env')
 
 // Start nuxt.js
 async function start () {
@@ -21,6 +23,8 @@ async function start () {
   const host = consts.HOST
   const port = consts.PORT
   const app = new Koa()
+
+  app.context.processEnv = processEnv(process.env)
 
   app.keys = ['hare-server']
   config.dev = !(app.env === 'production')
@@ -56,6 +60,7 @@ async function start () {
   }))
   app.use(koaBunyanLogger(logger))
   app.use(koaBunyanLogger.requestLogger())
+  app.use(koaBunyanLogger.requestIdContext())
 
   // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
   // separate sub-apps can be used for modularisation of a large system, for different login/access
@@ -146,6 +151,7 @@ async function start () {
 
   // sometimes useful to be able to track each request...
   app.use(async function noOpNext (ctx, next) {
+    ctx.log.info('hare:unify360 Request: %s %s, subapp %s, by %s for file %s', ctx.method, ctx.url, ctx.state.subapp, ctx.request.ip, ctx.path)
     await next()
   })
 

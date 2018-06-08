@@ -17,8 +17,8 @@ const includingExamples = (assertion = true) => item => {
   const idFieldExists = Reflect.has(item, 'id')
   // Make it in example range if id is missing
   const idFieldFirstDigits = idFieldExists ? item.id.split('-')[0] : 1000
-  const idFieldInteger = Number.parseInt(idFieldFirstDigits)
-  if (idFieldExists && typeof idFieldInteger === 'number') {
+  if (idFieldExists) {
+    const idFieldInteger = Number.parseInt(idFieldFirstDigits)
     // Assuming id 9999-99 IS NOT an example
     // Assuming id 1000-00 IS an example
     isExample = idFieldInteger > 999

@@ -3,11 +3,17 @@ const API = 'hpi'
 const BASE_API = '/hpi'
 const SESS_KEY = 'hare:sess'
 const COOKIE_JWT = 'hare_jwt'
-const SHOW_EXAMPLES = true
-const AXIOS_DEFAULT_TIMEOUT = 50000
+const AXIOS_TIMEOUT_DEFAULT = 50000
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || '3000'
-const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
+
+const MOCK_ENDPOINT_URL = `http://${HOST}:${PORT}/hpi`
+const LB_ADDR = process.env.LB_ADDR || MOCK_ENDPOINT_URL
+
+/**
+ * Those are the last-resort defaults
+ */
+const SHOW_EXAMPLES_DEFAULT = false
 
 /**
  * Where to get your JWT/OAuth bearer token.
@@ -21,8 +27,6 @@ const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/hpi`
  */
 const ENDPOINT_BACKEND_AUTH = '/platform/uaano/oauth/token'
 const ENDPOINT_BACKEND_VALIDATE = '/platform/uaano/oauth/validate'
-// Please, reader, fix this with proper environment variable management before deploying (!)
-const MOCK_ENDPOINT_BACKEND = true
 
 module.exports = Object.freeze({
   APP,
@@ -30,12 +34,12 @@ module.exports = Object.freeze({
   BASE_API,
   SESS_KEY,
   COOKIE_JWT,
-  SHOW_EXAMPLES,
-  AXIOS_DEFAULT_TIMEOUT,
+  AXIOS_TIMEOUT_DEFAULT,
   HOST,
   PORT,
   LB_ADDR,
   ENDPOINT_BACKEND_AUTH,
   ENDPOINT_BACKEND_VALIDATE,
-  MOCK_ENDPOINT_BACKEND
+  MOCK_ENDPOINT_URL,
+  SHOW_EXAMPLES_DEFAULT
 })

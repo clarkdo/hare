@@ -1,5 +1,7 @@
+require('dotenv').config()
 const webpack = require('webpack')
 const appName = 'Hare 2.0'
+const appDescription = 'Nuxt.js project'
 module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
@@ -29,7 +31,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: appDescription }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -55,6 +57,7 @@ module.exports = {
       'vue-i18n',
       'vue-chartjs',
       'vue-clipboards',
+      'vuex-persistedstate',
       'moment',
       'chart.js',
       'deepmerge' // vue-chartjs dep
@@ -97,10 +100,19 @@ module.exports = {
     '@/plugins/element-ui',
     '@/plugins/axios',
     {src: '@/plugins/clipboard', ssr: false},
-    {src: '@/plugins/error-handler', ssr: false}
+    {src: '@/plugins/error-handler', ssr: false},
+    {src: '@/plugins/persistedstate', ssr: false}
   ],
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    ['@nuxtjs/dotenv', { only: [
+      'HOST',
+      'ENDPOINT_BACKEND_AUTH',
+      'ENDPOINT_BACKEND_VALIDATE',
+      // See also server/utils/environment-variables.js
+      'LB_ADDR',
+      'SHOW_EXAMPLES'
+    ] }]
   ],
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
   development: {

@@ -22,7 +22,7 @@ const ENDPOINT_BACKEND_VALIDATE = process.env.ENDPOINT_BACKEND_VALIDATE || const
  * Feature flag whether or not we want to mock authentication.
  * This should maybe in consts, or via .env file. TODO.
  */
-const MOCK_ENDPOINT_BACKEND = consts.MOCK_ENDPOINT_BACKEND === true
+const MOCK_ENDPOINT_BACKEND = consts.MOCK_ENDPOINT_URL === consts.LB_ADDR
 
 /**
  * Notice we’re not setting BASE_API as /hpi/auth
@@ -240,7 +240,6 @@ router.get('/auth/captcha', async (ctx, next) => {
   ctx.body = captcha.data
 })
 
-if (MOCK_ENDPOINT_BACKEND) {
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * Mocking responses, this is how you can emulate an actual backend.
  * Notice the URL below is assumed to begin by /hpi.
@@ -248,6 +247,7 @@ if (MOCK_ENDPOINT_BACKEND) {
  * When you'll use your own backend, URLs below WILL NOT have /hpi as prefix.
  */
 
+if (MOCK_ENDPOINT_BACKEND) {
   router.post(ENDPOINT_BACKEND_AUTH, async (ctx) => {
     console.log(`Mocking a response for ${ctx.url}`)
     /**
@@ -309,6 +309,9 @@ if (MOCK_ENDPOINT_BACKEND) {
         PreferredLanguage: 'zh-HK',
         TimeZone: 'Asia/Hong_Kong'
       }
+      // validated.UserInfo.PreferredLanguage = 'th-TH-u-nu-thai'
+      // validated.UserInfo.PreferredLanguage = 'zh-Hans-CN-u-nu-hanidec'
+      // validated.UserInfo.PreferredLanguage = 'en-CA'
     }
     ctx.status = fakeIsValid ? 200 : 401
     ctx.body = validated
