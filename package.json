@@ -65,7 +65,7 @@
     "vue-class-component": "^6.2.0",
     "vue-clipboards": "^1.2.4",
     "vue-i18n": "^7.6.0",
-    "vuex-class": "^0.3.0",
+    "vuex-class": "^0.3.1",
     "xmlify": "^1.1.0"
   },
   "devDependencies": {
