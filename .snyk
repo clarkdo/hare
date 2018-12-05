@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.8.0
+version: v1.13.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:ms:20170412':
@@ -35,4 +35,22 @@ ignore:
     - chart.js > moment:
         reason: None given
         expires: '2017-12-29T09:11:19.785Z'
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - nuxt > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
+    - nuxt > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-05T06:30:51.272Z'
