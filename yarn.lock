@@ -2955,9 +2955,9 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
-element-ui@^2.3.2:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.3.6.tgz#6771aa41a51bc967bdaad64e429ff50b528b15e3"
+element-ui@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.6.0.tgz#87ab7055f420ae5dc32a7af4d69ca5999651a096"
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
