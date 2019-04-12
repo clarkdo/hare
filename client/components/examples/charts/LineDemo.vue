@@ -1,6 +1,6 @@
 <script>
 import Vue from 'vue'
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 import { Line } from 'vue-chartjs'
 
 /*

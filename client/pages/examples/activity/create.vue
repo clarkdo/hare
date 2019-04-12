@@ -14,7 +14,7 @@
 <script>
 import Vue from 'vue'
 import NewActivity from '@/components/examples/activity/NewActivity'
-import Component, { Getter, namespace } from 'class-component'
+import { Component, Getter, namespace } from 'nuxt-property-decorator'
 
 const ActivityGetter = namespace('examples/activity', Getter)
 

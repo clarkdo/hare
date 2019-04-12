@@ -31,30 +31,17 @@ module.exports = {
   */
   build: {
     publicPath: '/hare/',
-    babel: {
-      plugins: ['transform-decorators-legacy', 'transform-class-properties']
-    },
-    extend (config, { isDev }) {
-      config.resolve.alias['class-component'] = '@/plugins/class-component'
-    },
-    vendor: [
-      'axios',
-      'element-ui',
-      'negotiator',
-      'vue-class-component',
-      'vuex-class',
-      'vue-i18n',
-      'vue-chartjs',
-      'vue-clipboards',
-      'moment',
-      'chart.js',
-      'deepmerge' // vue-chartjs dep
-    ],
     extractCSS: true,
+    babel: {
+      plugins: [
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        ['@babel/plugin-proposal-class-properties', { loose: true }]
+      ]
+    },
     filenames: {
-      vendor: 'vendor.[hash:12].js',
-      app: 'hare.[chunkhash:12].js',
-      css: 'hare.[contenthash:12].css'
+      app: ({ isDev }) => isDev ? '[name].js' : 'hare.[chunkhash:12].js',
+      chunk: ({ isDev }) => isDev ? '[name].js' : 'hare.chunk.[chunkhash:12].js',
+      css: ({ isDev }) => isDev ? '[name].css' : 'hare.[contenthash:12].css'
     },
     plugins: [
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en|fr/)

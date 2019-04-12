@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 import ForkThis from '@/components/ForkThis'
 
 @Component({

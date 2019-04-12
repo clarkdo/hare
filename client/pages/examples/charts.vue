@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 import BarDemo from '@/components/examples/charts/BarDemo'
 import PieDemo from '@/components/examples/charts/PieDemo'
 import LineDemo from '@/components/examples/charts/LineDemo'

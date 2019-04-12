@@ -78,7 +78,7 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 
 @Component({
   methods: {

@@ -40,7 +40,7 @@
 <script>
 import Vue from 'vue'
 import { mapActions } from 'vuex'
-import Component, { Getter } from 'class-component'
+import { Component, Getter } from 'nuxt-property-decorator'
 
 @Component({
   methods: {

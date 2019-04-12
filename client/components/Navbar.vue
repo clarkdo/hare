@@ -40,7 +40,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import { mapActions } from 'vuex'
-import Component, {Getter, namespace } from 'class-component'
+import { Component, Getter, namespace } from 'nuxt-property-decorator'
 
 const MenuGetter = namespace('menu', Getter)
 

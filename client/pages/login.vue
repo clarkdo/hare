@@ -46,7 +46,7 @@
 <script>
 import Vue from 'vue'
 import debounce from '@/utils/debounce'
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 
 @Component
 export default class Login extends Vue {
@@ -120,7 +120,7 @@ export default class Login extends Vue {
 
 <style scoped lang="scss">
 .login {
-  background: url(~/assets/img/login-bg.jpeg) no-repeat center center fixed;
+  background: url(~assets/img/login-bg.jpeg) no-repeat center center fixed;
   background-size: cover;
   position: absolute;
   top: 0;

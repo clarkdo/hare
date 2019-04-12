@@ -106,7 +106,7 @@
 
 <script>
 import Vue from 'vue'
-import Component, { Getter, namespace } from 'class-component'
+import { Component, Getter, namespace } from 'nuxt-property-decorator'
 
 const ExampleGetter = namespace('examples/index', Getter)
 

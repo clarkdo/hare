@@ -26,7 +26,7 @@
 
 <script>
 import Vue from 'vue'
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 
 @Component
 export default class Footer extends Vue {

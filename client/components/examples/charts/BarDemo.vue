@@ -1,5 +1,5 @@
 <script>
-import Component from 'class-component'
+import { Component } from 'nuxt-property-decorator'
 import { Bar } from 'vue-chartjs'
 
 @Component({
