@@ -21,7 +21,7 @@
               </el-form-item>
               <el-form-item>
                 <el-button
-                  v-clipboard="token"
+                  v-clipboard:copy="token"
                   type="primary"
                 >
                   Copy

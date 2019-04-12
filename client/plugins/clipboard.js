@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import VueClipboards from 'vue-clipboards'
+import VueClipboard from 'vue-clipboard2'
 
-Vue.use(VueClipboards)
+Vue.use(VueClipboard)
