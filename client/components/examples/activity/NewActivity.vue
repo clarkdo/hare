@@ -114,9 +114,9 @@
 
 <script>
 import Vue from 'vue'
-import { Component, Getter, namespace } from 'nuxt-property-decorator'
+import { Component, namespace } from 'nuxt-property-decorator'
 
-const ExampleGetter = namespace('examples/index', Getter)
+const Example = namespace('examples')
 
 @Component({
   props: {
@@ -172,9 +172,9 @@ const ExampleGetter = namespace('examples/index', Getter)
   }
 })
 export default class NewActivity extends Vue {
-  @ExampleGetter labels
-  @ExampleGetter organizers
-  @ExampleGetter cities
+  @Example.Getter labels
+  @Example.Getter organizers
+  @Example.Getter cities
 
   get activeCities() {
     return this.cities.filter(city => !city.disable)

@@ -48,7 +48,7 @@ import axios from 'axios'
 import { mapActions } from 'vuex'
 import { Component, Getter, namespace } from 'nuxt-property-decorator'
 
-const MenuGetter = namespace('menu', Getter)
+const Menu = namespace('menu')
 
 @Component({
   methods: {
@@ -57,7 +57,7 @@ const MenuGetter = namespace('menu', Getter)
 })
 export default class Navbar extends Vue {
   @Getter isMenuHidden
-  @MenuGetter menus
+  @Menu.Getter menus
 
   async beforeMount() {
     const { data: menus } = await axios.get('/hpi/ui/menu')

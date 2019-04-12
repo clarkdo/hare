@@ -14,9 +14,9 @@
 <script>
 import Vue from 'vue'
 import NewActivity from '@/components/examples/activity/NewActivity'
-import { Component, Getter, namespace } from 'nuxt-property-decorator'
+import { Component, namespace } from 'nuxt-property-decorator'
 
-const ActivityGetter = namespace('examples/activity', Getter)
+const Activity = namespace('examples/activity')
 
 @Component({
   components: {
@@ -24,7 +24,7 @@ const ActivityGetter = namespace('examples/activity', Getter)
   }
 })
 export default class Create extends Vue {
-  @ActivityGetter title
+  @Activity.Getter title
 
   activity = {
     account: '',

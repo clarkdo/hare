@@ -180,9 +180,9 @@
 import Vue from 'vue'
 import { mapActions } from 'vuex'
 import NewActivity from '@/components/examples/activity/NewActivity'
-import { Component, Getter, namespace } from 'nuxt-property-decorator'
+import { Component, namespace } from 'nuxt-property-decorator'
 
-const ExampleGetter = namespace('examples/index', Getter)
+const Example = namespace('examples')
 
 // TODO: https://github.com/ktsn/vuex-class/issues/9
 @Component({
@@ -190,16 +190,16 @@ const ExampleGetter = namespace('examples/index', Getter)
     NewActivity
   },
   methods: {
-    ...mapActions('examples/index', [
+    ...mapActions('examples', [
       'checkCity'
     ])
   }
 })
 export default class Demo extends Vue {
-  @ExampleGetter city
-  @ExampleGetter foods
-  @ExampleGetter cities
-  @ExampleGetter organizers
+  @Example.Getter city
+  @Example.Getter foods
+  @Example.Getter cities
+  @Example.Getter organizers
 
   num = '1'
   province = '6'
