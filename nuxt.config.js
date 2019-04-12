@@ -4,7 +4,6 @@ module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
   rootDir: './',
-  dev: (process.env.NODE_ENV !== 'production'),
   /*
   ** Router config
   */

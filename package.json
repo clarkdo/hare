@@ -17,7 +17,7 @@
     "lint:fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "build": "yarn build:client && yarn build:server",
     "build:client": "nuxt build",
-    "build:server": "rimraf dist/server && cpx '{nuxt.config.js,server/**}' dist",
+    "build:server": "rimraf dist/server && cpx \"{nuxt.config.js,server/**}\" dist",
     "start": "cross-env NODE_ENV=production node dist/server/app.js",
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
