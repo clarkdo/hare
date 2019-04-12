@@ -92,7 +92,7 @@
     "nodemon": "^1.17.3",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
-    "standard-version": "4.3.0"
+    "standard-version": "4.4.0"
   },
   "engines": {
     "node": ">=8.0.0",
