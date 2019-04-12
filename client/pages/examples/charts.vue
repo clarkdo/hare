@@ -7,7 +7,7 @@
             <span>Bar Chart</span>
           </div>
           <el-row>
-            <bar-demo :width="3" :height="2"></bar-demo>
+            <bar-demo :width="3" :height="2" />
           </el-row>
         </el-card>
       </el-col>
@@ -17,7 +17,7 @@
             <span>Bar Chart</span>
           </div>
           <el-row>
-            <line-demo :width="3" :height="2"></line-demo>
+            <line-demo :width="3" :height="2" />
           </el-row>
         </el-card>
       </el-col>
@@ -29,7 +29,7 @@
             <span>Doughnut Chart</span>
           </div>
           <el-row>
-            <doughnut-demo :width="3" :height="2"></doughnut-demo>
+            <doughnut-demo :width="3" :height="2" />
           </el-row>
         </el-card>
       </el-col>
@@ -39,7 +39,7 @@
             <span>Pie Chart</span>
           </div>
           <el-row>
-            <pie-demo :width="3" :height="2"></pie-demo>
+            <pie-demo :width="3" :height="2" />
           </el-row>
         </el-card>
       </el-col>
@@ -51,7 +51,7 @@
             <span>Reactive Chart</span>
           </div>
           <el-row>
-            <reactive-demo :width="3" :height="2"></reactive-demo>
+            <reactive-demo :width="3" :height="2" />
           </el-row>
         </el-card>
       </el-col>
@@ -61,7 +61,7 @@
             <span>Scatter Chart</span>
           </div>
           <el-row>
-            <scatter-demo :width="3" :height="2"></scatter-demo>
+            <scatter-demo :width="3" :height="2" />
           </el-row>
         </el-card>
       </el-col>
@@ -109,4 +109,3 @@ export default class Charts {
   }
 }
 </style>
-

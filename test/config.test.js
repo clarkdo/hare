@@ -4,12 +4,12 @@ import createNuxt from './helpers/create-nuxt'
 let nuxt = null
 
 // Init nuxt.js and create server listening on localhost:4000
-test.before('Init Nuxt.js', async t => {
+test.before('Init Nuxt.js', async (t) => {
   nuxt = createNuxt()
   await nuxt.listen(3000, 'localhost')
 })
 
-test('Vendor', async t => {
+test('Vendor', (t) => {
   const vendor = nuxt.options.build.vendor
   t.true(!!~vendor.indexOf('axios'), 'axios added to config')
   t.true(!!~vendor.indexOf('element-ui'), 'element-ui added to config')
@@ -18,7 +18,7 @@ test('Vendor', async t => {
   t.true(!!~vendor.indexOf('vue-clipboards'), 'vue-clipboards added to config')
 })
 
-test('Plugin', async t => {
+test('Plugin', (t) => {
   const plugins = nuxt.options.plugins
   t.is(plugins[1], '@/plugins/i18n', 'i18n plugin added to config')
   t.is(plugins[2], '@/plugins/element-ui', 'element-ui plugin added to config')
@@ -26,14 +26,14 @@ test('Plugin', async t => {
   t.is(plugins[4].src, '@/plugins/error-handler', 'error handler plugin added to config')
 })
 
-test('Modules', async t => {
+test('Modules', (t) => {
   const modules = nuxt.options.modules
   t.is(modules[0], '@nuxtjs/webpackmonitor', 'WebPack Monitor Nuxt Module')
   t.is(modules[1], '@nuxtjs/axios', 'Axios Nuxt Module')
 })
 
-test('Middleware', async t => {
-  const { html, redirected } = await nuxt.renderRoute('/', {req: {headers: {'accept-language': 'zh'}}})
+test('Middleware', async (t) => {
+  const { html, redirected } = await nuxt.renderRoute('/', { req: { headers: { 'accept-language': 'zh' } } })
   t.true(html.includes('<div id="__nuxt"></div>'), 'auth plugin works 1')
   t.true(!html.includes('前端项目模板'), 'auth plugin works 2')
   t.true(redirected.path === '/login', 'auth plugin works 3')
@@ -41,6 +41,6 @@ test('Middleware', async t => {
 })
 
 // Close server and ask nuxt to stop listening to file changes
-test.after('Closing server and nuxt.js', async t => {
+test.after('Closing server and nuxt.js', async (t) => {
   await nuxt.close()
 })

@@ -3,37 +3,38 @@
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
         <div slot="header">
-          <span>{{$t('nav.list')}}</span>
+          <span>{{ $t('nav.list') }}</span>
         </div>
-        <el-table ref="tb" :data="activities" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-          <el-table-column type="selection" width="55">
-          </el-table-column>
-          <el-table-column prop="account" :label="$t('activity.account')" width="120" sortable>
-          </el-table-column>
+        <el-table
+          ref="tb"
+          :data="activities"
+          border
+          tooltip-effect="dark"
+          style="width: 100%"
+          @selection-change="handleSelectionChange"
+        >
+          <el-table-column type="selection" width="55" />
+          <el-table-column prop="account" :label="$t('activity.account')" width="120" sortable />
           <el-table-column :label="$t('activity.date')" width="120" sortable>
-            <template slot-scope="scope">{{ scope.row.date }}</template>
+            <template slot-scope="scope">
+              {{ scope.row.date }}
+            </template>
           </el-table-column>
-          <el-table-column prop="type" :label="$t('activity.type')" width="120" sortable>
-          </el-table-column>
-          <el-table-column prop="region" :label="$t('activity.area')" width="120">
-          </el-table-column>
-          <el-table-column prop="priority" :label="$t('activity.priority')" width="120">
-          </el-table-column>
-          <el-table-column prop="organizer" :label="$t('activity.organizer')" width="120">
-          </el-table-column>
-          <el-table-column prop="desc" :label="$t('activity.desc')" show-overflow-tooltip>
-          </el-table-column>
+          <el-table-column prop="type" :label="$t('activity.type')" width="120" sortable />
+          <el-table-column prop="region" :label="$t('activity.area')" width="120" />
+          <el-table-column prop="priority" :label="$t('activity.priority')" width="120" />
+          <el-table-column prop="organizer" :label="$t('activity.organizer')" width="120" />
+          <el-table-column prop="desc" :label="$t('activity.desc')" show-overflow-tooltip />
         </el-table>
       </el-card>
     </el-row>
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
         <div slot="header">
-          <span>{{$t('nav.list')}}</span>
+          <span>{{ $t('nav.list') }}</span>
         </div>
         <el-table :data="activities" border tooltip-effect="dark">
-          <el-table-column type="selection" width="55">
-          </el-table-column>
+          <el-table-column type="selection" width="55" />
           <el-table-column type="expand">
             <template slot-scope="props">
               <el-form label-position="left" inline class="demo-table-expand">
@@ -52,21 +53,26 @@
               </el-form>
             </template>
           </el-table-column>
-          <el-table-column prop="account" :label="$t('activity.account')">
-          </el-table-column>
+          <el-table-column prop="account" :label="$t('activity.account')" />
           <el-table-column :label="$t('activity.date')">
-            <template slot-scope="scope">{{ scope.row.date }}</template>
+            <template slot-scope="scope">
+              {{ scope.row.date }}
+            </template>
           </el-table-column>
-           <el-table-column
+          <el-table-column
             prop="type"
             :label="$t('activity.type')"
             :filters="[{ text: 'Price', value: 'price' }, { text: 'Rights', value: 'rights' }]"
             :filter-method="filterTag"
-            filter-placement="bottom-end">
+            filter-placement="bottom-end"
+          >
             <template slot-scope="tag">
               <el-tag
                 :type="tag.row.type === 'price' ? 'primary' : 'success'"
-                close-transition>{{tag.row.type}}</el-tag>
+                close-transition
+              >
+                {{ tag.row.type }}
+              </el-tag>
             </template>
           </el-table-column>
         </el-table>
@@ -82,7 +88,7 @@ import { Component } from 'nuxt-property-decorator'
 
 @Component({
   methods: {
-    handleSelectionChange (val) {
+    handleSelectionChange(val) {
       this.selections = val
     }
   }
@@ -90,13 +96,13 @@ import { Component } from 'nuxt-property-decorator'
 export default class Example extends Vue {
   selections = []
 
-  async asyncData () {
+  async asyncData() {
     // TODO figure out how mapMutations work with Vuex class.
-    const {data: activities} = await axios.get('/hpi/examples/activities')
-    return {activities}
+    const { data: activities } = await axios.get('/hpi/examples/activities')
+    return { activities }
   }
 
-  filterTag (value, row) {
+  filterTag(value, row) {
     return row.type === value
   }
 }

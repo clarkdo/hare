@@ -3,9 +3,9 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 const koaRouter = require('koa-router')
 const svgCaptcha = require('svg-captcha')
+const { get } = require('lodash')
 const translatorFactory = require('../utils/translator')
 const consts = require('../utils/consts')
-const { get } = require('lodash')
 const {
   decode,
   createRequest,
@@ -76,7 +76,6 @@ router.post('/auth/login', async (ctx) => {
     ctx.throw(401, translator.translate('auth.login.captcha.invalid'))
   }
   try {
-    console.log(11111)
     // Assuming your API only wants base64 encoded version of the password
     const password = Buffer.from(user.password).toString('base64')
     const payload = {
@@ -84,7 +83,7 @@ router.post('/auth/login', async (ctx) => {
       password,
       grant_type: 'password'
     }
-    let headers = {
+    const headers = {
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
     // Maybe your get token endpoint needs other headers?
@@ -144,7 +143,7 @@ router.post('/auth/login', async (ctx) => {
  * [1]: https://dev.to/rdegges/please-stop-using-local-storage-1i04
  */
 router.get('/auth/whois', async (ctx) => {
-  let body = {
+  const body = {
     authenticated: false
   }
   const jwt = ctx.session.jwt || null
@@ -198,9 +197,9 @@ router.get('/auth/whois', async (ctx) => {
  * Only moment you’d want to expose token is if you have SysAdmins
  * who wants to poke APIs manually and needs their JWT tokens.
  */
-router.get('/auth/token', async (ctx) => {
+router.get('/auth/token', (ctx) => {
   ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
-  let body = {}
+  const body = {}
   try {
     const token = ctx.session.jwt
     body.jwt = token
@@ -213,7 +212,7 @@ router.get('/auth/token', async (ctx) => {
 })
 
 router.get('/auth/validate', async (ctx) => {
-  let body = {}
+  const body = {}
   let userData = {}
   let authenticated = false
   const jwt = ctx.session.jwt || null
@@ -232,7 +231,7 @@ router.get('/auth/validate', async (ctx) => {
   ctx.body = body
 })
 
-router.post('/auth/logout', async (ctx) => {
+router.post('/auth/logout', (ctx) => {
   ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
   ctx.session.jwt = null
   ctx.status = 200
@@ -242,7 +241,7 @@ router.get('/auth/captcha', async (ctx, next) => {
   await next()
   const width = ctx.request.query.width || 150
   const height = ctx.request.query.height || 36
-  let captcha = svgCaptcha.create({
+  const captcha = svgCaptcha.create({
     width,
     height,
     size: 4,
@@ -264,7 +263,8 @@ if (MOCK_ENDPOINT_BACKEND) {
  * When you'll use your own backend, URLs below WILL NOT have /hpi as prefix.
  */
 
-  router.post(ENDPOINT_BACKEND_AUTH, async (ctx) => {
+  router.post(ENDPOINT_BACKEND_AUTH, (ctx) => {
+    // eslint-disable-next-line no-console
     console.log(`Mocking a response for ${ctx.url}`)
     /**
      * The following JWT access_token contains;
@@ -301,7 +301,8 @@ if (MOCK_ENDPOINT_BACKEND) {
       'uwywziNetHyfSdiqcJt6XUGy4V_WYHR4K6l7OP2VB9I'
     }
   })
-  router.get(ENDPOINT_BACKEND_VALIDATE, async (ctx) => {
+  router.get(ENDPOINT_BACKEND_VALIDATE, (ctx) => {
+    // eslint-disable-next-line no-console
     console.log(`Mocking a response for ${ctx.url}`)
     let fakeIsValid = false
     // Just mimicking we only accept as a valid session the hardcoded JWT token

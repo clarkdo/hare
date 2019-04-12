@@ -11,10 +11,10 @@
  * messages in only one locale.
  */
 class Translator {
-  constructor (translated) {
+  constructor(translated) {
     this.translated = translated
   }
-  translate (key) {
+  translate(key) {
     const hasTranslation = this.translated.hasOwnProperty(key)
     const pick = hasTranslation ? this.translated[key] : `${key}**`
     return pick
@@ -22,7 +22,7 @@ class Translator {
 }
 
 module.exports = (locale) => {
-  let fallbackLocale = 'en'
+  const fallbackLocale = 'en'
   let messages = {}
   try {
     // This might be reworked differently. WebPack.

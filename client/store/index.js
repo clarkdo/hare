@@ -4,7 +4,7 @@ import axios from 'axios'
 export const strict = true
 
 export const state = () => ({
-  authUser: {authenticated: false},
+  authUser: { authenticated: false },
   locale: null,
   locales: ['en', 'fr', 'zh'],
   isMenuHidden: false,
@@ -13,11 +13,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_USER (
+  SET_USER(
     state,
     authUser = null
   ) {
-    let values = {authenticated: false}
+    let values = { authenticated: false }
     if (authUser !== null) {
       values = Object.assign(values, authUser)
     }
@@ -28,7 +28,7 @@ export const mutations = {
       Vue.set(state.authUser, key, value)
     }
   },
-  SET_LANG (
+  SET_LANG(
     state,
     locale
   ) {
@@ -43,7 +43,7 @@ export const mutations = {
 }
 
 export const getters = {
-  authenticated (state) {
+  authenticated(state) {
     const hasAuthenticated = Reflect.has(state.authUser, 'authenticated')
     let authenticated = false
     if (hasAuthenticated) {
@@ -51,23 +51,23 @@ export const getters = {
     }
     return authenticated
   },
-  userTimeZone (state) {
+  userTimeZone(state) {
     const hasTimeZone = Reflect.has(state.authUser, 'tz')
     const timeZone = 'America/New_York' // Default, in case of
     return hasTimeZone ? state.authUser.tz : timeZone
   },
-  userLocale (state) {
+  userLocale(state) {
     const hasLocale = Reflect.has(state.authUser, 'locale')
     const locale = 'en-US' // Default, in case of
     return hasLocale ? state.authUser.locale : locale
   },
-  authUser (state) {
+  authUser(state) {
     return state.authUser
   },
-  isMenuHidden (state) {
+  isMenuHidden(state) {
     return state.isMenuHidden
   },
-  displayName (state) {
+  displayName(state) {
     const displayName = `Anonymous` // i18n? TODO
     const hasDisplayNameProperty = Reflect.has(state.authUser, 'displayName')
     return hasDisplayNameProperty ? state.authUser.displayName : displayName
@@ -86,15 +86,15 @@ export const actions = {
    * https://github.com/clarkdo/hare/blob/dev/client/store/index.js
    * https://github.com/nuxt/docs/blob/master/en/guide/vuex-store.md
    */
-  nuxtServerInit ({ commit }, { req }) {},
-  async hydrateAuthUser ({
+  nuxtServerInit({ commit }, { req }) {},
+  async hydrateAuthUser({
     commit
   }) {
     const { data } = await axios.get('/hpi/auth/whois')
     const user = Object.assign({}, data)
     commit('SET_USER', user)
   },
-  async login ({
+  async login({
     dispatch
   }, {
     userName,
@@ -116,12 +116,12 @@ export const actions = {
       throw new Error(message)
     }
   },
-  async logout ({ commit }, callback) {
+  async logout({ commit }, callback) {
     await axios.post('/hpi/auth/logout')
     commit('SET_USER')
     callback()
   },
-  toggleMenu ({ commit }) {
+  toggleMenu({ commit }) {
     commit('TOGGLE_MENU_HIDDEN')
   }
 }

@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+
 module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
@@ -65,7 +66,7 @@ module.exports = {
   css: [
     'normalize.css/normalize.css',
     'element-ui/lib/theme-chalk/index.css',
-    {src: '@/assets/styles/main.scss', lang: 'scss'}
+    { src: '@/assets/styles/main.scss', lang: 'scss' }
   ],
   /*
   ** Add element-ui in our app, see plugins/element-ui.js file
@@ -73,8 +74,8 @@ module.exports = {
   plugins: [
     '@/plugins/i18n',
     '@/plugins/element-ui',
-    {src: '@/plugins/clipboard', ssr: false},
-    {src: '@/plugins/error-handler', ssr: false}
+    { src: '@/plugins/clipboard', ssr: false },
+    { src: '@/plugins/error-handler', ssr: false }
   ],
   modules: [
     '@nuxtjs/webpackmonitor',

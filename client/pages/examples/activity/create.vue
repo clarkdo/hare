@@ -3,9 +3,9 @@
     <el-row type="flex" justify="center" :gutter="0">
       <el-card style="width:90%">
         <div slot="header">
-          <span>{{$t(title)}}</span>
+          <span>{{ $t(title) }}</span>
         </div>
-        <new-activity :form-data="activity" ref="popActivity"></new-activity>
+        <new-activity ref="popActivity" :form-data="activity" />
       </el-card>
     </el-row>
   </div>

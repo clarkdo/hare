@@ -2,7 +2,9 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-main">
-        <p class="footer-main-title">Hare 2.0</p>
+        <p class="footer-main-title">
+          Hare 2.0
+        </p>
         <a href="//github.com/clarkdo/hare/issues" class="footer-main-link" target="_blank">Feedback</a>
         <a href="//github.com/clarkdo/hare/graphs/contributors" class="footer-main-link" target="_blank">Contributors</a>
       </div>
@@ -12,12 +14,15 @@
           placement="top"
           width="120"
           popper-class="footer-popover"
-          trigger="hover">
-          <div class="footer-popover-title">CFC</div>
+          trigger="hover"
+        >
+          <div class="footer-popover-title">
+            CFC
+          </div>
         </el-popover>
-        <i class="icon-wechat element-icons" v-popover:wechat></i>
+        <i v-popover:wechat class="icon-wechat element-icons" />
         <a href="//github.com/clarkdo/hare" target="_blank">
-          <i class="icon-github element-icons"></i>
+          <i class="icon-github element-icons" />
         </a>
       </div>
     </div>

@@ -4,10 +4,10 @@
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
 export default function (func, wait, immediate) {
-  var timeout, args, context, timestamp, result
+  let timeout, args, context, timestamp, result
 
-  var later = function () {
-    var last = new Date().getTime() - timestamp
+  const later = function () {
+    const last = new Date().getTime() - timestamp
 
     if (last < wait && last >= 0) {
       timeout = setTimeout(later, wait - last)
@@ -24,7 +24,7 @@ export default function (func, wait, immediate) {
     context = this
     args = arguments
     timestamp = new Date().getTime()
-    var callNow = immediate && !timeout
+    const callNow = immediate && !timeout
     if (!timeout) timeout = setTimeout(later, wait)
     if (callNow) {
       result = func.apply(context, args)

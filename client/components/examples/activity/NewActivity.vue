@@ -1,18 +1,17 @@
 <template>
   <div class="new-activity">
-    <el-form :model="formData" :rules="formRules" ref="newActivity" label-width="100px" class="activity-form">
+    <el-form ref="newActivity" :model="formData" :rules="formRules" label-width="100px" class="activity-form">
       <el-row type="flex" justify="flex-start">
         <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.account')" prop="account">
-            <el-input v-model="formData.account"></el-input>
+            <el-input v-model="formData.account" />
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.area')" prop="region">
             <el-select v-model="formData.region" filterable allow-create :placeholder="$t('activity.holder.area')">
               <el-option
-                v-for="item in cities"
-                v-if="!item.disabled"
+                v-for="item in activeCities"
                 :key="item.label"
                 :label="$t(item.label)"
                 :value="item.value"
@@ -29,14 +28,14 @@
                 v-for="item in labels"
                 :key="item.label"
                 :label="$t(item.label)"
-                :value="item.value">
-              </el-option>
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="{span: 3, offset: 2}">
           <el-form-item :label="$t('activity.instDist')" prop="delivery">
-            <el-switch active-text="" inactive-text="" v-model="formData.delivery"></el-switch>
+            <el-switch v-model="formData.delivery" active-text="" inactive-text="" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -44,16 +43,16 @@
         <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.type')" prop="type">
             <el-checkbox-group v-model="formData.type">
-              <el-checkbox :label="$t('activity.price')"></el-checkbox>
-              <el-checkbox :label="$t('activity.rights')"></el-checkbox>
+              <el-checkbox :label="$t('activity.price')" />
+              <el-checkbox :label="$t('activity.rights')" />
             </el-checkbox-group>
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.priority')" prop="priority">
             <el-radio-group v-model="formData.priority">
-              <el-radio :label="$t('activity.medium')"></el-radio>
-              <el-radio :label="$t('activity.high')"></el-radio>
+              <el-radio :label="$t('activity.medium')" />
+              <el-radio :label="$t('activity.high')" />
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -61,14 +60,17 @@
       <el-row type="flex" justify="flex-start">
         <el-col :xs="24" :sm="10">
           <el-form-item :label="$t('activity.rate')" prop="rate">
-            <el-rate v-model="formData.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
+            <el-rate v-model="formData.rate" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" />
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="{span: 10, offset: 2}">
           <el-form-item :label="$t('activity.organizer')" prop="organizer">
-            <el-cascader :options="organizers" v-model="formData.organizer"
-              :placeholder="$t('example.selPh')" change-on-select>
-            </el-cascader>
+            <el-cascader
+              v-model="formData.organizer"
+              :options="organizers"
+              :placeholder="$t('example.selPh')"
+              change-on-select
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -77,13 +79,15 @@
           <el-form-item :label="$t('activity.date')" required>
             <el-col :span="11">
               <el-form-item prop="date1">
-                <el-date-picker :placeholder="$t('activity.holder.date')" v-model="formData.date1" style="width: 100%;"></el-date-picker>
+                <el-date-picker v-model="formData.date1" :placeholder="$t('activity.holder.date')" style="width: 100%;" />
               </el-form-item>
             </el-col>
-            <el-col class="line" :span="1" :offset="1">-</el-col>
+            <el-col class="line" :span="1" :offset="1">
+              -
+            </el-col>
             <el-col :span="11">
               <el-form-item prop="date2">
-                <el-time-picker :placeholder="$t('activity.holder.time')" v-model="formData.date2" style="width: 100%;"></el-time-picker>
+                <el-time-picker v-model="formData.date2" :placeholder="$t('activity.holder.time')" style="width: 100%;" />
               </el-form-item>
             </el-col>
           </el-form-item>
@@ -92,13 +96,17 @@
       <el-row type="flex" justify="flex-start">
         <el-col :xs="24" :sm="22">
           <el-form-item :label="$t('activity.desc')" prop="desc">
-            <el-input type="textarea" v-model="formData.desc"></el-input>
+            <el-input v-model="formData.desc" type="textarea" />
           </el-form-item>
         </el-col>
       </el-row>
       <el-row type="flex" justify="center">
-        <el-button type="primary" @click="submit('newActivity')">{{$t('activity.create')}}</el-button>
-        <el-button @click="reset('newActivity')">{{$t('activity.reset')}}</el-button>
+        <el-button type="primary" @click="submit('newActivity')">
+          {{ $t('activity.create') }}
+        </el-button>
+        <el-button @click="reset('newActivity')">
+          {{ $t('activity.reset') }}
+        </el-button>
       </el-row>
     </el-form>
   </div>
@@ -114,7 +122,7 @@ const ExampleGetter = namespace('examples/index', Getter)
   props: {
     formData: {
       type: Object,
-      default () {
+      default() {
         return {
           account: '',
           region: 'activity.city.ly',
@@ -131,7 +139,7 @@ const ExampleGetter = namespace('examples/index', Getter)
       }
     }
   },
-  data () {
+  data() {
     return {
       formRules: {
         account: [
@@ -168,14 +176,19 @@ export default class NewActivity extends Vue {
   @ExampleGetter organizers
   @ExampleGetter cities
 
-  submit (formName) {
+  get activeCities() {
+    return this.cities.filter(city => !city.disable)
+  }
+
+  submit(formName) {
     /**
      * Example of how we can see each field value
      */
-    let formData = {}
+    const formData = {}
     for (const v of Object.keys(this.formData)) {
       formData[v] = this.formData[v]
     }
+    // eslint-disable-next-line no-console
     console.log('NewActivity submit formData', formData)
 
     this.$refs[formName].validate((valid) => {
@@ -192,7 +205,7 @@ export default class NewActivity extends Vue {
       }
     })
   }
-  reset (formName) {
+  reset(formName) {
     this.$refs[formName].resetFields()
   }
 }

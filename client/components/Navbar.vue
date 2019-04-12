@@ -1,35 +1,41 @@
 <template>
   <div class="navbar">
-    <el-menu class="el-menu-demo" :default-active="$route.path"
-      background-color="#324157" text-color="#bfcbd9">
+    <el-menu
+      class="el-menu-demo"
+      :default-active="$route.path"
+      background-color="#324157"
+      text-color="#bfcbd9"
+    >
       <header>
-          <el-row>
-            <el-col :span="20">
-              <img src="~/assets/img/logo.svg" alt="Element">
-            </el-col>
-            <el-col :span="4">
-              <div class="nav-icon open" :class="{hide: isMenuHidden}" @click="toggleMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </el-col>
-          </el-row>
+        <el-row>
+          <el-col :span="20">
+            <img src="~/assets/img/logo.svg" alt="Element">
+          </el-col>
+          <el-col :span="4">
+            <div class="nav-icon open" :class="{hide: isMenuHidden}" @click="toggleMenu">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </el-col>
+        </el-row>
       </header>
       <div v-for="menu in menus" :key="menu.id">
         <el-submenu v-if="menu.children && menu.children.length" :index="menu.url || menu.name">
-          <template slot="title"><i v-if="menu.icon" :class="menu.icon"></i>{{menu.name}}</template>
+          <template slot="title">
+            <i v-if="menu.icon" :class="menu.icon" />{{ menu.name }}
+          </template>
           <nuxt-link v-for="subMenu in menu.children" :key="subMenu.id" :to="subMenu.url" exact>
             <el-menu-item :index="subMenu.url || subMenu.name">
-              <i v-if="subMenu.icon" :class="subMenu.icon"></i>{{subMenu.name}}
+              <i v-if="subMenu.icon" :class="subMenu.icon" />{{ subMenu.name }}
             </el-menu-item>
           </nuxt-link>
         </el-submenu>
         <nuxt-link v-else :to="menu.url" exact>
           <el-menu-item :index="menu.url || menu.name">
-            <i v-if="menu.icon" :class="menu.icon"></i>{{menu.name}}
-            </el-menu-item>
+            <i v-if="menu.icon" :class="menu.icon" />{{ menu.name }}
+          </el-menu-item>
         </nuxt-link>
       </div>
     </el-menu>
@@ -53,14 +59,14 @@ export default class Navbar extends Vue {
   @Getter isMenuHidden
   @MenuGetter menus
 
-  async beforeMount () {
-    let {data: menus} = await axios.get('/hpi/ui/menu')
+  async beforeMount() {
+    const { data: menus } = await axios.get('/hpi/ui/menu')
     if (Array.isArray(menus) && menus.length) {
       this.$store.dispatch('menu/addAll', this.translateMenus(menus))
     }
   }
 
-  translateMenus (menus) {
+  translateMenus(menus) {
     return menus.map((menu) => {
       const subMenus = menu.children
       if (Array.isArray(subMenus) && subMenus.length) {

@@ -9,14 +9,14 @@ const body = require('koa-body') // body parser
 const compose = require('koa-compose') // middleware composer
 const compress = require('koa-compress') // HTTP compression
 const session = require('koa-session') // session for flash messages
-const api = require('./api')
-const consts = require('./utils/consts')
-const config = require('../nuxt.config.js')
 const chalk = require('chalk')
 const proxy = require('koa-proxies')
+const config = require('../nuxt.config.js')
+const api = require('./api')
+const consts = require('./utils/consts')
 
 // Start nuxt.js
-async function start () {
+async function start() {
   const isWin = /^win/.test(process.platform)
   const host = consts.HOST
   const port = consts.PORT
@@ -61,7 +61,7 @@ async function start () {
   // rights for public/protected elements, and also for different functionality between api & web
   // pages (content negotiation, error handling, handlebars templating, etc).
 
-  app.use(async function subApp (ctx, next) {
+  app.use(async function subApp(ctx, next) {
     // use subdomain to determine which app to serve: www. as default, or admin. or api
     ctx.state.subapp = ctx.url.split('/')[1] // subdomain = part after first '/' of hostname
     // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
@@ -73,7 +73,8 @@ async function start () {
   if (config.dev) {
     const devConfigs = config.development
     if (devConfigs && devConfigs.proxies) {
-      for (let proxyItem of devConfigs.proxies) {
+      for (const proxyItem of devConfigs.proxies) {
+        // eslint-disable-next-line no-console
         console.log(
           `Active Proxy: path[${proxyItem.path}] target[${proxyItem.target}]`
         )
@@ -102,7 +103,7 @@ async function start () {
   app.use(session(SESSION_CONFIG, app))
 
   // return response time in X-Response-Time header
-  app.use(async function responseTime (ctx, next) {
+  app.use(async function responseTime(ctx, next) {
     const t1 = Date.now()
     await next()
     const t2 = Date.now()
@@ -118,12 +119,14 @@ async function start () {
       const body = JSON.parse(JSON.stringify(ctx.body || null))
       const responseHeaders = JSON.parse(JSON.stringify(ctx.response.header))
       const requestHeaders = JSON.parse(JSON.stringify(ctx.request.header))
-      console.log(`Received for ${logRequestUrlResponse}`, {ctx: debugObj, body, responseHeaders, requestHeaders})
+      // eslint-disable-next-line no-console
+      console.log(`Received for ${logRequestUrlResponse}`, { ctx: debugObj, body, responseHeaders, requestHeaders })
     }
     const isHpi = /^\/hpi\//.test(ctx.request.url)
     const logHpi = false
     if (isHpi && logHpi && logHpiAuthLogin === false) {
       const headers = Object.assign({}, JSON.parse(JSON.stringify(ctx.request.header)))
+      // eslint-disable-next-line no-console
       console.log(`Request headers for ${ctx.url}`, headers)
     }
   })
@@ -132,7 +135,7 @@ async function start () {
   app.use(compress({}))
 
   // only search-index www subdomain
-  app.use(async function robots (ctx, next) {
+  app.use(async function robots(ctx, next) {
     await next()
     if (ctx.hostname.slice(0, 3) !== 'www') {
       ctx.response.set('X-Robots-Tag', 'noindex, nofollow')
@@ -148,7 +151,7 @@ async function start () {
   })
 
   // note no 'next' after composed subapp, this must be the last middleware
-  app.use(async function composeSubapp (ctx, next) {
+  app.use(async function composeSubapp(ctx, next) {
     switch (ctx.state.subapp) {
       case consts.API:
         await compose(api.middleware)(ctx)

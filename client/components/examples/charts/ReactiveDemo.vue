@@ -9,16 +9,16 @@ import { Bar, mixins } from 'vue-chartjs'
 })
 export default class ReactiveDemo extends Vue {
   chartData = ''
-  created () {
+  created() {
     this.fillData()
   }
-  mounted () {
+  mounted() {
     this.renderChart(this.chartData)
     setInterval(() => {
       this.fillData()
     }, 2000)
   }
-  fillData () {
+  fillData() {
     const labels = [
       `January${this.getRandomInt()}`, 'February', 'March',
       'April', 'May', `June${this.getRandomInt()}`,
@@ -40,9 +40,8 @@ export default class ReactiveDemo extends Vue {
       ]
     }
   }
-  getRandomInt () {
+  getRandomInt() {
     return Math.floor(Math.random() * (50 - 5 + 1)) + 5
   }
 }
 </script>
-

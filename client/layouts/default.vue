@@ -2,11 +2,11 @@
   <div class="app">
     <el-row class="main">
       <el-col :sm="4" :xs="24" :class="{hide: isMenuHidden, navCol: true}">
-        <navbar :class="{hide: isMenuHidden, navCol: true}"></navbar>
+        <navbar :class="{hide: isMenuHidden, navCol: true}" />
       </el-col>
       <el-col :sm="colSize" :xs="24" class="content">
-        <el-row><headbar></headbar></el-row>
-        <el-row><nuxt></nuxt></el-row>
+        <el-row><headbar /></el-row>
+        <el-row><nuxt /></el-row>
       </el-col>
     </el-row>
   </div>
@@ -23,7 +23,7 @@ export default {
     Headbar
   },
   computed: {
-    colSize () {
+    colSize() {
       return this.isMenuHidden ? 24 : 20
     },
     ...mapGetters(['isMenuHidden'])

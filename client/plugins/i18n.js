@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import Negotiator from 'negotiator'
-import consts from '../utils/consts'
 import { defaultsDeep } from 'lodash'
+import consts from '../utils/consts'
 
 Vue.use(VueI18n)
 

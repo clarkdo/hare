@@ -9,7 +9,7 @@ const menu = require('./routes-menu')
 const app = new Koa() // API app
 
 // content negotiation: api will respond with json, xml, or yaml
-app.use(async function contentNegotiation (ctx, next) {
+app.use(async function contentNegotiation(ctx, next) {
   await next()
 
   if (!ctx.body) return // no content to return
@@ -29,6 +29,7 @@ app.use(async function contentNegotiation (ctx, next) {
         ctx.body = xmlify(ctx.body, root)
         ctx.type = type // Only change type if xmlify did not throw
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(`Could not convert to XML, falling back to default`)
       }
       break
@@ -45,7 +46,7 @@ app.use(async function contentNegotiation (ctx, next) {
 })
 
 // handle thrown or uncaught exceptions anywhere down the line
-app.use(async function handleErrors (ctx, next) {
+app.use(async function handleErrors(ctx, next) {
   try {
     await next()
   } catch (e) {
@@ -65,6 +66,7 @@ app.use(async function handleErrors (ctx, next) {
         break
       default:
       case 500: // Internal Server Error (for uncaught or programming errors)
+        // eslint-disable-next-line no-console
         console.error(ctx.status, e.message)
         ctx.body = {
           root: 'error'

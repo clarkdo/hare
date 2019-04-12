@@ -61,7 +61,7 @@ if (SHOW_EXAMPLES) {
   ])
 }
 
-router.get('/ui/menu', async (ctx, next) => {
+router.get('/ui/menu', (ctx, next) => {
   ctx.assert(ctx.session.jwt, 401, 'Requires authentication')
 
   ctx.status = 200

@@ -1,16 +1,16 @@
-const axios = require('axios')
 const querystring = require('querystring')
-const consts = require('../utils/consts')
+const axios = require('axios')
 const jwtDecode = require('jwt-decode')
+const consts = require('../utils/consts')
 
-const decode = token => {
+const decode = (token) => {
   return token ? jwtDecode(token) : null
 }
 
 /**
  * Handle possibility where token endpoint, at exp returns seconds instead of µ seconds
  */
-const handleTokenExp = exp => {
+const handleTokenExp = (exp) => {
   let out = exp
 
   const milliseconds = new Date().getTime()
@@ -51,7 +51,7 @@ const createRequest = async (method, url, requestConfig) => {
     payload = null,
     ...restOfRequestConfig
   } = requestConfig
-  let requestConfigObj = {
+  const requestConfigObj = {
     timeout: consts.AXIOS_DEFAULT_TIMEOUT,
     baseURL: consts.LB_ADDR,
     method,

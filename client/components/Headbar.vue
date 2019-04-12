@@ -1,21 +1,21 @@
 <template>
   <div class="headbar">
-    <header class="header" ref="header">
+    <header ref="header" class="header">
       <el-row>
         <el-col :span="5">
           <div class="nav-icon" :class="{hide: !isMenuHidden}" @click="toggleMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
         </el-col>
         <el-col :offset="11" :span="3">
           <p v-if="!!displayName">
             <el-tooltip :content="displayName">
-              <img src="~/assets/img/avatar.svg" />
+              <img src="~/assets/img/avatar.svg">
             </el-tooltip>
-            <span> {{displayName}}</span>
+            <span> {{ displayName }}</span>
           </p>
         </el-col>
         <el-col :span="3">
@@ -23,13 +23,13 @@
             <el-tooltip :content="$t('head.pwd')">
               <img src="~/assets/img/pwd.svg"></img>
             </el-tooltip>
-            <span> {{$t("head.pwd")}}</span>
+            <span> {{ $t("head.pwd") }}</span>
           </p>
         </el-col>
         <el-col :span="2">
           <p @click="logout">
             <img src="~/assets/img/exit.svg"></img>
-            <span> {{$t("head.exit")}}</span>
+            <span> {{ $t("head.exit") }}</span>
           </p>
         </el-col>
       </el-row>
@@ -51,7 +51,7 @@ export default class Headbar extends Vue {
   @Getter isMenuHidden
   @Getter authUser
   @Getter displayName
-  async logout () {
+  async logout() {
     await this.$store.dispatch('logout', async () => {
       await this.$router.push('/login')
     })

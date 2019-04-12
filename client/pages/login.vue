@@ -4,28 +4,32 @@
     <el-row class="login-row" type="flex" justify="center">
       <el-col :xs="{span: 14, offset: 5}" :sm="{span: 10, offset: 7}" :lg="{span: 6, offset: 9}">
         <el-card>
-          <el-form :model="user" ref="user" @keyup.enter.native='!logging && login()'>
+          <el-form ref="user" :model="user" @keyup.enter.native="!logging && login()">
             <el-form-item prop="userName" :rules="[{ required: true, message: $t('login.userRequired')}]">
               <el-col :span="24">
-                <el-input v-model="user.userName" autofocus :placeholder="$t('login.userPlaceholder')"></el-input>
+                <el-input v-model="user.userName" autofocus :placeholder="$t('login.userPlaceholder')" />
               </el-col>
             </el-form-item>
             <el-form-item prop="password" :rules="[{ required: true, message: $t('login.pwdRequired')}]">
               <el-col :span="24">
-                <el-input v-model="user.password" type="password" :placeholder="$t('login.pwdPlaceholder')"></el-input>
+                <el-input v-model="user.password" type="password" :placeholder="$t('login.pwdPlaceholder')" />
               </el-col>
             </el-form-item>
             <el-form-item prop="captcha" :rules="[{ required: true, message: $t('login.captchaRequired')}]">
-                <el-col :span="12">
-                  <el-input v-model="user.captcha" :placeholder="$t('login.captchaPlaceholder')"></el-input>
-                </el-col>
-                <el-col :offset="1" :span="11" ref="captcha">
-                  <div v-html="captchaSvg" @click='refreshCaptcha' class="captcha"></div>
-                </el-col>
+              <el-col :span="12">
+                <el-input v-model="user.captcha" :placeholder="$t('login.captchaPlaceholder')" />
+              </el-col>
+              <el-col ref="captcha" :offset="1" :span="11">
+                <div class="captcha" @click="refreshCaptcha">
+                  {{ captchaSvg }}
+                </div>
+              </el-col>
             </el-form-item>
             <el-row>
               <el-col :span="24">
-                <el-button type="primary" class="login-btn" :loading="logging" @click="login">{{$t('login.login')}}</el-button>
+                <el-button type="primary" class="login-btn" :loading="logging" @click="login">
+                  {{ $t('login.login') }}
+                </el-button>
               </el-col>
             </el-row>
             <!--<el-row>
@@ -60,13 +64,13 @@ export default class Login extends Vue {
   captchaSvg = ''
   // keepPwd = false
   logging = false
-  layout () {
+  layout() {
     return 'empty'
   }
-  mounted () {
+  mounted() {
     this.getCaptcha()
   }
-  async login () {
+  async login() {
     const goBackTo = this.$route.query.page || '/'
     this.logging = true
     const valid = this.$refs.user.validate()
@@ -84,17 +88,17 @@ export default class Login extends Vue {
     }
     this.logging = false
   }
-  redirect (goTo) {
+  redirect(goTo) {
     this.$router.push(goTo)
   }
-  getCaptcha () {
+  getCaptcha() {
     const params = {}
     if (this.$refs.captcha) {
       params.width = this.$refs.captcha.$el.clientWidth || 150
       params.height = this.$refs.captcha.$el.clientHeight || 36
     }
     this.captchaSvg = this.$axios.get('/hpi/auth/captcha', { params })
-      .then(response => {
+      .then((response) => {
         // #WatchHowDoWe
         // Just passing through :|
         // TODO, improve this, figure out how @watch works
@@ -105,10 +109,10 @@ export default class Login extends Vue {
         const data = response.data
         return data
       })
-      .then(captcha => {
+      .then((captcha) => {
         this.captchaSvg = captcha
       })
-      .catch(error => {
+      .catch((error) => {
         const errorMessage = error.toString()
         this.captchaSvg = `<small style="line-height:1em;display:block;">${errorMessage}</small>`
       })

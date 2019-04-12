@@ -7,16 +7,16 @@
     >
       <el-card style="width:90%">
         <div slot="header">
-          <span>{{title}}</span>
+          <span>{{ title }}</span>
         </div>
         <el-row type="flex">
           <el-col>
             <el-form label-width="120px">
               <el-form-item label="Token">
                 <el-input
+                  v-model="token"
                   readonly
                   select
-                  v-model="token"
                 />
               </el-form-item>
               <el-form-item>
@@ -53,12 +53,12 @@ export default {
   data: () => ({
     ...data
   }),
-  async asyncData ({
+  async asyncData({
     $axios
   }) {
     const recv = await $axios.get('/hpi/auth/token')
       .then(recv => recv.data)
-    let token = recv.jwt || ``
+    const token = recv.jwt || ``
     // console.log('rest of data is', {...recv})
     return {
       token
