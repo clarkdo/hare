@@ -80,6 +80,9 @@ module.exports = {
   modules: [
     '@nuxtjs/axios'
   ],
+  axios: {
+    browserBaseURL: '/'
+  },
   // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
   development: {
     proxies: [
