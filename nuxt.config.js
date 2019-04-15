@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
@@ -36,6 +38,14 @@ module.exports = {
         ['@babel/plugin-proposal-decorators', { legacy: true }],
         ['@babel/plugin-proposal-class-properties', { loose: true }]
       ]
+    },
+    extend(config) {
+      config.plugins.push(
+        new webpack.IgnorePlugin({
+          resourceRegExp: /^\.\/locale$/,
+          contextRegExp: /moment$/
+        })
+      )
     }
   },
   /*

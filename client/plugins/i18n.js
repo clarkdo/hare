@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import Negotiator from 'negotiator'
-import { defaultsDeep } from 'lodash'
+import defaultsDeep from 'lodash/defaultsDeep'
 import consts from '../utils/consts'
 
 Vue.use(VueI18n)
 
 export default ({ app, store, req }) => {
   if (process.server) {
+    const Negotiator = require('negotiator')
     const negotiator = new Negotiator(req)
     const lang = negotiator.language(store.state.locales)
     store.commit('SET_LANG', lang || 'zh')
