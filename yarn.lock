@@ -829,9 +829,9 @@
     std-env "^2.2.1"
 
 "@nuxt/devalue@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-1.2.2.tgz#1d7993f9a6029df07f597a20246b16282302b156"
-  integrity sha512-T3S20YKOG0bzhvFRuGWqXLjqnwTczvRns5BgzHKRosijWHjl6tOpWCIr+2PFC5YQ3gTE4c5ZOLG5wOEcMLvn1w==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-1.2.3.tgz#0a814d7e10519ffcb1a2a9930add831f91783092"
+  integrity sha512-iA25xn409pguKhJwfNKQNCzWDZS44yhLcuVPpfy2CQ4xMqrJRpBxePTpkdCRxf7/m66M3rmCgkDZlvex4ygc6w==
   dependencies:
     consola "^2.5.6"
 
@@ -2393,10 +2393,10 @@ bytes@3.0.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
   integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
 
-bytes@^2.3.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.5.0.tgz#4c9423ea2d252c270c41b2bdefeff9bb6b62c06a"
-  integrity sha1-TJQj6i0lLCcMQbK97+/5u2tiwGo=
+bytes@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
+  integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
 
 cacache@^11.0.2:
   version "11.3.2"
@@ -4576,9 +4576,9 @@ extglob@^2.0.4:
     to-regex "^3.0.1"
 
 extract-css-chunks-webpack-plugin@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-4.3.0.tgz#01fb5ea225a78d5bd51e29b191dc1248ab320957"
-  integrity sha512-U2mCuqF9JKmyQydQQUy+tsCVCeuysgIZNZHd0eeTgIgq6gSqCnS9eaCpknyLVl3aRr8y2gkvRPzpuHS7AdvK0Q==
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-4.3.1.tgz#da947a26062f985aa47aafffce1d3f56f923f9f2"
+  integrity sha512-dSzNLh4UueMcJAA/L2CX+7l3ntpOnpvoDxD2gfHVsf8e1ZwOXI+r4QoFFNwCSblAR1MmK485VMqswpEtzW6wYQ==
   dependencies:
     loader-utils "^1.1.0"
     lodash "^4.17.11"
@@ -5577,10 +5577,15 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-ignore@^5.0.2, ignore@^5.0.6:
+ignore@^5.0.2:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.6.tgz#562dacc7ec27d672dde433aa683c543b24c17694"
   integrity sha512-/+hp3kUf/Csa32ktIaj0OlRqQxrgs30n62M90UBpNd9k+ENEch5S+hmbW3DtcJGz3sYFTh4F3A6fQ0q7KWsp4w==
+
+ignore@^5.0.6:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.0.tgz#a949efb645e5d67fd78e46f470bee6b8c5d862f9"
+  integrity sha512-dJEmMwloo0gq40chdtDmE4tMp67ZGwN7MFTgjNqWi2VHEi5Ya6JkuvPWasjcAIm7lg+2if8xxn5R199wspcplg==
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -6353,20 +6358,15 @@ koa-compose@^4.0.0, koa-compose@^4.1.0:
   resolved "https://registry.yarnpkg.com/koa-compose/-/koa-compose-4.1.0.tgz#507306b9371901db41121c812e923d0d67d3e877"
   integrity sha512-8ODW8TrDuMYvXRwra/Kh7/rJo9BtOfPc6qO8eAfC80CnCvSjSl0bkRM24X6/XBBEyj0v1nRUQ1LyOy3dbqOWXw==
 
-koa-compress@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/koa-compress/-/koa-compress-2.0.0.tgz#7b7eb2921b847746b5e122ba9f5cd8a671e8ea3a"
-  integrity sha1-e36ykhuEd0a14SK6n1zYpnHo6jo=
+koa-compress@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/koa-compress/-/koa-compress-3.0.0.tgz#3194059c215cbc24e59bbc84c2c7453a4c88564f"
+  integrity sha512-xol+LkNB1mozKJkB5Kj6nYXbJXhkLkZlXl9BsGBPjujVfZ8MsIXwU4GHRTT7TlSfUcl2DU3JtC+j6wOWcovfuQ==
   dependencies:
-    bytes "^2.3.0"
+    bytes "^3.0.0"
     compressible "^2.0.0"
     koa-is-json "^1.0.0"
     statuses "^1.0.0"
-
-koa-connect@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/koa-connect/-/koa-connect-2.0.1.tgz#2acad159c33862de1d73aa4562a48de13f137c0f"
-  integrity sha512-MNaiK5og8aj4I+tx8l+jSW24QX7aaQyZemV821VPY+AOJ8XUbrrAj9AzrpZKDQp5jTmylAZW2sXhTz2+SRqZog==
 
 koa-convert@^1.2.0:
   version "1.2.0"
@@ -7543,7 +7543,7 @@ nuxt-property-decorator@^2.1.3:
     vuex "^3.1.0"
     vuex-class "^0.3.1"
 
-nuxt@^2.6.0:
+nuxt@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.6.1.tgz#9542bd7cab42ba41b4260172eab79fb3b1d30d86"
   integrity sha512-YS1XFerFZAM2C9wTh9zxbKaMrNZDFLWk2WiK9MaBvSMoT24+SXpnRLH550/etwTUVJTp7orjiKGeMLN5d6UwHQ==
@@ -11029,9 +11029,9 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     source-map "~0.6.1"
 
 webpack@^4.29.6:
-  version "4.29.6"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.29.6.tgz#66bf0ec8beee4d469f8b598d3988ff9d8d90e955"
-  integrity sha512-MwBwpiE1BQpMDkbnUUaW6K8RFZjljJHArC6tWQJoFm0oQtfoSebtg4Y7/QHnJ/SddtjYLHaKGX64CFjG5rehJw==
+  version "4.30.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.30.0.tgz#aca76ef75630a22c49fcc235b39b4c57591d33a9"
+  integrity sha512-4hgvO2YbAFUhyTdlR4FNyt2+YaYBYHavyzjCMbZzgglo02rlKi/pcsEzwCuCpsn1ryzIl1cq/u8ArIKu8JBYMg==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"

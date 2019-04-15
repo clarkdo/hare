@@ -4,7 +4,6 @@ const bunyan = require('bunyan')
 const mkdirp = require('mkdirp')
 const koaBunyan = require('koa-bunyan')
 const koaLogger = require('koa-bunyan-logger')
-const koaConnect = require('koa-connect')
 const body = require('koa-body') // body parser
 const compose = require('koa-compose') // middleware composer
 const compress = require('koa-compress') // HTTP compression
@@ -56,18 +55,6 @@ async function start() {
   }))
   app.use(koaLogger(logger))
 
-  // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
-  // separate sub-apps can be used for modularisation of a large system, for different login/access
-  // rights for public/protected elements, and also for different functionality between api & web
-  // pages (content negotiation, error handling, handlebars templating, etc).
-
-  app.use(async function subApp(ctx, next) {
-    // use subdomain to determine which app to serve: www. as default, or admin. or api
-    ctx.state.subapp = ctx.url.split('/')[1] // subdomain = part after first '/' of hostname
-    // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
-    await next()
-  })
-
   const nuxt = new Nuxt(config)
   // Build only in dev mode
   if (config.dev) {
@@ -83,14 +70,30 @@ async function start() {
     }
     await new Builder(nuxt).build()
   }
-  const nuxtRender = koaConnect(nuxt.render)
+
+  // select sub-app (admin/api) according to host subdomain (could also be by analysing request.url);
+  // separate sub-apps can be used for modularisation of a large system, for different login/access
+  // rights for public/protected elements, and also for different functionality between api & web
+  // pages (content negotiation, error handling, handlebars templating, etc).
 
   app.use(async (ctx, next) => {
-    await next()
+    // use subdomain to determine which app to serve: www. as default, or admin. or api
+    // note: could use root part of path instead of sub-domains e.g. ctx.request.url.split('/')[1]
+    ctx.state.subapp = ctx.url.split('/')[1] // subdomain = part after first '/' of hostname
     if (ctx.state.subapp !== consts.API) {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       ctx.req.session = ctx.session
-      await nuxtRender(ctx)
+      await new Promise((resolve, reject) => {
+        nuxt.render(ctx.req, ctx.res, (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        })
+      })
+    } else {
+      await next()
     }
   })
 
