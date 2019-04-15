@@ -74,8 +74,8 @@ module.exports = {
   plugins: [
     '@/plugins/i18n',
     '@/plugins/element-ui',
-    { src: '@/plugins/clipboard', ssr: false },
-    { src: '@/plugins/error-handler', ssr: false }
+    '@/plugins/clipboard.client',
+    '@/plugins/error-handler.client'
   ],
   modules: [
     '@nuxtjs/axios'

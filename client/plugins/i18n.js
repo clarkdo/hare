@@ -3,9 +3,8 @@ import VueI18n from 'vue-i18n'
 import defaultsDeep from 'lodash/defaultsDeep'
 import consts from '../utils/consts'
 
-Vue.use(VueI18n)
-
 export default ({ app, store, req }) => {
+  Vue.use(VueI18n)
   if (process.server) {
     const Negotiator = require('negotiator')
     const negotiator = new Negotiator(req)
