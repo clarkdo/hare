@@ -4,14 +4,11 @@ const bunyan = require('bunyan')
 const mkdirp = require('mkdirp')
 const koaBunyan = require('koa-bunyan')
 const koaLogger = require('koa-bunyan-logger')
-const body = require('koa-body') // body parser
-const compose = require('koa-compose') // middleware composer
-const compress = require('koa-compress') // HTTP compression
-const session = require('koa-session') // session for flash messages
 const chalk = require('chalk')
 const proxy = require('koa-proxies')
 const config = require('../nuxt.config.js')
-const api = require('./api')
+const useMiddlewares = require('./middlewares')
+const useRoutes = require('./routes')
 const consts = require('./utils/consts')
 
 // Start nuxt.js
@@ -97,70 +94,8 @@ async function start() {
     }
   })
 
-  // Add valid and beforeSave hooks here to ensure session is valid #TODO
-  const SESSION_CONFIG = {
-    key: consts.SESS_KEY
-  }
-
-  // session for flash messages (uses signed session cookies, with no server storage)
-  app.use(session(SESSION_CONFIG, app))
-
-  // return response time in X-Response-Time header
-  app.use(async function responseTime(ctx, next) {
-    const t1 = Date.now()
-    await next()
-    const t2 = Date.now()
-    ctx.set('X-Response-Time', Math.ceil(t2 - t1) + 'ms')
-
-    /**
-     * In case you wanna see what you received from postRequest, or other endpoints.
-     */
-    const logRequestUrlResponse = '/hpi/auth/login'
-    const logHpiAuthLogin = ctx.request.url === logRequestUrlResponse
-    if (logHpiAuthLogin) {
-      const debugObj = JSON.parse(JSON.stringify(ctx))
-      const body = JSON.parse(JSON.stringify(ctx.body || null))
-      const responseHeaders = JSON.parse(JSON.stringify(ctx.response.header))
-      const requestHeaders = JSON.parse(JSON.stringify(ctx.request.header))
-      // eslint-disable-next-line no-console
-      console.log(`Received for ${logRequestUrlResponse}`, { ctx: debugObj, body, responseHeaders, requestHeaders })
-    }
-    const isHpi = /^\/hpi\//.test(ctx.request.url)
-    const logHpi = false
-    if (isHpi && logHpi && logHpiAuthLogin === false) {
-      const headers = Object.assign({}, JSON.parse(JSON.stringify(ctx.request.header)))
-      // eslint-disable-next-line no-console
-      console.log(`Request headers for ${ctx.url}`, headers)
-    }
-  })
-
-  // HTTP compression
-  app.use(compress({}))
-
-  // only search-index www subdomain
-  app.use(async function robots(ctx, next) {
-    await next()
-    if (ctx.hostname.slice(0, 3) !== 'www') {
-      ctx.response.set('X-Robots-Tag', 'noindex, nofollow')
-    }
-  })
-
-  // parse request body into ctx.request.body
-  app.use(body())
-
-  // sometimes useful to be able to track each request...
-  app.use(async function (ctx, next) {
-    await next()
-  })
-
-  // note no 'next' after composed subapp, this must be the last middleware
-  app.use(async function composeSubapp(ctx, next) {
-    switch (ctx.state.subapp) {
-      case consts.API:
-        await compose(api.middleware)(ctx)
-        break
-    }
-  })
+  useMiddlewares(app)
+  useRoutes(app)
 
   app.listen(port, host)
   const _host = host === '0.0.0.0' ? 'localhost' : host
