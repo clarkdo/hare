@@ -83,7 +83,6 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
 import { Component } from 'nuxt-property-decorator'
 
 @Component({
@@ -96,9 +95,9 @@ import { Component } from 'nuxt-property-decorator'
 export default class Example extends Vue {
   selections = []
 
-  async asyncData() {
+  async asyncData({ $axios }) {
     // TODO figure out how mapMutations work with Vuex class.
-    const { data: activities } = await axios.get('/hpi/examples/activities')
+    const { data: activities } = await $axios.get('/hpi/examples/activities')
     return { activities }
   }
 

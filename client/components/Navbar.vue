@@ -44,7 +44,6 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
 import { mapActions } from 'vuex'
 import { Component, Getter, namespace } from 'nuxt-property-decorator'
 
@@ -60,7 +59,7 @@ export default class Navbar extends Vue {
   @Menu.Getter menus
 
   async beforeMount() {
-    const { data: menus } = await axios.get('/hpi/ui/menu')
+    const { data: menus } = await this.$axios.get('/hpi/ui/menu')
     if (Array.isArray(menus) && menus.length) {
       this.$store.dispatch('menu/addAll', this.translateMenus(menus))
     }

@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import axios from 'axios'
 
 export const strict = true
 
@@ -90,7 +89,7 @@ export const actions = {
   async hydrateAuthUser({
     commit
   }) {
-    const { data } = await axios.get('/hpi/auth/whois')
+    const { data } = await this.$axios.get('/hpi/auth/whois')
     const user = Object.assign({}, data)
     commit('SET_USER', user)
   },
@@ -102,7 +101,7 @@ export const actions = {
     captcha
   }) {
     try {
-      await axios.post('/hpi/auth/login', {
+      await this.$axios.post('/hpi/auth/login', {
         userName,
         password,
         captcha
@@ -117,7 +116,7 @@ export const actions = {
     }
   },
   async logout({ commit }, callback) {
-    await axios.post('/hpi/auth/logout')
+    await this.$axios.post('/hpi/auth/logout')
     commit('SET_USER')
     callback()
   },
