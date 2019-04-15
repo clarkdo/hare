@@ -1,9 +1,8 @@
-const webpack = require('webpack')
-
 module.exports = {
   srcDir: 'client/',
   buildDir: 'dist/client/',
   rootDir: './',
+  modern: 'server',
   /*
   ** Router config
   */
@@ -37,11 +36,6 @@ module.exports = {
         ['@babel/plugin-proposal-decorators', { legacy: true }],
         ['@babel/plugin-proposal-class-properties', { loose: true }]
       ]
-    },
-    filenames: {
-      app: ({ isDev }) => isDev ? '[name].js' : 'hare.[chunkhash:12].js',
-      chunk: ({ isDev }) => isDev ? '[name].js' : 'hare.[chunkhash:12].js',
-      css: ({ isDev }) => isDev ? '[name].css' : 'hare.[contenthash:12].css'
     }
   },
   /*
