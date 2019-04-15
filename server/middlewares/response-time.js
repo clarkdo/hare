@@ -14,14 +14,12 @@ module.exports = async function responseTime(ctx, next) {
     const body = JSON.parse(JSON.stringify(ctx.body || null))
     const responseHeaders = JSON.parse(JSON.stringify(ctx.response.header))
     const requestHeaders = JSON.parse(JSON.stringify(ctx.request.header))
-    // eslint-disable-next-line no-console
-    console.log(`Received for ${logRequestUrlResponse}`, { ctx: debugObj, body, responseHeaders, requestHeaders })
+    ctx.log.info(`Received for ${logRequestUrlResponse}`, { ctx: debugObj, body, responseHeaders, requestHeaders })
   }
   const isHpi = /^\/hpi\//.test(ctx.request.url)
   const logHpi = false
   if (isHpi && logHpi && logHpiAuthLogin === false) {
     const headers = Object.assign({}, JSON.parse(JSON.stringify(ctx.request.header)))
-    // eslint-disable-next-line no-console
-    console.log(`Request headers for ${ctx.url}`, headers)
+    ctx.log.info(`Request headers for ${ctx.url}`, headers)
   }
 }

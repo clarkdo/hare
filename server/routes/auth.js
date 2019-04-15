@@ -264,8 +264,7 @@ if (MOCK_ENDPOINT_BACKEND) {
  */
 
   router.post(ENDPOINT_BACKEND_AUTH, (ctx) => {
-    // eslint-disable-next-line no-console
-    console.log(`Mocking a response for ${ctx.url}`)
+    ctx.log.debug(`Mocking a response for ${ctx.url}`)
     /**
      * The following JWT access_token contains;
      * See https://jwt.io/
@@ -302,8 +301,7 @@ if (MOCK_ENDPOINT_BACKEND) {
     }
   })
   router.get(ENDPOINT_BACKEND_VALIDATE, (ctx) => {
-    // eslint-disable-next-line no-console
-    console.log(`Mocking a response for ${ctx.url}`)
+    ctx.log.debug(`Mocking a response for ${ctx.url}`)
     let fakeIsValid = false
     // Just mimicking we only accept as a valid session the hardcoded JWT token
     // = require(ENDPOINT_BACKEND_AUTH above.
