@@ -23,7 +23,6 @@
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
     "precommit": "lint-staged",
-    "heroku-postbuild": "yarn build",
     "prepublishOnly": "yarn lint && yarn test && yarn build:server",
     "release": "standard-version"
   },
