@@ -9,27 +9,17 @@ test.before('Init Nuxt.js', async (t) => {
   await nuxt.listen(3000, 'localhost')
 })
 
-test('Vendor', (t) => {
-  const vendor = nuxt.options.build.vendor
-  t.true(!!~vendor.indexOf('axios'), 'axios added to config')
-  t.true(!!~vendor.indexOf('element-ui'), 'element-ui added to config')
-  t.true(!!~vendor.indexOf('vue-class-component'), 'vue-class-component added to config')
-  t.true(!!~vendor.indexOf('vuex-class'), 'vuex-class added to config')
-  t.true(!!~vendor.indexOf('vue-clipboards'), 'vue-clipboards added to config')
-})
-
 test('Plugin', (t) => {
   const plugins = nuxt.options.plugins
   t.is(plugins[1], '@/plugins/i18n', 'i18n plugin added to config')
   t.is(plugins[2], '@/plugins/element-ui', 'element-ui plugin added to config')
-  t.is(plugins[3].src, '@/plugins/clipboard', 'clipboard plugin added to config')
-  t.is(plugins[4].src, '@/plugins/error-handler', 'error handler plugin added to config')
+  t.is(plugins[3], '@/plugins/clipboard.client', 'clipboard plugin added to config')
+  t.is(plugins[4], '@/plugins/error-handler.client', 'error handler plugin added to config')
 })
 
 test('Modules', (t) => {
   const modules = nuxt.options.modules
-  t.is(modules[0], '@nuxtjs/webpackmonitor', 'WebPack Monitor Nuxt Module')
-  t.is(modules[1], '@nuxtjs/axios', 'Axios Nuxt Module')
+  t.is(modules[0], '@nuxtjs/axios', 'Axios Nuxt Module')
 })
 
 test('Middleware', async (t) => {
