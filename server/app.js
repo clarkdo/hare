@@ -1,9 +1,5 @@
 const Koa = require('koa')
 const { Nuxt, Builder } = require('nuxt')
-const bunyan = require('bunyan')
-const mkdirp = require('mkdirp')
-const koaBunyan = require('koa-bunyan')
-const koaLogger = require('koa-bunyan-logger')
 const chalk = require('chalk')
 const proxy = require('koa-proxies')
 const config = require('../nuxt.config.js')
@@ -13,44 +9,12 @@ const consts = require('./utils/consts')
 
 // Start nuxt.js
 async function start() {
-  const isWin = /^win/.test(process.platform)
   const host = consts.HOST
   const port = consts.PORT
   const app = new Koa()
 
   app.keys = ['hare-server']
   config.dev = !(app.env === 'production')
-
-  // logging
-  let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
-  mkdirp.sync(logDir)
-  logDir = logDir.replace(/(\\|\/)+$/, '') + (isWin ? '\\\\' : '/')
-
-  const access = {
-    type: 'rotating-file',
-    path: `${logDir}hare-access.log`,
-    level: config.dev ? 'debug' : 'info',
-    period: '1d',
-    count: 4
-  }
-  const error = {
-    type: 'rotating-file',
-    path: `${logDir}hare-error.log`,
-    level: 'error',
-    period: '1d',
-    count: 4
-  }
-  const logger = bunyan.createLogger({
-    name: 'hare',
-    streams: [
-      access,
-      error
-    ]
-  })
-  app.use(koaBunyan(logger, {
-    level: config.dev ? 'debug' : 'info'
-  }))
-  app.use(koaLogger(logger))
 
   const nuxt = new Nuxt(config)
   // Build only in dev mode
@@ -81,13 +45,7 @@ async function start() {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       ctx.req.session = ctx.session
       await new Promise((resolve, reject) => {
-        nuxt.render(ctx.req, ctx.res, (err) => {
-          if (err) {
-            reject(err)
-          } else {
-            resolve()
-          }
-        })
+        nuxt.render(ctx.req, ctx.res, err => err ? reject(err) : resolve())
       })
     } else {
       await next()

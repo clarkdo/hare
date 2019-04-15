@@ -21,8 +21,7 @@ module.exports = async function contentNegotiation(ctx, next) {
         ctx.body = xmlify(ctx.body, root)
         ctx.type = type // Only change type if xmlify did not throw
       } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log(`Could not convert to XML, falling back to default`)
+        ctx.log.info(`Could not convert to XML, falling back to default`)
       }
       break
     case 'yaml':

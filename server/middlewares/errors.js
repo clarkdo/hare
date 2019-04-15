@@ -18,8 +18,7 @@ module.exports = async function handleErrors(ctx, next) {
         break
       default:
       case 500: // Internal Server Error (for uncaught or programming errors)
-        // eslint-disable-next-line no-console
-        console.error(ctx.status, e.message)
+        ctx.log.error(ctx.status, e.message)
         ctx.body = {
           root: 'error'
           // ...e
