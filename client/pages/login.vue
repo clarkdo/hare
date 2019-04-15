@@ -20,9 +20,8 @@
                 <el-input v-model="user.captcha" :placeholder="$t('login.captchaPlaceholder')" />
               </el-col>
               <el-col ref="captcha" :offset="1" :span="11">
-                <div class="captcha" @click="refreshCaptcha">
-                  {{ captchaSvg }}
-                </div>
+                <!-- eslint-disable-next-line vue/no-v-html -->
+                <div class="captcha" @click="refreshCaptcha" v-html="captchaSvg" />
               </el-col>
             </el-form-item>
             <el-row>
