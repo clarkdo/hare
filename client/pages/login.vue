@@ -69,23 +69,24 @@ export default class Login extends Vue {
   mounted() {
     this.getCaptcha()
   }
-  async login() {
+  login() {
     const goBackTo = this.$route.query.page || '/'
     this.logging = true
-    const valid = this.$refs.user.validate()
-    try {
-      if (valid) {
-        await this.$store.dispatch('login', this.user)
-        this.authenticated = await this.$store.getters.authenticated
+    this.$refs.user.validate(async (valid) => {
+      try {
+        if (valid) {
+          await this.$store.dispatch('login', this.user)
+          this.authenticated = await this.$store.getters.authenticated
+        }
+      } catch (e) {
+        this.$message.warning(e.message)
+      } finally {
+        if (this.authenticated) {
+          this.redirect(goBackTo)
+        }
       }
-    } catch (e) {
-      this.$message.warning(e.message)
-    } finally {
-      if (this.authenticated) {
-        this.redirect(goBackTo)
-      }
-    }
-    this.logging = false
+      this.logging = false
+    })
   }
   redirect(goTo) {
     this.$router.push(goTo)
