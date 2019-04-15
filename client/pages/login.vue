@@ -91,31 +91,26 @@ export default class Login extends Vue {
   redirect(goTo) {
     this.$router.push(goTo)
   }
-  getCaptcha() {
+  async getCaptcha() {
     const params = {}
     if (this.$refs.captcha) {
       params.width = this.$refs.captcha.$el.clientWidth || 150
       params.height = this.$refs.captcha.$el.clientHeight || 36
     }
-    this.captchaSvg = this.$axios.get('/hpi/auth/captcha', { params })
-      .then((response) => {
-        // #WatchHowDoWe
-        // Just passing through :|
-        // TODO, improve this, figure out how @watch works
-        const authenticated = this.$store.getters.authenticated
-        if (authenticated) {
-          this.redirect('/')
-        }
-        const data = response.data
-        return data
-      })
-      .then((captcha) => {
-        this.captchaSvg = captcha
-      })
-      .catch((error) => {
-        const errorMessage = error.toString()
-        this.captchaSvg = `<small style="line-height:1em;display:block;">${errorMessage}</small>`
-      })
+    try {
+      const response = await this.$axios.get('/hpi/auth/captcha', { params })
+      // #WatchHowDoWe
+      // Just passing through :|
+      // TODO, improve this, figure out how @watch works
+      const authenticated = this.$store.getters.authenticated
+      if (authenticated) {
+        this.redirect('/')
+      }
+      this.captchaSvg = response.data
+    } catch (error) {
+      const errorMessage = error.toString()
+      this.captchaSvg = `<small style="line-height:1em;display:block;">${errorMessage}</small>`
+    }
   }
 
   refreshCaptcha = debounce(this.getCaptcha, 500) // Note to you, reader, does this still work?
