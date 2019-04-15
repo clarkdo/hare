@@ -40,12 +40,9 @@ module.exports = {
     },
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'hare.[chunkhash:12].js',
-      chunk: ({ isDev }) => isDev ? '[name].js' : 'hare.chunk.[chunkhash:12].js',
+      chunk: ({ isDev }) => isDev ? '[name].js' : 'hare.[chunkhash:12].js',
       css: ({ isDev }) => isDev ? '[name].css' : 'hare.[contenthash:12].css'
-    },
-    plugins: [
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh|en|fr/)
-    ]
+    }
   },
   /*
   ** Customize the Progress Bar
