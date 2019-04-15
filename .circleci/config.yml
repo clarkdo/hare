@@ -2,7 +2,7 @@ version: 2
 jobs:
   build: &build
     docker:
-      - image: circleci/node:9
+      - image: circleci/node:latest
     working_directory: ~/hare
     # branches:
     #   only:
@@ -23,7 +23,7 @@ jobs:
       - run: yarn test
 deployment:
   staging:
-    branch: master
+    branch: dev
     heroku:
       appname: nuxt-hare
 #   node-7:
