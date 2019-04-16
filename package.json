@@ -26,11 +26,6 @@
     "prepublishOnly": "yarn lint && yarn test && yarn build:server",
     "release": "standard-version"
   },
-  "ava": {
-    "require": [
-      "babel-register"
-    ]
-  },
   "lint-staged": {
     "{client,server,test}/**/*.{js,vue}": [
       "eslint --ext .js,.vue --ignore-path .gitignore"
@@ -65,7 +60,7 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
-    "ava": "^0.25.0",
+    "ava": "^1.4.1",
     "babel-eslint": "^10.0.1",
     "cpx": "^1.5.0",
     "cross-env": "^5.2.0",
