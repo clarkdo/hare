@@ -26,6 +26,7 @@ jobs:
       - image: circleci/node:latest
     working_directory: ~/hare
     steps:
+      - checkout
       - run:
           name: Deploy to Heroku
           command: |
