@@ -35,7 +35,7 @@
     "@nuxtjs/axios": "^5.4.1",
     "bunyan": "^1.8.12",
     "chart.js": "^2.8.0",
-    "element-ui": "^2.7.2",
+    "element-ui": "2.7.2",
     "js-cookie": "^2.2.0",
     "js-yaml": "^3.13.1",
     "jwt-decode": "^2.2.0",
