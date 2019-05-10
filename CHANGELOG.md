@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0-alpha.0](https://github.com/clarkdo/hare/compare/v0.4.0...v1.0.0-alpha.0) (2019-05-10)
+
+
+### Bug Fixes
+
+* captcha is svg ([dbb802f](https://github.com/clarkdo/hare/commit/dbb802f))
+* confit test error ([cc42e10](https://github.com/clarkdo/hare/commit/cc42e10))
+* empty file in windows server build ([7aae40a](https://github.com/clarkdo/hare/commit/7aae40a))
+* login test ([54fb8c6](https://github.com/clarkdo/hare/commit/54fb8c6))
+* not send req if validation failed ([e14bc9a](https://github.com/clarkdo/hare/commit/e14bc9a))
+* server failure ([7d36d39](https://github.com/clarkdo/hare/commit/7d36d39))
+* start server is in ts mode ([b6310f8](https://github.com/clarkdo/hare/commit/b6310f8))
+* use element-ui@2.7.2 before [#15277](https://github.com/clarkdo/hare/issues/15277) released ([dc57db9](https://github.com/clarkdo/hare/commit/dc57db9))
+* use node-9 in circleci till nuxt next release ([9cdf118](https://github.com/clarkdo/hare/commit/9cdf118))
+
+
+### Features
+
+* enable modern mode ([b267c53](https://github.com/clarkdo/hare/commit/b267c53))
+* Refactor examples, add Français locale ([f3881ec](https://github.com/clarkdo/hare/commit/f3881ec))
+* remove momentjs ([52918bd](https://github.com/clarkdo/hare/commit/52918bd))
+* replace vue-clipboards with vue-clipboard2 ([fb700d7](https://github.com/clarkdo/hare/commit/fb700d7))
+* upgrade element-ui to 2.8 ([4bf6176](https://github.com/clarkdo/hare/commit/4bf6176))
+* upgrade nuxt to 2 ([d132e67](https://github.com/clarkdo/hare/commit/d132e67))
+* upgrade vue-i18n to v8 ([00eec76](https://github.com/clarkdo/hare/commit/00eec76))
+* use eslint-plugin-vue ([cdf9ae8](https://github.com/clarkdo/hare/commit/cdf9ae8))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/clarkdo/hare/compare/v0.3.0...v0.4.0) (2018-03-08)
 
