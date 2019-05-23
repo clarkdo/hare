@@ -32,7 +32,7 @@
     ]
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.4.1",
+    "@nuxtjs/axios": "^5.5.1",
     "bunyan": "^1.8.12",
     "chart.js": "^2.8.0",
     "element-ui": "2.7.2",
@@ -46,7 +46,7 @@
     "koa-compress": "^3.0.0",
     "koa-proxies": "^0.8.1",
     "koa-router": "^7.4.0",
-    "koa-session": "^5.11.0",
+    "koa-session": "^5.12.0",
     "mkdirp": "^0.5.1",
     "negotiator": "^0.6.2",
     "normalize.css": "^8.0.1",
@@ -67,8 +67,8 @@
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jest": "^22.5.1",
-    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-nuxt": "^0.4.3",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
