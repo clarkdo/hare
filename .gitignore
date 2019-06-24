@@ -189,3 +189,4 @@ local.properties
 # webpackmonitor
 .monitor/
 
+.DS_Store
