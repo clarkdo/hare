@@ -14,7 +14,7 @@ async function start() {
   const app = new Koa()
 
   app.keys = ['hare-server']
-  config.dev = !(app.env === 'production')
+  config.dev = app.env !== 'production'
 
   const nuxt = new Nuxt(config)
   // Build only in dev mode
