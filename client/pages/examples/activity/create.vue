@@ -13,8 +13,8 @@
 
 <script>
 import Vue from 'vue'
-import NewActivity from '@/components/examples/activity/NewActivity'
 import { Component, namespace } from 'nuxt-property-decorator'
+import NewActivity from '@/components/examples/activity/NewActivity'
 
 const Activity = namespace('examples/activity')
 

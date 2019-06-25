@@ -48,8 +48,8 @@
 
 <script>
 import Vue from 'vue'
-import debounce from '@/utils/debounce'
 import { Component } from 'nuxt-property-decorator'
+import debounce from '@/utils/debounce'
 
 @Component
 export default class Login extends Vue {

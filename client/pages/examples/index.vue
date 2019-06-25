@@ -179,8 +179,8 @@
 <script>
 import Vue from 'vue'
 import { mapActions } from 'vuex'
-import NewActivity from '@/components/examples/activity/NewActivity'
 import { Component, namespace } from 'nuxt-property-decorator'
+import NewActivity from '@/components/examples/activity/NewActivity'
 
 const Example = namespace('examples')
 
