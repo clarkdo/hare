@@ -22,9 +22,13 @@
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
     "generate": "nuxt generate",
-    "precommit": "lint-staged",
     "prepublishOnly": "yarn lint && yarn test && yarn build:server",
     "release": "standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "{client,server,test}/**/*.{js,vue}": [
@@ -73,9 +77,9 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.2.3",
-    "husky": "^2.7.0",
-    "lint-staged": "^8.2.1",
-    "lodash": "^4.17.11",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.0",
+      "lodash": "^4.17.11",
     "moxios": "^0.4.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
