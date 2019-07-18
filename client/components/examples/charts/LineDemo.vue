@@ -30,6 +30,7 @@ export default class LineDemo extends Vue {
       }
     ]
   }
+
   mounted () {
     this.renderChart(this.chartData, {
       tooltips: {

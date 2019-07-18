@@ -56,6 +56,7 @@ const Menu = namespace('menu')
 })
 export default class Navbar extends Vue {
   @Getter isMenuHidden
+
   @Menu.Getter menus
 
   async beforeMount () {

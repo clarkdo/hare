@@ -1,13 +1,13 @@
 export const state = () => ({
   activities: [
     {
-      'account': '0',
-      'date': '2018-01-01',
-      'type': 'price',
-      'region': '北京',
-      'priority': '高',
-      'organizer': '市场部',
-      'desc': 'Activity 0, as a default Vuex activity entry'
+      account: '0',
+      date: '2018-01-01',
+      type: 'price',
+      region: '北京',
+      priority: '高',
+      organizer: '市场部',
+      desc: 'Activity 0, as a default Vuex activity entry'
     }
   ]
 })

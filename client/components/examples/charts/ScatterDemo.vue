@@ -53,6 +53,7 @@ export default class ScatterDemo extends Vue {
       }]
     }]
   }
+
   mounted () {
     this.renderChart(this.chartData)
   }

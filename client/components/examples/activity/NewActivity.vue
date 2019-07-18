@@ -173,7 +173,9 @@ const Example = namespace('examples')
 })
 export default class NewActivity extends Vue {
   @Example.Getter labels
+
   @Example.Getter organizers
+
   @Example.Getter cities
 
   get activeCities () {
@@ -205,6 +207,7 @@ export default class NewActivity extends Vue {
       }
     })
   }
+
   reset (formName) {
     this.$refs[formName].resetFields()
   }

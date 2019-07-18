@@ -58,17 +58,25 @@ export default class Login extends Vue {
     password: '',
     captcha: ''
   }
-  authenticated = false // #WatchHowDoWe ... How do we?
+
+  authenticated = false
+
+  // #WatchHowDoWe ... How do we?
   rules = {}
+
   captchaSvg = ''
+
   // keepPwd = false
   logging = false
+
   layout () {
     return 'empty'
   }
+
   mounted () {
     this.getCaptcha()
   }
+
   login () {
     const goBackTo = this.$route.query.page || '/'
     this.logging = true
@@ -88,9 +96,11 @@ export default class Login extends Vue {
       this.logging = false
     })
   }
+
   redirect (goTo) {
     this.$router.push(goTo)
   }
+
   async getCaptcha () {
     const params = {}
     if (this.$refs.captcha) {

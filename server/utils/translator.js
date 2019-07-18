@@ -14,8 +14,9 @@ class Translator {
   constructor (translated) {
     this.translated = translated
   }
+
   translate (key) {
-    const hasTranslation = this.translated.hasOwnProperty(key)
+    const hasTranslation = Object.prototype.hasOwnProperty.call(this.translated, key)
     const pick = hasTranslation ? this.translated[key] : `${key}**`
     return pick
   }

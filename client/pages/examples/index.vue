@@ -197,22 +197,35 @@ const Example = namespace('examples')
 })
 export default class Demo extends Vue {
   @Example.Getter city
+
   @Example.Getter foods
+
   @Example.Getter cities
+
   @Example.Getter organizers
 
   num = '1'
+
   province = '6'
+
   district = ['2', '8']
+
   food = 'Fine Noodles'
+
   website = 'clarkdo.github'
+
   restaurant = null
+
   restOptions = '1'
+
   multiFood = []
 
   popVisible = false
+
   switcher = '1'
+
   slider = 15
+
   activity = {
     account: '',
     region: '',
