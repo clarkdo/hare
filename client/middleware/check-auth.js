@@ -6,7 +6,7 @@ export default async ({
   $axios
 }) => {
   // If nuxt generate, pass this middleware
-  if (process.static) return
+  if (process.static) { return }
   const maybeReq = process.server ? req : null
   const hasSession = maybeReq !== null && !!maybeReq.session
   let maybeAuthenticated = await store.getters.authenticated

@@ -15,7 +15,7 @@ export default function (func, wait, immediate) {
       timeout = null
       if (!immediate) {
         result = func.apply(context, args)
-        if (!timeout) context = args = null
+        if (!timeout) { context = args = null }
       }
     }
   }
@@ -25,7 +25,7 @@ export default function (func, wait, immediate) {
     args = arguments
     timestamp = new Date().getTime()
     const callNow = immediate && !timeout
-    if (!timeout) timeout = setTimeout(later, wait)
+    if (!timeout) { timeout = setTimeout(later, wait) }
     if (callNow) {
       result = func.apply(context, args)
       context = args = null

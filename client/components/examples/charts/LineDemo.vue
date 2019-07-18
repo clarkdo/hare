@@ -30,7 +30,7 @@ export default class LineDemo extends Vue {
       }
     ]
   }
-  mounted() {
+  mounted () {
     this.renderChart(this.chartData, {
       tooltips: {
         callbacks: {

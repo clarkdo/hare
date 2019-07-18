@@ -1,10 +1,10 @@
 const xmlify = require('xmlify') // JS object to XML
 const yaml = require('js-yaml') // JS object to YAML
 
-module.exports = async function contentNegotiation(ctx, next) {
+module.exports = async function contentNegotiation (ctx, next) {
   await next()
 
-  if (!ctx.body) return // no content to return
+  if (!ctx.body) { return } // no content to return
 
   // check Accept header for preferred response type
   const type = ctx.accepts('json', 'xml', 'yaml', 'text')

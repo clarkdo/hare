@@ -122,7 +122,7 @@ const Example = namespace('examples')
   props: {
     formData: {
       type: Object,
-      default() {
+      default () {
         return {
           account: '',
           region: 'activity.city.ly',
@@ -139,7 +139,7 @@ const Example = namespace('examples')
       }
     }
   },
-  data() {
+  data () {
     return {
       formRules: {
         account: [
@@ -176,11 +176,11 @@ export default class NewActivity extends Vue {
   @Example.Getter organizers
   @Example.Getter cities
 
-  get activeCities() {
+  get activeCities () {
     return this.cities.filter(city => !city.disable)
   }
 
-  submit(formName) {
+  submit (formName) {
     /**
      * Example of how we can see each field value
      */
@@ -205,7 +205,7 @@ export default class NewActivity extends Vue {
       }
     })
   }
-  reset(formName) {
+  reset (formName) {
     this.$refs[formName].resetFields()
   }
 }

@@ -6,7 +6,7 @@ import { Doughnut } from 'vue-chartjs'
   extends: Doughnut
 })
 export default class DoughnutDemo {
-  mounted() {
+  mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
       datasets: [

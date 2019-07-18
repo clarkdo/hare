@@ -53,7 +53,7 @@ export default {
   data: () => ({
     ...data
   }),
-  async asyncData({
+  async asyncData ({
     $axios
   }) {
     const recv = await $axios.get('/hpi/auth/token')

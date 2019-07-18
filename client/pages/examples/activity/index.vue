@@ -87,7 +87,7 @@ import { Component } from 'nuxt-property-decorator'
 
 @Component({
   methods: {
-    handleSelectionChange(val) {
+    handleSelectionChange (val) {
       this.selections = val
     }
   }
@@ -95,13 +95,13 @@ import { Component } from 'nuxt-property-decorator'
 export default class Example extends Vue {
   selections = []
 
-  async asyncData({ $axios }) {
+  async asyncData ({ $axios }) {
     // TODO figure out how mapMutations work with Vuex class.
     const { data: activities } = await $axios.get('/hpi/examples/activities')
     return { activities }
   }
 
-  filterTag(value, row) {
+  filterTag (value, row) {
     return row.type === value
   }
 }

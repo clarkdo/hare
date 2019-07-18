@@ -24,12 +24,12 @@ export default {
   props: {
     error: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     }
   },
-  head() {
+  head () {
     return {
       title: this.error.message || 'An error occurred'
     }

@@ -13,7 +13,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_ACTIVITIES(
+  SET_ACTIVITIES (
     state,
     values
   ) {
@@ -24,17 +24,17 @@ export const mutations = {
 }
 
 export const actions = {
-  add({ commit }, activity) {
+  add ({ commit }, activity) {
     const payload = [activity]
     commit('SET_ACTIVITIES', payload)
   }
 }
 
 export const getters = {
-  activities(state) {
+  activities (state) {
     return state.activities
   },
-  title(state) {
+  title (state) {
     return 'activity.title.create'
   }
 }

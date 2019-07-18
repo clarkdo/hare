@@ -1,4 +1,4 @@
-module.exports = async function handleErrors(ctx, next) {
+module.exports = async function handleErrors (ctx, next) {
   try {
     await next()
   } catch (e) {
@@ -23,7 +23,7 @@ module.exports = async function handleErrors(ctx, next) {
           root: 'error'
           // ...e
         }
-        if (ctx.app.env !== 'production') ctx.body.stack = e.stack
+        if (ctx.app.env !== 'production') { ctx.body.stack = e.stack }
         ctx.app.emit('error', e, ctx) // github.com/koajs/koa/wiki/Error-Handling
         break
     }

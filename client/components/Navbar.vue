@@ -58,14 +58,14 @@ export default class Navbar extends Vue {
   @Getter isMenuHidden
   @Menu.Getter menus
 
-  async beforeMount() {
+  async beforeMount () {
     const { data: menus } = await this.$axios.get('/hpi/ui/menu')
     if (Array.isArray(menus) && menus.length) {
       this.$store.dispatch('menu/addAll', this.translateMenus(menus))
     }
   }
 
-  translateMenus(menus) {
+  translateMenus (menus) {
     return menus.map((menu) => {
       const subMenus = menu.children
       if (Array.isArray(subMenus) && subMenus.length) {

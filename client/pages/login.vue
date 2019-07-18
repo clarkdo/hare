@@ -63,13 +63,13 @@ export default class Login extends Vue {
   captchaSvg = ''
   // keepPwd = false
   logging = false
-  layout() {
+  layout () {
     return 'empty'
   }
-  mounted() {
+  mounted () {
     this.getCaptcha()
   }
-  login() {
+  login () {
     const goBackTo = this.$route.query.page || '/'
     this.logging = true
     this.$refs.user.validate(async (valid) => {
@@ -88,10 +88,10 @@ export default class Login extends Vue {
       this.logging = false
     })
   }
-  redirect(goTo) {
+  redirect (goTo) {
     this.$router.push(goTo)
   }
-  async getCaptcha() {
+  async getCaptcha () {
     const params = {}
     if (this.$refs.captcha) {
       params.width = this.$refs.captcha.$el.clientWidth || 150

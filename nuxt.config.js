@@ -39,7 +39,7 @@ module.exports = {
         ['@babel/plugin-proposal-class-properties', { loose: true }]
       ]
     },
-    extend(config) {
+    extend (config) {
       config.plugins.push(
         new webpack.IgnorePlugin({
           resourceRegExp: /^\.\/locale$/,

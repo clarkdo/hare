@@ -8,7 +8,7 @@ const useRoutes = require('./routes')
 const consts = require('./utils/consts')
 
 // Start nuxt.js
-async function start() {
+async function start () {
   const host = consts.HOST
   const port = consts.PORT
   const app = new Koa()

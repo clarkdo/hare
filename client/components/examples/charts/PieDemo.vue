@@ -6,7 +6,7 @@ import { Pie } from 'vue-chartjs'
   extends: Pie
 })
 export default class PieDemo {
-  mounted() {
+  mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
       datasets: [

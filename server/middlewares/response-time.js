@@ -1,4 +1,4 @@
-module.exports = async function responseTime(ctx, next) {
+module.exports = async function responseTime (ctx, next) {
   const t1 = Date.now()
   await next()
   const t2 = Date.now()

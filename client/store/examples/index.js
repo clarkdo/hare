@@ -105,32 +105,32 @@ export const state = () => ({
 })
 
 export const getters = {
-  city(state) {
+  city (state) {
     return state.city
   },
-  organizers(state) {
+  organizers (state) {
     return state.organizers
   },
-  cities(state) {
+  cities (state) {
     return state.cities
   },
-  foods(state) {
+  foods (state) {
     return state.foods
   },
-  labels(state) {
+  labels (state) {
     return state.labels
   }
 }
 
 export const mutations = {
-  SET_CITY(state, city) {
+  SET_CITY (state, city) {
     state.city = city || null
   }
 
 }
 
 export const actions = {
-  checkCity({ commit }, city) {
+  checkCity ({ commit }, city) {
     commit('SET_CITY', city)
   }
 }

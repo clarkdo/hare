@@ -51,7 +51,7 @@ export default class Headbar extends Vue {
   @Getter isMenuHidden
   @Getter authUser
   @Getter displayName
-  async logout() {
+  async logout () {
     await this.$store.dispatch('logout', async () => {
       await this.$router.push('/login')
     })

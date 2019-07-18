@@ -3,8 +3,8 @@ const mkdirp = require('mkdirp')
 const koaBunyan = require('koa-bunyan')
 const koaLogger = require('koa-bunyan-logger')
 
-module.exports = function useLogger(app) {
-  const isWin = /^win/.test(process.platform)
+module.exports = function useLogger (app) {
+  const isWin = process.platform.startsWith('win')
   // logging
   let logDir = process.env.LOG_DIR || (isWin ? 'C:\\\\log' : '/var/tmp/log')
   mkdirp.sync(logDir)

@@ -23,7 +23,7 @@ export default {
     Headbar
   },
   computed: {
-    colSize() {
+    colSize () {
       return this.isMenuHidden ? 24 : 20
     },
     ...mapGetters(['isMenuHidden'])

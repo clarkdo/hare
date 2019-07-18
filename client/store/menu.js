@@ -5,19 +5,19 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_MENUS(state, menus) {
+  SET_MENUS (state, menus) {
     state.menus = menus
   }
 }
 
 export const getters = {
-  menus(state, menus) {
+  menus (state, menus) {
     return state.menus
   }
 }
 
 export const actions = {
-  addAll({ commit }, menus) {
+  addAll ({ commit }, menus) {
     if (Array.isArray(menus) && menus.length) {
       commit('SET_MENUS', menus)
     }
