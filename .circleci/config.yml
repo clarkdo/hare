@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:lts
     working_directory: ~/hare
     # branches:
     #   only:
@@ -23,7 +23,7 @@ jobs:
       - run: yarn test
   deploy:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:lts
     working_directory: ~/hare
     steps:
       - checkout
