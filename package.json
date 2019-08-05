@@ -4,7 +4,6 @@
   "description": "Based on Vue.js 2.x, Koa 2.x, Element-UI and Nuxt.js",
   "author": "Clark Du",
   "license": "MIT",
-  "main": "dist/server-app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/clarkdo/hare.git"
@@ -21,9 +20,7 @@
     "start": "cross-env NODE_ENV=production node dist/server/app.js",
     "start:pm2": "pm2 start yarn --name=hare -- start",
     "analyze": "nuxt build --analyze",
-    "generate": "nuxt generate",
-    "prepublishOnly": "yarn lint && yarn test && yarn build:server",
-    "release": "standard-version"
+    "generate": "nuxt generate"
   },
   "husky": {
     "hooks": {
