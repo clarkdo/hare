@@ -48,7 +48,7 @@
     "koa-proxies": "^0.8.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.2",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.4",
     "negotiator": "^0.6.2",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.8.1",
