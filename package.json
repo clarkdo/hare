@@ -69,7 +69,7 @@
     "eslint-plugin-nuxt": "^0.4.3",
     "husky": "^3.0.2",
     "lint-staged": "^9.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moxios": "^0.4.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
