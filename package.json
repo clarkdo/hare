@@ -67,7 +67,7 @@
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": "^0.4.3",
-    "husky": "^3.0.2",
+    "husky": "^5.0.9",
     "lint-staged": "^9.2.1",
     "lodash": "^4.17.15",
     "moxios": "^0.4.0",
