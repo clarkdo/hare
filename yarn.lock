@@ -6240,10 +6240,10 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
-koa-session@^5.12.2:
-  version "5.12.2"
-  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-5.12.2.tgz#a9549361751e84b137e778bb93df5eeb51478c1f"
-  integrity sha512-gCJ3PXMEOrARM9iYgiALZufdHz7UTDVPTZAc8ScrXl7K9kOTFDEcMIIIwNR03AiJ0BHZs7aLO+kqqEZ3Dvd8Mw==
+koa-session@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-6.2.0.tgz#c0da2a808b520f62a25dac9f2914b580b2402078"
+  integrity sha512-l2ZC6D1BnRkIXhWkRgpewdqKn38/9/2WScmxyShuN408TxX+J/gUzdzGBIvGZaRwmezOU819sNpGmfFGLeDckg==
   dependencies:
     crc "^3.4.4"
     debug "^3.1.0"
