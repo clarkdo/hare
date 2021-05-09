@@ -35,7 +35,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
     "bunyan": "^1.8.12",
-    "chart.js": "^2.8.0",
+    "chart.js": "^3.2.1",
     "element-ui": "2.7.2",
     "js-cookie": "^2.2.0",
     "js-yaml": "^3.13.1",
