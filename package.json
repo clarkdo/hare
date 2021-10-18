@@ -44,7 +44,7 @@
     "koa-body": "^4.1.0",
     "koa-bunyan": "^1.0.2",
     "koa-bunyan-logger": "^2.1.0",
-    "koa-compress": "^3.0.0",
+    "koa-compress": "^5.1.0",
     "koa-proxies": "^0.8.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.2",
