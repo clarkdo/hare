@@ -71,7 +71,7 @@
     "lint-staged": "^9.2.1",
     "lodash": "^4.17.15",
     "moxios": "^0.4.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.19.1",
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0"
