@@ -39,7 +39,7 @@
     "element-ui": "2.7.2",
     "js-cookie": "^2.2.0",
     "js-yaml": "^3.13.1",
-    "jwt-decode": "^2.2.0",
+    "jwt-decode": "^3.1.2",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
     "koa-bunyan": "^1.0.2",
