@@ -51,7 +51,7 @@
     "mkdirp": "^0.5.1",
     "negotiator": "^0.6.2",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.8.1",
+    "nuxt": "^3.0.0",
     "nuxt-property-decorator": "^2.3.0",
     "svg-captcha": "^1.4.0",
     "vue-chartjs": "^3.4.2",
