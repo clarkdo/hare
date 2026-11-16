@@ -6251,9 +6251,7 @@ koa-session@^5.12.2:
     uuid "^3.3.2"
 
 koa@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/koa/-/koa-2.7.0.tgz#7e00843506942b9d82c6cc33749f657c6e5e7adf"
-  integrity sha512-7ojD05s2Q+hFudF8tDLZ1CpCdVZw8JQELWSkcfG9bdtoTDzMmkRF6BQBU7JzIzCCOY3xd3tftiy/loHBUYaY2Q==
+  version "2.16.4"
   dependencies:
     accepts "^1.3.5"
     cache-content-type "^1.0.0"
